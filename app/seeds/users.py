@@ -51,6 +51,46 @@ def seed_users():
         email="djruv@solocamp.io",
         password="password",
     )
+    jay = User(
+        username="Jay",
+        profile_image='url',
+        first_name="Jay",
+        last_name="Chou",
+        email="jay@solocamp.io",
+        password="password",
+    )
+    gai = User(
+        username="Gai",
+        profile_image='url',
+        first_name="Yan",
+        last_name="Chou",
+        email="gai@solocamp.io",
+        password="password",
+    )
+    ice= User(
+        username="Ice",
+        profile_image='url',
+        first_name="Changqing",
+        last_name="Yang",
+        email="ice@solocamp.io",
+        password="password",
+    )
+    vinida= User(
+        username="Vinida",
+        profile_image='url',
+        first_name="Ying",
+        last_name="Weng",
+        email="vinida@solocamp.io",
+        password="password",
+    )
+    jolin= User(
+        username="Jolin",
+        profile_image='url',
+        first_name="Yilin",
+        last_name="Tsai",
+        email="jolin@solocamp.io",
+        password="password",
+    )
 
     db.session.add(demo)
     db.session.add_all(
@@ -60,6 +100,15 @@ def seed_users():
             samsmith,
             fujii,
             dhruv,
+        ]
+    )
+    db.session.add_all(
+        [
+            jay,
+            gai,
+            ice,
+            vinida,
+            jolin,
         ]
     )
 
