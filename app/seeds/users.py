@@ -9,26 +9,60 @@ def seed_users():
         profile_image='url',
         first_name='Demo',
         last_name='User',
-        email='demo@aa.io',
+        email='demo@solocamp.io',
         password='password')
-    marnie = User(
-        username='marnie',
+    joji = User(
+        username="Joji",
         profile_image='url',
-        first_name='Marnie',
-        last_name='User',
-        email='marnie@aa.io',
-        password='password')
-    bobbie = User(
-        username='bobbie',
+        first_name="George",
+        last_name="Miller",
+        email="joji@solocamp.io",
+        password="password",
+    )
+    jvke = User(
+        username="JVKE",
         profile_image='url',
-        first_name='Bobbie',
-        last_name='User',
-        email='bobbie@aa.io',
-        password='password')
+        first_name="Jacob",
+        last_name="Lawson",
+        email="jvke@solocamp.io",
+        password="password",
+    )
+    samsmith = User(
+        username="SamSmith",
+        profile_image='url',
+        first_name="Samuel",
+        last_name="Smith",
+        email="samsmith@solocamp.io",
+        password="password",
+    )
+    fujii = User(
+        username="Fujii",
+        profile_image='url',
+        first_name="Fujii",
+        last_name="Kaze",
+        email="fujii@solocamp.io",
+        password="password",
+    )
+    dhruv = User(
+        username="Dhrvie",
+        profile_image='url',
+        first_name="Dhruv",
+        last_name="Sharma",
+        email="djruv@solocamp.io",
+        password="password",
+    )
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add_all(
+        [
+            joji,
+            jvke,
+            samsmith,
+            fujii,
+            dhruv,
+        ]
+    )
+
     db.session.commit()
 
 
