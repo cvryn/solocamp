@@ -1,7 +1,7 @@
 from .db import db, add_prefix_for_prod, environment, SCHEMA
 
 wishlist = db.Table(
-    add_prefix_for_prod("wishlists"),
+    "wishlists",
     db.Column(
         "user_id",
         db.Integer,
