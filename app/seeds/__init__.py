@@ -7,8 +7,7 @@ from .albumarts import seed_albumarts, undo_albumarts
 from .songs import seed_songs, undo_songs
 from .supportedbys import seed_supportedbys, undo_supportedbys
 from .shoppingcarts import seed_shoppingcarts, undo_shoppingcarts
-from .wishlist import seed_wishlists, undo_wishlists
-from .user_albums import seed_user_albums, undo_user_albums
+from .wishlists import seed_wishlists, undo_wishlists
 
 
 # Creates a seed group to hold our commands
@@ -24,23 +23,21 @@ def seed():
         # command, which will truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
+        undo_wishlists()
         undo_users()
         undo_genres()
         undo_albums()
         undo_albumarts()
         undo_songs()
         undo_supportedbys()
-        undo_user_albums()
-        undo_wishlists()
         undo_shoppingcarts()
+    seed_wishlists()
     seed_users()
     seed_genres()
     seed_albums()
     seed_albumarts()
     seed_songs()
     seed_supportedbys()
-    seed_user_albums()
-    seed_wishlists()
     seed_shoppingcarts()
     # Add other seed functions here
 
@@ -48,13 +45,12 @@ def seed():
 # Creates the `flask seed undo` command
 @seed_commands.command("undo")
 def undo():
+    undo_wishlists()
     undo_users()
     undo_genres()
     undo_albumarts()
     undo_albums()
     undo_songs()
     undo_supportedbys()
-    undo_user_albums()
-    undo_wishlists()
     undo_shoppingcarts()
     # Add other undo functions here
