@@ -1,33 +1,29 @@
 from .db import db, environment, SCHEMA
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from . import user_album
-
-
-
-
+from .wishlist import wishlist
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
-    profile_image = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=False, unique=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(255), nullable=False, unique=True)
+    profile_image = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    # Class Relationships
+    # many-to-many relationship
+    album = db.relationship("Album", secondary=wishlist, back_populates="user")
 
-    album = db.relationship("Album", secondary=user_album, back_populates="user")
+    # one-to-many relationsips
     song = db.relationship("Song", back_populates="user")
     supported_by = db.relationship("SupportedBy", back_populates="user")
-    wish_list = db.relationship("WishList", back_populates="user")
     shopping_cart = db.relationship("ShoppingCart", back_populates="user")
 
     @property
@@ -42,8 +38,4 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email
-        }
+        return {"id": self.id, "username": self.username, "email": self.email}

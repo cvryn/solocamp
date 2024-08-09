@@ -1,34 +1,187 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, environment, SCHEMA, User
 from sqlalchemy.sql import text
 
 
-# Adds a demo user, you can add other users here if you want
 def seed_users():
+    # 1
     demo = User(
-        username='Demo',
-        profile_image='url',
-        first_name='Demo',
-        last_name='User',
-        email='demo@aa.io',
-        password='password')
-    marnie = User(
-        username='marnie',
-        profile_image='url',
-        first_name='Marnie',
-        last_name='User',
-        email='marnie@aa.io',
-        password='password')
-    bobbie = User(
-        username='bobbie',
-        profile_image='url',
-        first_name='Bobbie',
-        last_name='User',
-        email='bobbie@aa.io',
-        password='password')
+        username="Demo",
+        profile_image="url",
+        first_name="Demo",
+        last_name="User",
+        email="demo@solocamp.io",
+        password="password",
+    )
+
+    # 2
+    joji = User(
+        username="Joji",
+        profile_image="url",
+        first_name="George",
+        last_name="Miller",
+        email="joji@solocamp.io",
+        password="password",
+    )
+
+    # 3
+    jvke = User(
+        username="JVKE",
+        profile_image="url",
+        first_name="Jacob",
+        last_name="Lawson",
+        email="jvke@solocamp.io",
+        password="password",
+    )
+
+    # 4
+    samsmith = User(
+        username="SamSmith",
+        profile_image="url",
+        first_name="Samuel",
+        last_name="Smith",
+        email="samsmith@solocamp.io",
+        password="password",
+    )
+
+    # 5
+    fujii = User(
+        username="Fujii",
+        profile_image="url",
+        first_name="Fujii",
+        last_name="Kaze",
+        email="fujii@solocamp.io",
+        password="password",
+    )
+
+    # 6
+    dhruv = User(
+        username="Dhrvie",
+        profile_image="url",
+        first_name="Dhruv",
+        last_name="Sharma",
+        email="djruv@solocamp.io",
+        password="password",
+    )
+    # 7
+    jay = User(
+        username="Jay",
+        profile_image="url",
+        first_name="Jay",
+        last_name="Chou",
+        email="jay@solocamp.io",
+        password="password",
+    )
+
+    # 8
+    gai = User(
+        username="Gai",
+        profile_image="url",
+        first_name="Yan",
+        last_name="Chou",
+        email="gai@solocamp.io",
+        password="password",
+    )
+
+    # 9
+    ice = User(
+        username="Ice",
+        profile_image="url",
+        first_name="Changqing",
+        last_name="Yang",
+        email="ice@solocamp.io",
+        password="password",
+    )
+
+    # 10
+    vinida = User(
+        username="Vinida",
+        profile_image="url",
+        first_name="Ying",
+        last_name="Weng",
+        email="vinida@solocamp.io",
+        password="password",
+    )
+
+    # 11
+    jolin = User(
+        username="Jolin",
+        profile_image="url",
+        first_name="Yilin",
+        last_name="Tsai",
+        email="jolin@solocamp.io",
+        password="password",
+    )
+    # 12
+    adele = User(
+        username="Adele",
+        profile_image="url",
+        first_name="Adele",
+        last_name="Adkins",
+        email="adele@solocamp.io",
+        password="password",
+    )
+    # 13
+    lady_gaga = User(
+        username="Lady Gaga",
+        profile_image="url",
+        first_name="Stefani",
+        last_name="Germanotta",
+        email="ladygaga@solocamp.io",
+        password="password",
+    )
+
+    # 14
+    tiesto = User(
+        username="Tiesto",
+        profile_image="url",
+        first_name="Michiel",
+        last_name="Verwest",
+        email="tiesto@solocamp.io",
+        password="password",
+    )
+
+    # 15
+    cole_dammett = User(
+        username="Cole Dammett",
+        profile_image="url",
+        first_name="Anthony",
+        last_name="Kiedis",
+        email="cole_dammett@solocamp.io",
+        password="password",
+    )
+
+    # 16
+    hardwell = User(
+        username="Hardwell",
+        profile_image="url",
+        first_name="Robbert",
+        last_name="Corput",
+        email="hardwell.solocamp.io",
+        password="password",
+    )
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+
+    db.session.add_all(
+        [
+            joji,
+            jvke,
+            samsmith,
+            fujii,
+            dhruv,
+        ]
+    )
+    db.session.add_all(
+        [
+            jay,
+            gai,
+            ice,
+            vinida,
+            jolin,
+        ]
+    )
+    db.session.add_all([adele, lady_gaga, tiesto, cole_dammett, hardwell])
+
     db.session.commit()
 
 
