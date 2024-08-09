@@ -21,7 +21,7 @@ class Album(db.Model):
         db.ForeignKey(add_prefix_for_prod("genres.id")),
         nullable=False,
     )
-    price = db.Column(db.Numeric(4, 2), nullable=False)
+    price = db.Column(db.Numeric(6, 2), nullable=False)
     description = db.Column(db.String(2555), nullable=False)
 
     # many-to-many relationship
