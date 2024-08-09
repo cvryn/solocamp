@@ -1,4 +1,4 @@
-from app.models import db, User, environment, SCHEMA, Genre
+from app.models import db, environment, SCHEMA, Genre
 from sqlalchemy.sql import text
 
 
