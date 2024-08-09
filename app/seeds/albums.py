@@ -114,6 +114,99 @@ def seed_albums():
         price=19.99,
         description="dhruv's debut EP, 'rapunzel', is a collection of introspective and dreamy indie pop tracks. With honest lyrics and ethereal melodies, the EP explores themes of youth, love, and self-discovery. Tracks like 'double take' and 'moonlight' showcase dhruv's talent for crafting atmospheric and emotionally resonant music.",
     )
+    nocturne = Album(
+        name = 'Nocturne',
+        user_id = 1,
+        # artist_username = 'Jay',
+        year = 2010,
+        # genre = 'R&B',
+        genre_id = 3,
+        price = 100.10,
+        description = 'The album was met with positive reviews from music critics upon its release. In Taiwan, it peaked at number one on the G-Music album chart for multiple weeks and was best-selling album of the year, with sales of over 280,000 copies.'
+    )
+    hotpot_soup = Album(
+        name = 'Hotpot soup',
+        user_id = 2,
+        year = 2020,
+        # genre = 'rap',
+        genre_id = 6,
+        price = 9.99,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+    lonely_dance = Album(
+        name = 'Lonely dance',
+        user_id = 3,
+        year = 2022,
+        # genre = 'electronic',
+        genre_id = 4,
+        price = 39.99,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+    get_away_from_me = Album(
+        name = 'Get away from me',
+        user_id = 4,
+        year = 2021,
+        # genre = 'experimental',
+        genre_id = 7,
+        price = 19.99,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+    shuo_ai_ni = Album(
+        name = 'Shuo ai ni',
+        user_id = 5,
+        year = 2015,
+        # genre = 'pop',
+        genre_id = 1,
+        price = 29.99,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+    ninja = Album(
+        name = 'Ninja',
+        user_id = 1,
+        year = 2001,
+        # genre = 'Rock',
+        genre_id = 2,
+        price = 10.10,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+    weiyuan_stroy = Album(
+        name = 'Weiyuan Stroy',
+        user_id = 2,
+        year = 2021,
+        # genre = 'rap',
+        genre_id = 6,
+        price = 29.99,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+    icekingdom = Album(
+        name = 'Icekingdom',
+        user_id = 3,
+        year = 2023,
+        # genre = 'rap',
+        genre_id = 6,
+        price = 39.99,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+    jasmine = Album(
+        name = 'Jasmine',
+        user_id = 4,
+        year = 2024,
+        # genre = 'R&B',
+        genre_id = 3,
+        price = 19.99,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+    fantasy = Album(
+        name = 'Fantasy',
+        user_id = 5,
+        year = 2017,
+        # genre = 'pop',
+        genre_id = 1,
+        price = 29.99,
+        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+    )
+
+
 
     # joji
     db.session.add_all([in_tongues, ballads_1, nectar, smithereens])
@@ -131,6 +224,8 @@ def seed_albums():
     db.session.add_all([help_ever_hurt_never, love_all_serve_all])
     # dhruv
     db.session.add(rapunzel)
+
+    db.session.add_all([nocturne,hotpot_soup, lonely_dance, get_away_from_me, shuo_ai_ni, ninja,fantasy,icekingdom,weiyuan_stroy, jasmine])
 
     db.session.commit()
 
