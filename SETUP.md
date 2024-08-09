@@ -54,7 +54,7 @@ SECRET_KEY = <generate>
 DATABASE_URL = <postgreSQL internal database url>
 SCHEMA = <schema-name>
 FLASK_APP=app
-FLASK_ENV=development
+FLASK_ENV=production
 ```
 
 
