@@ -4,6 +4,7 @@ from .users import seed_users, undo_users
 from .genres import seed_genres, undo_genres
 from .albums import seed_albums, undo_albums
 from .albumarts import seed_albumarts, undo_albumarts
+from .shoppingcarts import seed_shoppingcarts, undo_shoppingcarts
 
 
 # Creates a seed group to hold our commands
@@ -23,10 +24,12 @@ def seed():
         undo_genres()
         undo_albums()
         undo_albumarts()
+        undo_shoppingcarts()
     seed_users()
     seed_genres()
     seed_albums()
     seed_albumarts()
+    seed_shoppingcarts()
     # Add other seed functions here
 
 
@@ -37,4 +40,5 @@ def undo():
     undo_genres()
     undo_albums()
     undo_albumarts()
+    undo_shoppingcarts()
     # Add other undo functions here
