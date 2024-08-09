@@ -7,6 +7,7 @@ from .albumarts import seed_albumarts, undo_albumarts
 from .songs import seed_songs, undo_songs
 from .shoppingcarts import seed_shoppingcarts, undo_shoppingcarts
 from .wishlist import seed_wishlists, undo_wishlists
+from .supportedbys import seed_supportedbys, undo_supportedbys
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -23,6 +24,7 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_shoppingcarts()
         undo_wishlists()
+        undo_supportedbys()
         undo_songs()
         undo_genres()
         undo_albumarts()
@@ -33,6 +35,7 @@ def seed():
     seed_albums()
     seed_albumarts()
     seed_songs()
+    seed_supportedbys()
     seed_wishlists()
     seed_shoppingcarts()
     # Add other seed functions here
@@ -43,6 +46,7 @@ def seed():
 def undo():
     undo_shoppingcarts()
     undo_wishlists()
+    undo_supportedbys()
     undo_songs()
     undo_genres()
     undo_albums()
