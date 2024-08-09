@@ -292,7 +292,76 @@ def seed_songs():
     grateful = Song(
         title="grateful", track_number=6, song_url="song_url", album_id=11, user_id=6
     )
-
+    nocturne = Song(
+        title = "Nocturne",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 12,
+        user_id = 7
+    )
+    hotpot_soup = Song(
+        title = "Hotpot soup",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 13,
+        user_id = 8
+    )
+    lonely_dance = Song(
+        title = "Lonely dance",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 14,
+        user_id = 9
+    )
+    get_away_from_me = Song(
+        title = "Get away from me",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 15,
+        user_id = 10
+    )
+    shuo_ai_ni = Song(
+        title = "Shuo ai ni",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 16,
+        user_id = 11
+    )
+    ninja = Song(
+        title = "Ninja",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 17,
+        user_id = 7
+    )
+    weiyuan_stroy = Song(
+        title = "Weiyuan stroy",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 18,
+        user_id = 8
+    )
+    icekingdom = Song(
+        title = "Icekingdom",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 19,
+        user_id = 9
+    )
+    jasmine = Song(
+        title = "Jasmine",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 20,
+        user_id = 10
+    )
+    fantasy = Song(
+        title = "Fantasy",
+        track_number = 1,
+        song_url = 'song_url',
+        album_id = 21,
+        user_id = 11
+    )
     # in tongues
     db.session.add_all(
         [
@@ -419,6 +488,7 @@ def seed_songs():
             grateful,
         ]
     )
+    db.session.add_all([nocturne,hotpot_soup, lonely_dance, get_away_from_me, shuo_ai_ni,ninja, fantasy, icekingdom, weiyuan_stroy, jasmine ])
 
     db.session.commit()
 
