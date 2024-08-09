@@ -1,8 +1,7 @@
-from .db import db, add_prefix_for_prod
-
+from .db import db, add_prefix_for_prod, environment, SCHEMA
 
 wishlist = db.Table(
-    "wishlists",
+    add_prefix_for_prod("wishlists"),
     db.Column(
         "user_id",
         db.Integer,
@@ -16,3 +15,6 @@ wishlist = db.Table(
         primary_key=True,
     ),
 )
+
+if environment == "production":
+    wishlist.schema = SCHEMA
