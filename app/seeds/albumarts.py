@@ -3,7 +3,6 @@ from sqlalchemy.sql import text
 
 
 def seed_albumarts():
-
     in_tongues_art = AlbumArt(
         album_art="album_url",
         album_banner="banner_url",
@@ -28,7 +27,6 @@ def seed_albumarts():
         background_color="rbg(255,255,255)",
         album_id=4,
     )
-
 
     this_is_what_blank_feels_like_art = AlbumArt(
         album_art="album_url",
@@ -162,24 +160,28 @@ def seed_albumarts():
         background_color="rgb(1,3,4,9)",
         album_id=13,
     )
+
     album3_art = AlbumArt(
         album_art="https://res.cloudinary.com/dhukvbcqm/image/upload/v1722995944/samples/solocamp/ab67616d00001e02ce372525517ffc96c7079c4e_itffsc.jpg",
         album_banner="banner_url",
         background_color="rgb(1,3,4,9)",
         album_id=14,
     )
+
     album4_art = AlbumArt(
         album_art="https://res.cloudinary.com/dhukvbcqm/image/upload/v1722995861/samples/solocamp/images_2_ikvwsv.jpg",
         album_banner="banner_url",
         background_color="rgb(1,3,4,9)",
         album_id=15,
     )
+
     album5_art = AlbumArt(
         album_art="https://res.cloudinary.com/dhukvbcqm/image/upload/v1722995947/samples/solocamp/images_k14uhf.jpg",
         album_banner="banner_url",
         background_color="rgb(1,3,4,9)",
         album_id=16,
     )
+
     album6_art = AlbumArt(
         album_art="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723036751/samples/solocamp/Jaychou_jay_in750l.jpg",
         album_banner="banner_url",
@@ -193,18 +195,21 @@ def seed_albumarts():
         background_color="rgb(1,3,4,9)",
         album_id=18,
     )
+
     album8_art = AlbumArt(
         album_art="https://res.cloudinary.com/dhukvbcqm/image/upload/v1722995944/samples/solocamp/ab67616d00001e02645fed9ec66eedfb267b52f5_icdb3g.jpg",
         album_banner="banner_url",
         background_color="rgb(1,3,4,9)",
         album_id=19,
     )
+
     album9_art = AlbumArt(
         album_art="https://res.cloudinary.com/dhukvbcqm/image/upload/v1722995861/samples/solocamp/7270401_pw1ouq.jpg",
         album_banner="banner_url",
         background_color="rgb(1,3,4,9)",
         album_id=20,
     )
+
     album10_art = AlbumArt(
         album_art="https://res.cloudinary.com/dhukvbcqm/image/upload/v1722995945/samples/solocamp/original_zunu3s.jpg",
         album_banner="banner_url",

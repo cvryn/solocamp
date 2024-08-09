@@ -12,6 +12,7 @@ def seed_users():
         email="demo@solocamp.io",
         password="password",
     )
+
     # 2
     joji = User(
         username="Joji",
@@ -21,6 +22,7 @@ def seed_users():
         email="joji@solocamp.io",
         password="password",
     )
+
     # 3
     jvke = User(
         username="JVKE",
@@ -30,6 +32,7 @@ def seed_users():
         email="jvke@solocamp.io",
         password="password",
     )
+
     # 4
     samsmith = User(
         username="SamSmith",
@@ -39,6 +42,7 @@ def seed_users():
         email="samsmith@solocamp.io",
         password="password",
     )
+
     # 5
     fujii = User(
         username="Fujii",
@@ -48,6 +52,7 @@ def seed_users():
         email="fujii@solocamp.io",
         password="password",
     )
+
     # 6
     dhruv = User(
         username="Dhrvie",
@@ -66,6 +71,7 @@ def seed_users():
         email="jay@solocamp.io",
         password="password",
     )
+
     # 8
     gai = User(
         username="Gai",
@@ -75,6 +81,7 @@ def seed_users():
         email="gai@solocamp.io",
         password="password",
     )
+
     # 9
     ice = User(
         username="Ice",
@@ -84,6 +91,7 @@ def seed_users():
         email="ice@solocamp.io",
         password="password",
     )
+
     # 10
     vinida = User(
         username="Vinida",
@@ -93,6 +101,7 @@ def seed_users():
         email="vinida@solocamp.io",
         password="password",
     )
+
     # 11
     jolin = User(
         username="Jolin",
@@ -120,6 +129,7 @@ def seed_users():
         email="ladygaga@solocamp.io",
         password="password",
     )
+
     # 14
     tiesto = User(
         username="Tiesto",
@@ -129,6 +139,7 @@ def seed_users():
         email="tiesto@solocamp.io",
         password="password",
     )
+
     # 15
     cole_dammett = User(
         username="Cole Dammett",
@@ -138,6 +149,7 @@ def seed_users():
         email="cole_dammett@solocamp.io",
         password="password",
     )
+
     # 16
     hardwell = User(
         username="Hardwell",
