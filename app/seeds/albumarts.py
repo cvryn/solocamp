@@ -269,9 +269,9 @@ def seed_albumarts():
 def undo_albumarts():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.albumarts RESTART IDENTITY CASCADE;"
+            f"TRUNCATE table {SCHEMA}.album_arts RESTART IDENTITY CASCADE;"
         )
     else:
-        db.session.execute(text("DELETE FROM albumart"))
+        db.session.execute(text("DELETE FROM album_arts"))
 
     db.session.commit()

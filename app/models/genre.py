@@ -10,5 +10,5 @@ class Genre(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
 
-    # Class Relationships
+    # one-to-many relationships
     album = db.relationship("Album", back_populates="genre")

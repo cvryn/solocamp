@@ -13,11 +13,9 @@ class ShoppingCart(db.Model):
         db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), nullable=False
     )
     user_id = db.Column(
-        db.Integer,
-        db.ForeignKey(add_prefix_for_prod("users.id")),
-        nullable=False,
+        db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
 
-    # Class Relationships
+    # many-to-one relationships
     user = db.relationship("User", back_populates="shopping_cart")
     album = db.relationship("Album", back_populates="shopping_cart")

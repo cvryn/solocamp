@@ -2,7 +2,7 @@ from .db import db, add_prefix_for_prod
 
 
 user_album = db.Table(
-    "user_album",
+    "user_albums",
     db.Column(
         "user_id",
         db.Integer,

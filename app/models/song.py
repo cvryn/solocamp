@@ -15,13 +15,12 @@ class Song(db.Model):
         db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), nullable=False
     )
     user_id = db.Column(
-        db.Integer,
-        db.ForeignKey(add_prefix_for_prod("users.id")),
-        nullable=False,
+        db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
 
-    # Class Relationships
-    user = db.relationship("User", back_populates="song")
+    # many-tomany relationships
     album = db.relationship("Album", back_populates="song")
+    user = db.relationship("User", back_populates="song")
 
+    # one-to-many relationship
     supported_by = db.relationship("SupportedBy", back_populates="song")

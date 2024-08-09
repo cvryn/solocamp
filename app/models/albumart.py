@@ -16,4 +16,5 @@ class AlbumArt(db.Model):
         db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), nullable=False
     )
 
+    #many-to-one relationship
     album = db.relationship("Album", back_populates="album_art")

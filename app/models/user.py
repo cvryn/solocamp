@@ -4,15 +4,11 @@ from flask_login import UserMixin
 from . import user_album
 
 
-
-
-
-
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
@@ -22,9 +18,10 @@ class User(db.Model, UserMixin):
     profile_image = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    # Class Relationships
-
+    # many-to-many relationship
     album = db.relationship("Album", secondary=user_album, back_populates="user")
+
+    # one-to-many relationships
     song = db.relationship("Song", back_populates="user")
     supported_by = db.relationship("SupportedBy", back_populates="user")
     wish_list = db.relationship("WishList", back_populates="user")
@@ -42,8 +39,4 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email
-        }
+        return {"id": self.id, "username": self.username, "email": self.email}
