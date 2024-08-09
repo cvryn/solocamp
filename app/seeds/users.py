@@ -4,6 +4,7 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    #1
     demo = User(
         username="Demo",
         profile_image="url",
@@ -12,6 +13,7 @@ def seed_users():
         email="demo@solocamp.io",
         password="password",
     )
+    #2
     joji = User(
         username="Joji",
         profile_image="url",
@@ -20,6 +22,7 @@ def seed_users():
         email="joji@solocamp.io",
         password="password",
     )
+    #3
     jvke = User(
         username="JVKE",
         profile_image="url",
@@ -28,6 +31,7 @@ def seed_users():
         email="jvke@solocamp.io",
         password="password",
     )
+    #4
     samsmith = User(
         username="SamSmith",
         profile_image="url",
@@ -36,6 +40,7 @@ def seed_users():
         email="samsmith@solocamp.io",
         password="password",
     )
+    #5
     fujii = User(
         username="Fujii",
         profile_image="url",
@@ -44,6 +49,7 @@ def seed_users():
         email="fujii@solocamp.io",
         password="password",
     )
+    #6
     dhruv = User(
         username="Dhrvie",
         profile_image="url",
@@ -52,6 +58,7 @@ def seed_users():
         email="djruv@solocamp.io",
         password="password",
     )
+    #7
     jay = User(
         username="Jay",
         profile_image="url",
@@ -60,6 +67,7 @@ def seed_users():
         email="jay@solocamp.io",
         password="password",
     )
+    #8
     gai = User(
         username="Gai",
         profile_image="url",
@@ -68,6 +76,7 @@ def seed_users():
         email="gai@solocamp.io",
         password="password",
     )
+    #9
     ice = User(
         username="Ice",
         profile_image="url",
@@ -76,6 +85,7 @@ def seed_users():
         email="ice@solocamp.io",
         password="password",
     )
+    #10
     vinida = User(
         username="Vinida",
         profile_image="url",
@@ -84,6 +94,7 @@ def seed_users():
         email="vinida@solocamp.io",
         password="password",
     )
+    #11
     jolin = User(
         username="Jolin",
         profile_image="url",
@@ -92,6 +103,7 @@ def seed_users():
         email="jolin@solocamp.io",
         password="password",
     )
+    #12
     adele = User(
         username="Adele",
         profile_image="url",
@@ -100,6 +112,7 @@ def seed_users():
         email="adele@solocamp.io",
         password="password",
     )
+    #13
     lady_gaga = User(
         username="Lady Gaga",
         profile_image="url",
@@ -108,6 +121,7 @@ def seed_users():
         email="ladygaga@solocamp.io",
         password="password",
     )
+    #14
     tiesto = User(
         username="Tiesto",
         profile_image="url",
@@ -116,6 +130,7 @@ def seed_users():
         email="tiesto@solocamp.io",
         password="password",
     )
+    #15
     cole_dammett = User(
         username="Cole Dammett",
         profile_image="url",
@@ -124,6 +139,7 @@ def seed_users():
         email="cole_dammett@solocamp.io",
         password="password",
     )
+    #16
     hardwell = User(
         username="Hardwell",
         profile_image="url",
@@ -153,7 +169,7 @@ def seed_users():
             jolin,
         ]
     )
-    db.session.add_all([demo, adele, lady_gaga, tiesto, cole_dammett, hardwell])
+    db.session.add_all([adele, lady_gaga, tiesto, cole_dammett, hardwell])
 
     db.session.commit()
 
