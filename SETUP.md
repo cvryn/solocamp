@@ -40,6 +40,23 @@ export default defineConfig({
 
 5. in frontend: ```npm install react-router-dom```
 
+## Render Deployment
+1. Merge dev to main
+2. In react-vite folder, run
+```
+npm run build
+```
+3. git add, git commit, git push
+4. Go to Render, < make a new web service>
+### Environment Variables :
+```
+SECRET_KEY = <generate>
+DATABASE_URL = <postgreSQL internal database url>
+SCHEMA = <schema-name>
+FLASK_APP=app
+FLASK_ENV=development
+```
+
 
 ## Listening to Ports
 
