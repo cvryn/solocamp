@@ -3,7 +3,6 @@ from sqlalchemy.sql import text
 
 
 def seed_albums():
-
     in_tongues = Album(
         name="In Tongues",
         user_id=2,
@@ -16,28 +15,30 @@ def seed_albums():
 
     ballads_1 = Album(
         name="Ballads 1",
-        user_id= 2,
+        user_id=2,
         year=2018,
         # genre="R&B",
-        genre_id= 3,
+        genre_id=3,
         price=19.99,
         description="Joji's debut album, Ballads 1, is a collection of introspective tracks exploring themes of love, loss, and the complexities of modern relationships. With its blend of soulful vocals, atmospheric production, and honest lyrics, the album resonated with listeners worldwide, solidifying Joji's status as a rising star in the music industry.",
     )
+
     nectar = Album(
         name="Nectar",
-        user_id= 2,
+        user_id=2,
         year=2020,
         # genre="R&B",
-        genre_id= 3,
+        genre_id=3,
         price=19.99,
         description="Joji's sophomore album, Nectar, expands on his signature blend of R&B and alternative sounds, delving deeper into themes of love, desire, and the complexities of modern relationships. Featuring collaborations with high-profile artists and innovative production, Nectar showcases Joji's artistic growth and solidifies his position as a leading voice in contemporary music.",
     )
+
     smithereens = Album(
         name="Smithereens",
-        user_id= 2,
+        user_id=2,
         year=2022,
         # genre="R&B",
-        genre_id= 3,
+        genre_id=3,
         price=19.99,
         description="Joji's third studio album, Smithereens, showcases a mature and introspective side of the artist. Blending elements of R&B and pop, the album explores themes of love, loss, and personal growth. With hits like 'Glimpse of Us,' Smithereens solidified Joji's status as a global superstar.",
     )
@@ -63,6 +64,7 @@ def seed_albums():
         price=19.99,
         description="Sam Smith's debut EP, Nirvana, showcases their powerful vocals and introspective songwriting. With tracks like 'Safe with Me' and the acoustic cover of 'Latch,' the EP established Smith as a rising star in the soul and R&B scene.",
     )
+
     in_the_lonely_hour = Album(
         name="In the Lonely Hour",
         user_id=4,
@@ -110,132 +112,240 @@ def seed_albums():
         user_id=6,
         year=2022,
         # genre="Pop",
-        genre_id = 1,
+        genre_id=1,
         price=19.99,
         description="dhruv's debut EP, 'rapunzel', is a collection of introspective and dreamy indie pop tracks. With honest lyrics and ethereal melodies, the EP explores themes of youth, love, and self-discovery. Tracks like 'double take' and 'moonlight' showcase dhruv's talent for crafting atmospheric and emotionally resonant music.",
     )
+
     nocturne = Album(
-        name = 'Nocturne',
-        user_id = 1,
-        # artist_username = 'Jay',
-        year = 2010,
-        # genre = 'R&B',
-        genre_id = 3,
-        price = 100.10,
-        description = 'The album was met with positive reviews from music critics upon its release. In Taiwan, it peaked at number one on the G-Music album chart for multiple weeks and was best-selling album of the year, with sales of over 280,000 copies.'
+        name="Nocturne",
+        user_id=7,
+        year=2010,
+        genre_id=3,
+        price=100.10,
+        description="The album was met with positive reviews from music critics upon its release. In Taiwan, it peaked at number one on the G-Music album chart for multiple weeks and was best-selling album of the year, with sales of over 280,000 copies.",
     )
+
     hotpot_soup = Album(
-        name = 'Hotpot soup',
-        user_id = 2,
-        year = 2020,
-        # genre = 'rap',
-        genre_id = 6,
-        price = 9.99,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Hotpot soup",
+        user_id=8,
+        year=2020,
+        genre_id=6,
+        price=9.99,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
+
     lonely_dance = Album(
-        name = 'Lonely dance',
-        user_id = 3,
-        year = 2022,
-        # genre = 'electronic',
-        genre_id = 4,
-        price = 39.99,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Lonely dance",
+        user_id=9,
+        year=2022,
+        genre_id=4,
+        price=39.99,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
+
     get_away_from_me = Album(
-        name = 'Get away from me',
-        user_id = 4,
-        year = 2021,
-        # genre = 'experimental',
-        genre_id = 7,
-        price = 19.99,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Get away from me",
+        user_id=10,
+        year=2021,
+        genre_id=7,
+        price=19.99,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
+
     shuo_ai_ni = Album(
-        name = 'Shuo ai ni',
-        user_id = 5,
-        year = 2015,
-        # genre = 'pop',
-        genre_id = 1,
-        price = 29.99,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Shuo ai ni",
+        user_id=11,
+        year=2015,
+        genre_id=1,
+        price=29.99,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
+
     ninja = Album(
-        name = 'Ninja',
-        user_id = 1,
-        year = 2001,
-        # genre = 'Rock',
-        genre_id = 2,
-        price = 10.10,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Ninja",
+        user_id=7,
+        year=2001,
+        genre_id=2,
+        price=10.10,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
+
     weiyuan_stroy = Album(
-        name = 'Weiyuan Stroy',
-        user_id = 2,
-        year = 2021,
-        # genre = 'rap',
-        genre_id = 6,
-        price = 29.99,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Weiyuan Stroy",
+        user_id=8,
+        year=2021,
+        genre_id=6,
+        price=29.99,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
+
     icekingdom = Album(
-        name = 'Icekingdom',
-        user_id = 3,
-        year = 2023,
-        # genre = 'rap',
-        genre_id = 6,
-        price = 39.99,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Icekingdom",
+        user_id=9,
+        year=2023,
+        genre_id=6,
+        price=39.99,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
+
     jasmine = Album(
-        name = 'Jasmine',
-        user_id = 4,
-        year = 2024,
-        # genre = 'R&B',
-        genre_id = 3,
-        price = 19.99,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Jasmine",
+        user_id=10,
+        year=2024,
+        genre_id=3,
+        price=19.99,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
+
     fantasy = Album(
-        name = 'Fantasy',
-        user_id = 5,
-        year = 2017,
-        # genre = 'pop',
-        genre_id = 1,
-        price = 29.99,
-        description = 'Cool Demo-Album created in 2011 by the infamous artist Demo-User'
+        name="Fantasy",
+        user_id=11,
+        year=2017,
+        genre_id=1,
+        price=29.99,
+        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
     )
 
+    nineteen = Album(
+        name="19",
+        user_id=12,
+        year=2008,
+        genre_id=1,
+        price=7.48,
+        description='Adele\'s debut album, 19, is a raw and emotional exploration of heartbreak and love. Released when she was just 19, the album showcases her extraordinary vocal talent and songwriting maturity beyond her years. With its soulful melodies and honest lyrics, 19 quickly propelled Adele to stardom. The album delves deep into the complexities of young love, loss, and longing, resonating with listeners on a profound level. Tracks like "Chasing Pavements," "Hometown Glory," and "Someone Like You" became instant classics, showcasing Adele\'s powerful voice and her ability to convey raw emotion.',
+    )
 
+    twenty_one = Album(
+        name="21",
+        user_id=12,
+        year=2011,
+        genre_id=1,
+        price=11.98,
+        description='Adele\'s 21 is a groundbreaking album that catapulted her to global superstardom. Released in 2011, the album is a raw and emotional exploration of heartbreak and loss, building upon the foundation laid by her debut, 19. With a mature and powerful vocal performance, Adele delves deep into the complexities of a failed relationship, capturing the universal experience of love and heartbreak with stunning honesty. Tracks like "Rolling in the Deep," "Someone Like You," and "Rumour Has It" became anthems of heartbreak, resonating with millions of listeners. 21 is characterized by its soulful melodies, lush arrangements, and Adele\'s extraordinary vocal range. The album\'s emotional depth and relatable lyrics have solidified Adele\'s status as one of the most influential and beloved artists of her generation.',
+    )
 
-    # joji
-    db.session.add_all([in_tongues, ballads_1, nectar, smithereens])
-    # jvke
-    db.session.add_all([this_is_what_blank_feels_like])
-    # sam smith
+    the_fame_monster = Album(
+        name="The Fame Monster",
+        user_id=13,
+        year=2009,
+        genre_id=1,
+        price=15.23,
+        description="According to Gaga, the album deals with the darker side of fame, with its theme lyrically expressed through a monster metaphor. The album's two covers were shot by Hedi Slimane. One of the covers has a Gothic theme and was declined for release by her record company, but Gaga persuaded them.",
+    )
+
+    a_star_is_born = Album(
+        name="A Star Is Born",
+        user_id=13,
+        year=2018,
+        genre_id=1,
+        price=11.26,
+        description='A Star Is Born is the soundtrack to the 2018 film of the same name, starring Lady Gaga and Bradley Cooper. The album showcases the raw talent and chemistry between the two artists, delivering a powerful and emotionally charged collection of songs. The album blends elements of pop, rock, and country, creating a unique and authentic sound that reflects the film\'s story of love, loss, and redemption. With tracks like "Shallow," "I\'ll Never Love Again," and "Always Remember Us This Way," the album became a massive commercial and critical success, earning numerous awards and accolades.',
+    )
+
+    elements_of_life = Album(
+        name="Elements of Life",
+        user_id=14,
+        year=2007,
+        genre_id=4,
+        price=15.23,
+        description='Tiesto\'s Elements of Life is a seminal electronic music album that marked a pivotal point in the artist\'s career. Released in 2007, it showcased a mature and refined sound, blending Tiesto\'s signature euphoric melodies with a more pop-oriented approach. The album features a strong emphasis on vocal collaborations, resulting in anthemic tracks like "Everything" and "Ten Seconds Before Sunrise." While maintaining its electronic core, "Elements of Life" expanded Tiesto\'s audience and solidified his status as a global superstar, demonstrating his ability to create music that resonated with both dance music enthusiasts and mainstream listeners alike.',
+    )
+
+    kaleidoscope = Album(
+        name="Kaleidoscope",
+        user_id=14,
+        year=2009,
+        genre_id=4,
+        price=15.23,
+        description="Kaleidoscope is the fourth studio album by Dutch DJ and record producer Tiësto, released on 6 October 2009 by Musical Freedom, Tiësto's new label in association with PIAS Recordings.[5] The album contains collaborations with Nelly Furtado, Emily Haines of Metric, Tegan and Sara, Jónsi of Sigur Rós, Kele Okereke of Bloc Party, and Calvin Harris among others.",
+    )
+
+    californication = Album(
+        name="Californication",
+        user_id=15,
+        year=1999,
+        genre_id=5,
+        price=12.99,
+        description='Although Californication still contains some funk rock songs (such as "Around the World", "Get on Top", "I Like Dirt", "Purple Stain" and "Right on Time"), it leaned towards more melodic riffs (for example, "Scar Tissue" and "Otherside") and focused on songs with implemented structure rather than jams.',
+    )
+
+    by_the_way = Album(
+        name="By the Way",
+        user_id=15,
+        year=2002,
+        genre_id=5,
+        price=16.70,
+        description='Red Hot Chili Peppers\' By the Way represents a sonic evolution for the band. While still retaining their signature funk-rock energy, the album showcases a more melodic and introspective side. With a greater emphasis on songwriting and harmonies, By the Way offers a fresh perspective on the band\'s sound. The album is characterized by its catchy hooks, intricate guitar work, and Anthony Kiedis\' more refined vocal delivery. Tracks like "The Zephyr Song," "Can\'t Stop," and "By the Way" became instant classics, demonstrating the band\'s ability to create both radio-friendly hits and deeper, more complex songs. By the Way marked a commercial peak for the Red Hot Chili Peppers, solidifying their status as one of the biggest rock bands in the world.',
+    )
+
+    revealed_vol_1 = Album(
+        name="Revealed Vol. 1",
+        user_id=16,
+        year=2010,
+        genre_id=4,
+        price=18.32,
+        description="Hardwell's Revealed Vol. 1 is a landmark electronic music compilation that marked the launch of the renowned Revealed Recordings label. Released in 2010, this album showcased the burgeoning progressive house sound that would define the era. Featuring tracks from Hardwell himself alongside a stellar lineup of rising and established artists, the compilation captured the energy and excitement of the electronic music scene at the time. It served as a platform for introducing new talent and solidifying Hardwell's position as a leading figure in the industry. With its infectious melodies, driving beats, and euphoric breakdowns, Revealed Vol. 1 became an instant classic, leaving an enduring impact on electronic music culture.",
+    )
+
+    united_we_are = Album(
+        name="United We Are",
+        user_id=16,
+        year=2015,
+        genre_id=4,
+        price=5.15,
+        description='The album is a sonic journey characterized by powerful synths, driving beats, and euphoric melodies. Tracks like "Follow Me" featuring Jason Derulo and "United We Are" exemplify the album\'s anthemic and uplifting spirit. Hardwell masterfully blends elements of progressive house, electro house, and trance, creating a cohesive and energetic listening experience. Beyond the infectious energy, United We Are also showcases Hardwell\'s ability to craft melodic and emotional moments. Tracks like "Let Me Be Your Home" and "Echo" demonstrate a softer side to his production, adding depth and diversity to the album. Overall, United We Are is a testament to Hardwell\'s talent as a producer and his ability to create music that resonates with millions of fans worldwide. It remains a quintessential example of the big room house genre and continues to be a beloved album in the EDM community.',
+    )
+
     db.session.add_all(
         [
+            in_tongues,
+            ballads_1,
+            nectar,
+            smithereens,
+            this_is_what_blank_feels_like,
             nirvana,
             in_the_lonely_hour,
             the_thrill_of_it_all,
+            help_ever_hurt_never,
+            love_all_serve_all,
+            rapunzel,
         ]
     )
-    # fujii
-    db.session.add_all([help_ever_hurt_never, love_all_serve_all])
-    # dhruv
-    db.session.add(rapunzel)
 
-    db.session.add_all([nocturne,hotpot_soup, lonely_dance, get_away_from_me, shuo_ai_ni, ninja,fantasy,icekingdom,weiyuan_stroy, jasmine])
+    db.session.add_all(
+        [
+            nocturne,
+            hotpot_soup,
+            lonely_dance,
+            get_away_from_me,
+            shuo_ai_ni,
+            ninja,
+            fantasy,
+            icekingdom,
+            weiyuan_stroy,
+            jasmine,
+        ]
+    )
+
+    db.session.add_all(
+        [
+            nineteen,
+            twenty_one,
+            the_fame_monster,
+            a_star_is_born,
+            kaleidoscope,
+            elements_of_life,
+            californication,
+            by_the_way,
+            revealed_vol_1,
+            united_we_are,
+        ]
+    )
 
     db.session.commit()
 
 
-# Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
-# have a built in function to do this. With postgres in production TRUNCATE
-# removes all the data from the table, and RESET IDENTITY resets the auto
-# incrementing primary key, CASCADE deletes any dependent entities.  With
-# sqlite3 in development you need to instead use DELETE to remove all data and
-# it will reset the primary keys for you as well.
 def undo_albums():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.albums RESTART IDENTITY CASCADE;")
