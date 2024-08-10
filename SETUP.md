@@ -40,6 +40,7 @@ export default defineConfig({
 
 5. in frontend: ```npm install react-router-dom```
 
+
 ## Render Deployment
 1. Merge dev to main
 2. In react-vite folder, run
@@ -47,7 +48,10 @@ export default defineConfig({
 npm run build
 ```
 3. git add, git commit, git push
-4. Go to Render, < make a new web service>
+4. Language: Docker (automatically detected)
+5. Branch: Main
+6. Instance Type: Free
+7. Go to Render, < make a new web service>
 ### Environment Variables :
 ```
 SECRET_KEY = <generate>
