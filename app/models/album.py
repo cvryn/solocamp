@@ -24,7 +24,38 @@ class Album(db.Model):
     user = db.relationship("User", secondary=wishlist, back_populates="album")
 
     # one-to-many relationships
-    album_art = db.relationship("AlbumArt", back_populates="album")
-    song = db.relationship("Song", back_populates="album")
-    supported_by = db.relationship("SupportedBy", back_populates="album")
-    shopping_cart = db.relationship("ShoppingCart", back_populates="album")
+    album_art = db.relationship(
+        "AlbumArt", back_populates="album", cascade="all, delete-orphan"
+    )
+    song = db.relationship("Song", back_populates="album", cascade="all, delete-orphan")
+    supported_by = db.relationship(
+        "SupportedBy", back_populates="album", cascade="all, delete-orphan"
+    )
+    shopping_cart = db.relationship(
+        "ShoppingCart", back_populates="album", cascade="all, delete-orphan"
+    )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "user_id": self.user_id,
+            "year": self.year,
+            "genre": self.genre,
+            "price": float(self.price) if self.price else None,
+            "description": self.description,
+            # "album_art": (
+            #     [art.to_dict() for art in self.album_art] if self.album_art else None
+            # ),
+            # "songs": [song.to_dict() for song in self.song] if self.song else None,
+            # "supported_by": (
+            #     [support.to_dict() for support in self.supported_by]
+            #     if self.supported_by
+            #     else None
+            # ),
+            # "shopping_cart": (
+            #     [cart.to_dict() for cart in self.shopping_cart]
+            #     if self.shopping_cart
+            #     else None
+            # ),
+        }
