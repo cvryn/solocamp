@@ -16,19 +16,12 @@ class Album(db.Model):
         nullable=False,
     )
     year = db.Column(db.Integer, nullable=False)
-    genre_id = db.Column(
-        db.Integer,
-        db.ForeignKey(add_prefix_for_prod("genres.id")),
-        nullable=False,
-    )
+    genre = db.Column(db.String(20), nullable=False)
     price = db.Column(db.Numeric(6, 2), nullable=False)
     description = db.Column(db.String(2555), nullable=False)
 
     # many-to-many relationship
     user = db.relationship("User", secondary=wishlist, back_populates="album")
-
-    # many-to-one relationships
-    genre = db.relationship("Genre", back_populates="album")
 
     # one-to-many relationships
     album_art = db.relationship("AlbumArt", back_populates="album")

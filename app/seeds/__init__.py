@@ -1,7 +1,6 @@
 from flask.cli import AppGroup
 from app.models.db import db, environment, SCHEMA
 from .users import seed_users, undo_users
-from .genres import seed_genres, undo_genres
 from .albums import seed_albums, undo_albums
 from .albumarts import seed_albumarts, undo_albumarts
 from .songs import seed_songs, undo_songs
@@ -24,7 +23,6 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_users()
-        undo_genres()
         undo_albums()
         undo_albumarts()
         undo_songs()
@@ -32,7 +30,6 @@ def seed():
         undo_wishlists()
         undo_shoppingcarts()
     seed_users()
-    seed_genres()
     seed_albums()
     seed_albumarts()
     seed_songs()
@@ -46,7 +43,6 @@ def seed():
 @seed_commands.command("undo")
 def undo():
     undo_users()
-    undo_genres()
     undo_albums()
     undo_albumarts()
     undo_songs()
