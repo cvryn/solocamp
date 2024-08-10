@@ -12,7 +12,9 @@ class Song(db.Model):
     track_number = db.Column(db.Integer, nullable=False)
     song_url = db.Column(db.String(255), nullable=False)
     album_id = db.Column(
-        db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), nullable=False
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("albums.id"), ondelete="SET NULL"),
+        nullable=True,
     )
     user_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
@@ -24,3 +26,13 @@ class Song(db.Model):
 
     # one-to-many relationship
     supported_by = db.relationship("SupportedBy", back_populates="song")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "track_number": self.track_number,
+            "song_url": self.song_url,
+            "album_id": self.album_id,
+            "user_id": self.user_id,
+        }

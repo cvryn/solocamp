@@ -1,12 +1,14 @@
 from flask import Blueprint, request
 from flask_login import current_user
-from app.models import Album, db
-from app.forms import AlbumForm
+from app.models import Album, Song, db
+from app.forms import AlbumForm, SongForm
 
 
 album_routes = Blueprint("albums", __name__)
 
 
+# get all albums
+# create album beloning to current user
 @album_routes.route("/", methods=["GET", "POST"])
 def albums():
     if request.method == "POST":
@@ -37,6 +39,9 @@ def albums():
         return [album.to_dict() for album in albums], 200
 
 
+# get album by id
+# edit album by id beloning to current user
+# delete album by id beloning to current user
 @album_routes.route("/<int:album_id>", methods=["GET", "PUT", "DELETE"])
 def album_detail(album_id):
     album = Album.query.get(album_id)
@@ -86,3 +91,40 @@ def album_detail(album_id):
             return {"error": "Album not found"}, 404
 
         return album.to_dict(), 200
+
+
+# get all songs by album
+# add song to album beloning to current user
+@album_routes.route("/<int:album_id>/songs", methods=["GET", "POST"])
+def songs(album_id):
+    album = Album.query.get(album_id)
+
+    if album is None:
+        return {"error": "Album not found"}
+
+    if request.method == "POST":
+        form = SongForm()
+        form["csrf_token"].data = request.cookies["csrf_token"]
+
+        if not current_user.is_authenticated:
+            return {"error": "User not authenticated"}, 401
+
+        if album.user_id != current_user.id:
+            return {"error": "Forbidden"}, 403
+
+        if form.validate_on_submit():
+            new_song = Song(
+                title=form.data["title"],
+                track_number=form.data["track_number"],
+                song_url=form.data["song_url"],
+                album_id=album_id,
+                user_id=current_user.id,
+            )
+
+            db.session.add(new_song)
+            db.session.commit()
+            return new_song.to_dict(), 201
+
+    else:
+        songs = Song.query.filter_by(album_id=album_id).all()
+        return [song.to_dict() for song in songs], 200

@@ -11,9 +11,7 @@ class Album(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     user_id = db.Column(
-        db.Integer,
-        db.ForeignKey(add_prefix_for_prod("users.id")),
-        nullable=False,
+        db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
     year = db.Column(db.Integer, nullable=False)
     genre = db.Column(db.String(20), nullable=False)
