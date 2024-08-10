@@ -13,10 +13,10 @@ def albums():
         form = AlbumForm()
         form["csrf_token"].data = request.cookies["csrf_token"]
 
-        if form.validate_on_submit():
-            if not current_user.is_authenticated:
-                return {"error": "User not authenticated"}, 401
+        if not current_user.is_authenticated:
+            return {"error": "User not authenticated"}, 401
 
+        if form.validate_on_submit():
             new_album = Album(
                 name=form.data["name"],
                 user_id=current_user.id,
@@ -39,8 +39,11 @@ def albums():
 
 @album_routes.route("/<int:album_id>", methods=["GET", "PUT", "DELETE"])
 def album_detail(album_id):
+    album = Album.query.get(album_id)
+
     if request.method == "PUT":
-        album = Album.query.get(album_id)
+        form = AlbumForm()
+        form["csrf_token"].data = request.cookies["csrf_token"]
 
         if not current_user.is_authenticated:
             return {"error": "User not authenticated"}, 401
@@ -51,18 +54,20 @@ def album_detail(album_id):
         elif album.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
-        data = request.json
-        album.name = data.get("name", album.name)
-        album.year = data.get("year", album.year)
-        album.genre = data.get("genre", album.genre)
-        album.price = data.get("price", album.price)
-        album.description = data.get("description", album.description)
-        db.session.commit()
-        return album.to_dict(), 200
+        if form.validate_on_submit():
+            data = request.json
+            album.name = data.get("name", album.name)
+            album.year = data.get("year", album.year)
+            album.genre = data.get("genre", album.genre)
+            album.price = data.get("price", album.price)
+            album.description = data.get("description", album.description)
+
+            db.session.commit()
+            return album.to_dict(), 200
+
+        return {"errors": form.errors}, 400
 
     elif request.method == "DELETE":
-        album = Album.query.get(album_id)
-
         if not current_user.is_authenticated:
             return {"error": "User not authenticated"}, 401
 
@@ -77,8 +82,6 @@ def album_detail(album_id):
         return {"message": "Album deleted"}, 200
 
     else:
-        album = Album.query.get(album_id)
-
         if album is None:
             return {"error": "Album not found"}, 404
 
