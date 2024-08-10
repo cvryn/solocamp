@@ -28,13 +28,13 @@ def albums():
 
             db.session.add(new_album)
             db.session.commit()
-            return new_album.to_dict()
+            return new_album.to_dict(), 201
 
         return {"errors": form.errors}, 400
 
     else:
         albums = Album.query.all()
-        return [album.to_dict() for album in albums]
+        return [album.to_dict() for album in albums], 200
 
 
 @album_routes.route("/<int:album_id>", methods=["GET", "PUT", "DELETE"])
@@ -85,4 +85,4 @@ def album_detail(album_id):
         if album is None:
             return {"error": "Album not found"}, 404
 
-        return album.to_dict()
+        return album.to_dict(), 200
