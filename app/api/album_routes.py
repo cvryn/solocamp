@@ -53,10 +53,10 @@ def album_detail(album_id):
         if not current_user.is_authenticated:
             return {"error": "User not authenticated"}, 401
 
-        elif album is None:
+        if album is None:
             return {"error": "Album not found"}, 404
 
-        elif album.user_id != current_user.id:
+        if album.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
         if form.validate_on_submit():
@@ -76,10 +76,10 @@ def album_detail(album_id):
         if not current_user.is_authenticated:
             return {"error": "User not authenticated"}, 401
 
-        elif album is None:
+        if album is None:
             return {"error": "Album not found"}, 404
 
-        elif album.user_id != current_user.id:
+        if album.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
         db.session.delete(album)
@@ -128,3 +128,25 @@ def songs(album_id):
     else:
         songs = Song.query.filter_by(album_id=album_id).all()
         return [song.to_dict() for song in songs], 200
+
+
+# add album to wishlist belonging to current user
+@album_routes.route("/<int:album_id>", methods=["POST"])
+def add_to_wishlist(album_id):
+    album = Album.query.get(album_id)
+
+    if not current_user.is_authenticated:
+        return {"error": "User not authenticated"}, 401
+
+    if album is None:
+        return {"error": "Album not found"}, 404
+
+    if album.user_id == current_user.id:
+        return {"error": "Forbidden"}, 403
+
+    if album in current_user.album:
+        return {"error": "Album already in wishlist"}, 409
+
+    current_user.album.append(album)
+    db.session.commit()
+    return {"message": "Album added to wishlist"}, 201

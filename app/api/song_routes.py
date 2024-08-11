@@ -28,10 +28,10 @@ def song_details(song_id):
         if not current_user.is_authenticated:
             return {"error": "User not authenticated"}, 401
 
-        elif song is None:
+        if song is None:
             return {"error": "Song not found"}, 404
 
-        elif song.user_id != current_user.id:
+        if song.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
         if form.validate_on_submit():
@@ -47,10 +47,10 @@ def song_details(song_id):
         if not current_user.is_authenticated:
             return {"error": "User not authenticated"}, 401
 
-        elif song is None:
+        if song is None:
             return {"error": "Song not found"}, 404
 
-        elif song.user_id != current_user.id:
+        if song.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
         db.session.delete(song)
