@@ -18,3 +18,12 @@ class AlbumArt(db.Model):
 
     # many-to-one relationship
     album = db.relationship("Album", back_populates="album_art")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'album_art': self.album_art,
+            'album_banner':self.album_banner,
+            'background_color': self.background_color,
+            'album_id':self.album_id
+        }
