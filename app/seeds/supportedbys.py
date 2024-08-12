@@ -4,31 +4,51 @@ from sqlalchemy.sql import text
 
 def seed_supportedbys():
 
-    joji_rapunzel1 = SupportedBy(description="Loved the vibes!", album_id=11, user_id=2)
+    joji_rapunzel1 = SupportedBy(
+        description='I loved the vibes of this album. My favorite is track number 2, "Double Take".',
+        album_id=11,
+        song_id=57,
+        user_id=2,
+    )
 
-    joji_rapunzel2 = SupportedBy(description="Hated the vibes!", album_id=11, user_id=3)
+    joji_rapunzel2 = SupportedBy(
+        description="The instrumental really touched me.",
+        album_id=11,
+        song_id=61,
+        user_id=3,
+    )
 
-    joji_rapunzel3 = SupportedBy(description="Hated the vibes!", album_id=11, user_id=4)
+    joji_rapunzel3 = SupportedBy(
+        description="I listened to this entire album, it's my daily anthem.",
+        album_id=11,
+        user_id=4,
+    )
 
     jvke_nocturne = SupportedBy(
-        description="Jay consistently releasing bangers!", album_id=12, user_id=3
+        description="Jay consistently releasing bangers!",
+        album_id=12,
+        song_id=62,
+        user_id=3,
     )
 
     samsmith_21 = SupportedBy(
         description="She is an absolute queen! This song is so deep.",
         album_id=23,
+        song_id=84,
         user_id=4,
     )
 
     fujii_nirvana = SupportedBy(
         description="His vocals in this album is truly amazing and one of a kind. Even better live!",
         album_id=6,
+        song_id=33,
         user_id=5,
     )
 
     dhruv_a_star = SupportedBy(
         description="Amazing vocals as always, to be expected from THE LADY GAGA!",
         album_id=25,
+        song_id=104,
         user_id=6,
     )
 

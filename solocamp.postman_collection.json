@@ -619,6 +619,27 @@
 			"response": []
 		},
 		{
+			"name": "get all supportedbys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/supportedby/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"supportedby",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "get supportedbys by album id",
 			"request": {
 				"method": "GET",
@@ -662,34 +683,13 @@
 			"response": []
 		},
 		{
-			"name": "get all supportedbys",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/api/supportedby/all",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"supportedby",
-						"all"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "create supportedby by album id",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"description\": \"This saved my life.\"\n}",
+					"raw": "{\n    \"description\": \"This saved my life.\",\n    \"song_id\": 100\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -697,7 +697,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/albums/3",
+					"raw": "http://localhost:8000/api/albums/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -706,7 +706,7 @@
 					"path": [
 						"api",
 						"albums",
-						"3"
+						"1"
 					]
 				}
 			},

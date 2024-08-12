@@ -194,19 +194,33 @@ def post_supported_bys(album_id):
     if album.user_id == current_user.id:
         return {"error": "Cannot leave a supported by on your own album"}, 403
 
-    supportedby_exists = SupportedBy.query.filter_by(
-        user_id=current_user.id, album_id=album_id
-    ).first()
-    if supportedby_exists:
-        return {
-            "error": "You cannot leave more than one supported by on an album!"
-        }, 409
+    song_id = form.data.get("song_id")
+    if song_id:
+        # checks if song_id exists
+        song_exists = Song.query.filter_by(id=song_id).first()
+        if song_exists is None:
+            return {"error": "Song not found"}, 404
+
+        # checks if song_id exists in the album
+        song = Song.query.filter_by(id=song_id, album_id=album_id).first()
+        if song is None:
+            return {"error": "Song not found in album"}, 404
+
+        # checks if user has already left a supported by in the album
+        supportedby_exists = SupportedBy.query.filter_by(
+            user_id=current_user.id, album_id=album_id
+        ).first()
+        if supportedby_exists:
+            return {
+                "error": "You cannot leave more than one supported by on an album!"
+            }, 409
 
     if form.validate_on_submit():
 
         new_supportedby = SupportedBy(
             description=form.data["description"],
             album_id=album_id,
+            song_id=song_id,
             user_id=current_user.id,
         )
 
