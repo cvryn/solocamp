@@ -68,3 +68,8 @@ FLASK_ENV=production
   - can specifiy specific port at the end: ```lsof -i :5000```
 
 2. in terminal: ```kill -9 <PID>```
+
+
+## Git Commands
+
+1. ignore dev.db: ```git rm --cached instance/dev.db```
