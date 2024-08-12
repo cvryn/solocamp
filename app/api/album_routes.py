@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user
-from app.models import Album, Song, db
-from app.forms import AlbumForm, SongForm
+from app.models import Album, AlbumArt, Song, db
+from app.forms import AlbumForm, AlbumArtForm, SongForm
 
 
 album_routes = Blueprint("albums", __name__)
@@ -93,9 +93,44 @@ def album_detail(album_id):
         return album.to_dict(), 200
 
 
+# add album art to album belonging to current user
+@album_routes.route("/<int:album_id>/album-art", methods=["POST"])
+def albumart_post(album_id):
+    album = Album.query.get(album_id)
+    form = AlbumArtForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if not current_user.is_authenticated:
+        return {"error": "User not authenticated"}, 401
+
+    if album is None:
+        return {"error": "Album not found"}, 404
+
+    if current_user.id != album.user_id:
+        return {"error": "Forbidden"}, 403
+
+    existing_albumart = AlbumArt.query.filter_by(album_id=album_id).first()
+    if existing_albumart:
+        return {"error": "Album art already exists"}
+
+    if form.validate_on_submit():
+        new_albumart = AlbumArt(
+            album_id=album_id,
+            album_art=form.data["album_art"],
+            album_banner=form.data["album_banner"],
+            background_color=form.data["background_color"],
+        )
+
+        db.session.add(new_albumart)
+        db.session.commit()
+        return new_albumart.to_dict(), 201
+
+    return {"errors": form.errors}, 400
+
+
 # get all songs by album
 # add song to album beloning to current user
-@album_routes.route("/<int:album_id>/songs", methods=["GET", "POST"])
+@album_routes.route("/<int:album_id>/song", methods=["GET", "POST"])
 def songs(album_id):
     album = Album.query.get(album_id)
 
@@ -131,7 +166,7 @@ def songs(album_id):
 
 
 # add album to wishlist belonging to current user
-@album_routes.route("/<int:album_id>", methods=["POST"])
+@album_routes.route("/<int:album_id>/wishlist", methods=["POST"])
 def add_to_wishlist(album_id):
     album = Album.query.get(album_id)
 

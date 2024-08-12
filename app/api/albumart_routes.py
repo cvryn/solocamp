@@ -13,22 +13,23 @@ def albumart_all():
     return [art.to_dict() for art in arts]
 
 
-@albumart_routes.route("/<int:album_id>", methods=["GET", "PUT", "DELETE"])
-def albumart_get(album_id):
-    albumart = AlbumArt.query.filter_by(album_id=album_id).first()
+@albumart_routes.route("<int:album_art_id>", methods=["GET", "PUT", "DELETE"])
+def albumart_get(album_art_id):
+    albumart = AlbumArt.query.filter_by(id=album_art_id).first()
 
     if albumart is None:
         return {"error": "Album art not found"}, 404
 
-    if not current_user.is_authenticated:
-        return {"error": "User not authenticated"}, 401
-
-    elif request.method == "GET":
-        return albumart.to_dict()
-
-    elif request.method == "PUT":
+    if request.method == "PUT":
         form = AlbumArtForm()
         form["csrf_token"].data = request.cookies["csrf_token"]
+
+        if not current_user.is_authenticated:
+            return {"error": "User not authenticated"}, 401
+
+        album = albumart.album
+        if album.user_id != current_user.id:
+            return {"error": "Forbidden"}, 403
 
         if form.validate_on_submit():
             data = request.json
@@ -40,31 +41,24 @@ def albumart_get(album_id):
 
             db.session.commit()
             return albumart.to_dict(), 200
+
         return {"errors": form.errors}, 400
+
     elif request.method == "DELETE":
+
+        if not current_user.is_authenticated:
+            return {"error": "User not authenticated"}, 401
+
+        if albumart is None:
+            return {"error": "Album art not found"}, 404
+
+        album = albumart.album
+        if album.user_id != current_user.id:
+            return {"error": "Forbidden"}, 403
+
         db.session.delete(albumart)
         db.session.commit()
         return {"message": "Album art deleted"}, 200
 
-
-@albumart_routes.route("/<int:album_id>", methods=["POST"])
-def albumart_post(album_id):
-    form = AlbumArtForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
-
-    if not current_user.is_authenticated:
-        return {"error": "User not authenticated"}, 401
-
-    if form.validate_on_submit():
-        new_albumart = AlbumArt(
-            album_id=album_id,
-            album_art=form.data["album_art"],
-            album_banner=form.data["album_banner"],
-            background_color=form.data["background_color"],
-        )
-
-        db.session.add(new_albumart)
-        db.session.commit()
-        return new_albumart.to_dict()
-
-    return {"errors": form.errors}, 400
+    else:
+        return albumart.to_dict()
