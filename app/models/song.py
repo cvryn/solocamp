@@ -24,9 +24,6 @@ class Song(db.Model):
     album = db.relationship("Album", back_populates="song")
     user = db.relationship("User", back_populates="song")
 
-    # one-to-many relationship
-    supported_by = db.relationship("SupportedBy", back_populates="song")
-
     def to_dict(self):
         return {
             "id": self.id,

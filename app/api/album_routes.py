@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user
-from app.models import Album, AlbumArt, Song, db
-from app.forms import AlbumForm, AlbumArtForm, SongForm
+from app.models import Album, AlbumArt, Song, SupportedBy, db
+from app.forms import AlbumForm, AlbumArtForm, SongForm, SupportedByForm
 
 
 album_routes = Blueprint("albums", __name__)
@@ -163,6 +163,59 @@ def songs(album_id):
     else:
         songs = Song.query.filter_by(album_id=album_id).all()
         return [song.to_dict() for song in songs], 200
+
+
+# Get ALL supportedbys by albums
+@album_routes.route("/<int:album_id>/supportedbys", methods=["GET"])
+def supportedbys_by_album(album_id):
+    album = Album.query.get(album_id)
+
+    if album is None:
+        return {"error": "album not found"}, 404
+
+    supported_bys = SupportedBy.query.filter_by(album_id=album_id).all()
+    return [supported_by.to_dict() for supported_by in supported_bys], 200
+
+
+# POST Edit existing supportedby
+@album_routes.route("/<int:album_id>", methods=["POST"])
+def post_supported_bys(album_id):
+    if not current_user.is_authenticated:
+        return {"error": "User not authenticated"}, 401
+
+    album = Album.query.get(album_id)
+    form = SupportedByForm()
+
+    form.csrf_token.data = request.cookies.get("csrf_token")
+
+    if album is None:
+        return {"error": "Album not found"}, 404
+
+    if album.user_id == current_user.id:
+        return {"error": "Cannot leave a supported by on your own album"}, 403
+
+    supportedby_exists = SupportedBy.query.filter_by(
+        user_id=current_user.id, album_id=album_id
+    ).first()
+    if supportedby_exists:
+        return {
+            "error": "You cannot leave more than one supported by on an album!"
+        }, 409
+
+    if form.validate_on_submit():
+
+        new_supportedby = SupportedBy(
+            description=form.data["description"],
+            album_id=album_id,
+            user_id=current_user.id,
+        )
+
+        db.session.add(new_supportedby)
+        db.session.commit()
+
+        return new_supportedby.to_dict(), 201
+
+    return {"errors": form.errors}, 400
 
 
 # add album to wishlist belonging to current user

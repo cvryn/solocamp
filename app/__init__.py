@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.album_routes import album_routes
 from .api.albumart_routes import albumart_routes
 from .api.song_routes import song_routes
+from .api.supportedby_routes import supportedby_routes
 from .api.wishlist_routes import wishlist_routes
 from .seeds import seed_commands
 from .config import Config
@@ -36,6 +37,7 @@ app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(album_routes, url_prefix="/api/albums")
 app.register_blueprint(albumart_routes, url_prefix="/api/album-art")
 app.register_blueprint(song_routes, url_prefix="/api/songs")
+app.register_blueprint(supportedby_routes, url_prefix="/api/supportedby")
 app.register_blueprint(wishlist_routes, url_prefix="/api/wishlist")
 db.init_app(app)
 Migrate(app, db)
