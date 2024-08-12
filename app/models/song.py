@@ -20,9 +20,14 @@ class Song(db.Model):
         db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
 
-    # many-tomany relationships
+    # many-to-many relationships
     album = db.relationship("Album", back_populates="song")
     user = db.relationship("User", back_populates="song")
+
+    # one-to-many relationship
+    supported_by = db.relationship(
+        "SupportedBy", back_populates="song", cascade="all, delete-orphan"
+    )
 
     def to_dict(self):
         return {

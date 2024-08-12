@@ -4,20 +4,20 @@ from app.models import AlbumArt, db
 from app.forms import AlbumArtForm
 
 
-albumart_routes = Blueprint("album-art", __name__)
+album_art_routes = Blueprint("album-art", __name__)
 
 
-@albumart_routes.route("/", methods=["GET"])
-def albumart_all():
+@album_art_routes.route("/", methods=["GET"])
+def album_art_all():
     arts = AlbumArt.query.all()
     return [art.to_dict() for art in arts]
 
 
-@albumart_routes.route("<int:album_art_id>", methods=["GET", "PUT", "DELETE"])
-def albumart_get(album_art_id):
-    albumart = AlbumArt.query.filter_by(id=album_art_id).first()
+@album_art_routes.route("<int:album_art_id>", methods=["GET", "PUT", "DELETE"])
+def album_art_get(album_art_id):
+    album_art = AlbumArt.query.filter_by(id=album_art_id).first()
 
-    if albumart is None:
+    if album_art is None:
         return {"error": "Album art not found"}, 404
 
     if request.method == "PUT":
@@ -27,20 +27,20 @@ def albumart_get(album_art_id):
         if not current_user.is_authenticated:
             return {"error": "User not authenticated"}, 401
 
-        album = albumart.album
+        album = album_art.album
         if album.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
         if form.validate_on_submit():
             data = request.json
-            albumart.album_art = data.get("album_art", albumart.album_art)
-            albumart.album_banner = data.get("album_banner", albumart.album_banner)
-            albumart.background_color = data.get(
-                "background_color", albumart.background_color
+            album_art.album_art = data.get("album_art", album_art.album_art)
+            album_art.album_banner = data.get("album_banner", album_art.album_banner)
+            album_art.background_color = data.get(
+                "background_color", album_art.background_color
             )
 
             db.session.commit()
-            return albumart.to_dict(), 200
+            return album_art.to_dict(), 200
 
         return {"errors": form.errors}, 400
 
@@ -49,16 +49,16 @@ def albumart_get(album_art_id):
         if not current_user.is_authenticated:
             return {"error": "User not authenticated"}, 401
 
-        if albumart is None:
+        if album_art is None:
             return {"error": "Album art not found"}, 404
 
-        album = albumart.album
+        album = album_art.album
         if album.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
-        db.session.delete(albumart)
+        db.session.delete(album_art)
         db.session.commit()
         return {"message": "Album art deleted"}, 200
 
     else:
-        return albumart.to_dict()
+        return album_art.to_dict()

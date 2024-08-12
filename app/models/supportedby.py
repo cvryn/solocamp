@@ -16,6 +16,11 @@ class SupportedBy(db.Model):
         db.ForeignKey(add_prefix_for_prod("albums.id"), ondelete="SET NULL"),
         nullable=True,
     )
+    song_id = db.Column(
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("songs.id"), ondelete="SET NULL"),
+        nullable=True,
+    )
     user_id = db.Column(
         db.Integer,
         db.ForeignKey(add_prefix_for_prod("users.id")),
@@ -30,6 +35,7 @@ class SupportedBy(db.Model):
 
     # many-to-many relationships
     album = db.relationship("Album", back_populates="supported_by")
+    song = db.relationship("Song", back_populates="supported_by")
     user = db.relationship("User", back_populates="supported_by")
 
     def to_dict(self):
@@ -37,6 +43,7 @@ class SupportedBy(db.Model):
             "id": self.id,
             "description": self.description,
             "album_id": self.album_id,
+            "song_id": self.song_id,
             "user_id": self.user_id,
             "created_at": self.created_at,
         }

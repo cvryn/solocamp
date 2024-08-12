@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .wishlist import wishlist
+from .shoppingcart import shopping_cart
 
 
 class Album(db.Model):
@@ -19,7 +20,8 @@ class Album(db.Model):
     description = db.Column(db.String(2555), nullable=False)
 
     # many-to-many relationship
-    user = db.relationship("User", secondary=wishlist, back_populates="album")
+    user_in_wishlist = db.relationship("User", secondary=wishlist, back_populates="album_in_wishlist")
+    user_in_shopping_cart = db.relationship("User", secondary=shopping_cart, back_populates="album_in_shopping_cart")
 
     # one-to-many relationships
     album_art = db.relationship(
@@ -29,9 +31,7 @@ class Album(db.Model):
     supported_by = db.relationship(
         "SupportedBy", back_populates="album", cascade="all, delete-orphan"
     )
-    shopping_cart = db.relationship(
-        "ShoppingCart", back_populates="album", cascade="all, delete-orphan"
-    )
+
 
     def to_dict(self):
         return {

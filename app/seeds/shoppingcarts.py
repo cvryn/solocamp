@@ -1,12 +1,19 @@
-from app.models import db, environment, SCHEMA, ShoppingCart
+from app.models import db, environment, SCHEMA, shopping_cart
 from sqlalchemy.sql import text
 
 
 def seed_shoppingcarts():
-    cart_item1 = ShoppingCart(user_id=2, album_id=31)
-    cart_item2 = ShoppingCart(user_id=3, album_id=30)
+    shopping_cart_items =[
+        {"user_id":2, "album_id":31},
+        {"user_id":3, "album_id":30},
+        {"user_id":12, "album_id":1},
+        {"user_id":12, "album_id":2},
+        {"user_id":12, "album_id":3}
+    ]
 
-    db.session.add_all([cart_item1, cart_item2])
+    for entry in shopping_cart_items:
+        db.session.execute(shopping_cart.insert().values(entry))
+
     db.session.commit()
 
 
