@@ -18,6 +18,7 @@ class Album(db.Model):
     genre = db.Column(db.String(20), nullable=False)
     price = db.Column(db.Numeric(6, 2), nullable=False)
     description = db.Column(db.String(2555), nullable=False)
+    purchased = db.Column(db.Boolean, default=False, nullable=False)
 
     # many-to-many relationship
     user_in_wishlist = db.relationship("User", secondary=wishlist, back_populates="album_in_wishlist")
@@ -42,15 +43,16 @@ class Album(db.Model):
             "genre": self.genre,
             "price": float(self.price) if self.price else None,
             "description": self.description,
-            # "album_art": (
-            #     [art.to_dict() for art in self.album_art] if self.album_art else None
-            # ),
-            # "songs": [song.to_dict() for song in self.song] if self.song else None,
-            # "supported_by": (
-            #     [support.to_dict() for support in self.supported_by]
-            #     if self.supported_by
-            #     else None
-            # ),
+            "purchased": self.purchased,
+            "album_art": (
+                [art.to_dict() for art in self.album_art] if self.album_art else None
+            ),
+            "songs": [song.to_dict() for song in self.song] if self.song else None,
+            "supported_by": (
+                [support.to_dict() for support in self.supported_by]
+                if self.supported_by
+                else None
+            ),
             # "shopping_cart": (
             #     [cart.to_dict() for cart in self.shopping_cart]
             #     if self.shopping_cart

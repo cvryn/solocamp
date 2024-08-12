@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 def seed_supportedbys():
 
     joji_rapunzel1 = SupportedBy(
-        description='I loved the vibes of this album. My favorite is track number 2, "Double Take".',
+        description="I loved the vibes of this album. My favorite is track number 2, 'Double Take'.",
         album_id=11,
         song_id=57,
         user_id=2,
