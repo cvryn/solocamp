@@ -12,13 +12,14 @@ class SupportedBy(db.Model):
 
     description = db.Column(db.String(255), nullable=False)
     album_id = db.Column(
-        db.Integer, db.ForeignKey(add_prefix_for_prod("albums.id")), nullable=False
-    )
-    song_id = db.Column(
-        db.Integer, db.ForeignKey(add_prefix_for_prod("songs.id")), nullable=False
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("albums.id"), ondelete="SET NULL"),
+        nullable=True,
     )
     user_id = db.Column(
-        db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("users.id")),
+        nullable=False,
     )
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(tz=timezone.utc))
     updated_at = db.Column(
@@ -28,6 +29,14 @@ class SupportedBy(db.Model):
     )
 
     # many-to-many relationships
-    song = db.relationship("Song", back_populates="supported_by")
     album = db.relationship("Album", back_populates="supported_by")
     user = db.relationship("User", back_populates="supported_by")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "album_id": self.album_id,
+            "user_id": self.user_id,
+            "created_at": self.created_at,
+        }
