@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3aedea9e-74b9-4dfe-8bde-4019447b834e",
+		"_postman_id": "de1e058b-9282-49fd-876d-685fe1277863",
 		"name": "solocamp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34930416"
+		"_exporter_id": "34903728"
 	},
 	"item": [
 		{
@@ -767,6 +767,100 @@
 						"api",
 						"supportedby",
 						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get shopping cart items of current logged in user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"This saved my life.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/shopping-cart/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shopping-cart",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add album to shopping cart of current logged in user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"This saved my life.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/albums/2/shopping-cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"albums",
+						"2",
+						"shopping-cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete album from current logged in user's shopping cart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"This saved my life.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/shopping-cart/30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shopping-cart",
+						"30"
 					]
 				}
 			},

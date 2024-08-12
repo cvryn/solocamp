@@ -1,37 +1,37 @@
 from flask import Blueprint, request
-from app.models import db, SupportedBy, Album
+from app.models import db, SupportedBy
 from app.forms import SupportedByForm
 from flask_login import login_required, current_user
 
-supportedby_routes = Blueprint("supported_bys", __name__)
+supported_by_routes = Blueprint("supported_bys", __name__)
 
 
-# GET ALL supportedbys
-@supportedby_routes.route("/all", methods=["GET"])
-def all_supportedbys():
-    supportedbys = SupportedBy.query.all()
-    return [supportedby.to_dict() for supportedby in supportedbys], 200
+# GET ALL supported_bys
+@supported_by_routes.route("/all", methods=["GET"])
+def all_supported_bys():
+    supported_bys = SupportedBy.query.all()
+    return [supported_by.to_dict() for supported_by in supported_bys], 200
 
 
-# GET SupportedBys by Album Id
-@supportedby_routes.route("/<int:supportedby_id>", methods=["GET"])
-def supported_bys_album_id(supportedby_id):
-    supportedby = SupportedBy.query.get(supportedby_id)
+# GET Supported_Bys by Album Id
+@supported_by_routes.route("/<int:supported_by_id>", methods=["GET"])
+def supported_bys_album_id(supported_by_id):
+    supported_by = SupportedBy.query.get(supported_by_id)
 
-    if supportedby is None:
-        return {"error": "Supportedby not found"}, 404
+    if supported_by is None:
+        return {"error": "Supported_by not found"}, 404
 
-    return supportedby.to_dict(), 200
+    return supported_by.to_dict(), 200
 
 
-# Edit SupportedBy by supportedby_id
-@supportedby_routes.route("/<int:supportedby_id>", methods=["PUT"])
+# Edit Supported_By by supported_by_id
+@supported_by_routes.route("/<int:supported_by_id>", methods=["PUT"])
 # @login_required
-def edit_supported_by(supportedby_id):
+def edit_supported_by(supported_by_id):
     if not current_user.is_authenticated:
         return {"error": "User not authenticated"}, 401
 
-    supported_by = SupportedBy.query.get(supportedby_id)
+    supported_by = SupportedBy.query.get(supported_by_id)
 
     form = SupportedByForm()
     form.csrf_token.data = request.cookies.get("csrf_token")
@@ -40,7 +40,7 @@ def edit_supported_by(supportedby_id):
     if supported_by is None:
         return {"error": "Supported by not found"}, 404
 
-    # Check if current user owns this supportedby
+    # Check if current user owns this supported_by
     if supported_by.user_id != current_user.id:
         return {"error": "Forbidden"}, 403
 
@@ -54,11 +54,11 @@ def edit_supported_by(supportedby_id):
     return {"errors": form.errors}, 400
 
 
-# Delete supportedBy by supportedby supportedby_id
-@supportedby_routes.route("/<int:supportedby_id>", methods=["DELETE"])
+# Delete supported_By by supported_by supported_by_id
+@supported_by_routes.route("/<int:supported_by_id>", methods=["DELETE"])
 # @login_required
-def delete_supportedBy(supportedby_id):
-    supported_by = SupportedBy.query.get(supportedby_id)
+def delete_supported_By(supported_by_id):
+    supported_by = SupportedBy.query.get(supported_by_id)
 
     if not current_user.is_authenticated:
         return {"error": "User not authenticated"}, 401
@@ -74,4 +74,4 @@ def delete_supportedBy(supportedby_id):
     db.session.delete(supported_by)
     db.session.commit()
 
-    return {"message": "SupportedBy deleted successfully"}, 200
+    return {"message": "Supported By deleted successfully"}, 200

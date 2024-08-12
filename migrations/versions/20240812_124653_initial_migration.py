@@ -1,8 +1,8 @@
 """initial migration
 
-Revision ID: 1eef9ff89f6f
+Revision ID: 39016b8916e2
 Revises: 
-Create Date: 2024-08-12 09:33:51.529382
+Create Date: 2024-08-12 12:46:53.370554
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1eef9ff89f6f'
+revision = '39016b8916e2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -51,12 +51,11 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('shopping_carts',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('album_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('album_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('user_id', 'album_id')
     )
     op.create_table('songs',
     sa.Column('id', sa.Integer(), nullable=False),

@@ -8,7 +8,7 @@ album_routes = Blueprint("albums", __name__)
 
 
 # get all albums
-# create album beloning to current user
+# create album belonging to current user
 @album_routes.route("/", methods=["GET", "POST"])
 def albums():
     if request.method == "POST":
@@ -95,7 +95,7 @@ def album_detail(album_id):
 
 # add album art to album belonging to current user
 @album_routes.route("/<int:album_id>/album-art", methods=["POST"])
-def albumart_post(album_id):
+def album_art_post(album_id):
     album = Album.query.get(album_id)
     form = AlbumArtForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -109,21 +109,21 @@ def albumart_post(album_id):
     if current_user.id != album.user_id:
         return {"error": "Forbidden"}, 403
 
-    existing_albumart = AlbumArt.query.filter_by(album_id=album_id).first()
-    if existing_albumart:
+    existing_album_art = AlbumArt.query.filter_by(album_id=album_id).first()
+    if existing_album_art:
         return {"error": "Album art already exists"}
 
     if form.validate_on_submit():
-        new_albumart = AlbumArt(
+        new_album_art = AlbumArt(
             album_id=album_id,
             album_art=form.data["album_art"],
             album_banner=form.data["album_banner"],
             background_color=form.data["background_color"],
         )
 
-        db.session.add(new_albumart)
+        db.session.add(new_album_art)
         db.session.commit()
-        return new_albumart.to_dict(), 201
+        return new_album_art.to_dict(), 201
 
     return {"errors": form.errors}, 400
 
@@ -166,8 +166,8 @@ def songs(album_id):
 
 
 # Get ALL supportedbys by albums
-@album_routes.route("/<int:album_id>/supportedbys", methods=["GET"])
-def supportedbys_by_album(album_id):
+@album_routes.route("/<int:album_id>/supported-bys", methods=["GET"])
+def supported_bys_by_album(album_id):
     album = Album.query.get(album_id)
 
     if album is None:
@@ -207,27 +207,27 @@ def post_supported_bys(album_id):
             return {"error": "Song not found in album"}, 404
 
         # checks if user has already left a supported by in the album
-        supportedby_exists = SupportedBy.query.filter_by(
+        supported_by_exists = SupportedBy.query.filter_by(
             user_id=current_user.id, album_id=album_id
         ).first()
-        if supportedby_exists:
+        if supported_by_exists:
             return {
                 "error": "You cannot leave more than one supported by on an album!"
             }, 409
 
     if form.validate_on_submit():
 
-        new_supportedby = SupportedBy(
+        new_supported_by = SupportedBy(
             description=form.data["description"],
             album_id=album_id,
             song_id=song_id,
             user_id=current_user.id,
         )
 
-        db.session.add(new_supportedby)
+        db.session.add(new_supported_by)
         db.session.commit()
 
-        return new_supportedby.to_dict(), 201
+        return new_supported_by.to_dict(), 201
 
     return {"errors": form.errors}, 400
 
@@ -246,9 +246,33 @@ def add_to_wishlist(album_id):
     if album.user_id == current_user.id:
         return {"error": "Forbidden"}, 403
 
-    if album in current_user.album:
+    if album in current_user.album_in_wishlist:
         return {"error": "Album already in wishlist"}, 409
 
-    current_user.album.append(album)
+    current_user.album_in_wishlist.append(album)
     db.session.commit()
     return {"message": "Album added to wishlist"}, 201
+
+
+# POST - add album to current user's shopping cart from the album id
+@album_routes.route('/<int:album_id>/shopping-cart', methods=['POST'])
+def add_to_shopping_cart(album_id):
+    album = Album.query.get(album_id)
+
+    if not current_user.is_authenticated:
+        return {"error": "User not authenticated"}, 401
+
+    # if album does not exist
+    if album is None:
+        return {"error": "Album not found"}, 404
+
+    # User cannot add if it is their own album
+    if album.user_id == current_user.id:
+        return {"error": "Forbidden"}, 403
+
+    if album in current_user.album_in_shopping_cart:
+        return {"error": "Album already in shopping cart"}, 409
+
+    current_user.album_in_shopping_cart.append(album)
+    db.session.commit()
+    return {"message": "Album added to shopping cart"}, 201

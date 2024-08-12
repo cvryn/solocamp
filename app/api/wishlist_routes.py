@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint
 from flask_login import current_user
 from app.models import User, Album, wishlist, db
 
@@ -47,11 +47,7 @@ def remove_from_wishlist(user_id, album_id):
     if not album_in_wishlist:
         return {"error": "Album not in wishlist"}, 404
 
-    delete_count = (
-        db.session.query(wishlist)
-        .filter(wishlist.columns.album_id == album_id)
-        .delete(synchronize_session=False)
-    )
+    db.session.query(wishlist).filter(wishlist.columns.album_id == album_id).delete(synchronize_session=False)
 
     db.session.commit()
-    return {"success": True, "deleted_count": delete_count}, 200
+    return {"message": "Album has been successfully removed from your wishlist"}, 200
