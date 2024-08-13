@@ -3,6 +3,7 @@ import Layout from './Layout';
 import HomePage from '../components/HomePage/HomePage';
 import AlbumDetails from '../components/Album/AlbumDetails';
 import Checkout from '../components/Checkout/Checkout';
+import { albumLoader } from './album';
 
 
 export const router = createBrowserRouter([
@@ -17,7 +18,8 @@ export const router = createBrowserRouter([
   },
   {
     path: "/albums/:albumId",
-    element: <AlbumDetails />
+    element: <AlbumDetails />,
+    loader: albumLoader,
   },
   {
     path: "/checkout",

@@ -96,31 +96,31 @@ def seed_songs():
         title="Feeling Like The End",
         track_number=1,
         song_url="song_url",
-        album_id=5,
+        album_id=4,
         user_id=2,
     )
 
     die_for_you = Song(
-        title="Die For You", track_number=2, song_url="song_url", album_id=5, user_id=2
+        title="Die For You", track_number=2, song_url="song_url", album_id=4, user_id=2
     )
 
     before_the_day_is_over = Song(
         title="Before The Day Is Over",
         track_number=3,
         song_url="song_url",
-        album_id=5,
+        album_id=4,
         user_id=2,
     )
 
     night_rider = Song(
-        title="NIGHT RIDER", track_number=4, song_url="song_url", album_id=5, user_id=2
+        title="NIGHT RIDER", track_number=4, song_url="song_url", album_id=4, user_id=2
     )
 
     blahblahblah_demo = Song(
         title="BLAHBLAHBLAH DEMO",
         track_number=5,
         song_url="song_url",
-        album_id=5,
+        album_id=4,
         user_id=2,
     )
 
@@ -128,7 +128,7 @@ def seed_songs():
         title="1AM FREESTYLE",
         track_number=6,
         song_url="song_url",
-        album_id=5,
+        album_id=4,
         user_id=2,
     )
 

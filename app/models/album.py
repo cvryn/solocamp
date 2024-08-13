@@ -25,6 +25,7 @@ class Album(db.Model):
     user_in_shopping_cart = db.relationship("User", secondary=shopping_cart, back_populates="album_in_shopping_cart")
 
     # one-to-many relationships
+    user = db.relationship("User", back_populates="album_in_wishlist")
     album_art = db.relationship(
         "AlbumArt", back_populates="album", cascade="all, delete-orphan"
     )
@@ -39,6 +40,8 @@ class Album(db.Model):
             "id": self.id,
             "name": self.name,
             "user_id": self.user_id,
+            "user_username": self.user.username if self.user else None,
+            'user_profile_image': self.user.profile_image if self.user else None,
             "year": self.year,
             "genre": self.genre,
             "price": float(self.price) if self.price else None,

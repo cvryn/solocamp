@@ -4,75 +4,75 @@ from sqlalchemy.sql import text
 
 def seed_albumarts():
     in_tongues_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/Joji_In_Tongues-Deluxe_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/joji_in_tongues_banner.png",
         background_color="rbg(255,255,255)",
         album_id=1,
     )
     ballads_1_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/joji/ballads-1/Joji_Ballads_1_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/joji/ballads-1/joji_ballads_1_banner.png",
         background_color="rbg(255,255,255)",
         album_id=2,
     )
     nectar_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/joji/nectar/Joji_Nectar_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/joji/nectar/joji_nectar_banner.png",
         background_color="rbg(255,255,255)",
         album_id=3,
     )
     smithereens_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/joji/smithereens/JOJI_SMITHEREENS_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/joji/smithereens/joji_smithereens_banner.png",
         background_color="rbg(255,255,255)",
         album_id=4,
     )
 
     this_is_what_blank_feels_like_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/jvke/this_is_what_blank_feels_like/JVKE_this_is_what_blank_feels_like+_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/jvke/this_is_what_blank_feels_like/jvke-this-is-what-blank-feels-like-banner.png",
         background_color="rbg(255,255,255)",
         album_id=5,
     )
 
     # Sam Smith Albums
     nirvana_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/sam-smith/nirvana/sam_smith-Nirvana_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/sam-smith/nirvana/samsmith_nirvana_banner.png",
         background_color="rbg(255,255,255)",
         album_id=6,
     )
     in_the_lonely_hour_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/sam-smith/in-the-lonely-hour/sam_smith_in_the_lonely_hour_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/sam-smith/in-the-lonely-hour/samsmith_in_the_lonely_hour_banner.png",
         background_color="rbg(255,255,255)",
         album_id=7,
     )
     the_thrill_of_it_all_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/sam-smith/the-thrill-of-it-all/sam_smith_the_thrill_of_it_all_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/sam-smith/the-thrill-of-it-all/samsmith_the_thrill_of_it_all.png",
         background_color="rbg(255,255,255)",
         album_id=8,
     )
 
     # Fujii Kaze Albums
     help_ever_hurt_never_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/fujii/help-ever-hurt-never/fujii_help_ever_hurt_never_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/fujii/help-ever-hurt-never/fujii_help_ever_hurt_never_banner.png",
         background_color="rbg(255,255,255)",
         album_id=9,
     )
     love_all_serve_all_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/fujii/love-all-serve-all/Fujii-Kaze-LOVE-ALL-SERVE-ALL-album-art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/fujii/love-all-serve-all/fujii_love_all_serve_all_banner.png",
         background_color="rbg(255,255,255)",
         album_id=10,
     )
 
     # dhruv Albums
     rapunzel_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/dhruv/rapunzel/dhruv_rapunzel_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/dhruv/rapunzel/dhruv_rapunzel_banner.png",
         background_color="rbg(255,255,255)",
         album_id=11,
     )
