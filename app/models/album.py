@@ -20,6 +20,7 @@ class Album(db.Model):
     description = db.Column(db.String(2555), nullable=False)
     purchased = db.Column(db.Boolean, default=False, nullable=False)
 
+    user = db.relationship('User', back_populates='album_in_wishlist')
     # many-to-many relationship
     user_in_wishlist = db.relationship("User", secondary=wishlist, back_populates="album_in_wishlist")
     user_in_shopping_cart = db.relationship("User", secondary=shopping_cart, back_populates="album_in_shopping_cart")
@@ -52,5 +53,6 @@ class Album(db.Model):
                 [support.to_dict() for support in self.supported_by]
                 if self.supported_by
                 else None
-            )
+            ),
+            "user_username": self.user.username if self.user else None
         }

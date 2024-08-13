@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
     album_in_shopping_cart = db.relationship(
         "Album", secondary=shopping_cart, back_populates="user_in_shopping_cart"
     )
-
+    # album = db.relationship('Album', back_populates='user')
     # one-to-many relationships
     song = db.relationship("Song", back_populates="user")
     supported_by = db.relationship("SupportedBy", back_populates="user")
