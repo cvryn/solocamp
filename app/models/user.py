@@ -20,8 +20,12 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # many-to-many relationship
-    album_in_wishlist = db.relationship("Album", secondary=wishlist, back_populates="user_in_wishlist")
-    album_in_shopping_cart = db.relationship("Album", secondary=shopping_cart, back_populates="user_in_shopping_cart")
+    album_in_wishlist = db.relationship(
+        "Album", secondary=wishlist, back_populates="user_in_wishlist"
+    )
+    album_in_shopping_cart = db.relationship(
+        "Album", secondary=shopping_cart, back_populates="user_in_shopping_cart"
+    )
 
     # one-to-many relationships
     song = db.relationship("Song", back_populates="user")
@@ -40,4 +44,21 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        return {"id": self.id, "username": self.username, "email": self.email, 'first_name': self.first_name, 'last_name':self.last_name}
+        return {
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "profile_image": self.profile_image,
+            "album_in_shopping_cart": (
+                [album.to_dict() for album in self.album_in_shopping_cart]
+                if self.album_in_shopping_cart
+                else None
+            ),
+            "album_in_wishlist": (
+                [album.to_dict() for album in self.album_in_wishlist]
+                if self.album_in_wishlist
+                else None
+            ),
+        }

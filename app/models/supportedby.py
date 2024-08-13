@@ -43,8 +43,11 @@ class SupportedBy(db.Model):
             "id": self.id,
             "description": self.description,
             "album_id": self.album_id,
+            "album_title": self.album.name if self.album else None,
             "song_id": self.song_id,
-            "user_id": self.user_id,
-            "created_at": self.created_at,
             "song_title": self.song.title if self.song else None,
+            "user_id": self.user_id,
+            "user_username": self.user.username if self.user else None,
+            "user_profile_image": self.user.profile_image if self.user else None,
+            "created_at": self.created_at
         }
