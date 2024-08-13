@@ -11,15 +11,21 @@ function LoginFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, isDemoUser = false) => {
     e.preventDefault();
 
-    const serverResponse = await dispatch(
-      thunkLogin({
-        email,
-        password,
-      })
-    );
+    // const serverResponse = await dispatch(
+    //   thunkLogin({
+    //     email,
+    //     password,
+    //   })
+    // );
+
+    const credentials = isDemoUser
+      ? { email: "demo@solocamp.io", password: "password" }
+      : { email, password };
+
+    const serverResponse = await dispatch(thunkLogin(credentials));
 
     if (serverResponse) {
       setErrors(serverResponse);
@@ -29,9 +35,13 @@ function LoginFormModal() {
   };
 
   return (
-    <>
+    <div id="container-login-form-modal">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+
+      <form id="container-login-form"
+        onSubmit={handleSubmit}
+      >
+
         <label>
           Email
           <input
@@ -42,6 +52,7 @@ function LoginFormModal() {
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
+
         <label>
           Password
           <input
@@ -52,9 +63,17 @@ function LoginFormModal() {
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
+
+        <button type="submit">Log in</button>
+
+        <button type="submit"
+          onClick={e => handleSubmit(e, true)}
+        >
+          Log in as Demo User
+        </button>
+
       </form>
-    </>
+    </div>
   );
 }
 

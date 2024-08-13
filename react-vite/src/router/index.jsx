@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-// import LoginFormPage from '../components/LoginFormPage';
-// import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
+import Checkout from '../components/Checkout/Checkout';
 import HomePage from '../components/HomePage/HomePage';
+
 
 export const router = createBrowserRouter([
   {
@@ -11,15 +11,15 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
-      },
-      // {
-      //   path: "login",
-      //   element: <LoginFormPage />,
-      // },
-      // {
-      //   path: "signup",
-      //   element: <SignupFormPage />,
-      // },
+      }
     ],
   },
+  {
+    path: "/checkout",
+    element: <Checkout />
+  },
+  {
+    path: "*",
+    element: <h1>404 Not Found</h1>
+  }
 ]);
