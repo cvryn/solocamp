@@ -4,13 +4,14 @@ import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
 import "./SignupForm.css";
 
+
 function SignupFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [first_name, setFirstName] = useState('');
-  const [last_name, setLastName] = useState('');
-  const [profile_image, setProfileImage] = useState('');
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [profile_image, setProfileImage] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -22,7 +23,7 @@ function SignupFormModal() {
     if (password !== confirmPassword) {
       return setErrors({
         confirmPassword:
-          "Confirm Password field must be the same as the Password field",
+          "Passwords don't match",
       });
     }
 
@@ -45,10 +46,14 @@ function SignupFormModal() {
   };
 
   return (
-    <>
+    <div id="container-signup-form-modal">
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
+
+      <form id="container-signup-form"
+        onSubmit={handleSubmit}
+      >
+
         <label>
           Email
           <input
@@ -59,6 +64,7 @@ function SignupFormModal() {
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
+
         <label>
           Username
           <input
@@ -69,8 +75,9 @@ function SignupFormModal() {
           />
         </label>
         {errors.username && <p>{errors.username}</p>}
+
         <label>
-          First Name
+          First name
           <input
             type="text"
             value={first_name}
@@ -79,8 +86,9 @@ function SignupFormModal() {
           />
         </label>
         {errors.first_name && <p>{errors.first_name}</p>}
+
         <label>
-          Last Name
+          Last name
           <input
             type="text"
             value={last_name}
@@ -89,8 +97,9 @@ function SignupFormModal() {
           />
         </label>
         {errors.last_name && <p>{errors.last_name}</p>}
+
         <label>
-          Profile Image
+          Profile image
           <input
             type="text"
             value={profile_image}
@@ -98,6 +107,7 @@ function SignupFormModal() {
           />
         </label>
         {errors.profile_image && <p>{errors.profile_image}</p>}
+
         <label>
           Password
           <input
@@ -108,8 +118,9 @@ function SignupFormModal() {
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
+
         <label>
-          Confirm Password
+          Confirm password
           <input
             type="password"
             value={confirmPassword}
@@ -118,10 +129,13 @@ function SignupFormModal() {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit">Sign Up</button>
+
+        <button type="submit">Sign up</button>
+
       </form>
-    </>
+    </div>
   );
 }
+
 
 export default SignupFormModal;
