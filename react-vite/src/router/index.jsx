@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './Layout';
-import Checkout from '../components/Checkout/Checkout';
 import HomePage from '../components/HomePage/HomePage';
+import AlbumDetails from '../components/Album/AlbumDetails';
+import Checkout from '../components/Checkout/Checkout';
 
 
 export const router = createBrowserRouter([
@@ -9,10 +10,14 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <HomePage />,
       }
     ],
+  },
+  {
+    path: "/albums/:albumId",
+    element: <AlbumDetails />
   },
   {
     path: "/checkout",
