@@ -114,7 +114,7 @@ def seed_users():
     # 12
     adele = User(
         username="Adele",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Adele/adele.jpg",
         first_name="Adele",
         last_name="Adkins",
         email="adele@solocamp.io",
@@ -123,7 +123,7 @@ def seed_users():
     # 13
     lady_gaga = User(
         username="Lady Gaga",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Lady+Gaga/lady_gaga.jpg",
         first_name="Stefani",
         last_name="Germanotta",
         email="ladygaga@solocamp.io",
@@ -133,7 +133,7 @@ def seed_users():
     # 14
     tiesto = User(
         username="Tiesto",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Tiesto/tiesto.jpg",
         first_name="Michiel",
         last_name="Verwest",
         email="tiesto@solocamp.io",
@@ -143,7 +143,7 @@ def seed_users():
     # 15
     cole_dammett = User(
         username="Cole Dammett",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Cole+Dammett/cole+dammett.jpg",
         first_name="Anthony",
         last_name="Kiedis",
         email="cole_dammett@solocamp.io",
@@ -153,7 +153,7 @@ def seed_users():
     # 16
     hardwell = User(
         username="Hardwell",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Hardwell/hardwell.jpg",
         first_name="Robbert",
         last_name="Corput",
         email="hardwell.solocamp.io",

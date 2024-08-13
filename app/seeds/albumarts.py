@@ -78,71 +78,71 @@ def seed_albumarts():
     )
 
     nineteen_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/19/nineteen.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/19/nineteen_banner.png",
         background_color="rgb(6, 7, 9)",
         album_id=22,
     )
 
     twenty_one_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/21/twenty_one.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/21/twenty_one_banner.png",
         background_color="rgb(139, 170, 60)",
         album_id=23,
     )
 
     the_fame_monster_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/The+Fame+Monster/the_fame_monster.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/The+Fame+Monster/the_fame_monster_banner.png",
         background_color="rgb(10, 27, 54)",
         album_id=24,
     )
 
     a_star_is_born_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/A+Star+Is+Born/a_star_is_born.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/A+Star+Is+Born/a_star_is_born_banner.png",
         background_color="rgb(205, 154, 56)",
         album_id=25,
     )
 
     elements_of_life_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/Elements+of+Life/elements_of_life.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/Elements+of+Life/elements_of_life_banner.png",
         background_color="rgb(188, 168, 129)",
         album_id=26,
     )
 
     kaleidoscope_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/Kaleidoscope/kaleidoscope.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/Kaleidoscope/kaleidoscope_banner.png",
         background_color="rgb(51, 8, 14)",
         album_id=27,
     )
 
     californication_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/Californication/californication.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/Californication/californication_banner.png",
         background_color="rgb(198, 54, 43)",
         album_id=28,
     )
 
     by_the_way_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/By+the+Way/by_the_way.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/By+the+Way/by_the_way_banner.png",
         background_color="rgb(98, 54, 49)",
         album_id=29,
     )
 
     revealed_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/Revealed/revealed.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/Revealed/revealed_banner.png",
         background_color="rgb(72, 12, 59)",
         album_id=30,
     )
 
     united_we_are_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/United+We+Are/united_we_are.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/United+We+Are/united_we_are_banner.png",
         background_color="rgb(177, 109, 110)",
         album_id=31,
     )

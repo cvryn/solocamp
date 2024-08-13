@@ -14,6 +14,7 @@ function Footer() {
           <img src={logo}
             id="logo"
             alt="Logo"
+            style={{ width: "150px" }}
           />
         </NavLink>
       </div>

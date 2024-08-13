@@ -12,7 +12,7 @@ function AnnouncementBar() {
       <span>Get fresh music recommendations delivered to your inbox every Friday.</span>
       <MdOutlineClose
         onClick={() => setShowBar(false)}
-        style={{ fontSize: "1.5rem", position: "fixed", right: "20px" }}
+        style={{ fontSize: "1.5rem", position: "absolute", right: "20px" }}
       />
     </div>
   );

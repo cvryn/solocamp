@@ -1,25 +1,13 @@
-.container-navigation {
+#container-main-navigation {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 1400px;
   margin: auto;
-  width: 80%;
+  width: 95%;
 }
 
-#logo {
-  width: 150px;
-}
-
-#container-primary-navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 5px;
-  height: 50px;
-}
-
-.container-template-navigation {
+.container-primary-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,10 +21,10 @@
   gap: 20px;
 }
 
-#container-login-signup-navigation {
+#container-user-navigation {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   white-space: nowrap;
 }
 
@@ -61,10 +49,6 @@
   gap: 25px;
 }
 
-#container-genre-drop-down-navigation {
-  position: fixed;
-}
-
 .drop-down-genre-navigation {
   display: flex;
   align-items: center;
@@ -73,16 +57,6 @@
   width: 345px;
   color: white;
   padding: 0 20px;
-}
-
-.genre-arrow {
-  font-size: 1.5rem;
-}
-
-#container-login-signup-navigation button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 
 #container-announcement-bar {
@@ -100,9 +74,25 @@
   gap: 10px;
 }
 
-#circle-icon {
+#circle-div {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background: linear-gradient(to right, rgb(95, 75, 245), rgb(65, 205, 190));
+}
+
+#container-profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  width: 250px;
+  top: 110%;
+  right: 0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 0 2px #EFEFEF;
+  background-color: white;
+  user-select: none;
+  z-index: 1;
 }
