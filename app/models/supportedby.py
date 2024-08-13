@@ -46,4 +46,5 @@ class SupportedBy(db.Model):
             "song_id": self.song_id,
             "user_id": self.user_id,
             "created_at": self.created_at,
+            "song_title": self.song.title if self.song else None,
         }

@@ -1,0 +1,149 @@
+#banner-image-album-details,
+#music-spacer,
+#track-title-container-album-details,
+#album-detail-container,
+.tags-container-album-details,
+.may-also-like-album-details {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.banner-art-album-details {
+    border: 2px solid blue;
+    width: 100%;
+}
+
+
+#music-spacer {
+    border: 1px solid grey;
+    padding: 8px;
+}
+
+#middle-container-album-details{
+    border: 2px solid red;
+
+}
+
+#album-detail-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#left-column-container-album-details {
+    /* border: 2px solid green; */
+    flex: 1.5;
+}
+
+#music-player-table-container {
+    border: 2px solid grey;
+    padding: 15px 0;
+}
+
+#middle-column-container-album-details {
+    border: 2px solid purple;
+    flex: 1;
+}
+
+.album-art-album-details {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.album-art-image-album-details {
+    height: 350px;
+    width: 350px;
+}
+
+.wishlist-button-album-details{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.add-to-wishlist-button{
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+
+}
+
+.add-to-wishlist-button:hover {
+    text-decoration: underline;
+}
+
+#supported-by-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+#right-column-container-album-details {
+    border: 2px solid pink;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 120px;
+}
+
+.user-profile-pic-image-album-details{
+    height: 120px;
+    width: 120px;
+
+}
+
+.follow-artist-button-album-details{
+    padding: 4px 0;
+    background-color: transparent;
+}
+
+.discography-container-album-details{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.discography-list-album-details{
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.album-art-discography-album-details{
+    height: 120px;
+    width: 120px;
+
+}
+
+#bottom-container-album-details{
+    border: 2px solid green;
+}
+
+.album-art-may-also-like-album-details{
+    border: 2px solid red;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.albums-also-like-album-details{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+
+}
