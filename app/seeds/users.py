@@ -16,7 +16,7 @@ def seed_users():
     # 2
     joji = User(
         username="Joji",
-        profile_image="url",
+        profile_image="https://solocamp-files.s3.amazonaws.com/joji/joji_profile_pic.jpg",
         first_name="George",
         last_name="Miller",
         email="joji@solocamp.io",
@@ -26,7 +26,7 @@ def seed_users():
     # 3
     jvke = User(
         username="JVKE",
-        profile_image="url",
+        profile_image="https://solocamp-files.s3.amazonaws.com/jvke/jvke_profile_pic.jpg",
         first_name="Jacob",
         last_name="Lawson",
         email="jvke@solocamp.io",
@@ -35,8 +35,8 @@ def seed_users():
 
     # 4
     samsmith = User(
-        username="SamSmith",
-        profile_image="url",
+        username="Sam Smith",
+        profile_image="https://solocamp-files.s3.amazonaws.com/sam-smith/samsmith_profile_pic.png",
         first_name="Samuel",
         last_name="Smith",
         email="samsmith@solocamp.io",
@@ -46,7 +46,7 @@ def seed_users():
     # 5
     fujii = User(
         username="Fujii",
-        profile_image="url",
+        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
         first_name="Fujii",
         last_name="Kaze",
         email="fujii@solocamp.io",
@@ -55,8 +55,8 @@ def seed_users():
 
     # 6
     dhruv = User(
-        username="Dhrvie",
-        profile_image="url",
+        username="Dhruv",
+        profile_image="https://solocamp-files.s3.amazonaws.com/dhruv/rapunzel/dhruv_profile_pic.jpg",
         first_name="Dhruv",
         last_name="Sharma",
         email="djruv@solocamp.io",
@@ -65,7 +65,7 @@ def seed_users():
     # 7
     jay = User(
         username="Jay",
-        profile_image="url",
+        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
         first_name="Jay",
         last_name="Chou",
         email="jay@solocamp.io",
@@ -75,7 +75,7 @@ def seed_users():
     # 8
     gai = User(
         username="Gai",
-        profile_image="url",
+        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
         first_name="Yan",
         last_name="Chou",
         email="gai@solocamp.io",
@@ -85,7 +85,7 @@ def seed_users():
     # 9
     ice = User(
         username="Ice",
-        profile_image="url",
+        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
         first_name="Changqing",
         last_name="Yang",
         email="ice@solocamp.io",
@@ -95,7 +95,7 @@ def seed_users():
     # 10
     vinida = User(
         username="Vinida",
-        profile_image="url",
+        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
         first_name="Ying",
         last_name="Weng",
         email="vinida@solocamp.io",
@@ -105,7 +105,7 @@ def seed_users():
     # 11
     jolin = User(
         username="Jolin",
-        profile_image="url",
+        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
         first_name="Yilin",
         last_name="Tsai",
         email="jolin@solocamp.io",
@@ -114,7 +114,7 @@ def seed_users():
     # 12
     adele = User(
         username="Adele",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Adele/adele.jpg",
         first_name="Adele",
         last_name="Adkins",
         email="adele@solocamp.io",
@@ -123,7 +123,7 @@ def seed_users():
     # 13
     lady_gaga = User(
         username="Lady Gaga",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Lady+Gaga/lady_gaga.jpg",
         first_name="Stefani",
         last_name="Germanotta",
         email="ladygaga@solocamp.io",
@@ -133,7 +133,7 @@ def seed_users():
     # 14
     tiesto = User(
         username="Tiesto",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Tiesto/tiesto.jpg",
         first_name="Michiel",
         last_name="Verwest",
         email="tiesto@solocamp.io",
@@ -143,7 +143,7 @@ def seed_users():
     # 15
     cole_dammett = User(
         username="Cole Dammett",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Cole+Dammett/cole+dammett.jpg",
         first_name="Anthony",
         last_name="Kiedis",
         email="cole_dammett@solocamp.io",
@@ -153,7 +153,7 @@ def seed_users():
     # 16
     hardwell = User(
         username="Hardwell",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Hardwell/hardwell.jpg",
         first_name="Robbert",
         last_name="Corput",
         email="hardwell.solocamp.io",

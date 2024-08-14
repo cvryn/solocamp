@@ -4,145 +4,145 @@ from sqlalchemy.sql import text
 
 def seed_albumarts():
     in_tongues_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/Joji_In_Tongues-Deluxe_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/joji_in_tongues_banner.png",
         background_color="rbg(255,255,255)",
         album_id=1,
     )
     ballads_1_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/joji/ballads-1/Joji_Ballads_1_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/joji/ballads-1/joji_ballads_1_banner.png",
         background_color="rbg(255,255,255)",
         album_id=2,
     )
     nectar_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/joji/nectar/Joji_Nectar_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/joji/nectar/joji_nectar_banner.png",
         background_color="rbg(255,255,255)",
         album_id=3,
     )
     smithereens_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/joji/smithereens/JOJI_SMITHEREENS_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/joji/smithereens/joji_smithereens_banner.png",
         background_color="rbg(255,255,255)",
         album_id=4,
     )
 
     this_is_what_blank_feels_like_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/jvke/this_is_what_blank_feels_like/JVKE_this_is_what_blank_feels_like+_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/jvke/this_is_what_blank_feels_like/jvke-this-is-what-blank-feels-like-banner.png",
         background_color="rbg(255,255,255)",
         album_id=5,
     )
 
     # Sam Smith Albums
     nirvana_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/sam-smith/nirvana/sam_smith-Nirvana_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/sam-smith/nirvana/samsmith_nirvana_banner.png",
         background_color="rbg(255,255,255)",
         album_id=6,
     )
     in_the_lonely_hour_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/sam-smith/in-the-lonely-hour/sam_smith_in_the_lonely_hour_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/sam-smith/in-the-lonely-hour/samsmith_in_the_lonely_hour_banner.png",
         background_color="rbg(255,255,255)",
         album_id=7,
     )
     the_thrill_of_it_all_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/sam-smith/the-thrill-of-it-all/sam_smith_the_thrill_of_it_all_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/sam-smith/the-thrill-of-it-all/samsmith_the_thrill_of_it_all.png",
         background_color="rbg(255,255,255)",
         album_id=8,
     )
 
     # Fujii Kaze Albums
     help_ever_hurt_never_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/fujii/help-ever-hurt-never/fujii_help_ever_hurt_never_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/fujii/help-ever-hurt-never/fujii_help_ever_hurt_never_banner.png",
         background_color="rbg(255,255,255)",
         album_id=9,
     )
     love_all_serve_all_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/fujii/love-all-serve-all/Fujii-Kaze-LOVE-ALL-SERVE-ALL-album-art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/fujii/love-all-serve-all/fujii_love_all_serve_all_banner.png",
         background_color="rbg(255,255,255)",
         album_id=10,
     )
 
     # dhruv Albums
     rapunzel_art = AlbumArt(
-        album_art="album_url",
-        album_banner="banner_url",
+        album_art="https://solocamp-files.s3.amazonaws.com/dhruv/rapunzel/dhruv_rapunzel_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/dhruv/rapunzel/dhruv_rapunzel_banner.png",
         background_color="rbg(255,255,255)",
         album_id=11,
     )
 
     nineteen_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/19/nineteen.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/19/nineteen_banner.png",
         background_color="rgb(6, 7, 9)",
         album_id=22,
     )
 
     twenty_one_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/21/twenty_one.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/21/twenty_one_banner.png",
         background_color="rgb(139, 170, 60)",
         album_id=23,
     )
 
     the_fame_monster_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/The+Fame+Monster/the_fame_monster.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/The+Fame+Monster/the_fame_monster_banner.png",
         background_color="rgb(10, 27, 54)",
         album_id=24,
     )
 
     a_star_is_born_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/A+Star+Is+Born/a_star_is_born.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/A+Star+Is+Born/a_star_is_born_banner.png",
         background_color="rgb(205, 154, 56)",
         album_id=25,
     )
 
     elements_of_life_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/Elements+of+Life/elements_of_life.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/Elements+of+Life/elements_of_life_banner.png",
         background_color="rgb(188, 168, 129)",
         album_id=26,
     )
 
     kaleidoscope_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/Kaleidoscope/kaleidoscope.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/Kaleidoscope/kaleidoscope_banner.png",
         background_color="rgb(51, 8, 14)",
         album_id=27,
     )
 
     californication_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/Californication/californication.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/Californication/californication_banner.png",
         background_color="rgb(198, 54, 43)",
         album_id=28,
     )
 
     by_the_way_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/By+the+Way/by_the_way.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/By+the+Way/by_the_way_banner.png",
         background_color="rgb(98, 54, 49)",
         album_id=29,
     )
 
     revealed_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/Revealed/revealed.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/Revealed/revealed_banner.png",
         background_color="rgb(72, 12, 59)",
         album_id=30,
     )
 
     united_we_are_art = AlbumArt(
-        album_art="url",
-        album_banner="url",
+        album_art="https://solocamp-ac.s3.us-east-2.amazonaws.com/United+We+Are/united_we_are.jpg",
+        album_banner="https://solocamp-ac.s3.us-east-2.amazonaws.com/United+We+Are/united_we_are_banner.png",
         background_color="rgb(177, 109, 110)",
         album_id=31,
     )

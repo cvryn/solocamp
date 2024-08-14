@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 def seed_supportedbys():
 
     joji_rapunzel1 = SupportedBy(
-        description='I loved the vibes of this album. My favorite is track number 2, "Double Take".',
+        description="I loved the vibes of this album. My favorite is track number 2, 'Double Take'.",
         album_id=11,
         song_id=57,
         user_id=2,
@@ -64,6 +64,12 @@ def seed_supportedbys():
         user_id=12,
     )
 
+    fujii_smithereens = SupportedBy(
+        description="When I first heard this album, I knew it would be a consistent replay. The lyrics are well chosen and the rhythm is beautiful.",
+        album_id=4,
+        user_id=5,
+    )
+
     db.session.add_all(
         [
             joji_rapunzel1,
@@ -75,6 +81,7 @@ def seed_supportedbys():
             dhruv_a_star,
             jay_ninja,
             adele_nineteen,
+            fujii_smithereens
         ]
     )
 

@@ -1,19 +1,38 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import SearchBar from "./SearchBar";
+import SecondaryNavigation from "./SecondaryNavigation"
+import logo from "../../../public/logo.png"
 import "./Navigation.css";
 
-function Navigation() {
-  return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
 
-      <li>
+function Navigation() {
+  const user = useSelector((store) => store.session.user);
+
+  return (
+    <nav id="container-main-navigation">
+
+      <div className="container-primary-navigation">
+
+        <div id="container-logo-search-navigation">
+          <NavLink to="/">
+            <img src={logo} id="logo" alt="Logo" style={{ width: "150px" }} />
+          </NavLink>
+          <SearchBar />
+        </div>
+
         <ProfileButton />
-      </li>
-    </ul>
+      </div>
+
+      {!user &&
+        <div>
+          <SecondaryNavigation />
+        </div>}
+
+    </nav>
   );
 }
+
 
 export default Navigation;

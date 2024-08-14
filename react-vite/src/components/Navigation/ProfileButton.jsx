@@ -1,10 +1,14 @@
 import { useState, useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle } from 'react-icons/fa';
 import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { PiShoppingCartSimple } from "react-icons/pi";
+import { SlHeart } from "react-icons/sl";
+import "./Navigation.css";
+
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -13,7 +17,7 @@ function ProfileButton() {
   const ulRef = useRef();
 
   const toggleMenu = (e) => {
-    e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+    e.stopPropagation(); // keep from bubbling up to document and triggering closeMenu
     setShowMenu(!showMenu);
   };
 
@@ -40,37 +44,52 @@ function ProfileButton() {
   };
 
   return (
-    <>
-      <button onClick={toggleMenu}>
-        <FaUserCircle />
-      </button>
-      {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
-          {user ? (
-            <>
+    <nav id="container-user-navigation" style={{ position: "relative" }}>
+      {user ? (
+        <>
+          <NavLink to="/checkout"><PiShoppingCartSimple style={{ fontSize: "2rem" }} /></NavLink>
+
+          <NavLink to=""><SlHeart style={{ fontSize: "1.7rem" }} /></NavLink>
+
+          <div id="circle-div"
+            onClick={toggleMenu}
+            style={{ cursor: "pointer" }}
+          />
+
+          {showMenu && (
+            <ul id="container-profile-dropdown" ref={ulRef}>
               <li>{user.username}</li>
               <li>{user.email}</li>
               <li>
-                <button onClick={logout}>Log Out</button>
+                <button
+                  onClick={logout}
+                  style={{ border: "none", backgroundColor: "transparent", height: "fit-content" }}
+                >
+                  log out
+                </button>
               </li>
-            </>
-          ) : (
-            <>
-              <OpenModalMenuItem
-                itemText="Log In"
-                onItemClick={closeMenu}
-                modalComponent={<LoginFormModal />}
-              />
-              <OpenModalMenuItem
-                itemText="Sign Up"
-                onItemClick={closeMenu}
-                modalComponent={<SignupFormModal />}
-              />
-            </>
+            </ul>
           )}
-        </ul>
+        </>
+      ) : (
+        <>
+          <button style={{ border: "none", backgroundColor: "transparent" }}>
+            <OpenModalMenuItem
+              itemText="Log In"
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
+            />
+          </button>
+          <button style={{ border: "none", backgroundColor: "transparent" }}>
+            <OpenModalMenuItem
+              itemText="Sign Up"
+              onItemClick={closeMenu}
+              modalComponent={<SignupFormModal />}
+            />
+          </button>
+        </>
       )}
-    </>
+    </nav>
   );
 }
 
