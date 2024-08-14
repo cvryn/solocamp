@@ -6,7 +6,7 @@ function SecondaryNavigation() {
   return (
     <nav id="container-secondary-navigation">
       <div className="container-left-right-secondary-navigation">
-        <NavLink to="/">Genres</NavLink>
+        <NavLink to="/albums">Genres</NavLink>
         <NavLink to="/">Vinyl</NavLink>
         <NavLink to="/">CDs</NavLink>
         <NavLink to="/">Cassettes</NavLink>

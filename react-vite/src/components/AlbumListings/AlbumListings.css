@@ -3,7 +3,7 @@
 }
 
 #container-filter-inner {
-  max-width: 1580px;
+  max-width: 1500px;
   width: 95%;
   margin: auto;
 }
@@ -45,9 +45,9 @@
 }
 
 #container-album-listings-inner {
-  max-width: 1580px;
   width: 95%;
   margin: auto;
+  padding-bottom: 60px;
 }
 
 #container-album-listings-grid {
@@ -57,9 +57,12 @@
   grid-template-areas: "left right";
   gap: 30px;
   color: white;
+  width: 1500px;
+  margin: auto;
 }
 
 #container-album-listings {
+  grid-area: left;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
@@ -74,9 +77,25 @@
   gap: 7px;
 }
 
-#container-current-album {
+#container-current-album-outer {
+  grid-area: right;
+}
+
+#container-current-album-inner {
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   padding: 20px 40px 20px 0;
   gap: 30px;
+}
+
+.wishlist-button-album-listings {
+  width: 100%;
+  border-radius: 7px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }

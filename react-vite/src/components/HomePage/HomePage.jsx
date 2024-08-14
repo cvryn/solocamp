@@ -300,29 +300,7 @@ function HomePage() {
                 {/* <div className="container-new-notable-home"></div>
                 <div className="container-daily-home"></div> */}
             </div>
-            <div className="container-footer-home">
-                <div className='containter-footer-detail-home'>
-                    <div className='container-text-home'>
-                        <div style={{ color: 'white' }}>About</div>
-                        <div style={{ color: 'white' }}>Buttons/Logos</div>
-                        <div style={{ color: 'white' }}>Bandcamp Daily</div>
-                        <div style={{ color: 'white' }}>Gift Cards</div>
-                    </div>
-                    <div className='container-text-home'>
-                        <div style={{ color: 'white' }}>About</div>
-                        <div style={{ color: 'white' }}>Buttons/Logos</div>
-                        <div style={{ color: 'white' }}>Bandcamp Daily</div>
-                        <div style={{ color: 'white' }}>Gift Cards</div>
-                    </div>
-                    <div className='container-text-home'>
-                        <div style={{ color: 'white' }}>About</div>
-                        <div style={{ color: 'white' }}>Buttons/Logos</div>
-                        <div style={{ color: 'white' }}>Bandcamp Daily</div>
-                        <div style={{ color: 'white' }}>Gift Cards</div>
-                    </div>
 
-                </div>
-            </div>
         </div>
     )
 

@@ -17,7 +17,7 @@ function Navigation() {
 
         <div id="container-logo-search-navigation">
           <NavLink to="/">
-            <img src={logo} id="logo" alt="Logo" style={{ width: "150px" }} />
+            <img src={logo} alt="Logo" style={{ width: "150px" }} />
           </NavLink>
           <SearchBar />
         </div>

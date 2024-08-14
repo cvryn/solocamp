@@ -25,7 +25,6 @@ export const getSupportedBys = (albumId) => async (dispatch) => {
 };
 
 /** Reducer: */
-
 const initialState = {};
 
 /** Reducer */

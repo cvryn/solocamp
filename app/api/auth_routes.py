@@ -15,7 +15,8 @@ def authenticate():
     """
     if current_user.is_authenticated:
         return current_user.to_dict()
-    return {"errors": {"message": "Unauthorized"}}, 401
+    # return {"errors": {"message": "Unauthorized"}}, 401
+    return {"errors": {"message": "User not logged in"}}, 200
 
 
 @auth_routes.route("/login", methods=["POST"])

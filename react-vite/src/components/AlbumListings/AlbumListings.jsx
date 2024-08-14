@@ -47,9 +47,7 @@ function AlbumListings() {
         <div id="container-album-listings-inner">
 
           <div id="container-album-listings-grid">
-            <div id="container-album-listings"
-              style={{ gridArea: "left" }}
-            >
+            <div id="container-album-listings">
               {albums.map(album => (
                 <Link key={album.id} to={`/albums/${album.id}`}>
                   <div id="container-album">
@@ -65,65 +63,59 @@ function AlbumListings() {
               ))}
             </div>
 
-            <div id="container-current-album"
-              style={{ gridArea: "right" }}
-            >
-              <img src={albums[23].album_art[0].album_art}
-                alt="alum-cover"
-                style={{ width: "500px", aspectRatio: "1/1" }}
-              />
+            <div id="container-current-album-outer">
+              <div id="container-current-album-inner">
+                <img src={albums[23].album_art[0].album_art}
+                  alt="alum-cover"
+                  style={{ width: "500px", aspectRatio: "1/1" }}
+                />
 
-              <div style={{ display: "flex", gap: "10px" }}>
-                <div style={{
-                  backgroundColor: "white",
-                  width: "60px",
-                  height: "60px",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}>
-                  <IoIosPlay style={{ fontSize: "4rem", color: "black", paddingLeft: "5px" }} />
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <div style={{
+                    backgroundColor: "white",
+                    width: "60px",
+                    height: "60px",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}>
+                    <IoIosPlay style={{ fontSize: "4rem", color: "black", paddingLeft: "5px" }} />
+                  </div>
+
+                  <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    gap: "5px"
+                  }}>
+                    <span>{albums[23].name}</span>
+                    <span>by {albums[23].user_username}</span>
+                  </div>
                 </div>
 
                 <div style={{
                   display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  gap: "5px"
+                  gap: "10px"
                 }}>
-                  <span>{albums[23].name}</span>
-                  <span>by {albums[23].user_username}</span>
+                  <button
+                    className="wishlist-button-album-listings"
+                    onClick={() => navigate("/albums/24")}
+                  >
+                    Go to album
+                  </button>
+                  <button className="wishlist-button-album-listings" >
+                    <SlHeart style={{ fontSize: "1.7rem" }} />Wishlist
+                  </button>
                 </div>
-              </div>
 
-              <div style={{
-                display: "flex",
-                gap: "10px"
-              }}>
-                <button style={{ width: "100%", borderRadius: "7px", height: "40px" }}
-                  onClick={() => navigate(`/albums/${albums.id}`)}>
-                  Go to album
-                </button>
-                <button style={{
-                  width: "100%",
-                  borderRadius: "7px",
-                  height: "40px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "5px",
-                }} >
-                  <SlHeart style={{ fontSize: "1.7rem" }} />Wishlist
-                </button>
-              </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                  <span>{ } tracks</span>
+                  <span>released in {albums[23].year}</span>
+                </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-                <span>{ } tracks</span>
-                <span>released in {albums[23].year}</span>
+                <p>{albums[23].description}</p>
               </div>
-
-              <p>{albums[23].description}</p>
             </div>
           </div>
 
