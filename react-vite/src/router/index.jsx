@@ -5,6 +5,7 @@ import AlbumListings from '../components/AlbumListings/AlbumListings';
 import AlbumDetails from '../components/Album/AlbumDetails';
 import Checkout from '../components/Checkout/Checkout';
 import { albumLoader } from './album';
+// import CreateAlbumFormModal from '../components/HomePage/CreateAlbumFormModal';
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
         element: <AlbumDetails />,
         loader: albumLoader,
       },
+      // {
+      //   path: "/albums/new",
+      //   element: <CreateAlbumFormModal/>
+      // },
       {
         path: "/checkout",
         element: <Checkout />
