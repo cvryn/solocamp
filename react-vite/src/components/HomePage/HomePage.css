@@ -254,3 +254,22 @@
     align-items: center;
     display: flex;
 }
+
+.rolling-home {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.container-album-home {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 16px; /* Adjust the gap between items */
+}
+
+.container-album-detail-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}

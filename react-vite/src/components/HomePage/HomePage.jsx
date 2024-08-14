@@ -1,16 +1,65 @@
 import './HomePage.css';
-import { SiYoutubemusic } from "react-icons/si";
-import { IoMdHeartEmpty } from "react-icons/io";
+// import { SiYoutubemusic } from "react-icons/si";
+// import { IoMdHeartEmpty } from "react-icons/io";
+import { IoMusicalNotesOutline } from "react-icons/io5";
+
 import { FaLocationDot } from "react-icons/fa6";
 import { LuCassetteTape } from "react-icons/lu";
 import { IoTimeOutline } from "react-icons/io5";
-import { useLoaderData } from "react-router-dom";
-// import React, { useState, useEffect, useRef } from 'react';
+import { useLoaderData, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import Pagination from './Pagination';
+// import SongPlaying from './SongPlaying';
+
 // import { useSelector } from 'react-redux';
+
+const HorizontalScrollImages = () => {
+    let albumData = useLoaderData();
+    const [displayedImages, setDisplayedImages] = useState(albumData.slice(0, 8));
+    const containerRef = useRef(null);
+    const imageIndex = useRef(8);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (containerRef.current) {
+                containerRef.current.scrollLeft += 100;
+
+                if (containerRef.current.scrollLeft + containerRef.current.clientWidth >= containerRef.current.scrollWidth) {
+                    const newImages = [...displayedImages.slice(1), albumData[imageIndex.current]];
+                    setDisplayedImages(newImages);
+                    imageIndex.current = (imageIndex.current + 1) % albumData.length;
+                }
+            }
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, [displayedImages, albumData]);
+
+    return (
+        <div
+            ref={containerRef}
+            style={{ width: '100%', overflowX: 'hidden', whiteSpace: 'nowrap' }}
+        >
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                {displayedImages.map((el, index) => (
+                    <div className='rolling-home'>
+                        <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src={el.album_art[0].album_art} alt={`Image ${index}`} style={{ height: '200px', width: 'auto', marginRight: '10px' }} />
+                        <br></br>
+                        <div style={{ fontWeight: 'bold' }}>{el.name}</div>
+                        <div>By {el.user_username}</div>
+                        <div>Solid for ${el.price}</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 function HomePage() {
     let albumData = useLoaderData();
-    console.log('flag!!!!!!',albumData)
+    // console.log('flag!!!!!!',albumData[0])
+    const imageUrls = albumData.map(album => album.album_art[0].album_art);
 
     return (
         <div className='main-home'>
@@ -28,153 +77,66 @@ function HomePage() {
             <div className="container-body-home">
                 <div className="container-selling-home">
                     <h4 style={{ marginLeft: '0%', marginBottom: '20px' }}>SELLING RIGHT NOW</h4>
-                    <div className='container-album-home'>
-                        {/* {
-                            albumData.map(albumEl => {
-                            <div className='container-album-detail-home'>
-                                <img style={{width:'100%'}} src={albumEl.album_art[0]}/>
-                                <div>{albumEl.name}</div>
-                                <div>{albumEl}</div>
-                                <div></div>
-                            </div>
-                            })
-                        } */}
-                        <div className='container-album-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>{}</div>
-                            <div>by artist</div>
-                            <div>Solid for $ </div>
-                        </div>
-                        <div className='container-album-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Album title</div>
-                            <div>by artist</div>
-                            <div>Solid for $ </div>
-                        </div>
-                        <div className='container-album-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Album title</div>
-                            <div>by artist</div>
-                            <div>Solid for $ </div>
-                        </div>
-                        <div className='container-album-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Album title</div>
-                            <div>by artist</div>
-                            <div>Solid for $ </div>
-                        </div>
-                        <div className='container-album-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Album title</div>
-                            <div>by artist</div>
-                            <div>Solid for $ </div>
-                        </div>
-                        <div className='container-album-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Album title</div>
-                            <div>by artist</div>
-                            <div>Solid for $ </div>
-                        </div>
-                        <div className='container-album-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Album title</div>
-                            <div>by artist</div>
-                            <div>Solid for $ </div>
-                        </div>
+                    <div className="container-stroy-home">
+                        <HorizontalScrollImages images={imageUrls} />
                     </div>
+                    {/* <div className='container-album-home'>
+                        {
+                            albumData.map(albumEl => {
+                                return (
+                                    <div className='container-album-detail-home'>
+                                        <img style={{ width: '100%', height: '100px', width: '100px' }} src={albumEl.album_art[0].album_art} />
+                                        <div>{albumEl.name}</div>
+                                        <div>Artist: {albumEl.user_username}</div>
+                                        <div>Solid for ${albumEl.price}</div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div> */}
                 </div>
                 <div className="container-events-home">
                     <h4 style={{ marginLeft: '0%', marginBottom: '20px', paddingTop: '50px' }}>UPCOMING SOLOCAMP LIVE EVENTS</h4>
                     <div className='container-event-home'>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
+                            <div>Chuck Johnson</div>
+                            <div>Sun Glories Listening Party</div>
                             <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
+                            <div><IoMusicalNotesOutline />Listening Party </div>
+                            <div>August 15, 2024 </div>
                         </div>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
+                            <div>Scuba</div>
+                            <div>D:U:2</div>
                             <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
+                            <div><IoMusicalNotesOutline />Listening Party </div>
+                            <div>August 15, 2024  </div>
                         </div>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
+                            <div>Thotcrime</div>
+                            <div>Connection Party</div>
                             <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
+                            <div><IoMusicalNotesOutline />Listening Party </div>
+                            <div>August 15, 2024  </div>
                         </div>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
+                            <div>Charly Blis</div>
+                            <div>FOREVER</div>
                             <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
+                            <div><IoMusicalNotesOutline />Listening Party </div>
+                            <div>August 15, 2024  </div>
                         </div>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
+                            <div>Galiano</div>
+                            <div>Halfway Somewhere</div>
                             <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
-                        </div>
-                        <div className='container-event-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
-                            <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
-                        </div>
-                        <div className='container-event-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
-                            <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
-                        </div>
-                        <div className='container-event-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
-                            <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
-                        </div>
-                        <div className='container-event-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
-                            <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
-                        </div>
-                        <div className='container-event-detail-home'>
-                            <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                            <div>Event name</div>
-                            <div>by group</div>
-                            <br></br>
-                            <div>Listening Party </div>
-                            <div>Date </div>
-                            <div>Time</div>
+                            <div><IoMusicalNotesOutline />Listening Party </div>
+                            <div>August 15, 2024  </div>
                         </div>
                     </div>
                     <div className="container-signup-home">
@@ -210,76 +172,28 @@ function HomePage() {
                     </div>
                     <div className='container-img-list-home'>
                         <div className='container-two-list-left-home'>
-
-
-                            <div className='container-down-left-img-home'>
-                                <div className='img-info-home'>
-                                    <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                                    <div>Album title</div>
-                                    <div>Artist</div>
-                                    <div>genre</div>
-                                </div>
-                                <div className='img-info-home'>
-                                    <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                                    <div>Album title</div>
-                                    <div>Artist</div>
-                                    <div>genre</div>
-                                </div>
-                                <div className='img-info-home'>
-                                    <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                                    <div>Album title</div>
-                                    <div>Artist</div>
-                                    <div>genre</div>
-                                </div>
-                                <div className='img-info-home'>
-                                    <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                                    <div>Album title</div>
-                                    <div>Artist</div>
-                                    <div>genre</div>
-                                </div>
-                            </div>
-                            <div className='container-down-left-img-home'>
-                                <div className='img-info-home'>
-                                    <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                                    <div>Album title</div>
-                                    <div>Artist</div>
-                                    <div>genre</div>
-                                </div>
-                                <div className='img-info-home'>
-                                    <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                                    <div>Album title</div>
-                                    <div>Artist</div>
-                                    <div>genre</div>
-                                </div>
-                                <div className='img-info-home'>
-                                    <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                                    <div>Album title</div>
-                                    <div>Artist</div>
-                                    <div>genre</div>
-                                </div>
-                                <div className='img-info-home'>
-                                    <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
-                                    <div>Album title</div>
-                                    <div>Artist</div>
-                                    <div>genre</div>
-                                </div>
-                            </div>
-                            <div className='page-home'>
-                                <button>previous</button>
-                                <button>1</button>
-                                <button>2</button>
-                                <button>3</button>
-                                <button>4</button>
-                                <p>...</p>
-                                <button>next</button>
+                            <div className='container-album-home'>
+                                <Pagination albumData={albumData} />
+                                {/* {
+                                    albumData.map(albumEl => {
+                                        return (
+                                            <div className='container-album-detail-home'>
+                                                <img style={{ width: '100%', height: '100px', width: '100px' }} src={albumEl.album_art[0].album_art} />
+                                                <div>{albumEl.name}</div>
+                                                <div>Artist: {albumEl.user_username}</div>
+                                                <div>Solid for ${albumEl.price}</div>
+                                            </div>
+                                        )
+                                    })
+                                } */}
                             </div>
                         </div>
-                        <div className='container-down-right-img-home'>
+                        {/* <SongPlaying/> */}
+                        {/* <div className='container-down-right-img-home'>
                             <img style={{ width: '100%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp" />
                             <div className="music-player">
                                 <SiYoutubemusic style={{ fontSize: '40px' }} />
                                 <span>song playing...</span>
-                                {/* <audio id="music" src="your-music-file.mp3"></audio> */}
                             </div>
                             <br></br>
                             <div>from the album title</div>
@@ -294,7 +208,7 @@ function HomePage() {
                                 </div>
                                 <div>hear more</div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 {/* <div className="container-new-notable-home"></div>
