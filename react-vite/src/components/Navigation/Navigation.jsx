@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import SearchBar from "./SearchBar";
@@ -7,21 +8,28 @@ import "./Navigation.css";
 
 
 function Navigation() {
+  const user = useSelector((store) => store.session.user);
+
   return (
-    <nav className="container-navigation">
-      <div className="container-template-navigation">
+    <nav id="container-main-navigation">
+
+      <div className="container-primary-navigation">
+
         <div id="container-logo-search-navigation">
           <NavLink to="/">
-            <img src={logo} id="logo" alt="Logo" />
+            <img src={logo} id="logo" alt="Logo" style={{ width: "150px" }} />
           </NavLink>
           <SearchBar />
         </div>
+
         <ProfileButton />
       </div>
 
-      <div>
-        <SecondaryNavigation />
-      </div>
+      {!user &&
+        <div>
+          <SecondaryNavigation />
+        </div>}
+
     </nav>
   );
 }

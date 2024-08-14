@@ -1,0 +1,82 @@
+#container-filter-outer {
+  background-color: gray;
+}
+
+#container-filter-inner {
+  max-width: 1580px;
+  width: 95%;
+  margin: auto;
+}
+
+#container-search-bar-album-listings {
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  padding: 0 10px;
+  gap: 5px;
+  width: 450px;
+  border: 1px solid lightgrey;
+  background-color: rgb(60, 60, 60);
+}
+
+#container-search-genre-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 40px;
+  background-color: gray;
+}
+
+#container-genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.genre-tag {
+  padding: 7.5px 20px;
+  color: white;
+  background-color: rgb(77, 77, 77);
+  border-radius: 10px;
+}
+
+#container-album-listings-outer {
+  background-color: rgb(34, 34, 34);
+}
+
+#container-album-listings-inner {
+  max-width: 1580px;
+  width: 95%;
+  margin: auto;
+}
+
+#container-album-listings-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "left right";
+  gap: 30px;
+  color: white;
+}
+
+#container-album-listings {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  padding: 20px 0 20px 40px;
+  row-gap: 30px;
+  column-gap: 15px;
+}
+
+#container-album {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#container-current-album {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px 20px 0;
+  gap: 30px;
+}
