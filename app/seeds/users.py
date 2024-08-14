@@ -35,7 +35,7 @@ def seed_users():
 
     # 4
     samsmith = User(
-        username="SamSmith",
+        username="Sam Smith",
         profile_image="https://solocamp-files.s3.amazonaws.com/sam-smith/samsmith_profile_pic.png",
         first_name="Samuel",
         last_name="Smith",

@@ -9,6 +9,8 @@ function AlbumListings() {
   const albums = useLoaderData()
   const navigate = useNavigate()
 
+  console.log('albums plz', albums)
+
   return (
     <>
       <div id="container-filter-outer">
@@ -56,7 +58,7 @@ function AlbumListings() {
                       style={{ width: "215px", aspectRatio: "1/1" }}
                     />
                     <span>{album.name}</span>
-                    <span>by {album.user_id}</span>
+                    <span>by {album.user_username}</span>
                     <span>{album.genre}</span>
                   </div>
                 </Link>
@@ -91,7 +93,7 @@ function AlbumListings() {
                   gap: "5px"
                 }}>
                   <span>{albums[23].name}</span>
-                  <span>by {albums[23].user_id}</span>
+                  <span>by {albums[23].user_username}</span>
                 </div>
               </div>
 

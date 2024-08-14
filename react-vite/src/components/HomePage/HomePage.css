@@ -63,20 +63,6 @@
 .container-album-detail-home > div {
     margin-top: 5px;
 }
-/* .container-events-home {
-    background-color: rgb(219, 236, 243);
-    margin-top: 70px;
-    width: 100vw;
-    position: relative;
-    margin-left: -50vw;
-    left: 50%;
-    min-height: 100vh;
-}
-.container-event-home {
-    flex-wrap: wrap;
-    display: flex;
-    gap: 10px;
-} */
 .container-events-home {
     position: relative;
     background-color: rgb(227, 236, 240);
@@ -192,13 +178,13 @@
     display: flex;
     gap:20px;
 }
-.container-left-img-home {
+.container-down-left-img-home {
    
     display: flex;
     gap:10px;
     margin-top: 15px;
 }
-.container-right-img-home {
+.container-down-right-img-home {
     flex: 1;
     flex-direction: column;
     display: flex;
@@ -212,8 +198,59 @@
 .buy-now-home {
     display: flex;
     justify-content: space-between;
+    /* border: 2px solid red; */
+    width: 100%;
 }
 .buy-now-home > div {
     border: 1px solid gray;
-   
+   margin-top: 20px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   width: 100%;
+   text-align: center;
+}
+.music-player {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.heart-wishlist-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+.page-home {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 85px;
+}
+.page-home > button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.sigup-input-button-home {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.sigup-input-button-home > input {
+    width: 30%;
+}
+.sigup-input-button-home > button {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.container-discover-home > p:nth-last-child(-n+3) {
+    background-color: lightgray;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
+    /* border: 2px rebeccapurple solid; */
+    align-items: center;
+    display: flex;
 }

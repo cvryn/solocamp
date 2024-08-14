@@ -564,7 +564,7 @@ def seed_songs():
         title="Bad Romance",
         track_number=1,
         song_url="song_url",
-        album_id=23,
+        album_id=24,
         user_id=13,
     )
 
@@ -572,7 +572,7 @@ def seed_songs():
         title="Alejandro",
         track_number=2,
         song_url="song_url",
-        album_id=23,
+        album_id=24,
         user_id=13,
     )
 
@@ -580,7 +580,7 @@ def seed_songs():
         title="Monster",
         track_number=3,
         song_url="song_url",
-        album_id=23,
+        album_id=24,
         user_id=13,
     )
 
@@ -588,7 +588,7 @@ def seed_songs():
         title="Speechless",
         track_number=4,
         song_url="song_url",
-        album_id=23,
+        album_id=24,
         user_id=13,
     )
 
@@ -596,7 +596,7 @@ def seed_songs():
         title="Dance in the Dark",
         track_number=5,
         song_url="song_url",
-        album_id=23,
+        album_id=24,
         user_id=13,
     )
 
@@ -604,7 +604,7 @@ def seed_songs():
         title="Telephone",
         track_number=6,
         song_url="song_url",
-        album_id=23,
+        album_id=24,
         user_id=13,
     )
 
@@ -612,23 +612,15 @@ def seed_songs():
         title="So Happy I Could Die",
         track_number=7,
         song_url="song_url",
-        album_id=23,
+        album_id=24,
         user_id=13,
     )
 
     teeth = Song(
-        title="tweeth",
+        title="Teeth",
         track_number=8,
         song_url="song_url",
-        album_id=23,
-        user_id=13,
-    )
-
-    teeth = Song(
-        title="tweeth",
-        track_number=8,
-        song_url="song_url",
-        album_id=23,
+        album_id=24,
         user_id=13,
     )
 

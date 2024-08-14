@@ -1,14 +1,8 @@
 """initial migration
 
-<<<<<<<< HEAD:migrations/versions/20240813_161042_initial_migration.py
-Revision ID: 57283ac3d6cc
+Revision ID: 191486f57729
 Revises: 
-Create Date: 2024-08-13 16:10:42.777781
-========
-Revision ID: 730e7a799f60
-Revises: 
-Create Date: 2024-08-13 10:11:14.792864
->>>>>>>> navigation-footer-checkout-2:migrations/versions/20240813_101114_initial_migration.py
+Create Date: 2024-08-13 17:28:30.434148
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/20240813_161042_initial_migration.py
-revision = '57283ac3d6cc'
-========
-revision = '730e7a799f60'
->>>>>>>> navigation-footer-checkout-2:migrations/versions/20240813_101114_initial_migration.py
+revision = '191486f57729'
 down_revision = None
 branch_labels = None
 depends_on = None

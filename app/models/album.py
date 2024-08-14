@@ -55,10 +55,5 @@ class Album(db.Model):
                 [support.to_dict() for support in self.supported_by]
                 if self.supported_by
                 else None
-            ),
-            # "shopping_cart": (
-            #     [cart.to_dict() for cart in self.shopping_cart]
-            #     if self.shopping_cart
-            #     else None
-            # ),
+            )
         }

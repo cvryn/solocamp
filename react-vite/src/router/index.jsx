@@ -14,6 +14,9 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+        loader: async ()=> {
+          return await fetch('/api/albums')
+      }
       },
       {
         path: "/albums",
