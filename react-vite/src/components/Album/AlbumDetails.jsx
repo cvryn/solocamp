@@ -9,7 +9,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 
 import { getSupportedBys } from "../../redux/supportedByReducer";
 
-import SupportedByList from "../SupportedBy/SupportedByItems";
+import SupportedByList from "../SupportedBy/SupportedByList";
 import SongList from "./Song/SongList";
 import AlbumItem from "./AlbumItem";
 
@@ -224,6 +224,9 @@ const AlbumDetails = () => {
             })}
           </div>
       </section>
+
+<br />
+
     </>
   );
 };

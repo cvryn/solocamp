@@ -5,7 +5,8 @@ import AlbumListings from '../components/AlbumListings/AlbumListings';
 import AlbumDetails from '../components/Album/AlbumDetails';
 import Checkout from '../components/Checkout/Checkout';
 import { albumLoader } from './album';
-// import CreateAlbumFormModal from '../components/HomePage/CreateAlbumFormModal';
+import ManageSupportedBys from '../components/SupportedBy/ManageSupportedBys';
+import { getSupportedBys } from './supportedbys';
 
 
 export const router = createBrowserRouter([
@@ -38,6 +39,11 @@ export const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />
+      },
+      {
+        path: "/supported-by/all",
+        element: <ManageSupportedBys />,
+        loader: getSupportedBys
       }
     ]
   },

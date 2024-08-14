@@ -50,7 +50,7 @@ const HorizontalScrollImages = () => {
                         <br></br>
                         <div style={{ fontWeight: 'bold' }}>{el.name}</div>
                         <div>By {el.user_username}</div>
-                        <div>Solid for ${el.price}</div>
+                        <div>Sold for ${el.price}</div>
                     </div>
                 ))}
             </div>
