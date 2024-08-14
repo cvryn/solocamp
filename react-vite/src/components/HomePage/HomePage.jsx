@@ -9,6 +9,8 @@ import { IoTimeOutline } from "react-icons/io5";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, useRef } from 'react';
 import Pagination from './Pagination';
+import CreateAlbumButton from './CreateAlbumButton';
+
 // import SongPlaying from './SongPlaying';
 
 // import { useSelector } from 'react-redux';
@@ -43,7 +45,7 @@ const HorizontalScrollImages = () => {
         >
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 {displayedImages.map((el, index) => (
-                    <div className='rolling-home'>
+                    <div className='rolling-home'  key={index}>
                         <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src={el.album_art[0].album_art} alt={`Image ${index}`} style={{ height: '200px', width: 'auto', marginRight: '10px' }} />
                         <br></br>
                         <div style={{ fontWeight: 'bold' }}>{el.name}</div>
@@ -60,6 +62,11 @@ function HomePage() {
     let albumData = useLoaderData();
     // console.log('flag!!!!!!',albumData[0])
     const imageUrls = albumData.map(album => album.album_art[0].album_art);
+
+    // const navigate = useNavigate()
+    // const handleAlbumCreate = () => {
+    //     navigate('/albums/new')
+    // }
 
     return (
         <div className='main-home'>
@@ -140,10 +147,11 @@ function HomePage() {
                         </div>
                     </div>
                     <div className="container-signup-home">
-                        <div style={{ textAlign: 'center', marginTop: '70px', fontSize: '17px' }}>Get the best of Solocamp Daily, delivered every Friday</div>
+                        <div style={{ textAlign: 'center', marginTop: '70px', fontSize: '17px' }}>Create your own album on Solocamp</div>
                         <div className='sigup-input-button-home' style={{ textAlign: 'center', marginTop: '20px' }}>
-                            <input placeholder='your email address'></input>
-                            <button style={{ backgroundColor: 'black', color: 'white' }}>SIGN UP</button>
+                            {/* <input placeholder='your email address'></input> */}
+                            {/* <button onClick={()=> handleAlbumCreate()}style={{ backgroundColor: 'black', color: 'white' }}>CREATE ALBUM</button> */}
+                      <CreateAlbumButton/>
                         </div>
                     </div>
                     <div className="container-discover-home">
@@ -154,7 +162,7 @@ function HomePage() {
                         <p><IoTimeOutline />&nbsp;time</p>
                     </div>
                     <div className='container-all-home'>
-                        <p>all</p>
+                        <p style={{backgroundColor:'black'}}>all</p>
                         <p>pop</p>
                         <p>rock</p>
                         <p>electronic</p>
