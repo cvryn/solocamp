@@ -1,0 +1,22 @@
+#album-container-collection{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space;
+    /* align-items: center; */
+}
+
+
+
+
+.album-art-collection{
+   width: 210px;
+   height: 210px;
+}
+
+.edit-delete-button-collection{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

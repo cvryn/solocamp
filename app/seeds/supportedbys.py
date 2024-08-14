@@ -4,24 +4,38 @@ from sqlalchemy.sql import text
 
 def seed_supportedbys():
 
-    joji_rapunzel1 = SupportedBy(
+    joji_rapunzel = SupportedBy(
         description="I loved the vibes of this album. My favorite is track number 2, 'Double Take'.",
         album_id=11,
         song_id=57,
         user_id=2,
     )
 
-    joji_rapunzel2 = SupportedBy(
-        description="The instrumental really touched me.",
-        album_id=11,
-        song_id=61,
-        user_id=3,
+    joji_help_ever = SupportedBy(
+        description="The lyrics really touched me and the instrumental matched.",
+        album_id=9,
+        song_id=48,
+        user_id=2,
     )
 
-    joji_rapunzel3 = SupportedBy(
+    joji_fame_monster = SupportedBy(
         description="I listened to this entire album, it's my daily anthem.",
-        album_id=11,
-        user_id=4,
+        album_id=24,
+        user_id=2,
+    )
+
+    joji_love_all = SupportedBy(
+        description="I listened to this entire album, it's my daily anthem.",
+        album_id=10,
+        song_id=54,
+        user_id=2,
+    )
+
+    joji_get_away = SupportedBy(
+        description="I really love Vinida's vocals in this album! Can't wait for her future releases!",
+        album_id=21,
+        song_id=18,
+        user_id=2,
     )
 
     jvke_nocturne = SupportedBy(
@@ -72,9 +86,11 @@ def seed_supportedbys():
 
     db.session.add_all(
         [
-            joji_rapunzel1,
-            joji_rapunzel2,
-            joji_rapunzel3,
+            joji_rapunzel,
+            joji_help_ever,
+            joji_fame_monster,
+            joji_love_all,
+            joji_get_away,
             jvke_nocturne,
             samsmith_21,
             fujii_nirvana,
