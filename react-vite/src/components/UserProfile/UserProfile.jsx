@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink, useLoaderData } from "react-router-dom"
+import Collection from "./Collection"
 import WishList from "./WishList"
 import "./UserProfile.css"
-
 
 function UserProfile() {
   const currentUser = useSelector(state => state.session.user)
   const albums = useLoaderData()
+
+  const [collection, setCollection] = useState(false)
+  const [wishlist, setWishlist] = useState(true)
 
   const ownAlbums = albums?.filter(album => album?.user_id === currentUser?.id)
   const latestReleaseYear = Math.max(...ownAlbums?.map(album => album.year));
@@ -24,7 +27,6 @@ function UserProfile() {
           <img src={currentUser.profile_image}
             style={{ width: "220px", aspectRatio: "1/1" }}
             alt="user-profile-image" />
-
 
           <div id="container-user-album-details">
             <h1 style={{ marginBottom: "10px" }}>{currentUser.username}</h1>
@@ -43,18 +45,34 @@ function UserProfile() {
 
         <div style={{ height: "260px" }}></div>
 
-        <div>
-          <div id="container-collections-wishlist">
-            <span><NavLink>collection</NavLink>&nbsp;&nbsp;&nbsp;100</span>
-            <span><NavLink>wishlist</NavLink>&nbsp;&nbsp;&nbsp;{ }</span>
-          </div>
-          <hr style={{ border: "0.5px solid lightgray" }} />
+        <div id="container-collection-wishlist">
+          <NavLink
+            className={() => collection ? "tab-wishlist active" : "tab-wishlist"}
+            onClick={() => {
+              setCollection(true);
+              setWishlist(false);
+            }}
+          >
+            collection&nbsp;&nbsp;&nbsp;&nbsp;100
+          </NavLink>
+          <NavLink
+            className={() => wishlist ? "tab-wishlist active" : "tab-wishlist"}
+            onClick={() => {
+              setWishlist(true);
+              setCollection(false);
+            }}
+          >
+            wishlist&nbsp;&nbsp;&nbsp;&nbsp;
+            {Array.isArray(currentUser?.album_in_wishlist)
+              && `${currentUser.album_in_wishlist.length}`}
+          </NavLink>
         </div>
+        <hr style={{ border: "0.5px solid lightgray", margin: "10px 0 20px 0" }} />
       </div>
 
-      <WishList />
-
-    </div>
+      {collection && <Collection />}
+      {wishlist && <WishList />}
+    </div >
   );
 }
 

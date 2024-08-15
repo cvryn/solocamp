@@ -63,7 +63,7 @@ function ProfileButton() {
             <ul id="container-profile-dropdown" ref={ulRef}>
               <li>{user.username}</li>
               <li>{user.email}</li>
-              <li><Link to="/supported-by/all">my reviews</Link></li>
+              <li><Link to="/user/reviews">my reviews</Link></li>
               <li>
                 <button
                   onClick={logout}

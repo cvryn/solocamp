@@ -8,7 +8,7 @@ import Checkout from '../components/Checkout/Checkout';
 import About from '../components/Footer/About';
 import { albumLoader } from './album';
 import ManageSupportedBys from '../components/SupportedBy/ManageSupportedBys';
-import { getSupportedBys, supportedByLoader } from './supportedbys';
+import { getSupportedBys } from './supportedbys';
 
 
 export const router = createBrowserRouter([

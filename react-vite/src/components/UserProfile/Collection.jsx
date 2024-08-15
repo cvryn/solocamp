@@ -5,7 +5,7 @@ import "./UserProfile.css"
 import { useEffect } from "react"
 
 
-function WishList() {
+function Collection() {
   const currentUser = useSelector(state => state.session.user)
   const album_in_wishlist = currentUser.album_in_wishlist;
   const albumCountObj = useSelector(state => state.wishlist);
@@ -48,4 +48,4 @@ function WishList() {
 }
 
 
-export default WishList
+export default Collection

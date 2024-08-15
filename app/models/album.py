@@ -18,11 +18,14 @@ class Album(db.Model):
     genre = db.Column(db.String(20), nullable=False)
     price = db.Column(db.Numeric(6, 2), nullable=False)
     description = db.Column(db.String(2555), nullable=False)
-    purchased = db.Column(db.Boolean, default=False, nullable=False)
 
     # many-to-many relationship
-    user_in_wishlist = db.relationship("User", secondary=wishlist, back_populates="album_in_wishlist")
-    user_in_shopping_cart = db.relationship("User", secondary=shopping_cart, back_populates="album_in_shopping_cart")
+    user_in_wishlist = db.relationship(
+        "User", secondary=wishlist, back_populates="album_in_wishlist"
+    )
+    user_in_shopping_cart = db.relationship(
+        "User", secondary=shopping_cart, back_populates="album_in_shopping_cart"
+    )
 
     # one-to-many relationships
     user = db.relationship("User", back_populates="album_in_wishlist")
@@ -34,19 +37,17 @@ class Album(db.Model):
         "SupportedBy", back_populates="album", cascade="all, delete-orphan"
     )
 
-
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
             "user_id": self.user_id,
             "user_username": self.user.username if self.user else None,
-            'user_profile_image': self.user.profile_image if self.user else None,
+            "user_profile_image": self.user.profile_image if self.user else None,
             "year": self.year,
             "genre": self.genre,
             "price": float(self.price) if self.price else None,
             "description": self.description,
-            "purchased": self.purchased,
             "album_art": (
                 [art.to_dict() for art in self.album_art] if self.album_art else None
             ),
@@ -55,5 +56,5 @@ class Album(db.Model):
                 [support.to_dict() for support in self.supported_by]
                 if self.supported_by
                 else None
-            )
+            ),
         }

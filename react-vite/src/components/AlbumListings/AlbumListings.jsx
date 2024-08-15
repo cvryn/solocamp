@@ -30,8 +30,14 @@ function AlbumListings() {
       } else {
         setGenres([genreParam]);
       }
+
+      queryParams.delete("genre");
+      navigate({
+        pathname: location.pathname,
+        search: queryParams.toString()
+      }, { replace: true });
     }
-  }, [location.search]);
+  }, [location.search, navigate]);
 
   const handleSetGenres = (genre) => {
     if (genre === "all genres") {
@@ -89,7 +95,7 @@ function AlbumListings() {
             </div>
 
             <div id="container-genre-tags">
-              {["all genres", "pop", "alternative", "rap", "r&b", "electronic", "rock", "experimental", "jazz", "country"].map((genre) => (
+              {["all genres", "pop", "alternative", "rap", "r&b", "electronic", "rock", "experimental", "jazz", "country"].map(genre => (
                 <div
                   key={genre}
                   className={`genre-tag ${genres.includes(genre) ? "selected" : ""}`}
@@ -110,7 +116,8 @@ function AlbumListings() {
             {filteredALbums?.map(album => (
 
               <div key={album.id} id="container-album">
-                <img src={album.album_art[0].album_art}
+                <img
+                  src={album.album_art[0].album_art}
                   alt="album-cover"
                   style={{ width: "215px", aspectRatio: "1/1", cursor: "pointer" }}
                   onClick={() => setSelectedAlbum(album)}
