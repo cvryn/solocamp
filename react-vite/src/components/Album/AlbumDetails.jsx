@@ -28,6 +28,10 @@ const AlbumDetails = () => {
   useEffect(() => {
     const fetchSupportedBys = async () => {
       try {
+
+        setSupportedBys([]);
+        setUserHasReviewed(false);
+
         const data = await getSupportedBysByAlbum(albumId);
         setSupportedBys(data);
 
@@ -40,7 +44,6 @@ const AlbumDetails = () => {
 
     fetchSupportedBys();
   }, [albumId, currentUser.id]);
-
   const userAlbums = allAlbums.filter(a => a.user_username === album.user_username);
   const sameGenres = allAlbums.filter(a => a.genre === album.genre);
   const shuffledGenres = shuffleArray([...sameGenres]);
@@ -116,7 +119,6 @@ const AlbumDetails = () => {
                 <div className="supported-by-users-comments">
                   <SupportedByList album={album} supportedBys={supportedBys} />
                 </div>
-
 
                 <ReviewForm
                   albumId={albumId}

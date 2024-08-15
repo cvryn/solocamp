@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supportedByLoader } from "../../router/supportedbys"; // Import your loader function
+import { supportedByLoader } from "../../router/supportedbys";
 import { useModal } from "../../context/Modal";
 
 const EditSupportedByModal = ({ supportedBy, onEditComplete }) => {

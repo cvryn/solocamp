@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { supportedByLoader } from "../../router/supportedbys"; // Import your loader function
-import { useModal } from "../../context/Modal"; // Import modal context
+import { supportedByLoader } from "../../router/supportedbys"; 
+import { useModal } from "../../context/Modal";
 
 const PostReviewModal = ({ albumId, onReviewSubmit, songs, closeModal }) => {
   const [description, setDescription] = useState("");
@@ -18,7 +18,7 @@ const PostReviewModal = ({ albumId, onReviewSubmit, songs, closeModal }) => {
       console.log("New review submitted:", newReview);
 
       onReviewSubmit(newReview);
-      closeModal(); // Close the modal on successful submission
+      closeModal();
     } catch (error) {
       console.error("Failed to submit review:", error);
     }
