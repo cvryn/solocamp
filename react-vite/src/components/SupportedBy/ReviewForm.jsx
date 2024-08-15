@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { createSupportedBy } from "../../router/supportedbys";
 
 const ReviewForm = ({ albumId, songs = [], onReviewSubmitted, canLeaveReview }) => {
   const [reviewText, setReviewText] = useState("");
   const [selectedSongId, setSelectedSongId] = useState(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const currentUser = useSelector((state) => state.session.user);
-
+  
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     const reviewData = {

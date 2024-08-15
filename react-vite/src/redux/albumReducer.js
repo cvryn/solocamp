@@ -34,8 +34,7 @@ export const thunkGetAlbums = () => async (dispatch) => {
     }
 }
 export const thunkUpdateAlbum = (album) => async (dispatch) => {
-    let { 
-        user_id, 
+    let {
         album_id,
         album_art_id,
         name,
@@ -48,44 +47,44 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
         backgroundcolor } = album;
 
     const res = await fetch(`/api/albums/${album_id}`, {
-        method:'PUT',
+        method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             name, year, genre, price, description
         })
     })
-    if(res.ok){
+    if (res.ok) {
         const newAl = await res.json()
         dispatch(updateAlbum(newAl))
-        const resImg = await fetch(`/api/album-art/${album_art_id}`,{
-            method:'PUT',
+        const resImg = await fetch(`/api/album-art/${album_art_id}`, {
+            method: 'PUT',
             headers: { "Content-Type": "application/json" },
-            body:JSON.stringify({
-                album_art:albumart,
-                album_banner:albumbanner,
-                background_color:backgroundcolor,
-                album_id:album_id
+            body: JSON.stringify({
+                album_art: albumart,
+                album_banner: albumbanner,
+                background_color: backgroundcolor,
+                album_id: album_id
             })
         });
-        if(resImg.ok){
+        if (resImg.ok) {
             const newImg = await resImg.json();
-            newAl.album_art= [newImg];
-            
-            return {newAl, newImg};
+            newAl.album_art = [newImg];
+
+            return { newAl, newImg };
         }
     }
 }
 
 export const thunkCreateAlbum = (album) => async (dispatch) => {
-    let { user_id, name, year,genre,price,description,albumart,albumbanner,backgroundcolor } = album;
-    if(!albumart){
-        albumart="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
+    let { name, year, genre, price, description, albumart, albumbanner, backgroundcolor } = album;
+    if (!albumart) {
+        albumart = "https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
     }
-    if(!albumbanner){
-        albumart="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
+    if (!albumbanner) {
+        albumart = "https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
     }
-    if(!backgroundcolor){
-        albumart="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
+    if (!backgroundcolor) {
+        albumart = "https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
     }
     const response = await fetch("/api/albums/", {
         method: "POST",
@@ -99,31 +98,31 @@ export const thunkCreateAlbum = (album) => async (dispatch) => {
         const newAl = await response.json();
         dispatch(addAlbum(newAl));
         const resImg = await fetch(`api/album-art/${newAl.id}`, {
-            method:'POST',
+            method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                album_art:albumart,
-                album_banner:albumbanner,
-                background_color:backgroundcolor,
-                album_id:newAl.id
+                album_art: albumart,
+                album_banner: albumbanner,
+                background_color: backgroundcolor,
+                album_id: newAl.id
             })
         })
-        if(resImg.ok){
+        if (resImg.ok) {
             const newImg = await resImg.json();
-           console.log('in new img thunk',newImg)
-            newAl.album_art= [newImg];
-            
-            return {newAl, newImg};
+            console.log('in new img thunk', newImg)
+            newAl.album_art = [newImg];
+
+            return { newAl, newImg };
         }
-        
-    } 
+
+    }
 }
 
-export const thunkDeleteAlbum = (id) => async(dispatch) => {
+export const thunkDeleteAlbum = (id) => async (dispatch) => {
     const res = await fetch(`/api/albums/${id}`, {
-        method:'DELETE'
+        method: 'DELETE'
     });
-    if(res.ok){
+    if (res.ok) {
         dispatch(deleteAlbum(id));
         return;
     }
@@ -137,10 +136,11 @@ function albumReducer(state = initialState, action) {
             return { ...state, album: action.payload }
         case GET_ALBUMS:
             return { ...state, album: action.payload }
-        case DELETE_ALBUM:
-            const newState = {...state};
+        case DELETE_ALBUM: {
+            let newState = { ...state };
             delete newState[action.id];
             return newState;
+        }
         default:
             return state;
     }

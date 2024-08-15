@@ -1,17 +1,12 @@
 import './HomePage.css';
-// import { SiYoutubemusic } from "react-icons/si";
-// import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMusicalNotesOutline } from "react-icons/io5";
-
 import { FaLocationDot } from "react-icons/fa6";
 import { LuCassetteTape } from "react-icons/lu";
 import { IoTimeOutline } from "react-icons/io5";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Pagination from './Pagination';
-// import CreateAlbumButton from './CreateAlbumButton';
-// import { thunkGetAlbums } from '../../redux/albumReducer';
-// import { useDispatch, useSelector } from 'react-redux';
+
 
 
 const HorizontalScrollImages = () => {
