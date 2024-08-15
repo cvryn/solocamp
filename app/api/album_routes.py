@@ -254,8 +254,27 @@ def add_to_wishlist(album_id):
     return {"message": "Album added to wishlist"}, 201
 
 
+# add album to collection belonging to current user
+@album_routes.route("/<int:album_id>/collection", methods=["POST"])
+def add_to_collection(album_id):
+    album = Album.query.get(album_id)
+
+    if not current_user.is_authenticated:
+        return {"error": "User not authenticated"}, 401
+
+    if album is None:
+        return {"error": "Album not found"}, 404
+
+    if album.user_id == current_user.id:
+        return {"error": "Forbidden"}, 403
+
+    current_user.album_in_collection.append(album)
+    db.session.commit()
+    return {"message": "Album added to collection"}, 201
+
+
 # POST - add album to current user's shopping cart from the album id
-@album_routes.route('/<int:album_id>/shopping-cart', methods=['POST'])
+@album_routes.route("/<int:album_id>/shopping-cart", methods=["POST"])
 def add_to_shopping_cart(album_id):
     album = Album.query.get(album_id)
 

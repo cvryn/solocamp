@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .wishlist import wishlist
+from .collection import collection
 from .shoppingcart import shopping_cart
 
 
@@ -23,14 +24,17 @@ class User(db.Model, UserMixin):
     album_in_wishlist = db.relationship(
         "Album", secondary=wishlist, back_populates="user_in_wishlist"
     )
+    album_in_collection = db.relationship(
+        "Album", secondary=collection, back_populates="user_in_collection"
+    )
     album_in_shopping_cart = db.relationship(
         "Album", secondary=shopping_cart, back_populates="user_in_shopping_cart"
     )
-    # album = db.relationship('Album', back_populates='user')
+
     # one-to-many relationships
+    album = db.relationship("Album", back_populates="user")
     song = db.relationship("Song", back_populates="user")
     supported_by = db.relationship("SupportedBy", back_populates="user")
-    # shopping_cart = db.relationship("ShoppingCart", back_populates="user")
 
     @property
     def password(self):

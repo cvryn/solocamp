@@ -1,8 +1,8 @@
 """initial migration
 
-Revision ID: 4bf2d7412008
+Revision ID: b9b87ec80891
 Revises: 
-Create Date: 2024-08-14 18:41:57.089979
+Create Date: 2024-08-14 21:39:41.583359
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4bf2d7412008'
+revision = 'b9b87ec80891'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -49,6 +49,13 @@ def upgrade():
     sa.Column('album_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
     sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('collections',
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('album_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('user_id', 'album_id')
     )
     op.create_table('shopping_carts',
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -97,6 +104,7 @@ def downgrade():
     op.drop_table('wishlists')
     op.drop_table('songs')
     op.drop_table('shopping_carts')
+    op.drop_table('collections')
     op.drop_table('album_arts')
     op.drop_table('albums')
     op.drop_table('users')

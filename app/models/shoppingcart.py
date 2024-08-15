@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
+
 shopping_cart = db.Table(
     "shopping_carts",
     db.Column(
@@ -18,4 +19,3 @@ shopping_cart = db.Table(
 
 if environment == "production":
     shopping_cart.schema = SCHEMA
-
