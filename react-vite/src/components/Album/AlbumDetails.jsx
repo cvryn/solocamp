@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import { PiCopyright } from "react-icons/pi";
@@ -20,7 +20,6 @@ const shuffleArray = (array) => {
 };
 
 const AlbumDetails = () => {
-  const dispatch = useDispatch();
   const { albumId } = useParams();
   // console.log(albumId)
 
@@ -30,19 +29,22 @@ const AlbumDetails = () => {
   console.log("what songs are in this album", songs);
   console.log("ALL Of THEM", allAlbums);
 
-  const supportedBys = useSelector(
-    (state) => state.supportedBys[albumId] || []
-  );
-  console.log("who supports this album?", supportedBys);
+  const [supportedBys, setSupportedBys] = useState([]);
+
+  useEffect(() => {
+    const fetchSupportedBys = async () => {
+      try {
+        const data = await getSupportedBys(albumId);
+        setSupportedBys(data);
+      } catch (error) {
+        console.error("Error fetching supported by data:", error);
+      }
+    };
+
+    fetchSupportedBys();
+  }, [albumId]);
 
   // Fetch supported by by album id from the backend using react thunks
-  useEffect(() => {
-    dispatch(getSupportedBys(albumId));
-  }, [dispatch, albumId]);
-
-  useEffect(() => {
-    console.log("Supported Bys:", supportedBys);
-  }, [supportedBys]);
 
   const userAlbums = allAlbums.filter(
     (a) => a.user_username === album.user_username
@@ -57,7 +59,6 @@ const AlbumDetails = () => {
 
   return (
     <>
-      {/* <h1>ʕ*•ﻌ•ʔฅ</h1> */}
       <div id="banner-image-album-details">
         <img
           className="banner-art-album-details"
@@ -71,14 +72,13 @@ const AlbumDetails = () => {
           <div id="track-title-container-album-details">
             <h1>{album?.name}</h1>
             <h5 className="album-name-and-artist-name">
-              from {album?.name} by {album?.user_username}{" "}
+              from {album?.name} by {album?.user_username}
             </h5>
           </div>
           <br />
 
           <div id="album-detail-container">
             <section id="left-column-container-album-details">
-              {/* <h1>ʕ*•͈ ﻌ •͈ʔฅ left</h1> */}
               <div id="music-player-table-container">
                 music player placeholder!
               </div>
@@ -100,7 +100,7 @@ const AlbumDetails = () => {
                     style={{ fontSize: "18px", cursor: "pointer" }}
                   >
                     Buy Digital Track
-                  </button>{" "}
+                  </button>
                   &nbsp;
                   <span style={{ fontSize: "18px", fontWeight: "bold" }}>
                     ${album?.price}&nbsp;
@@ -125,7 +125,6 @@ const AlbumDetails = () => {
                 <span>{album?.description}</span>
                 <br />
                 <br />
-                {/* <span>30 downloads available</span> */}
               </div>
 
               <div className="release-date-album-details">
@@ -142,7 +141,6 @@ const AlbumDetails = () => {
               </div>
             </section>
             <section id="middle-column-container-album-details">
-              {/* <h1>ʕ*•͈ ﻌ •͈ʔฅ middle</h1> */}
               <div className="album-art-album-details">
                 <img
                   className="album-art-image-album-details"
@@ -164,11 +162,8 @@ const AlbumDetails = () => {
               </div>
             </section>
             <section id="right-column-container-album-details">
-              {/* <h1>ʕ*•͈ ﻌ •͈ʔฅ right</h1> */}
               <div id="shopping-cart-container">
-                {" "}
-                SHOPPING CART COMPONENT, ONLY SHOWS UP IF USER CLICKS Buy
-                Digital Album
+                SHOPPING CART COMPONENT, ONLY SHOWS UP IF USER CLICKS Buy Digital Album
               </div>
               <div className="user-profile-pic-album-details">
                 <img
@@ -179,8 +174,6 @@ const AlbumDetails = () => {
               </div>
               <div id="artist-info-container-album-details">
                 <span>{album.user_username}</span>
-                <br />
-                {/* <span>artist location</span> */}
               </div>
               <button className="follow-artist-button-album-details">
                 Follow
@@ -208,25 +201,23 @@ const AlbumDetails = () => {
       </div>
 
       <section id="bottom-container-album-details">
-        <div className="may-also-like-album-details" style={{padding: '15px 0'}}>
+        <div className="may-also-like-album-details" style={{ padding: '15px 0' }}>
           If you like {album.genre}, you might also like:
         </div>
-          <div className="album-art-may-also-like-album-details">
-            {shuffledGenres.map((genre, index) => {
-              if (index < 8) {
-                return (
-                  <li key={genre.id}>
-                    <AlbumItem album={genre} />
-                  </li>
-                );
-              }
-              return null;
-            })}
-          </div>
+        <div className="album-art-may-also-like-album-details">
+          {shuffledGenres.map((genre, index) => {
+            if (index < 8) {
+              return (
+                <li key={genre.id}>
+                  <AlbumItem album={genre} />
+                </li>
+              );
+            }
+            return null;
+          })}
+        </div>
       </section>
-
-<br />
-
+      <br />
     </>
   );
 };

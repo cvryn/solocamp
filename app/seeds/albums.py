@@ -61,7 +61,7 @@ def seed_albums():
         year=2013,
         genre="pop",
         price=19.99,
-        purchased=False,
+        purchased=True,
         description="Sam Smith's debut EP, Nirvana, showcases their powerful vocals and introspective songwriting. With tracks like 'Safe with Me' and the acoustic cover of 'Latch,' the EP established Smith as a rising star in the soul and R&B scene.",
     )
 
@@ -71,7 +71,7 @@ def seed_albums():
         year=2014,
         genre="r&b",
         price=19.99,
-        purchased=False,
+        purchased=True,
         description="Sam Smith's critically acclaimed debut album, 'In the Lonely Hour,' showcases their powerful vocals and deeply personal songwriting. With hits like 'Stay with Me' and 'I'm Not the Only One,' the album explores themes of heartbreak and longing with raw emotion.",
     )
 

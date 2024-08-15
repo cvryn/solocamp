@@ -177,8 +177,8 @@ def supported_bys_by_album(album_id):
     return [supported_by.to_dict() for supported_by in supported_bys], 200
 
 
-# POST Edit existing supportedby
-@album_routes.route("/<int:album_id>", methods=["POST"])
+# POST post new supportedby
+@album_routes.route("/<int:album_id>/supported-bys", methods=["POST"])
 def post_supported_bys(album_id):
     if not current_user.is_authenticated:
         return {"error": "User not authenticated"}, 401
