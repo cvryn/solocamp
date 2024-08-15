@@ -1,0 +1,33 @@
+#banner-user-profile {
+  height: 100px;
+  background: linear-gradient(to right, rgb(106, 13, 173), rgb(247, 140, 64));
+  position: relative;
+  z-index: -1;
+}
+
+#container-user-profile {
+  margin: auto;
+  min-height: 1000px;
+  max-width: 1500px;
+  width: 95%;
+}
+
+#container-details-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: absolute;
+  top: 170px;
+  z-index: -1;
+}
+
+#container-user-album-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#container-collections-wishlist{
+  display: flex;
+  gap: 50px
+}

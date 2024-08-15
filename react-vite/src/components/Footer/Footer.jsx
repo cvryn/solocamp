@@ -16,15 +16,15 @@ function Footer() {
           />
         </Link>
         <div id="container-quick-links-footer">
-          <span>About</span>
-          <span>Help</span>
-          <span>Terms of Use</span>
-          <span>Privacy</span>
+          <Link to="/about">About</Link>
+          <span style={{ cursor: "not-allowed" }}>Help</span>
+          <span style={{ cursor: "not-allowed" }}>Terms of Use</span>
+          <span style={{ cursor: "not-allowed" }}>Privacy</span>
           <span>© {currentYear} solocamp, inc.</span>
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 

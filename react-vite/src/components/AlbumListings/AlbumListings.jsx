@@ -1,4 +1,5 @@
-import { Link, NavLink, useLoaderData, useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import { FiSearch } from "react-icons/fi";
 import { IoIosPlay } from "react-icons/io";
 import { SlHeart } from "react-icons/sl";
@@ -8,8 +9,58 @@ import "./AlbumListings.css"
 function AlbumListings() {
   const albums = useLoaderData()
   const navigate = useNavigate()
+  const location = useLocation()
 
-  console.log('albums plz', albums)
+  const [selectedAlbum, setSelectedAlbum] = useState(() => {
+    const randomIndex = Math.floor(Math.random() * albums.length);
+    return albums[randomIndex];
+  })
+  const [genres, setGenres] = useState(["all genres"])
+  const [search, setSearch] = useState("")
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const genreParam = queryParams.get("genre");
+
+    if (genreParam) {
+      if (genreParam === "all-genres") {
+        setGenres(["all genres"]);
+      } else if (genreParam === "rb") {
+        setGenres(["r&b"])
+      } else {
+        setGenres([genreParam]);
+      }
+    }
+  }, [location.search]);
+
+  const handleSetGenres = (genre) => {
+    if (genre === "all genres") {
+      setGenres(["all genres"]);
+    } else {
+      setGenres(prev => {
+        if (prev.includes("all genres")) {
+          return [genre];
+        } else {
+          return prev.includes(genre)
+            ? prev.filter(g => g !== genre)
+            : [...prev, genre];
+        }
+      });
+    }
+  };
+
+  const handleSearch = () => {
+    const searchGenre = search.trim().toLowerCase();
+    if (searchGenre) {
+      if (["pop", "alternative", "rap", "r&b", "electronic", "rock", "experimental", "jazz", "country"].includes(searchGenre)) {
+        handleSetGenres(searchGenre);
+      }
+    }
+  };
+
+  const filteredALbums = genres.length && !genres.includes("all genres")
+    ? albums.filter(album => genres.includes(album.genre.toLowerCase()))
+    : albums;
 
   return (
     <>
@@ -19,53 +70,67 @@ function AlbumListings() {
             <div id="container-search-bar-album-listings">
               <FiSearch style={{ color: "white" }} />
               <input style={{
-                height: "35px", width: "300px", color: "white", backgroundColor: "rgb(60, 60, 60)", border: "none"
+                height: "35px",
+                width: "90%",
+                color: "white",
+                backgroundColor: "rgb(60, 60, 60)",
+                border: "none"
               }}
                 placeholder="Add a genre, location, or tag"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === "Enter") {
+                    e.preventDefault()
+                    handleSearch()
+                  }
+                }}
               />
             </div>
 
             <div id="container-genre-tags">
-              <NavLink to=""><div className="genre-tag">all genres</div></NavLink>
-              <NavLink to=""><div className="genre-tag">pop</div></NavLink>
-              <NavLink to=""><div className="genre-tag">alternative</div></NavLink>
-              <NavLink to=""><div className="genre-tag">rap</div></NavLink>
-              <NavLink to=""><div className="genre-tag">r&b</div></NavLink>
-              <NavLink to=""><div className="genre-tag">electronic</div></NavLink>
-              <NavLink to=""><div className="genre-tag">rock</div></NavLink>
-              <NavLink to=""><div className="genre-tag">experimental</div></NavLink>
-              <NavLink to=""><div className="genre-tag">jazz</div></NavLink>
-              <NavLink to=""><div className="genre-tag">country</div></NavLink>
+              {["all genres", "pop", "alternative", "rap", "r&b", "electronic", "rock", "experimental", "jazz", "country"].map((genre) => (
+                <div
+                  key={genre}
+                  className={`genre-tag ${genres.includes(genre) ? "selected" : ""}`}
+                  onClick={() => handleSetGenres(genre.toLowerCase())}
+                  style={{ cursor: "pointer" }}
+                >
+                  {genre}
+                </div>
+              ))}
             </div>
-
-            <span style={{ marginTop: "10px", alignSelf: "flex-end", cursor: "pointer", color: "white" }}>clear all filters</span>
           </div>
         </div>
       </div>
 
       <div id="container-album-listings-outer">
-        <div id="container-album-listings-inner">
+        <div id="container-album-listings-grid">
+          <div id="container-album-listings">
+            {filteredALbums?.map(album => (
 
-          <div id="container-album-listings-grid">
-            <div id="container-album-listings">
-              {albums.map(album => (
-                <Link key={album.id} to={`/albums/${album.id}`}>
-                  <div id="container-album">
-                    <img src={album.album_art[0].album_art}
-                      alt="album-cover"
-                      style={{ width: "215px", aspectRatio: "1/1" }}
-                    />
+              <div key={album.id} id="container-album">
+                <img src={album.album_art[0].album_art}
+                  alt="album-cover"
+                  style={{ width: "215px", aspectRatio: "1/1", cursor: "pointer" }}
+                  onClick={() => setSelectedAlbum(album)}
+                />
+
+                <Link to={`/albums/${album.id}`}>
+                  <div id="container-album-text">
                     <span>{album.name}</span>
                     <span>by {album.user_username}</span>
-                    <span>{album.genre}</span>
                   </div>
                 </Link>
-              ))}
-            </div>
+                <span style={{ color: "gray", marginTop: "5px" }}>{album.genre}</span>
+              </div>
+            ))}
+          </div>
 
+          {selectedAlbum && (
             <div id="container-current-album-outer">
               <div id="container-current-album-inner">
-                <img src={albums[23].album_art[0].album_art}
+                <img src={selectedAlbum.album_art[0].album_art}
                   alt="alum-cover"
                   style={{ width: "500px", aspectRatio: "1/1" }}
                 />
@@ -89,8 +154,8 @@ function AlbumListings() {
                     justifyContent: "center",
                     gap: "5px"
                   }}>
-                    <span>{albums[23].name}</span>
-                    <span>by {albums[23].user_username}</span>
+                    <span>{selectedAlbum.name}</span>
+                    <span>by {selectedAlbum.user_username}</span>
                   </div>
                 </div>
 
@@ -99,31 +164,34 @@ function AlbumListings() {
                   gap: "10px"
                 }}>
                   <button
-                    className="wishlist-button-album-listings"
-                    onClick={() => navigate("/albums/24")}
+                    className="button-wishlist-album-listings"
+                    onClick={() => navigate(`/albums/${selectedAlbum.id}`)}
                   >
                     Go to album
                   </button>
-                  <button className="wishlist-button-album-listings" >
+                  <button className="button-wishlist-album-listings" >
                     <SlHeart style={{ fontSize: "1.7rem" }} />Wishlist
                   </button>
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-                  <span>{ } tracks</span>
-                  <span>released in {albums[23].year}</span>
+
+                  {selectedAlbum.songs.length === 1
+                    ? (<span>{selectedAlbum.songs.length} track</span>)
+                    : (<span>{selectedAlbum.songs.length} tracks</span>)
+                  }
+                  <span>released in {selectedAlbum.year}</span>
                 </div>
 
-                <p>{albums[23].description}</p>
+                <p>{selectedAlbum.description}</p>
               </div>
             </div>
-          </div>
-
+          )}
         </div>
       </div >
     </>
-  )
+  );
 }
 
 
-export default AlbumListings
+export default AlbumListings;
