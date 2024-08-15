@@ -20,21 +20,13 @@ export const router = createBrowserRouter([
         path: '/',
         element: <HomePage />,
         loader: async () => {
-<<<<<<< HEAD
           const response = await fetch("/api/albums");
           if (response.ok) {
-              return await response.json();  // This ensures you get the parsed JSON data
+            return await response.json();
           } else {
-              throw new Error("Failed to fetch albums");
+            throw new Error("Failed to fetch albums");
           }
-      }
-      //   loader: async ()=> {
-      //     return await fetch('/api/albums')
-      // }
-=======
-          return await fetch('/api/albums')
         }
->>>>>>> wishlist-2
       },
       {
         path: "/albums",
@@ -50,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/manage-albums",
-        element: <ManageAlbum/>
+        element: <ManageAlbum />
       },
       {
         path: "/user",

@@ -13,7 +13,7 @@ function UserProfile() {
   const [wishlist, setWishlist] = useState(true)
 
   const ownAlbums = albums?.filter(album => album?.user_id === currentUser?.id)
-  const latestReleaseYear = Math.max(...ownAlbums?.map(album => album.year));
+  const latestReleaseYear = Math.max(...ownAlbums.map(album => album.year));
   const latestAlbum = albums?.find(album => album.year === latestReleaseYear)
 
   if (!currentUser) return null

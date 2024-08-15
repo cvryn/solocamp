@@ -37,7 +37,7 @@ function AlbumListings() {
         search: queryParams.toString()
       }, { replace: true });
     }
-  }, [location.search, navigate]);
+  }, [location.search, navigate, location.pathname]);
 
   const handleSetGenres = (genre) => {
     if (genre === "all genres") {
