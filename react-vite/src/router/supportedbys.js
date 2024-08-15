@@ -22,7 +22,10 @@ export const supportedByLoader = async (method, endpoint, data = null) => {
 };
 
 export const getSupportedBys = () => supportedByLoader('GET', '/api/supported-by/all');
+export const getSupportedBysByAlbum = (albumId) =>
+  supportedByLoader('GET', `/api/supported-by/album/${albumId}`);
+
 export const createSupportedBy = (albumId, data) =>
-  supportedByLoader('POST', `/api/albums/${albumId}/supported-bys`, data);
+  supportedByLoader('POST', `/api/supported-by/${albumId}`, data);
 export const updateSupportedBy = ({ params, data }) => supportedByLoader('PUT', `/api/supported-by/${params.supportedById}`, data);
 export const deleteSupportedBy = ({ params }) => supportedByLoader('DELETE', `/api/supported-by/${params.supportedById}`);

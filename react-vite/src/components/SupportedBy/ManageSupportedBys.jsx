@@ -1,9 +1,7 @@
-// src/components/ManageSupportedBys.js
-
 import { useSelector } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 import SupportedByItems from "./SupportedByItems";
-import { deleteSupportedBy, getSupportedBys } from "../../router/supportedbys"; // Import getSupportedBys
+import { deleteSupportedBy, getSupportedBys } from "../../router/supportedbys";
 import { useState } from "react";
 import "./ManageSupportedBys.css";
 
@@ -33,7 +31,7 @@ const ManageSupportedBys = () => {
   return (
     <div>
       <br />
-      <h1>Manage My Reviews</h1>
+      <h1 style={{padding: '10px'}}>Manage My Reviews</h1>
       <br />
       <div id="album-container-collection">
         {userSupportedBys.length > 0 ? (

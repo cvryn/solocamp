@@ -361,8 +361,8 @@ def seed_songs():
     ninja = Song(
         title="Ninja", track_number=1, song_url="song_url", album_id=17, user_id=7
     )
-    weiyuan_stroy = Song(
-        title="Weiyuan stroy",
+    weiyuan_story = Song(
+        title="Weiyuan story",
         track_number=1,
         song_url="song_url",
         album_id=18,
@@ -1076,7 +1076,7 @@ def seed_songs():
         title="By the Way",
         track_number=1,
         song_url="song_url",
-        album_id=1,
+        album_id=29,
         user_id=15,
     )
 
@@ -1552,7 +1552,7 @@ def seed_songs():
             ninja,
             fantasy,
             icekingdom,
-            weiyuan_stroy,
+            weiyuan_story,
             jasmine,
         ]
     )

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DeleteReviewModal from "./DeleteSupportedByModal";
-import EditSupportedByModal from "./EditSupportedByModal"; // Import the EditSupportedByModal
+import EditSupportedByModal from "./EditSupportedByModal";
 import { useModal } from "../../context/Modal";
 import "./SupportedByItems.css";
 
@@ -20,7 +20,10 @@ const SupportedByItems = ({ supportedBys, onDelete, onEdit }) => {
       <EditSupportedByModal
         supportedBy={supportedBy}
         onEditComplete={(updatedSupportedBy) => {
-          onEdit(updatedSupportedBy);
+          const updatedSupportedBys = supportedBys.map((sb) =>
+            sb.id === updatedSupportedBy.id ? updatedSupportedBy : sb
+          );
+          onEdit(updatedSupportedBys);
         }}
       />
     );

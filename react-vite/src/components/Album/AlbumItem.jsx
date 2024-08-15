@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./AlbumItems.css";
 
 const AlbumItem = ({ album }) => {
-//   console.log("HOW DO I SEE THIS", album);
+// console.log("HOW DO I SEE THIS", album);
   return (
     <Link to={`/albums/${album.id}`}>
     <div id="albums-container-album-items">
