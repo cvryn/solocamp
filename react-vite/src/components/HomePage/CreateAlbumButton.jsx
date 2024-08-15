@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+// import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import CreateAlbumFormModal from "./CreateAlbumFormModal";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
@@ -10,15 +10,15 @@ import '../Navigation/Navigation.css'
 
 
 function CreateAlbumButton() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
 
-  const toggleMenu = (e) => {
-    e.stopPropagation(); 
-    setShowMenu(!showMenu);
-  };
+  // const toggleMenu = (e) => {
+  //   e.stopPropagation(); 
+  //   setShowMenu(!showMenu);
+  // };
 
   useEffect(() => {
     if (!showMenu) return;

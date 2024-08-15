@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkDeleteAlbum, thunkGetAlbums } from "../../redux/albumReducer"
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import './ManageAlbum.css'
 import CreateAlbumButton from "../HomePage/CreateAlbumButton";
 import UpdateAlbumButton from "./UpdateAlbumButton";
@@ -17,7 +17,7 @@ export default function ManageAlbum() {
             await dispatch(thunkGetAlbums())
         }
         func()
-    }, []);
+    }, [dispatch]);
     const data = useSelector(state => state.albums.album)
     if (!Array.isArray(data)) {
         return <p>No albums available.</p>;

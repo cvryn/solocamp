@@ -9,22 +9,17 @@ import { IoTimeOutline } from "react-icons/io5";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, useRef } from 'react';
 import Pagination from './Pagination';
-import CreateAlbumButton from './CreateAlbumButton';
-import { thunkGetAlbums } from '../../redux/albumReducer';
-import { useDispatch, useSelector } from 'react-redux';
-
-
-// import SongPlaying from './SongPlaying';
-
-// import { useSelector } from 'react-redux';
+// import CreateAlbumButton from './CreateAlbumButton';
+// import { thunkGetAlbums } from '../../redux/albumReducer';
+// import { useDispatch, useSelector } from 'react-redux';
 
 
 const HorizontalScrollImages = () => {
   
     let albumData = useLoaderData();
-    if (!Array.isArray(albumData)) {
-        return <p>No albums available.</p>;  // Handle cases where data isn't an array
-    }
+    // if (!Array.isArray(albumData)) {
+    //     return <p>No albums available.</p>;  // Handle cases where data isn't an array
+    // }
     
     const [displayedImages, setDisplayedImages] = useState(albumData.slice(0, 8));
     const containerRef = useRef(null);

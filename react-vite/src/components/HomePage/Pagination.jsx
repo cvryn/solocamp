@@ -32,7 +32,7 @@ const Pagination = ({ albumData }) => {
                         <div key={albumEl.id} className='container-album-detail-home'>
                             <img 
                             onClick={()=> handleImageClick(albumEl.id)}
-                                style={{ width: '100%', height: '120px', width:'120px' }} src={albumEl.album_art[0].album_art} />
+                                style={{ height: '120px', width:'120px' }} src={albumEl.album_art[0].album_art} />
                             <div className='album-genre'>
                             <div>{albumEl.name}</div>
                             <div>{albumEl.user_username}</div>
