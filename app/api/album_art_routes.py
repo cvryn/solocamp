@@ -12,6 +12,29 @@ def album_art_all():
     arts = AlbumArt.query.all()
     return [art.to_dict() for art in arts]
 
+@album_art_routes.route("/<int:album_id>", methods=["POST"])
+def create_album_art(album_id):
+    if not current_user.is_authenticated:
+        return {"error": "User not authenticated"}, 401
+
+    form = AlbumArtForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        new_album_art = AlbumArt(
+            album_art=form.data['album_art'],
+            album_banner=form.data['album_banner'],
+            background_color=form.data['background_color'],
+            album_id=album_id
+        )
+
+        db.session.add(new_album_art)
+        db.session.commit()
+        return new_album_art.to_dict(), 201  
+
+    return {"errors": form.errors}, 400
+
+
 
 @album_art_routes.route("<int:album_art_id>", methods=["GET", "PUT", "DELETE"])
 def album_art_get(album_art_id):

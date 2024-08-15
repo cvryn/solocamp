@@ -10,13 +10,22 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, useRef } from 'react';
 import Pagination from './Pagination';
 import CreateAlbumButton from './CreateAlbumButton';
+import { thunkGetAlbums } from '../../redux/albumReducer';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 // import SongPlaying from './SongPlaying';
 
 // import { useSelector } from 'react-redux';
 
+
 const HorizontalScrollImages = () => {
+  
     let albumData = useLoaderData();
+    if (!Array.isArray(albumData)) {
+        return <p>No albums available.</p>;  // Handle cases where data isn't an array
+    }
+    
     const [displayedImages, setDisplayedImages] = useState(albumData.slice(0, 8));
     const containerRef = useRef(null);
     const imageIndex = useRef(8);
@@ -60,8 +69,18 @@ const HorizontalScrollImages = () => {
 
 function HomePage() {
     let albumData = useLoaderData();
+    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // useEffect(()=> {
+    //     let func = async ()=> {
+    //         await dispatch(thunkGetAlbums())
+    //     }
+    //     func()
+    // },[dispatch])
+    // let albumData = useSelector(state=> state.albums.album)
+   
     // console.log('flag!!!!!!',albumData[0])
-    const imageUrls = albumData.map(album => album.album_art[0].album_art);
+    const imageUrls = albumData?.map(album => album.album_art[0].album_art);
 
     // const navigate = useNavigate()
     // const handleAlbumCreate = () => {
@@ -151,7 +170,8 @@ function HomePage() {
                         <div className='sigup-input-button-home' style={{ textAlign: 'center', marginTop: '20px' }}>
                             {/* <input placeholder='your email address'></input> */}
                             {/* <button onClick={()=> handleAlbumCreate()}style={{ backgroundColor: 'black', color: 'white' }}>CREATE ALBUM</button> */}
-                      <CreateAlbumButton/>
+                      {/* <CreateAlbumButton/> */}
+                      <button onClick={()=> navigate('/manage-albums')}>Manage Album</button>
                         </div>
                     </div>
                     <div className="container-discover-home">

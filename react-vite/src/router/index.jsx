@@ -7,6 +7,7 @@ import Checkout from '../components/Checkout/Checkout';
 import { albumLoader } from './album';
 import ManageSupportedBys from '../components/SupportedBy/ManageSupportedBys';
 import { getSupportedBys } from './supportedbys';
+import ManageAlbum from '../components/ManageAlbum/ManageAlbum';
 
 
 export const router = createBrowserRouter([
@@ -16,9 +17,17 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
-        loader: async ()=> {
-          return await fetch('/api/albums')
+        loader: async () => {
+          const response = await fetch("/api/albums");
+          if (response.ok) {
+              return await response.json();  // This ensures you get the parsed JSON data
+          } else {
+              throw new Error("Failed to fetch albums");
+          }
       }
+      //   loader: async ()=> {
+      //     return await fetch('/api/albums')
+      // }
       },
       {
         path: "/albums",
@@ -32,10 +41,10 @@ export const router = createBrowserRouter([
         element: <AlbumDetails />,
         loader: albumLoader,
       },
-      // {
-      //   path: "/albums/new",
-      //   element: <CreateAlbumFormModal/>
-      // },
+      {
+        path: "/manage-albums",
+        element: <ManageAlbum/>
+      },
       {
         path: "/checkout",
         element: <Checkout />

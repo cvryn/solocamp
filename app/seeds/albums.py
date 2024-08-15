@@ -124,7 +124,7 @@ def seed_albums():
         genre="r&b",
         price=100.10,
         purchased=False,
-        description="The album was met with positive reviews from music critics upon its release. In Taiwan, it peaked at number one on the G-Music album chart for multiple weeks and was best-selling album of the year, with sales of over 280,000 copies.",
+        description="Jay's album was met with positive reviews from music critics upon its release. In Taiwan, it peaked at number one on the G-Music album chart for multiple weeks and was best-selling album of the year, with sales of over 280,000 copies.",
     )
 
     hotpot_soup = Album(
@@ -134,7 +134,7 @@ def seed_albums():
         genre="rap",
         price=9.99,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="This is a hard-hitting rap album that dives deep into the gritty realities of city life, blending raw lyrical prowess with infectious beats.",
     )
 
     lonely_dance = Album(
@@ -144,7 +144,7 @@ def seed_albums():
         genre="electronic",
         price=39.99,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="In this album, each track tells a unique story, from the struggles of growing up in tough neighborhoods to the triumphs of overcoming adversity.",
     )
 
     get_away_from_me = Album(
@@ -154,7 +154,7 @@ def seed_albums():
         genre="experimental",
         price=19.99,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="The album features a mix of introspective verses and high-energy anthems, with collaborations from some of the hottest names in the rap game. ",
     )
 
     shuo_ai_ni = Album(
@@ -164,7 +164,7 @@ def seed_albums():
         genre="pop",
         price=29.99,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="This album invites listeners to lose themselves in the music, dancing under the metaphorical stars and feeling the echoes of every note long after the music fades.",
     )
 
     ninja = Album(
@@ -174,7 +174,7 @@ def seed_albums():
         genre="rock",
         price=10.10,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="From uplifting anthems to heartfelt ballads, It is a celebration of the highs and lows of life, designed to make you move, sing along, and feel every beat.",
     )
 
     weiyuan_stroy = Album(
@@ -184,7 +184,7 @@ def seed_albums():
         genre="rap",
         price=29.99,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="The album explores themes of love, self-discovery, and the thrill of living in the moment, all wrapped up in polished production and dance-worthy beats.",
     )
 
     icekingdom = Album(
@@ -194,7 +194,7 @@ def seed_albums():
         genre="rap",
         price=39.99,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="With its powerful narratives and diverse soundscapes, It captures the essence of the streets, making it a must-listen for fans of authentic, unfiltered hip-hop.",
     )
 
     jasmine = Album(
@@ -204,7 +204,7 @@ def seed_albums():
         genre="r&b",
         price=19.99,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="Jasmine is a captivating pop album that blends the sparkle of celestial melodies with deep, resonant emotions. Each track is a sonic journey, where lush vocal harmonies meet shimmering electronic beats, creating a soundscape that's both dreamy and invigorating.",
     )
 
     fantasy = Album(
@@ -214,7 +214,7 @@ def seed_albums():
         genre="pop",
         price=29.99,
         purchased=False,
-        description="Cool Demo-Album created in 2011 by the infamous artist Demo-User",
+        description="Fantasy is a vibrant pop album that takes listeners on a journey through the electric pulse of modern life. Filled with catchy hooks, infectious melodies, and shimmering synths, each track offers a burst of energy and emotion.",
     )
 
     nineteen = Album(

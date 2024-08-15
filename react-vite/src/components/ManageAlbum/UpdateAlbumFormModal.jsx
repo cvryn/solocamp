@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkCreateAlbum } from "../../redux/albumReducer";
+import { thunkUpdateAlbum } from "../../redux/albumReducer";
 import { useNavigate } from "react-router-dom";
 
-function CreateAlbumFormModal() {
+
+function UpdateAlbumFormModal({el}) {
     const userId = useSelector(state => state.session.user.id)
+    // console.log('who is el?', el)
    
     const dispatch = useDispatch();
-    const [name, setName] = useState("");
-    const [year, setYear] = useState("");
-    const [genre, setGenre] = useState("");
-    const [price, setPrice] = useState("");
-    const [description, setDescription] = useState("");
-    const [albumart, setAlbumart] = useState("");
-    const [albumbanner, setAlbumbanner] = useState("");
-    const [backgroundcolor, setBackgroundcolor] = useState("");
+    const [name, setName] = useState(el.name);
+    const [year, setYear] = useState(el.year);
+    const [genre, setGenre] = useState(el.genre);
+    const [price, setPrice] = useState(el.price);
+    const [description, setDescription] = useState(el.description);
+    const [albumart, setAlbumart] = useState(el.album_art[0].album_art);
+    const [albumbanner, setAlbumbanner] = useState(el.album_art[0].album_banner);
+    const [backgroundcolor, setBackgroundcolor] = useState(el.album_art[0].background_color);
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
 
@@ -25,8 +27,10 @@ function CreateAlbumFormModal() {
         e.preventDefault();
 
         const serverResponse = await dispatch(
-            thunkCreateAlbum({
+            thunkUpdateAlbum({
                 user_id: userId,
+                album_id:el.id,
+                album_art_id: el.album_art[0].id,
                 name,
                 year,
                 genre,
@@ -59,7 +63,7 @@ function CreateAlbumFormModal() {
 
     return (
         <div id="container-signup-form-modal">
-            <h1>Create Album</h1>
+            <h1>Update Album</h1>
             {errors.server && <p>{errors.server}</p>}
 
             <form id="container-signup-form"
@@ -148,11 +152,11 @@ function CreateAlbumFormModal() {
                     />
                 </label>
                 {errors.backgroundcolor && <p>{errors.backgroundcolor}</p>}
-                <button type="submit">Create</button>
+                <button type="submit">Update</button>
 
             </form>
         </div>
     );
 }
 
-export default CreateAlbumFormModal
+export default UpdateAlbumFormModal

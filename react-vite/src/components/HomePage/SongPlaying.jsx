@@ -23,7 +23,6 @@ function SongPlaying({selectedImageId, albumData}) {
                     <div><IoMdHeartEmpty /></div>
                     <div>wishlist</div>
                 </div>
-                {/* <div>hear more</div> */}
             </div>
             
         </div>
