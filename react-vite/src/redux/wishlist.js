@@ -58,7 +58,6 @@ export const thunkWishlistAdlbumRemove = (albumId) => async (dispatch) => {
     method: "DELETE"
   });
   if (res.ok) {
-    // const data = await res.json();
     dispatch(removeAlbumFromWishlist({ id: albumId }));
   }
 };

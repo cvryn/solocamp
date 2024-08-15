@@ -35,7 +35,7 @@ def get_album_counts_in_wishlists():
     return albums
 
 
-# get wishlist belong to any user
+# get wishlist belong to current user
 @wishlist_routes.route("/<int:user_id>", methods=["GET"])
 def get_collection(user_id):
     user_exists = User.query.filter_by(id=user_id).first()

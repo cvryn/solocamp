@@ -1,20 +1,20 @@
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { thunkWishlistAlbumCount, thunkWishlistAlbums } from "../../redux/wishlist"
+import { thunkWishlistAlbumCount } from "../../redux/wishlist"
 import "./UserProfile.css"
-import { useEffect } from "react"
+
 
 
 function WishList() {
   const currentUser = useSelector(state => state.session.user)
-  const albumCountObj = useSelector(state => state.wishlist);
   const albumsInWishlist = useSelector(state => state.session.user.album_in_wishlist);
+  const albumCountObj = useSelector(state => state.wishlist);
   const albumCountArr = Object.values(albumCountObj);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(thunkWishlistAlbums(currentUser.id))
-    // dispatch(thunkWishlistAlbumCount())
+    dispatch(thunkWishlistAlbumCount())
   }, [dispatch]);
 
   if (!currentUser) return null

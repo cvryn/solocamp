@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { thunkWishlistAlbumAdd, thunkWishlistAdlbumRemove, thunkWishlistAlbums, thunkWishlistAlbumCount } from "../../redux/wishlist";
+import { thunkWishlistAlbumAdd, thunkWishlistAdlbumRemove, thunkWishlistAlbums } from "../../redux/wishlist";
 import { FiSearch } from "react-icons/fi";
 import { IoIosPlay } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
@@ -12,7 +12,6 @@ import "./AlbumListings.css"
 function AlbumListings() {
   const currentUser = useSelector(state => state.session.user);
   const albumsInWishlist = useSelector(state => state.session.user.album_in_wishlist);
-
   const dispatch = useDispatch();
   const albums = useLoaderData();
   const navigate = useNavigate();
@@ -24,11 +23,6 @@ function AlbumListings() {
   })
   const [genres, setGenres] = useState(["all genres"])
   const [search, setSearch] = useState("")
-
-  // useEffect(() => {
-  // dispatch(thunkWishlistAlbums(currentUser.id))
-  // dispatch(thunkWishlistAlbumCount())
-  // }, [dispatch]);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -76,23 +70,20 @@ function AlbumListings() {
     }
   };
 
-  const handleWishlist = (albumId) => {
+  const addToWishlist = (albumId) => {
     const albumData = {
       user_id: currentUser.id,
       album_id: albumId
     };
-
-    const isInWishlist = albumsInWishlist.some(album => album.id === albumId);
-
-    if (isInWishlist) {
-      dispatch(thunkWishlistAdlbumRemove(albumId))
-        .then(() => thunkWishlistAlbums(currentUser.id))
-
-    } else {
-      dispatch(thunkWishlistAlbumAdd(albumData))
-        .then(() => thunkWishlistAlbums(currentUser.id))
-    }
+    dispatch(thunkWishlistAlbumAdd(albumData))
+      .then(() => dispatch(thunkWishlistAlbums(currentUser.id)))
   };
+
+  const removeFromWishlist = (albumId) => {
+    dispatch(thunkWishlistAdlbumRemove(albumId))
+      .then(() => dispatch(thunkWishlistAlbums(currentUser.id)))
+  };
+
 
   const filteredAlbums = genres.length && !genres.includes("all genres")
     ? albums.filter(album => genres.includes(album.genre.toLowerCase()))
@@ -207,23 +198,32 @@ function AlbumListings() {
                   >
                     Go to album
                   </button>
-                  <button
-                    type="submit"
-                    id="button-add-to-wishlist-album-listings"
-                    onClick={() => (handleWishlist(selectedAlbum.id))}
-                  >
-                    {albumsInWishlist?.some(album => album.id === selectedAlbum.id)
-                      ? <FaRegHeart style={{ fontSize: "1.6rem" }} />
-                      : <FaHeart style={{ fontSize: "1.6rem" }} />}
-                    Wishlist
-                  </button>
+
+                  {
+                    albumsInWishlist?.some(album => album.id === selectedAlbum.id)
+                      ? <button
+                        type="submit"
+                        id="button-add-to-wishlist-album-listings"
+                        onClick={() => removeFromWishlist(selectedAlbum.id)}
+                      >
+                        <FaHeart style={{ fontSize: "1.6rem" }} /> Wishlist
+                      </button>
+                      : <button
+                        type="submit"
+                        id="button-add-to-wishlist-album-listings"
+                        onClick={() => addToWishlist(selectedAlbum.id)}
+                      >
+                        <FaRegHeart style={{ fontSize: "1.6rem" }} /> Wishlist
+                      </button>
+                  }
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
 
-                  {selectedAlbum.songs.length === 1
-                    ? (<span>{selectedAlbum.songs.length} track</span>)
-                    : (<span>{selectedAlbum.songs.length} tracks</span>)
+                  {
+                    selectedAlbum.songs.length === 1
+                      ? (<span>{selectedAlbum.songs.length} track</span>)
+                      : (<span>{selectedAlbum.songs.length} tracks</span>)
                   }
                   <span>released in {selectedAlbum.year}</span>
                 </div>
