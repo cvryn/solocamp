@@ -10,7 +10,8 @@ import UpdateAlbumButton from "./UpdateAlbumButton";
 
 export default function ManageAlbum() {
     const dispatch = useDispatch()
-    const userId = useSelector(state => state.session.user.id)
+    const userId = useSelector(state => state.session.user?.id)
+    if(!userId) return (<h2>Please log in or sign up before managing your albums</h2>)
     // console.log(userId)
     const albumArr = useSelector(state => state.albums.album?.filter(el => el.user_id == userId))
     useEffect(() => {
@@ -30,8 +31,8 @@ export default function ManageAlbum() {
     const handleDelete = async(id)=>{
         await dispatch(thunkDeleteAlbum(id))
     }
-    console.log(albumArr)
-    if(albumArr.length==0) return;
+    // console.log(albumArr)
+    if(albumArr.length==0) return (<h2>Post your first album on Solocamp</h2>);
     return (
         <div>
             <div className="container-manage-als" >
@@ -57,6 +58,6 @@ export default function ManageAlbum() {
 
             </div>
            
-        </div>
+        </div> 
     )
 }

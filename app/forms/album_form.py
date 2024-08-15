@@ -23,7 +23,10 @@ class AlbumForm(FlaskForm):
                                  ("jazz"),
                                  ("classical"),
                                  ("r&b"),
-                                 ("country")],
+                                 ("country"),
+                                 ('exprimental'),
+                                 ('rap'),
+                                 ('electrinic')],
                         validators=[DataRequired()])
     price = DecimalField(
         "price",

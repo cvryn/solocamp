@@ -139,9 +139,10 @@ const initialState = {};
 function albumReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_ALBUM:{
-            const newState = { ...state };
-            newState.album = [...(state.album || []), action.payload];
-            return newState;
+            return {
+                ...state,
+                album: [...state.album, action.payload]
+            };
         }
             // return { ...state, album: action.payload }
         case GET_ALBUMS:

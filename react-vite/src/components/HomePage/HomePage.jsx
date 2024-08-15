@@ -6,6 +6,7 @@ import { IoTimeOutline } from "react-icons/io5";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react';
 import Pagination from './Pagination';
+// import CreateAlbumButton from './CreateAlbumButton';
 
 
 
@@ -45,7 +46,8 @@ const HorizontalScrollImages = () => {
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 {displayedImages.map((el, index) => (
                     <div className='rolling-home'  key={index}>
-                        <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src={el.album_art[0].album_art} alt={`Image ${index}`} style={{ height: '200px', width: 'auto', marginRight: '10px' }} />
+                        {/* {el.album_art? <img style={{width:'300px'}}src={el.album_art[0].album_art}></img> : <img style={{width:'300px'}}src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg"></img>} */}
+                        {el.album_art? <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src={el.album_art[0].album_art} alt={`Image ${index}`} style={{ height: '200px', width: 'auto', marginRight: '10px' }} />:<img onClick={() => navigate(`/albums/${el.id}`)} key={index} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg" style={{ height: '200px', width: 'auto', marginRight: '10px' }} />}
                         <br></br>
                         <div style={{ fontWeight: 'bold' }}>{el.name}</div>
                         <div>By {el.user_username}</div>
@@ -59,6 +61,7 @@ const HorizontalScrollImages = () => {
 
 function HomePage() {
     let albumData = useLoaderData();
+    if(!albumData) return;
     const navigate = useNavigate();
     // const dispatch = useDispatch();
     // useEffect(()=> {
@@ -70,7 +73,7 @@ function HomePage() {
     // let albumData = useSelector(state=> state.albums.album)
    
     // console.log('flag!!!!!!',albumData[0])
-    const imageUrls = albumData?.map(album => album.album_art[0].album_art);
+    let imageUrls = albumData? albumData.map(album => album.album_art[0].album_art): "https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg";
 
     // const navigate = useNavigate()
     // const handleAlbumCreate = () => {

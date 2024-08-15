@@ -149,7 +149,19 @@ function CreateAlbumFormModal() {
                 </label>
                 {errors?.errors?.background_color && <p style={{color:'red'}}>{errors?.errors.background_color}</p>}
                 <button type="submit">Create</button>
-
+                <button
+                // type="submit"
+                onClick={()=>{
+                    setName('new album')
+                    setYear(2024)
+                    setGenre('rap')
+                    setPrice(10)
+                    setDescription('this is a new album')
+                    setAlbumart("https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg")
+                    setAlbumbanner("https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg")
+                    setBackgroundcolor('rgb(0,0,0)')
+                }}
+                >Demo Album</button>
             </form>
         </div>
     );
