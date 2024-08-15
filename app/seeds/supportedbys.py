@@ -5,14 +5,14 @@ from sqlalchemy.sql import text
 def seed_supportedbys():
 
     joji_rapunzel = SupportedBy(
-        description="I loved the vibes of this album. My favorite is track number 2, 'Double Take'.",
+        description="I loved the vibes of this album. Very beautiful melodies and good use of rhythm!",
         album_id=11,
         song_id=57,
         user_id=2,
     )
 
     joji_help_ever = SupportedBy(
-        description="The lyrics really touched me and the instrumental matched.",
+        description="The instrumental conveyed the most beautiful emotions and the lyrics were very meaningful.",
         album_id=9,
         song_id=48,
         user_id=2,
@@ -21,11 +21,12 @@ def seed_supportedbys():
     joji_fame_monster = SupportedBy(
         description="I listened to this entire album, it's my daily anthem.",
         album_id=24,
+        song_id=97,
         user_id=2,
     )
 
     joji_love_all = SupportedBy(
-        description="I listened to this entire album, it's my daily anthem.",
+        description="Beautiful voice in studio and live. This almost is one of my top 10s!",
         album_id=10,
         song_id=54,
         user_id=2,
@@ -33,8 +34,22 @@ def seed_supportedbys():
 
     joji_get_away = SupportedBy(
         description="I really love Vinida's vocals in this album! Can't wait for her future releases!",
-        album_id=21,
-        song_id=18,
+        album_id=15,
+        song_id=65,
+        user_id=2,
+    )
+
+    joji_kaleidoscope = SupportedBy(
+        description="Really feeling the lyrics in this album",
+        album_id=26,
+        song_id=133,
+        user_id=2,
+    )
+
+    joji_ice_kingdom = SupportedBy(
+        description="I really love Vinida's vocals in this album! Can't wait for her future releases!",
+        album_id=18,
+        song_id=70,
         user_id=2,
     )
 
@@ -42,6 +57,13 @@ def seed_supportedbys():
         description="Jay consistently releasing bangers!",
         album_id=12,
         song_id=62,
+        user_id=3,
+    )
+
+    jvke_smithereens = SupportedBy(
+        description="Amazing sounds, amazing lyrics, amazing instrumentals",
+        album_id=4,
+        song_id=23,
         user_id=3,
     )
 
@@ -58,6 +80,12 @@ def seed_supportedbys():
         song_id=33,
         user_id=5,
     )
+    dhruv_smithereens = SupportedBy(
+        description="I most definitely shed a few tears listening to this album by Joji...very beautiful",
+        album_id=4,
+        song_id=21,
+        user_id=6,
+    )
 
     dhruv_a_star = SupportedBy(
         description="Amazing vocals as always, to be expected from THE LADY GAGA!",
@@ -72,15 +100,16 @@ def seed_supportedbys():
         user_id=7,
     )
 
-    adele_nineteen = SupportedBy(
+    jolin_nineteen = SupportedBy(
         description='Adele\'s first album, and also my favorite album. Contains my all-time favorite Adele song, "Make You Feel My Love"',
         album_id=22,
-        user_id=12,
+        user_id=11,
     )
 
     fujii_smithereens = SupportedBy(
         description="When I first heard this album, I knew it would be a consistent replay. The lyrics are well chosen and the rhythm is beautiful.",
         album_id=4,
+        song_id=22,
         user_id=5,
     )
 
@@ -91,12 +120,16 @@ def seed_supportedbys():
             joji_fame_monster,
             joji_love_all,
             joji_get_away,
+            joji_kaleidoscope,
+            joji_ice_kingdom,
             jvke_nocturne,
+            jvke_smithereens,
             samsmith_21,
             fujii_nirvana,
+            dhruv_smithereens,
             dhruv_a_star,
             jay_ninja,
-            adele_nineteen,
+            jolin_nineteen,
             fujii_smithereens
         ]
     )

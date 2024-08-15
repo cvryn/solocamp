@@ -20,7 +20,10 @@ const SupportedByItems = ({ supportedBys, onDelete, onEdit }) => {
       <EditSupportedByModal
         supportedBy={supportedBy}
         onEditComplete={(updatedSupportedBy) => {
-          onEdit(updatedSupportedBy);
+          const updatedSupportedBys = supportedBys.map((sb) =>
+            sb.id === updatedSupportedBy.id ? updatedSupportedBy : sb
+          );
+          onEdit(updatedSupportedBys); 
         }}
       />
     );

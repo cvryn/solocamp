@@ -1,51 +1,46 @@
 #collection-album-items-container {
     display: flex;
     flex-direction: row;
-    flex: 1;
-    /* justify-content: space-between; */
-    margin: 0 auto;
+    flex-wrap: wrap;
+    /* margin: 0 auto; */
     padding: 10px;
     gap: 10px;
 }
 
-.supported-by-container{
-    /* border: 2px solid red; */
+.supported-by-container {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
     padding: 10px;
-    gap: 20px;
     width: 230px;
 }
 
 .supported-by-container:hover {
-    border: 2px solid grey
+    border: 2px solid grey;
 }
 
-.album-art-collection{
+.album-art-collection {
     width: 210px;
     height: 210px;
- }
+}
 
- .supported-by-info{
-    /* border: 2px solid green; */
+.supported-by-info {
     cursor: pointer;
- }
+}
 
- .supported-by-info:hover{
+.supported-by-info:hover {
     text-decoration: underline;
- }
+}
 
- .edit-delete-button-collection{
-    /* border: 2px solid blue; */
-     display: flex;
-     flex-direction: column;
-     gap: 10px;
- }
+.edit-delete-button-collection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
- .supported-by-description{
+.supported-by-description {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
- }
+}
