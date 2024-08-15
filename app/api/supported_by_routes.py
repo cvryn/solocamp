@@ -69,11 +69,11 @@ def get_supported_bys_by_album(album_id):
 
 #     return new_supported_by.to_dict(), 201
 
-
+# POST new supported by
 @supported_by_routes.route("/<int:album_id>", methods=["POST"])
 def post_supported_bys(album_id):
     if not current_user.is_authenticated:
-        return {"error": "User not authenticated"}, 401 
+        return {"error": "User not authenticated"}, 401
 
     album = Album.query.get(album_id)
     if album is None:
@@ -90,7 +90,7 @@ def post_supported_bys(album_id):
     if song_id:
         song_exists = Song.query.filter_by(id=song_id).first()
         if song_exists is None:
-            return {"error": "Song not found"}, 404  # Not found
+            return {"error": "Song not found"}, 404 
         # Ensure the song belongs to the specified album
         song_in_album = Song.query.filter_by(id=song_id, album_id=album_id).first()
         if song_in_album is None:
