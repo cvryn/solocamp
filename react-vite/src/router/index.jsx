@@ -3,7 +3,9 @@ import Layout from './Layout';
 import HomePage from '../components/HomePage/HomePage';
 import AlbumListings from '../components/AlbumListings/AlbumListings';
 import AlbumDetails from '../components/Album/AlbumDetails';
+import UserProfile from '../components/UserProfile/UserProfile';
 import Checkout from '../components/Checkout/Checkout';
+import About from '../components/Footer/About';
 import { albumLoader } from './album';
 import ManageSupportedBys from '../components/SupportedBy/ManageSupportedBys';
 import { getSupportedBys } from './supportedbys';
@@ -18,6 +20,7 @@ export const router = createBrowserRouter([
         path: '/',
         element: <HomePage />,
         loader: async () => {
+<<<<<<< HEAD
           const response = await fetch("/api/albums");
           if (response.ok) {
               return await response.json();  // This ensures you get the parsed JSON data
@@ -28,6 +31,10 @@ export const router = createBrowserRouter([
       //   loader: async ()=> {
       //     return await fetch('/api/albums')
       // }
+=======
+          return await fetch('/api/albums')
+        }
+>>>>>>> wishlist-2
       },
       {
         path: "/albums",
@@ -39,20 +46,31 @@ export const router = createBrowserRouter([
       {
         path: "/albums/:albumId",
         element: <AlbumDetails />,
-        loader: albumLoader,
+        loader: albumLoader
       },
       {
         path: "/manage-albums",
         element: <ManageAlbum/>
       },
       {
+        path: "/user",
+        element: <UserProfile />,
+        loader: async () => {
+          return await fetch("/api/albums")
+        }
+      },
+      {
         path: "/checkout",
         element: <Checkout />
       },
       {
-        path: "/supported-by/all",
+        path: "/user/reviews",
         element: <ManageSupportedBys />,
         loader: getSupportedBys
+      },
+      {
+        path: "/about",
+        element: <About />
       }
     ]
   },

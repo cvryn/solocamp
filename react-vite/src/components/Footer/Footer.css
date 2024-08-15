@@ -19,3 +19,18 @@ footer>div {
   gap: 40px;
   white-space: nowrap;
 }
+
+#container-developers-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  width: 1500px;
+  min-height: 1000px;
+}
+
+.container-developers-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

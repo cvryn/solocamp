@@ -6,7 +6,7 @@ def seed_users():
     # 1
     demo = User(
         username="Demo",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/demo_user/demo_user.jpg",
         first_name="Demo",
         last_name="User",
         email="demo@solocamp.io",
@@ -160,6 +160,16 @@ def seed_users():
         password="password",
     )
 
+    # 17
+    kenny_g = User(
+        username="Kenny G",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Kenny+G/kenny_g.jpg",
+        first_name="Kenneth",
+        last_name="Gorelick",
+        email="kenny_g@solocamp.io",
+        password="password",
+    )
+
     db.session.add(demo)
 
     db.session.add_all(
@@ -180,7 +190,7 @@ def seed_users():
             jolin,
         ]
     )
-    db.session.add_all([adele, lady_gaga, tiesto, cole_dammett, hardwell])
+    db.session.add_all([adele, lady_gaga, tiesto, cole_dammett, hardwell, kenny_g])
 
     db.session.commit()
 

@@ -4,7 +4,6 @@
 
 #container-filter-inner {
   max-width: 1500px;
-  width: 95%;
   margin: auto;
 }
 
@@ -24,7 +23,6 @@
   flex-direction: column;
   gap: 10px;
   padding: 20px 40px;
-  background-color: gray;
 }
 
 #container-genre-tags {
@@ -37,23 +35,26 @@
   padding: 7.5px 20px;
   color: white;
   background-color: rgb(77, 77, 77);
-  border-radius: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.genre-tag.selected {
+  background-color: lightgray;
+  box-shadow: 0 0 10px lightgray;
+  color: rgb(77, 77, 77);
 }
 
 #container-album-listings-outer {
   background-color: rgb(34, 34, 34);
-}
-
-#container-album-listings-inner {
-  width: 95%;
-  margin: auto;
-  padding-bottom: 60px;
+  min-height: 400px;
 }
 
 #container-album-listings-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: minmax(100px, max-content) repeat(auto-fill, 200px) 20%;
   grid-template-areas: "left right";
   gap: 30px;
   color: white;
@@ -64,17 +65,27 @@
 #container-album-listings {
   grid-area: left;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: auto;
   padding: 20px 0 20px 40px;
   row-gap: 30px;
-  column-gap: 15px;
+  column-gap: 20px;
 }
 
 #container-album {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  height: fit-content
+}
+
+#container-album-text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+#container-album-text:hover {
+  text-decoration: underline;
 }
 
 #container-current-album-outer {
@@ -90,7 +101,7 @@
   gap: 30px;
 }
 
-.wishlist-button-album-listings {
+.button-wishlist-album-listings {
   width: 100%;
   border-radius: 7px;
   height: 40px;

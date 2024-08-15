@@ -7,15 +7,15 @@ function SecondaryNavigation() {
     <nav id="container-secondary-navigation">
       <div className="container-left-right-secondary-navigation">
         <NavLink to="/albums">Genres</NavLink>
-        <NavLink to="/">Vinyl</NavLink>
-        <NavLink to="/">CDs</NavLink>
-        <NavLink to="/">Cassettes</NavLink>
-        <NavLink to="/">T-shirts</NavLink>
+        <NavLink to="" style={{ cursor: "not-allowed" }}>Vinyl</NavLink>
+        <NavLink to="" style={{ cursor: "not-allowed" }}>CDs</NavLink>
+        <NavLink to="" style={{ cursor: "not-allowed" }}>Cassettes</NavLink>
+        <NavLink to="" style={{ cursor: "not-allowed" }}>T-shirts</NavLink>
       </div>
       <div className="container-left-right-secondary-navigation">
-        <NavLink to="/">Radio</NavLink>
-        <NavLink to="/">Solocamp Daily</NavLink>
-        <NavLink to="/">Best of&apos;s</NavLink>
+        <NavLink to="" style={{ cursor: "not-allowed" }}>Radio</NavLink>
+        <NavLink to="" style={{ cursor: "not-allowed" }}>Solocamp Daily</NavLink>
+        <NavLink to="" style={{ cursor: "not-allowed" }}>Best of&apos;s</NavLink>
       </div>
     </nav>
   );

@@ -1,0 +1,66 @@
+#banner-user-profile {
+  height: 100px;
+  background: linear-gradient(to right, rgb(106, 13, 173), rgb(247, 140, 64));
+  position: relative;
+  z-index: -1;
+}
+
+#container-user-profile {
+  margin: auto;
+  max-width: 1200px;
+  width: 95%;
+}
+
+#container-details-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: absolute;
+  top: 170px;
+  z-index: -1;
+}
+
+#container-user-album-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#container-collection-wishlist {
+  display: flex;
+  gap: 50px;
+}
+
+.tab-wishlist {
+  color: #00A1C6;
+  font-weight: bold;
+}
+
+.tab-wishlist.active {
+  color: inherit;
+  font-weight: 100;
+}
+
+#container-album-listing-wishlist {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 2px;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 400px;
+}
+
+#container-album-wishlist {
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
+  height: 360px;
+  padding: 10px;
+  transition: border 0.3s ease;
+  border: 1px solid transparent;
+}
+
+#container-album-wishlist:hover {
+  border: 1px solid lightgray;
+}

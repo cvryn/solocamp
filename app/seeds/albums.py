@@ -9,7 +9,6 @@ def seed_albums():
         year=2017,
         genre="r&b",
         price=19.99,
-        purchased=False,
         description="Joji's debut EP, In Tongues, marks the beginning of his journey as a solo artist. With its raw emotion and atmospheric production, the EP showcases Joji's talent for crafting introspective and soulful music. Tracks like 'Window' and 'Yeah Right' quickly gained popularity, establishing Joji as a rising star in the R&B scene.",
     )
 
@@ -19,7 +18,6 @@ def seed_albums():
         year=2018,
         genre="r&b",
         price=19.99,
-        purchased=False,
         description="Joji's debut album, Ballads 1, is a collection of introspective tracks exploring themes of love, loss, and the complexities of modern relationships. With its blend of soulful vocals, atmospheric production, and honest lyrics, the album resonated with listeners worldwide, solidifying Joji's status as a rising star in the music industry.",
     )
 
@@ -29,7 +27,6 @@ def seed_albums():
         year=2020,
         genre="r&b",
         price=19.99,
-        purchased=False,
         description="Joji's sophomore album, Nectar, expands on his signature blend of R&B and alternative sounds, delving deeper into themes of love, desire, and the complexities of modern relationships. Featuring collaborations with high-profile artists and innovative production, Nectar showcases Joji's artistic growth and solidifies his position as a leading voice in contemporary music.",
     )
 
@@ -39,7 +36,6 @@ def seed_albums():
         year=2022,
         genre="r&b",
         price=19.99,
-        purchased=False,
         description="Joji's third studio album, Smithereens, showcases a mature and introspective side of the artist. Blending elements of R&B and pop, the album explores themes of love, loss, and personal growth. With hits like 'Glimpse of Us,' Smithereens solidified Joji's status as a global superstar.",
     )
 
@@ -50,7 +46,6 @@ def seed_albums():
         year=2022,
         genre="pop",
         price=19.99,
-        purchased=False,
         description="JVKE's debut album is a conceptual journey through the stages of a relationship, from falling in love to heartbreak and moving on. The album's innovative structure and introspective lyrics have garnered critical acclaim and a dedicated fanbase.",
     )
 
@@ -61,7 +56,6 @@ def seed_albums():
         year=2013,
         genre="pop",
         price=19.99,
-        purchased=False,
         description="Sam Smith's debut EP, Nirvana, showcases their powerful vocals and introspective songwriting. With tracks like 'Safe with Me' and the acoustic cover of 'Latch,' the EP established Smith as a rising star in the soul and R&B scene.",
     )
 
@@ -71,7 +65,6 @@ def seed_albums():
         year=2014,
         genre="r&b",
         price=19.99,
-        purchased=False,
         description="Sam Smith's critically acclaimed debut album, 'In the Lonely Hour,' showcases their powerful vocals and deeply personal songwriting. With hits like 'Stay with Me' and 'I'm Not the Only One,' the album explores themes of heartbreak and longing with raw emotion.",
     )
 
@@ -81,7 +74,6 @@ def seed_albums():
         year=2017,
         genre="pop",
         price=19.99,
-        purchased=False,
         description="Sam Smith's sophomore album, 'The Thrill of It All,' explores themes of self-discovery and emotional growth. With a blend of soulful vocals and contemporary pop production, the album showcases Smith's artistic evolution while maintaining their signature vulnerability.",
     )
 
@@ -92,7 +84,6 @@ def seed_albums():
         year=2020,
         genre="pop",
         price=19.99,
-        purchased=False,
         description="Fujii Kaze's debut album, HELP EVER HURT NEVER, showcases his unique blend of R&B, hip-hop, and pop influences. With its catchy melodies, heartfelt lyrics, and innovative production, the album quickly gained popularity in Japan and beyond. The album's title, inspired by a phrase from Fujii's father, reflects the artist's positive outlook and message of hope.",
     )
 
@@ -102,7 +93,6 @@ def seed_albums():
         year=2022,
         genre="pop",
         price=19.99,
-        purchased=False,
         description="Fujii Kaze's sophomore album, Love All Serve All, expands on his unique blend of genres and showcases his growth as an artist. With its infectious energy and socially conscious lyrics, the album solidified his position as a leading voice in Japanese music.",
     )
 
@@ -113,7 +103,6 @@ def seed_albums():
         year=2022,
         genre="pop",
         price=19.99,
-        purchased=False,
         description="dhruv's debut EP, 'rapunzel', is a collection of introspective and dreamy indie pop tracks. With honest lyrics and ethereal melodies, the EP explores themes of youth, love, and self-discovery. Tracks like 'double take' and 'moonlight' showcase dhruv's talent for crafting atmospheric and emotionally resonant music.",
     )
 
@@ -123,7 +112,6 @@ def seed_albums():
         year=2010,
         genre="r&b",
         price=100.10,
-        purchased=False,
         description="Jay's album was met with positive reviews from music critics upon its release. In Taiwan, it peaked at number one on the G-Music album chart for multiple weeks and was best-selling album of the year, with sales of over 280,000 copies.",
     )
 
@@ -133,7 +121,6 @@ def seed_albums():
         year=2020,
         genre="rap",
         price=9.99,
-        purchased=False,
         description="This is a hard-hitting rap album that dives deep into the gritty realities of city life, blending raw lyrical prowess with infectious beats.",
     )
 
@@ -143,7 +130,6 @@ def seed_albums():
         year=2022,
         genre="electronic",
         price=39.99,
-        purchased=False,
         description="In this album, each track tells a unique story, from the struggles of growing up in tough neighborhoods to the triumphs of overcoming adversity.",
     )
 
@@ -153,7 +139,6 @@ def seed_albums():
         year=2021,
         genre="experimental",
         price=19.99,
-        purchased=False,
         description="The album features a mix of introspective verses and high-energy anthems, with collaborations from some of the hottest names in the rap game. ",
     )
 
@@ -163,7 +148,6 @@ def seed_albums():
         year=2015,
         genre="pop",
         price=29.99,
-        purchased=False,
         description="This album invites listeners to lose themselves in the music, dancing under the metaphorical stars and feeling the echoes of every note long after the music fades.",
     )
 
@@ -173,7 +157,6 @@ def seed_albums():
         year=2001,
         genre="rock",
         price=10.10,
-        purchased=False,
         description="From uplifting anthems to heartfelt ballads, It is a celebration of the highs and lows of life, designed to make you move, sing along, and feel every beat.",
     )
 
@@ -183,7 +166,6 @@ def seed_albums():
         year=2021,
         genre="rap",
         price=29.99,
-        purchased=False,
         description="The album explores themes of love, self-discovery, and the thrill of living in the moment, all wrapped up in polished production and dance-worthy beats.",
     )
 
@@ -193,7 +175,6 @@ def seed_albums():
         year=2023,
         genre="rap",
         price=39.99,
-        purchased=False,
         description="With its powerful narratives and diverse soundscapes, It captures the essence of the streets, making it a must-listen for fans of authentic, unfiltered hip-hop.",
     )
 
@@ -203,7 +184,6 @@ def seed_albums():
         year=2024,
         genre="r&b",
         price=19.99,
-        purchased=False,
         description="Jasmine is a captivating pop album that blends the sparkle of celestial melodies with deep, resonant emotions. Each track is a sonic journey, where lush vocal harmonies meet shimmering electronic beats, creating a soundscape that's both dreamy and invigorating.",
     )
 
@@ -213,7 +193,6 @@ def seed_albums():
         year=2017,
         genre="pop",
         price=29.99,
-        purchased=False,
         description="Fantasy is a vibrant pop album that takes listeners on a journey through the electric pulse of modern life. Filled with catchy hooks, infectious melodies, and shimmering synths, each track offers a burst of energy and emotion.",
     )
 
@@ -223,7 +202,6 @@ def seed_albums():
         year=2008,
         genre="pop",
         price=7.48,
-        purchased=False,
         description='Adele\'s debut album, 19, is a raw and emotional exploration of heartbreak and love. Released when she was just 19, the album showcases her extraordinary vocal talent and songwriting maturity beyond her years. With its soulful melodies and honest lyrics, 19 quickly propelled Adele to stardom. The album delves deep into the complexities of young love, loss, and longing, resonating with listeners on a profound level. Tracks like "Chasing Pavements," "Hometown Glory," and "Someone Like You" became instant classics, showcasing Adele\'s powerful voice and her ability to convey raw emotion.',
     )
 
@@ -233,7 +211,6 @@ def seed_albums():
         year=2011,
         genre="pop",
         price=11.98,
-        purchased=False,
         description='Adele\'s 21 is a groundbreaking album that catapulted her to global superstardom. Released in 2011, the album is a raw and emotional exploration of heartbreak and loss, building upon the foundation laid by her debut, 19. With a mature and powerful vocal performance, Adele delves deep into the complexities of a failed relationship, capturing the universal experience of love and heartbreak with stunning honesty. Tracks like "Rolling in the Deep," "Someone Like You," and "Rumour Has It" became anthems of heartbreak, resonating with millions of listeners. 21 is characterized by its soulful melodies, lush arrangements, and Adele\'s extraordinary vocal range. The album\'s emotional depth and relatable lyrics have solidified Adele\'s status as one of the most influential and beloved artists of her generation.',
     )
 
@@ -243,7 +220,6 @@ def seed_albums():
         year=2009,
         genre="pop",
         price=15.23,
-        purchased=False,
         description="According to Gaga, the album deals with the darker side of fame, with its theme lyrically expressed through a monster metaphor. The album's two covers were shot by Hedi Slimane. One of the covers has a Gothic theme and was declined for release by her record company, but Gaga persuaded them.",
     )
 
@@ -253,7 +229,6 @@ def seed_albums():
         year=2018,
         genre="pop",
         price=11.26,
-        purchased=False,
         description='A Star Is Born is the soundtrack to the 2018 film of the same name, starring Lady Gaga and Bradley Cooper. The album showcases the raw talent and chemistry between the two artists, delivering a powerful and emotionally charged collection of songs. The album blends elements of pop, rock, and country, creating a unique and authentic sound that reflects the film\'s story of love, loss, and redemption. With tracks like "Shallow," "I\'ll Never Love Again," and "Always Remember Us This Way," the album became a massive commercial and critical success, earning numerous awards and accolades.',
     )
 
@@ -263,7 +238,6 @@ def seed_albums():
         year=2007,
         genre="electronic",
         price=15.23,
-        purchased=False,
         description='Tiesto\'s Elements of Life is a seminal electronic music album that marked a pivotal point in the artist\'s career. Released in 2007, it showcased a mature and refined sound, blending Tiesto\'s signature euphoric melodies with a more pop-oriented approach. The album features a strong emphasis on vocal collaborations, resulting in anthemic tracks like "Everything" and "Ten Seconds Before Sunrise." While maintaining its electronic core, "Elements of Life" expanded Tiesto\'s audience and solidified his status as a global superstar, demonstrating his ability to create music that resonated with both dance music enthusiasts and mainstream listeners alike.',
     )
 
@@ -273,7 +247,6 @@ def seed_albums():
         year=2009,
         genre="electronic",
         price=15.23,
-        purchased=False,
         description="Kaleidoscope is the fourth studio album by Dutch DJ and record producer Tiësto, released on 6 October 2009 by Musical Freedom, Tiësto's new label in association with PIAS Recordings.[5] The album contains collaborations with Nelly Furtado, Emily Haines of Metric, Tegan and Sara, Jónsi of Sigur Rós, Kele Okereke of Bloc Party, and Calvin Harris among others.",
     )
 
@@ -283,7 +256,6 @@ def seed_albums():
         year=1999,
         genre="alternative",
         price=12.99,
-        purchased=False,
         description='Although Californication still contains some funk rock songs (such as "Around the World", "Get on Top", "I Like Dirt", "Purple Stain" and "Right on Time"), it leaned towards more melodic riffs (for example, "Scar Tissue" and "Otherside") and focused on songs with implemented structure rather than jams.',
     )
 
@@ -293,7 +265,6 @@ def seed_albums():
         year=2002,
         genre="alternative",
         price=16.70,
-        purchased=False,
         description='Red Hot Chili Peppers\' By the Way represents a sonic evolution for the band. While still retaining their signature funk-rock energy, the album showcases a more melodic and introspective side. With a greater emphasis on songwriting and harmonies, By the Way offers a fresh perspective on the band\'s sound. The album is characterized by its catchy hooks, intricate guitar work, and Anthony Kiedis\' more refined vocal delivery. Tracks like "The Zephyr Song," "Can\'t Stop," and "By the Way" became instant classics, demonstrating the band\'s ability to create both radio-friendly hits and deeper, more complex songs. By the Way marked a commercial peak for the Red Hot Chili Peppers, solidifying their status as one of the biggest rock bands in the world.',
     )
 
@@ -303,7 +274,6 @@ def seed_albums():
         year=2010,
         genre="electronic",
         price=18.32,
-        purchased=False,
         description="Hardwell's Revealed Vol. 1 is a landmark electronic music compilation that marked the launch of the renowned Revealed Recordings label. Released in 2010, this album showcased the burgeoning progressive house sound that would define the era. Featuring tracks from Hardwell himself alongside a stellar lineup of rising and established artists, the compilation captured the energy and excitement of the electronic music scene at the time. It served as a platform for introducing new talent and solidifying Hardwell's position as a leading figure in the industry. With its infectious melodies, driving beats, and euphoric breakdowns, Revealed Vol. 1 became an instant classic, leaving an enduring impact on electronic music culture.",
     )
 
@@ -313,7 +283,6 @@ def seed_albums():
         year=2015,
         genre="electronic",
         price=5.15,
-        purchased=False,
         description='The album is a sonic journey characterized by powerful synths, driving beats, and euphoric melodies. Tracks like "Follow Me" featuring Jason Derulo and "United We Are" exemplify the album\'s anthemic and uplifting spirit. Hardwell masterfully blends elements of progressive house, electro house, and trance, creating a cohesive and energetic listening experience. Beyond the infectious energy, United We Are also showcases Hardwell\'s ability to craft melodic and emotional moments. Tracks like "Let Me Be Your Home" and "Echo" demonstrate a softer side to his production, adding depth and diversity to the album. Overall, United We Are is a testament to Hardwell\'s talent as a producer and his ability to create music that resonates with millions of fans worldwide. It remains a quintessential example of the big room house genre and continues to be a beloved album in the EDM community.',
     )
 

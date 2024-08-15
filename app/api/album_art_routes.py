@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import current_user
-from app.models import AlbumArt, db
+from app.models import AlbumArt, db, Album
 from app.forms import AlbumArtForm
 
 
@@ -16,6 +16,10 @@ def album_art_all():
 def create_album_art(album_id):
     if not current_user.is_authenticated:
         return {"error": "User not authenticated"}, 401
+
+    album = Album.query.get(album_id)
+    if album is None:
+        return {"error": "Album not found"}, 404
 
     form = AlbumArtForm()
     form["csrf_token"].data = request.cookies["csrf_token"]

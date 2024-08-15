@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
@@ -15,6 +15,8 @@ function ProfileButton() {
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
+
+  const navigate = useNavigate();
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // keep from bubbling up to document and triggering closeMenu
@@ -41,6 +43,7 @@ function ProfileButton() {
     e.preventDefault();
     dispatch(thunkLogout());
     closeMenu();
+    navigate("/");
   };
 
   return (
@@ -49,7 +52,7 @@ function ProfileButton() {
         <>
           <NavLink to="/checkout"><PiShoppingCartSimple style={{ fontSize: "2rem" }} /></NavLink>
 
-          <NavLink to=""><SlHeart style={{ fontSize: "1.7rem" }} /></NavLink>
+          <NavLink to="/user"><SlHeart style={{ fontSize: "1.7rem" }} /></NavLink>
 
           <div id="circle-div"
             onClick={toggleMenu}
@@ -60,6 +63,7 @@ function ProfileButton() {
             <ul id="container-profile-dropdown" ref={ulRef}>
               <li>{user.username}</li>
               <li>{user.email}</li>
+              <li><Link to="/user/reviews">my reviews</Link></li>
               <li>
                 <button
                   onClick={logout}

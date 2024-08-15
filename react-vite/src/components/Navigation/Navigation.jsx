@@ -12,9 +12,7 @@ function Navigation() {
 
   return (
     <nav id="container-main-navigation">
-
       <div className="container-primary-navigation">
-
         <div id="container-logo-search-navigation">
           <NavLink to="/">
             <img src={logo} alt="Logo" style={{ width: "150px" }} />
@@ -29,7 +27,6 @@ function Navigation() {
         <div>
           <SecondaryNavigation />
         </div>}
-
     </nav>
   );
 }

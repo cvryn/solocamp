@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, request, session, redirect
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -12,6 +12,7 @@ from .api.album_art_routes import album_art_routes
 from .api.song_routes import song_routes
 from .api.supported_by_routes import supported_by_routes
 from .api.wishlist_routes import wishlist_routes
+from .api.collection_routes import collection_routes
 from .api.shopping_cart_routes import shopping_cart_routes
 from .seeds import seed_commands
 from .config import Config
@@ -40,6 +41,7 @@ app.register_blueprint(album_art_routes, url_prefix="/api/album-art")
 app.register_blueprint(song_routes, url_prefix="/api/songs")
 app.register_blueprint(supported_by_routes, url_prefix="/api/supported-by")
 app.register_blueprint(wishlist_routes, url_prefix="/api/wishlist")
+app.register_blueprint(collection_routes, url_prefix="/api/collection")
 app.register_blueprint(shopping_cart_routes, url_prefix="/api/shopping-cart")
 db.init_app(app)
 Migrate(app, db)

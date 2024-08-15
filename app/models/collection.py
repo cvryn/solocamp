@@ -1,8 +1,8 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
-shopping_cart = db.Table(
-    "shopping_carts",
+collection = db.Table(
+    "collections",
     db.Column(
         "user_id",
         db.Integer,
@@ -18,4 +18,4 @@ shopping_cart = db.Table(
 )
 
 if environment == "production":
-    shopping_cart.schema = SCHEMA
+    collection.schema = SCHEMA
