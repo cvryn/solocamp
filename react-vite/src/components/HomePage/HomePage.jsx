@@ -12,6 +12,7 @@ import Pagination from './Pagination';
 
 const HorizontalScrollImages = () => {
   
+    const navigate = useNavigate();
     let albumData = useLoaderData();
     // if (!Array.isArray(albumData)) {
     //     return <p>No albums available.</p>;  // Handle cases where data isn't an array
@@ -20,7 +21,6 @@ const HorizontalScrollImages = () => {
     const [displayedImages, setDisplayedImages] = useState(albumData.slice(0, 8));
     const containerRef = useRef(null);
     const imageIndex = useRef(8);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -60,9 +60,9 @@ const HorizontalScrollImages = () => {
 };
 
 function HomePage() {
+    const navigate = useNavigate();
     let albumData = useLoaderData();
     if(!albumData) return;
-    const navigate = useNavigate();
     // const dispatch = useDispatch();
     // useEffect(()=> {
     //     let func = async ()=> {

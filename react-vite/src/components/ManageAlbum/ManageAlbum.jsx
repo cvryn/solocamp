@@ -11,16 +11,16 @@ import UpdateAlbumButton from "./UpdateAlbumButton";
 export default function ManageAlbum() {
     const dispatch = useDispatch()
     const userId = useSelector(state => state.session.user?.id)
-    if(!userId) return (<h2>Please log in or sign up before managing your albums</h2>)
-    // console.log(userId)
     const albumArr = useSelector(state => state.albums.album?.filter(el => el.user_id == userId))
+    // console.log(userId)
     useEffect(() => {
         const func = async () => {
             await dispatch(thunkGetAlbums())
         }
         func()
     }, [dispatch]);
-
+    
+    if(!userId) return (<h2>Please log in or sign up before managing your albums</h2>)
     if (!Array.isArray(albumArr)) {
         return <p>No albums available.</p>;
     }
