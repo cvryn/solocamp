@@ -55,14 +55,19 @@ class User(db.Model, UserMixin):
             "first_name": self.first_name,
             "last_name": self.last_name,
             "profile_image": self.profile_image,
-            "album_in_shopping_cart": (
-                [album.to_dict() for album in self.album_in_shopping_cart]
-                if self.album_in_shopping_cart
-                else None
-            ),
             "album_in_wishlist": (
                 [album.to_dict() for album in self.album_in_wishlist]
                 if self.album_in_wishlist
+                else None
+            ),
+            "album_in_collection": (
+                [album.to_dict() for album in self.album_in_collection]
+                if self.album_in_collection
+                else None
+            ),
+            "album_in_shopping_cart": (
+                [album.to_dict() for album in self.album_in_shopping_cart]
+                if self.album_in_shopping_cart
                 else None
             ),
         }

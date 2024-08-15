@@ -47,8 +47,9 @@
 }
 
 #container-album-listings-outer {
-  background-color: rgb(34, 34, 34);
   min-height: 400px;
+  margin: auto;
+  background-color: rgb(34, 34, 34);
 }
 
 #container-album-listings-grid {
@@ -56,7 +57,7 @@
   grid-template-columns: 2fr 1fr;
   grid-template-rows: minmax(100px, max-content) repeat(auto-fill, 200px) 20%;
   grid-template-areas: "left right";
-  gap: 30px;
+  gap: 80px;
   color: white;
   width: 1500px;
   margin: auto;
@@ -65,11 +66,12 @@
 #container-album-listings {
   grid-area: left;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   padding: 20px 0 20px 40px;
   row-gap: 30px;
   column-gap: 20px;
+  width: 920px;
 }
 
 #container-album {
@@ -101,7 +103,7 @@
   gap: 30px;
 }
 
-.button-wishlist-album-listings {
+#button-go-to-album-album-listings {
   width: 100%;
   border-radius: 7px;
   height: 40px;
@@ -109,4 +111,17 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+
+#button-add-to-wishlist-album-listings {
+  width: 100%;
+  border-radius: 7px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: white;
+  background-color: rgb(34, 34, 34);
+  border: 2px solid white;
 }

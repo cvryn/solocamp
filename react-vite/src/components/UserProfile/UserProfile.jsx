@@ -43,8 +43,6 @@ function UserProfile() {
           </div>
         </div>
 
-        <div style={{ height: "260px" }}></div>
-
         <div id="container-collection-wishlist">
           <NavLink
             className={() => collection ? "tab-wishlist active" : "tab-wishlist"}

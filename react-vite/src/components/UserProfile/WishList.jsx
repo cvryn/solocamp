@@ -1,26 +1,27 @@
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { thunkWishlistAlbumCount } from "../../redux/wishlist"
+import { thunkWishlistAlbumCount, thunkWishlistAlbums } from "../../redux/wishlist"
 import "./UserProfile.css"
 import { useEffect } from "react"
 
 
 function WishList() {
   const currentUser = useSelector(state => state.session.user)
-  const album_in_wishlist = currentUser.album_in_wishlist;
   const albumCountObj = useSelector(state => state.wishlist);
+  const albumsInWishlist = useSelector(state => state.session.user.album_in_wishlist);
   const albumCountArr = Object.values(albumCountObj);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(thunkWishlistAlbumCount())
+    // dispatch(thunkWishlistAlbums(currentUser.id))
+    // dispatch(thunkWishlistAlbumCount())
   }, [dispatch]);
 
   if (!currentUser) return null
 
-  return album_in_wishlist ? (
+  return albumsInWishlist ? (
     <div id="container-album-listing-wishlist">
-      {album_in_wishlist?.map(album => {
+      {albumsInWishlist?.map(album => {
         const albumCount = albumCountArr.find(countAlbum => countAlbum.id === album.id)?.count || 0;
 
         return (
@@ -37,8 +38,8 @@ function WishList() {
             <span style={{ paddingTop: "10px" }}>{album.name}</span>
             <span style={{ fontSize: "0.75rem" }}>by {album.user_username}</span>
             {albumCount === 1
-              ? <span style={{ marginTop: "auto", fontSize: "0.75rem" }}>appears in {albumCount} collection</span>
-              : <span style={{ marginTop: "auto", fontSize: "0.75rem" }}>appears in {albumCount} collections</span>
+              ? <span style={{ marginTop: "auto", fontSize: "0.75rem" }}>appears in {albumCount} wishlists</span>
+              : <span style={{ marginTop: "auto", fontSize: "0.75rem" }}>appears in {albumCount} wishlists</span>
             }
           </Link>
         )
