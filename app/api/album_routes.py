@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request,jsonify
 from flask_login import current_user
 from app.models import Album, AlbumArt, Song, SupportedBy, db
 from app.forms import AlbumForm, AlbumArtForm, SongForm, SupportedByForm
@@ -31,8 +31,13 @@ def albums():
             db.session.add(new_album)
             db.session.commit()
             return new_album.to_dict(), 201
-
-        return {"errors": form.errors}, 400
+        # print('form error in backend', form.errors)
+        # return {"errors": form.errors}, 400
+        else:
+            errors = {}
+            for field, field_errors in form.errors.items():
+                errors[field] = field_errors
+            return jsonify(errors), 400
 
     else:
         albums = Album.query.all()

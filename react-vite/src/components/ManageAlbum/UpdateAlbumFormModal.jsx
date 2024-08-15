@@ -5,10 +5,11 @@ import { thunkUpdateAlbum } from "../../redux/albumReducer";
 import { useNavigate } from "react-router-dom";
 
 
-function UpdateAlbumFormModal({el}) {
+function UpdateAlbumFormModal({ el }) {
     const userId = useSelector(state => state.session.user.id)
     // console.log('who is el?', el)
-   
+
+
     const dispatch = useDispatch();
     const [name, setName] = useState(el.name);
     const [year, setYear] = useState(el.year);
@@ -23,13 +24,15 @@ function UpdateAlbumFormModal({el}) {
 
     const navigate = useNavigate()
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const serverResponse = await dispatch(
             thunkUpdateAlbum({
                 user_id: userId,
-                album_id:el.id,
+                album_id: el.id,
                 album_art_id: el.album_art[0].id,
                 name,
                 year,
@@ -54,17 +57,16 @@ function UpdateAlbumFormModal({el}) {
         // }
 
         if (serverResponse) {
-            setErrors(serverResponse);
-        } else {
             closeModal();
-            navigate('/manage-albums')
+            navigate('/manage-albums');
+        } else {
+            setErrors(serverResponse);
         }
     };
 
     return (
         <div id="container-signup-form-modal">
             <h1>Update Album</h1>
-            {errors.server && <p>{errors.server}</p>}
 
             <form id="container-signup-form"
                 onSubmit={handleSubmit}
