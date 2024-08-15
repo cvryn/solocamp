@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "de1e058b-9282-49fd-876d-685fe1277863",
+		"_postman_id": "3aedea9e-74b9-4dfe-8bde-4019447b834e",
 		"name": "solocamp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34903728"
+		"_exporter_id": "34930416"
 	},
 	"item": [
 		{
@@ -196,7 +196,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/albums/33",
+					"raw": "http://localhost:8000/api/albums/23",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -205,7 +205,7 @@
 					"path": [
 						"api",
 						"albums",
-						"33"
+						"23"
 					]
 				}
 			},
@@ -292,7 +292,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/albums/1/songs",
+					"raw": "http://localhost:8000/api/albums/1/song",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -302,7 +302,7 @@
 						"api",
 						"albums",
 						"1",
-						"songs"
+						"song"
 					]
 				}
 			},
@@ -323,7 +323,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/albums/32/songs",
+					"raw": "http://localhost:8000/api/albums/32/song",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -333,7 +333,7 @@
 						"api",
 						"albums",
 						"32",
-						"songs"
+						"song"
 					]
 				}
 			},
@@ -384,7 +384,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/songs/72",
+					"raw": "http://localhost:8000/api/songs/202",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -393,7 +393,28 @@
 					"path": [
 						"api",
 						"songs",
-						"72"
+						"202"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all albums in all wishlists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/wishlist/counts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"wishlist",
+						"counts"
 					]
 				}
 			},
@@ -435,7 +456,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/albums/1/wishlist",
+					"raw": "http://localhost:8000/api/albums/20/wishlist",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -444,7 +465,7 @@
 					"path": [
 						"api",
 						"albums",
-						"1",
+						"20",
 						"wishlist"
 					]
 				}
@@ -468,6 +489,79 @@
 						"wishlist",
 						"12",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all albums in all collections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/collection/counts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collection",
+						"counts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get collection by user id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/collection/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"collection",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add album to collection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/albums/20/collection",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"albums",
+						"20",
+						"collection"
 					]
 				}
 			},
@@ -603,7 +697,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/album-art/48",
+					"raw": "http://localhost:8000/api/album-art/22",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -612,7 +706,7 @@
 					"path": [
 						"api",
 						"album-art",
-						"48"
+						"22"
 					]
 				}
 			},
@@ -624,7 +718,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/supportedby/all",
+					"raw": "http://localhost:8000/api/supported-by/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -632,7 +726,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"supportedby",
+						"supported-by",
 						"all"
 					]
 				}
@@ -645,7 +739,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/albums/11/supportedbys",
+					"raw": "http://localhost:8000/api/albums/11/supported-bys",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -655,7 +749,7 @@
 						"api",
 						"albums",
 						"11",
-						"supportedbys"
+						"supported-bys"
 					]
 				}
 			},
@@ -667,7 +761,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/supportedby/1",
+					"raw": "http://localhost:8000/api/supported-by/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -675,7 +769,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"supportedby",
+						"supported-by",
 						"1"
 					]
 				}
@@ -689,7 +783,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"description\": \"This saved my life.\",\n    \"song_id\": 100\n}",
+					"raw": "{\n    \"description\": \"This saved my life.\",\n    \"song_id\": 2\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -697,7 +791,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/albums/1",
+					"raw": "http://localhost:8000/api/albums/1/supported-bys",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -706,7 +800,8 @@
 					"path": [
 						"api",
 						"albums",
-						"1"
+						"1",
+						"supported-bys"
 					]
 				}
 			},
@@ -727,7 +822,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/supportedby/12",
+					"raw": "http://localhost:8000/api/supported-by/13",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -735,8 +830,8 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"supportedby",
-						"12"
+						"supported-by",
+						"13"
 					]
 				}
 			},
@@ -757,7 +852,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/supportedby/11",
+					"raw": "http://localhost:8000/api/supported-by/13",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -765,102 +860,8 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"supportedby",
-						"11"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get shopping cart items of current logged in user",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"description\": \"This saved my life.\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/shopping-cart/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"shopping-cart",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add album to shopping cart of current logged in user",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"description\": \"This saved my life.\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/albums/2/shopping-cart",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"albums",
-						"2",
-						"shopping-cart"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete album from current logged in user's shopping cart",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"description\": \"This saved my life.\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/api/shopping-cart/30",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"shopping-cart",
-						"30"
+						"supported-by",
+						"13"
 					]
 				}
 			},
