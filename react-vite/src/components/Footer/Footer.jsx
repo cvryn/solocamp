@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../../public/logo.png"
 import "./Footer.css"
 
@@ -9,17 +9,22 @@ function Footer() {
   return (
     <footer>
       <div>
-        <span>© {currentYear} solocamp, inc.</span>
-        <NavLink to="/">
+        <Link to="/">
           <img src={logo}
-            id="logo"
             alt="Logo"
-            style={{ width: "150px" }}
+            style={{ width: "150px", verticalAlign: "text-bottom" }}
           />
-        </NavLink>
+        </Link>
+        <div id="container-quick-links-footer">
+          <Link to="/about">About</Link>
+          <span style={{ cursor: "not-allowed" }}>Help</span>
+          <span style={{ cursor: "not-allowed" }}>Terms of Use</span>
+          <span style={{ cursor: "not-allowed" }}>Privacy</span>
+          <span>© {currentYear} solocamp, inc.</span>
+        </div>
       </div>
     </footer>
-  )
+  );
 }
 
 

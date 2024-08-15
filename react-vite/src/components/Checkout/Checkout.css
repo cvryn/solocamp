@@ -1,6 +1,7 @@
 #container-checkout-page {
   width: 500px;
   margin: 40px auto;
+  min-height: 1000px;
 }
 
 #container-title-checkout {

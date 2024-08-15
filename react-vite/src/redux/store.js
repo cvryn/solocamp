@@ -6,11 +6,16 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
-import supportedBysReducer from "./supportedByReducer";
+// import supportedBysReducer from "./supportedByReducer";
+import albumReducer from './albumReducer';
+import wishlistReducer from "./wishlist";
+
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  supportedBys: supportedBysReducer,
+  // supportedBys: supportedBysReducer,
+  albums: albumReducer,
+  wishlist: wishlistReducer
 });
 
 let enhancer;

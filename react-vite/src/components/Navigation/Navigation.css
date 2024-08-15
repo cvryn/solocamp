@@ -84,7 +84,7 @@
 #container-profile-dropdown {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   position: absolute;
   width: 250px;
   top: 110%;

@@ -7,22 +7,28 @@
     /* border: 2px yellow solid; */
     display: flex;
     gap: 5px;
-    width: 100%; /* Ensure container width is responsive */
-    height: auto; /* Adjust container height based on content */
+    width: 100%;
+    /* Ensure container width is responsive */
+    height: auto;
+    /* Adjust container height based on content */
 }
 
 .left-img-home {
-    flex: 2; /* Take up 2/3 of the width */
+    flex: 2;
+    /* Take up 2/3 of the width */
 }
 
 .left-img-home img {
-    width: 100%; /* Ensure the image fills the container */
-    height: 300px; /* Maintain aspect ratio */
+    width: 100%;
+    /* Ensure the image fills the container */
+    height: 300px;
+    /* Maintain aspect ratio */
 }
 
 .container-right-img-home {
     /* border: 2px purple solid; */
-    flex: 1; /* Take up 1/3 of the width */
+    flex: 1;
+    /* Take up 1/3 of the width */
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -30,14 +36,18 @@
 }
 
 .container-right-img-home img {
-    width: 100%; /* Ensure images fill the container width */
-    height: calc(33.33% - 10px); /* Adjust height to fit 3 images with gap */
-    object-fit: cover; /* Ensure images cover their containers */
+    width: 100%;
+    /* Ensure images fill the container width */
+    height: calc(33.33% - 10px);
+    /* Adjust height to fit 3 images with gap */
+    object-fit: cover;
+    /* Ensure images cover their containers */
 }
 
 /* Optional: Maintain a minimum height for the right container to prevent overflow */
 .container-right-img-home {
-    min-height: 100%; /* Ensure right container takes up the full height of the left image */
+    min-height: 100%;
+    /* Ensure right container takes up the full height of the left image */
 }
 
 .container-body-home {
@@ -46,6 +56,7 @@
     margin-left: 10%;
     margin-right: 10%;
 }
+
 .container-album-home {
     display: flex;
     gap: 10px;
@@ -54,20 +65,25 @@
     margin-right: 0%;
     margin-bottom: 50px;
 }
+
 .container-album-detail-home {
     display: flex;
     flex-direction: column;
-    flex:1;
+    flex: 1;
     /* border: 2px rebeccapurple solid; */
 }
-.container-album-detail-home > div {
+
+.container-album-detail-home>div {
     margin-top: 5px;
 }
+
 .container-events-home {
     position: relative;
     background-color: rgb(227, 236, 240);
-    padding: 0 0px; /* Ensure the content has the correct margins */
-    box-sizing: border-box; /* Include padding in the element's total width */
+    padding: 0 0px;
+    /* Ensure the content has the correct margins */
+    box-sizing: border-box;
+    /* Include padding in the element's total width */
     min-height: 100vh;
 }
 
@@ -78,76 +94,77 @@
     left: 50%;
     width: 100vw;
     height: 100%;
-    background-color:  rgb(227, 236, 240); /* Same as the container's background color */
+    background-color: rgb(227, 236, 240);
+    /* Same as the container's background color */
     transform: translateX(-50%);
-    z-index: -1; /* Place behind the content */
+    z-index: -1;
+    /* Place behind the content */
 }
 
 .container-event-home {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    max-width: 1200px; /* Optional: Limit the maximum width of the content */
-    margin: 0 auto; /* Center the content horizontally */
+    max-width: 1200px;
+    /* Optional: Limit the maximum width of the content */
+    margin: 0 auto;
+    /* Center the content horizontally */
 }
 
 .container-event-detail-home {
     background-color: #f0f2f6;
     flex: 1 1 calc(20% - 10px);
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
+
 @media (max-width: 600px) {
     .container-event-detail-home {
-        flex: 1 1 calc(50% - 10px); /* 2 items per row */
+        flex: 1 1 calc(50% - 10px);
+        /* 2 items per row */
     }
 }
 
-.container-footer-home {
-    background-color: rgb(87, 85, 85);
-    height: 360px;
-}
-.containter-footer-detail-home {
-    /* border: 2px rebeccapurple solid; */
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 80px;
-    height: 80%;
-}
 .container-text-home {
-      /* border: 2px rebeccapurple solid; */
+    /* border: 2px rebeccapurple solid; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 65%;
 }
+
 .container-discover-home {
     display: flex;
-    gap:30px;
+    gap: 30px;
     margin-top: 60px;
     margin-bottom: 20px;
 }
+
 .container-all-home {
     display: flex;
     gap: 20px;
     /* margin-top: 20px; */
 }
-.container-all-home > p {
-    
+
+.container-all-home>p {
+
     width: fit-content;
     color: white;
     border-radius: 10px;
     padding: 3px 10px 3px 10px;
 }
-.container-all-home > p:hover{
+
+.container-all-home>p:hover {
     background-color: black;
 }
+
 .container-all-home {
     position: relative;
     background-color: rgb(90, 179, 216);
-    padding: 0 0px; /* Ensure the content has the correct margins */
-    box-sizing: border-box; /* Include padding in the element's total width */
-   padding: 15px 0px  15px 0px;
+    padding: 0 0px;
+    /* Ensure the content has the correct margins */
+    box-sizing: border-box;
+    /* Include padding in the element's total width */
+    padding: 15px 0px 15px 0px;
 }
 
 .container-all-home::before {
@@ -157,33 +174,42 @@
     left: 50%;
     width: 100vw;
     height: 100%;
-    background-color:  rgb(90, 179, 216); /* Same as the container's background color */
+    background-color: rgb(90, 179, 216);
+    /* Same as the container's background color */
     transform: translateX(-50%);
-    z-index: -1; /* Place behind the content */
-   
+    z-index: -1;
+    /* Place behind the content */
+
 }
+
 .bestselling {
     background-color: rgb(75, 148, 180);
 }
+
 .bestselling::before {
-    background-color:  rgb(75, 148, 180);
+    background-color: rgb(75, 148, 180);
 }
+
 .artist {
-    background-color:  rgb(54, 107, 130);
+    background-color: rgb(54, 107, 130);
 }
+
 .artist::before {
-    background-color:  rgb(54, 107, 130);
+    background-color: rgb(54, 107, 130);
 }
+
 .container-img-list-home {
     display: flex;
-    gap:20px;
+    gap: 20px;
 }
+
 .container-down-left-img-home {
-   
+
     display: flex;
-    gap:10px;
+    gap: 10px;
     margin-top: 15px;
 }
+
 .container-down-right-img-home {
     flex: 1;
     flex-direction: column;
@@ -192,23 +218,27 @@
     height: fit-content;
     padding: 15px 5px 30px 5px;
 }
+
 .container-two-list-left-home {
-    flex:2;
+    flex: 2;
 }
+
 .buy-now-home {
     display: flex;
     justify-content: space-between;
     /* border: 2px solid red; */
     width: 100%;
 }
-.buy-now-home > div {
+
+.buy-now-home>div {
     border: 1px solid gray;
-   margin-top: 20px;
-   padding-top: 5px;
-   padding-bottom: 5px;
-   width: 100%;
-   text-align: center;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
 }
+
 .music-player {
     display: flex;
     align-items: center;
@@ -220,31 +250,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:5px;
+    gap: 5px;
 }
+
 .page-home {
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 85px;
 }
-.page-home > button {
+
+.page-home>button {
     padding-left: 10px;
     padding-right: 10px;
 }
+
 .sigup-input-button-home {
     display: flex;
     gap: 10px;
     justify-content: center;
 }
-.sigup-input-button-home > input {
+
+.sigup-input-button-home>input {
     width: 30%;
 }
-.sigup-input-button-home > button {
+
+.sigup-input-button-home>button {
     padding-left: 25px;
     padding-right: 25px;
 }
-.container-discover-home > p:nth-last-child(-n+3) {
+
+.container-discover-home>p:nth-last-child(-n+3) {
     background-color: lightgray;
     border-radius: 10px;
     padding-left: 10px;
@@ -254,3 +290,26 @@
     align-items: center;
     display: flex;
 }
+<<<<<<< HEAD
+=======
+
+.rolling-home {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.container-album-home {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 16px; /* Adjust the gap between items */
+}
+
+.container-album-detail-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+>>>>>>> homepage3

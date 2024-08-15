@@ -1,16 +1,36 @@
 footer {
-  height: 380px;
+  height: 80px;
   color: #F8F8F8;
   background-color: #333333;
-  margin-top: 70vh;
+  display: flex;
+  align-items: center;
 }
 
 footer>div {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
-  padding: 40px 0 20px 0;
-  height: 100%;
+  align-items: center;
   width: 95%;
   margin: auto;
+}
+
+#container-quick-links-footer {
+  display: flex;
+  gap: 40px;
+  white-space: nowrap;
+}
+
+#container-developers-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  width: 1500px;
+  min-height: 1000px;
+}
+
+.container-developers-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

@@ -1,0 +1,19 @@
+.container-album-home {
+    margin-top: 20px;
+}
+.pagination > button {
+    width: 70px;
+}
+.album-genre {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.page-container-home {
+    display: flex;
+}
+
+.buy-now-home {
+    display: flex;
+    flex-direction: column;
+}

@@ -5,8 +5,9 @@ from .albums import seed_albums, undo_albums
 from .albumarts import seed_albumarts, undo_albumarts
 from .songs import seed_songs, undo_songs
 from .supportedbys import seed_supportedbys, undo_supportedbys
-from .shoppingcarts import seed_shoppingcarts, undo_shoppingcarts
 from .wishlists import seed_wishlists, undo_wishlists
+from .collections import seed_collections, undo_collections
+from .shoppingcarts import seed_shoppingcarts, undo_shoppingcarts
 
 
 # Creates a seed group to hold our commands
@@ -28,6 +29,7 @@ def seed():
         undo_songs()
         undo_supportedbys()
         undo_wishlists()
+        undo_collections()
         undo_shoppingcarts()
     seed_users()
     seed_albums()
@@ -35,6 +37,7 @@ def seed():
     seed_songs()
     seed_supportedbys()
     seed_wishlists()
+    seed_collections()
     seed_shoppingcarts()
     # Add other seed functions here
 
@@ -48,5 +51,6 @@ def undo():
     undo_songs()
     undo_supportedbys()
     undo_wishlists()
+    undo_collections()
     undo_shoppingcarts()
     # Add other undo functions here

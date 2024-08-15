@@ -1,0 +1,9 @@
+.container-manage-als {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+}
+.manage-als {
+    border: 2px gray solid;
+    width: 20%;
+}

@@ -1,5 +1,4 @@
 // GET albums using react router
-// GET albums using react router
 export const albumLoader = async ({ params }) => {
     const { albumId } = params;
 

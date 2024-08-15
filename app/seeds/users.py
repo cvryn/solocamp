@@ -6,7 +6,7 @@ def seed_users():
     # 1
     demo = User(
         username="Demo",
-        profile_image="url",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/demo_user/demo_user.jpg",
         first_name="Demo",
         last_name="User",
         email="demo@solocamp.io",
@@ -65,7 +65,7 @@ def seed_users():
     # 7
     jay = User(
         username="Jay",
-        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
+        profile_image="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723701650/solocamp/afe91a0fbd46406ea094f2b3be6dd931_irgtwy.jpg",
         first_name="Jay",
         last_name="Chou",
         email="jay@solocamp.io",
@@ -75,7 +75,7 @@ def seed_users():
     # 8
     gai = User(
         username="Gai",
-        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
+        profile_image="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723701649/solocamp/images_fkmmy3.jpg",
         first_name="Yan",
         last_name="Chou",
         email="gai@solocamp.io",
@@ -85,7 +85,7 @@ def seed_users():
     # 9
     ice = User(
         username="Ice",
-        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
+        profile_image="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723701648/solocamp/ab6761610000e5eb13069429c7aa47dd65889b88_ctqbnl.jpg",
         first_name="Changqing",
         last_name="Yang",
         email="ice@solocamp.io",
@@ -95,7 +95,7 @@ def seed_users():
     # 10
     vinida = User(
         username="Vinida",
-        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
+        profile_image="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723701649/solocamp/2024042607585798_exnf9b.png",
         first_name="Ying",
         last_name="Weng",
         email="vinida@solocamp.io",
@@ -105,7 +105,7 @@ def seed_users():
     # 11
     jolin = User(
         username="Jolin",
-        profile_image="https://solocamp-files.s3.amazonaws.com/fujii/fujii_profile-_picture.jpg",
+        profile_image="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723701648/solocamp/3F_3F_3F_Jolin_Tsai_2023_j79jtd.webp",
         first_name="Yilin",
         last_name="Tsai",
         email="jolin@solocamp.io",
@@ -160,6 +160,16 @@ def seed_users():
         password="password",
     )
 
+    # 17
+    kenny_g = User(
+        username="Kenny G",
+        profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Kenny+G/kenny_g.jpg",
+        first_name="Kenneth",
+        last_name="Gorelick",
+        email="kenny_g@solocamp.io",
+        password="password",
+    )
+
     db.session.add(demo)
 
     db.session.add_all(
@@ -180,7 +190,7 @@ def seed_users():
             jolin,
         ]
     )
-    db.session.add_all([adele, lady_gaga, tiesto, cole_dammett, hardwell])
+    db.session.add_all([adele, lady_gaga, tiesto, cole_dammett, hardwell, kenny_g])
 
     db.session.commit()
 
