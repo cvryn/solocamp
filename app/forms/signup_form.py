@@ -26,7 +26,7 @@ class SignUpForm(FlaskForm):
     )
     email = EmailField(
         "email",
-        validators=[DataRequired(), user_exists],
+        validators=[DataRequired(), user_exists, Length(min=5, max=50)],
     )
     first_name = StringField(
         "first name", validators=[DataRequired(), Length(min=2, max=50)]
