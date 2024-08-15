@@ -1,16 +1,30 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import DeleteSupportedByModal from "./DeleteSupportedByModal";
-
+import DeleteReviewModal from "./DeleteSupportedByModal";
+import EditSupportedByModal from "./EditSupportedByModal"; // Import the EditSupportedByModal
+import { useModal } from "../../context/Modal";
 import "./SupportedByItems.css";
 
-const SupportedByItems = ({ supportedBys }) => {
-  console.log("THE supportedBys", supportedBys);
-
-  console.log("!!!!!!!!!!!!!!", supportedBys.album_id);
-
+const SupportedByItems = ({ supportedBys, onDelete, onEdit }) => {
+  const { setModalContent } = useModal();
   const currentUser = useSelector((state) => state.session.user);
-  console.log("Current User:", currentUser);
+
+  const openDeleteModal = (supportedById) => {
+    setModalContent(
+      <DeleteReviewModal onDelete={() => onDelete(supportedById)} />
+    );
+  };
+
+  const openEditModal = (supportedBy) => {
+    setModalContent(
+      <EditSupportedByModal
+        supportedBy={supportedBy}
+        onEditComplete={(updatedSupportedBy) => {
+          onEdit(updatedSupportedBy);
+        }}
+      />
+    );
+  };
 
   return (
     <div id="collection-album-items-container">
@@ -22,11 +36,11 @@ const SupportedByItems = ({ supportedBys }) => {
               src={supportedBy.album_art}
               alt={`${supportedBy.album_title} Art`}
             />
-            <Link to={`/albums/${supportedBy.album_id}`} >
-            <div className="supported-by-info">
-              <h2>{supportedBy.album_title}</h2>
-              <p>by {supportedBy?.album_posted_by_username}</p>
-            </div>
+            <Link to={`/albums/${supportedBy.album_id}`}>
+              <div className="supported-by-info">
+                <h2>{supportedBy.album_title}</h2>
+                <p>by {supportedBy?.album_posted_by_username}</p>
+              </div>
             </Link>
           </div>
           <br />
@@ -35,9 +49,11 @@ const SupportedByItems = ({ supportedBys }) => {
               {currentUser?.username}:&nbsp;{supportedBy.description}
             </p>
             <br />
+            <p>Favorite Track: {supportedBy.song_title}</p>
+            <br />
             <div className="edit-delete-button-collection">
-              <button>Edit</button>
-              <button>Delete</button>
+              <button onClick={() => openEditModal(supportedBy)}>Edit</button>
+              <button onClick={() => openDeleteModal(supportedBy.id)}>Delete</button>
             </div>
           </div>
         </div>

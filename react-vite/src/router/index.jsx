@@ -8,7 +8,7 @@ import Checkout from '../components/Checkout/Checkout';
 import About from '../components/Footer/About';
 import { albumLoader } from './album';
 import ManageSupportedBys from '../components/SupportedBy/ManageSupportedBys';
-import { getSupportedBys } from './supportedbys';
+import { getSupportedBys, supportedByLoader } from './supportedbys';
 
 
 export const router = createBrowserRouter([
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
         element: <Checkout />
       },
       {
-        path: "/supported-by/all",
+        path: "/user/reviews",
         element: <ManageSupportedBys />,
         loader: getSupportedBys
       },
