@@ -14,9 +14,9 @@ const AlbumItem = ({ album }) => {
         />
       </div>
       <div className="album-title-album-items">
-        <div>{album?.name}</div>
-        <div>by {album?.user_username}</div>
-        <div>{album?.year}</div>
+        <div className='album-list-album-name'>{album?.name}</div>
+        <div style={{fontSize: '12px'}}>by {album?.user_username}</div>
+        <div style={{fontSize: '11px'}}>{album?.year}</div>
 
       </div>
     </div>

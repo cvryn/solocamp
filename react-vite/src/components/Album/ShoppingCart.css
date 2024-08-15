@@ -1,0 +1,16 @@
+
+.shopping-cart-album-details{
+    border: 2px solid lightgrey;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+
+
+.checkout-button-album-details {
+    border: none;
+    background-color: rgb(102, 159, 64);
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+}

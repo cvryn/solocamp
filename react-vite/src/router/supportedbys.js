@@ -1,6 +1,4 @@
-
 export const supportedByLoader = async (method, endpoint, data = null) => {
-
   const options = {
     method,
     headers: {
@@ -9,17 +7,12 @@ export const supportedByLoader = async (method, endpoint, data = null) => {
     ...(data && { body: JSON.stringify(data) }),
   };
 
-  try {
-    const response = await fetch(endpoint, options);
-    if (!response.ok) {
-      throw new Error(`Failed to ${method} data.`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+  const response = await fetch(endpoint, options);
+
+  const responseData = await response.json();
+  return responseData;
 };
+
 
 export const getSupportedBys = () => supportedByLoader('GET', '/api/supported-by/all');
 export const getSupportedBysByAlbum = (albumId) =>
