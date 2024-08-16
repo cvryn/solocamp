@@ -10,23 +10,30 @@ export const getWishlist = async () => {
 
 // POST new album into wishlist
 export const postToWishlist = async (albumId) => {
-  const response = await fetch(`/api/albums/${albumId}/wishlist`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  try {
+    const response = await fetch(`/api/albums/${albumId}/wishlist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-  if (!response.ok) {
-    return { error: 'Cannot add album to wishlist.' };
+    if (!response.ok) {
+      const errorData = await response.json();
+      return { error: errorData.error || 'Cannot add album to wishlist.' };
+    }
+
+    return response.json();
+  } catch (error) {
+    return { error: 'Failed to add album to wishlist' };
   }
-
-  return response.json();
 };
 
+
 // DELETE album from wishlist
-export const deleteFromWishlist = async (userId, albumId) => {
-    const response = await fetch(`/api/wishlists/${userId}/${albumId}`, {
+export const deleteFromWishlist = async (albumId) => {
+  try {
+    const response = await fetch(`/api/wishlist/${albumId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -34,8 +41,12 @@ export const deleteFromWishlist = async (userId, albumId) => {
     });
 
     if (!response.ok) {
-      return { error: 'Failed to remove album from wishlist.' };
+      const errorData = await response.json();
+      return { error: errorData.error || 'Failed to remove from wishlist' };
     }
 
-    return response.json();
-  };
+    return await response.json();
+  } catch (error) {
+    return { error: 'Failed to remove from wishlist' };
+  }
+};

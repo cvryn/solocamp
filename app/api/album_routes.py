@@ -267,7 +267,7 @@ def add_to_collection(album_id):
 
     if album.user_id == current_user.id:
         return {"error": "Forbidden"}, 403
-    
+
     if album in current_user.album_in_collection:
         return {"error": "Album already in wishlist"}, 409
 

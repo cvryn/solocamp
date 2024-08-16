@@ -12,6 +12,7 @@ import {
   getShoppingCart,
   deleteFromShoppingCart,
 } from "../../router/shoppingcart";
+import { postToWishlist} from "../../router/wishlist"
 import SupportedByList from "../SupportedBy/SupportedByList";
 import SongList from "./Song/SongList";
 import AlbumItem from "./AlbumItem";
@@ -19,6 +20,7 @@ import ReviewForm from "../SupportedBy/ReviewForm";
 import ShoppingCart from "./ShoppingCart";
 
 import "./AlbumDetails.css";
+
 const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
 const AlbumDetails = () => {
@@ -35,13 +37,15 @@ const AlbumDetails = () => {
 
   useEffect(() => {
     const fetchSupportedBys = async () => {
-      const data = await getSupportedBysByAlbum(albumId);
-      setSupportedBys(data);
+      if (albumId) {
+        const data = await getSupportedBysByAlbum(albumId);
+        setSupportedBys(data);
 
-      const hasReviewed = data.some(
-        (review) => review.user_id === currentUser.id
-      );
-      setUserHasReviewed(hasReviewed);
+        const hasReviewed = currentUser
+          ? data.some((review) => review.user_id === currentUser.id)
+          : false;
+        setUserHasReviewed(hasReviewed);
+      }
     };
 
     const fetchCartItems = async () => {
@@ -51,17 +55,14 @@ const AlbumDetails = () => {
 
     fetchSupportedBys();
     fetchCartItems();
-  }, [albumId, currentUser.id]);
+  }, [albumId, currentUser?.id]);
 
-  const userAlbums = allAlbums.filter(
-    (a) => a.user_username === album.user_username
-  );
-  const sameGenres = allAlbums.filter((a) => a.genre === album.genre);
+  const userAlbums =
+    allAlbums?.filter((a) => a.user_username === album?.user_username) || [];
+  const sameGenres = allAlbums?.filter((a) => a.genre === album?.genre) || [];
   const shuffledGenres = shuffleArray([...sameGenres]);
 
-
-  
-  const backgroundColor = album?.album_art[0]?.background_color || "#FFFFFF";
+  const backgroundColor = album?.album_art?.[0]?.background_color || "#FFFFFF";
   const gradientBackground = `linear-gradient(to left, ${backgroundColor}, #FFFFFF)`;
 
   const handleReviewSubmitted = (newReview) => {
@@ -70,21 +71,23 @@ const AlbumDetails = () => {
   };
 
   const handleAddToCart = async () => {
-    const result = await postToShoppingCart(albumId);
+    if (albumId) {
+      const result = await postToShoppingCart(albumId);
 
-    if (result.error) {
-      alert(result.error);
-      return;
+      if (result.error) {
+        alert(result.error);
+        return;
+      }
+
+      const newItem = {
+        id: albumId,
+        name: album.name,
+        price: album.price,
+      };
+
+      setCartItems((prevCartItems) => [...prevCartItems, newItem]);
+      setIsAddedToCart(true);
     }
-
-    const newItem = {
-      id: albumId,
-      name: album.name,
-      price: album.price,
-    };
-
-    setCartItems((prevCartItems) => [...prevCartItems, newItem]);
-    setIsAddedToCart(true);
   };
 
   const handleRemoveItem = async (itemId) => {
@@ -106,16 +109,43 @@ const AlbumDetails = () => {
     alert("Feature coming soon...");
   };
 
-  const handleWishlistToggle = () => {
-    setIsInWishlist((prev) => !prev);
+  const handleWishlistToggle = async () => {
+    if (!currentUser) {
+      alert("You need to be logged in to add to the wishlist.");
+      return;
+    }
+
+    if (isInWishlist) {
+      const result = await deleteFromWishlist(currentUser.id, albumId);
+
+      if (result.error) {
+        alert(result.error);
+        return;
+      }
+
+      setIsInWishlist(false);
+    } else {
+      const result = await postToWishlist(albumId);
+
+      if (result.error) {
+        alert(result.error);
+        return;
+      }
+
+      setIsInWishlist(true);
+    }
   };
+
+  if (!album) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div style={{ background: gradientBackground }}>
       <div id="banner-image-album-details">
         <img
           className="banner-art-album-details"
-          src={album?.album_art[0]?.album_banner}
+          src={album.album_art?.[0]?.album_banner}
           alt="album banner art"
         />
       </div>
@@ -123,10 +153,10 @@ const AlbumDetails = () => {
         <div id="main-container-album-details">
           <div id="track-title-container-album-details">
             <h1 style={{ fontWeight: "bold", fontSize: "25px" }}>
-              {album?.name}
+              {album.name}
             </h1>
             <div className="album-name-and-artist-name">
-              from {album?.name} by {album?.user_username}
+              from {album.name} by {album.user_username}
             </div>
           </div>
           <br />
@@ -147,7 +177,7 @@ const AlbumDetails = () => {
                 >
                   <IoIosRewind />
                 </button>
-                <div style={{ fontSize: "16px" }}>{album?.songs[0]?.title}</div>
+                <div style={{ fontSize: "16px" }}>{album.songs[0]?.title}</div>
                 <button
                   className="forward-button-album-details"
                   style={{ border: "none", backgroundColor: "transparent" }}
@@ -184,7 +214,7 @@ const AlbumDetails = () => {
                   </button>
                   &nbsp;
                   <span style={{ fontSize: "17px", fontWeight: "bold" }}>
-                    ${album?.price}&nbsp;
+                    ${album.price}&nbsp;
                   </span>
                   <span>USD or more</span>
                   <br />
@@ -202,12 +232,12 @@ const AlbumDetails = () => {
                   <SongList songs={songs} />
                 </ul>
                 <br />
-                <span>{album?.description}</span>
+                <span>{album.description}</span>
                 <br />
                 <br />
               </div>
               <div className="release-date-album-details">
-                released {album?.year}
+                released {album.year}
               </div>
               <br />
               <div
@@ -223,7 +253,7 @@ const AlbumDetails = () => {
               <div className="album-art-album-details">
                 <img
                   className="album-art-image-album-details"
-                  src={album?.album_art[0]?.album_art}
+                  src={album.album_art?.[0]?.album_art}
                   alt="album art image"
                 />
               </div>
@@ -256,7 +286,7 @@ const AlbumDetails = () => {
                   onReviewSubmitted={handleReviewSubmitted}
                   canLeaveReview={
                     !userHasReviewed &&
-                    currentUser.username !== album.user_username
+                    currentUser?.username !== album.user_username
                   }
                 />
               </div>
@@ -274,7 +304,7 @@ const AlbumDetails = () => {
               <div className="user-profile-pic-album-details">
                 <img
                   className="user-profile-pic-image-album-details"
-                  src={album?.user_profile_image}
+                  src={album.user_profile_image}
                   alt="user profile picture image"
                 />
               </div>

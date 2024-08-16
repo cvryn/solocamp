@@ -54,17 +54,10 @@ def get_collection(user_id):
 
 
 # delete album from wishlist belonging to current user
-@wishlist_routes.route("/<int:user_id>/<int:album_id>", methods=["DELETE"])
-def remove_from_wishlist(user_id, album_id):
+@wishlist_routes.route("<int:album_id>", methods=["DELETE"])
+def remove_album_from_wishlist(album_id):
     if not current_user.is_authenticated:
         return {"error": "User not authenticated"}, 401
-
-    if current_user.id != user_id:
-        return {"error": "Forbidden"}, 403
-
-    user_exists = User.query.filter_by(id=user_id).first()
-    if not user_exists:
-        return {"error": "User not found"}, 404
 
     album_exists = Album.query.filter_by(id=album_id).first()
     if not album_exists:
