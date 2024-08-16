@@ -29,8 +29,11 @@ export const thunkGetAlbums = () => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json()
-        console.log('get all als?, ', data)
+        // console.log('get all als?, ', data)
         dispatch(getAlbums(data))
+    }else {
+        const errorData = await res.json();
+        return { errors: errorData.errors };
     }
 }
 export const thunkUpdateAlbum = (album) => async (dispatch) => {
@@ -69,23 +72,20 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
         if (resImg.ok) {
             const newImg = await resImg.json();
             newAl.album_art = [newImg];
-
+            dispatch(updateAlbum(newAl));
             return { newAl, newImg };
+        }else {
+            const errorData = await resImg.json();
+            return { errors: errorData.errors };
         }
+    }else {
+        const errorData = await res.json();
+        return { errors: errorData.errors };
     }
 }
 
 export const thunkCreateAlbum = (album) => async (dispatch) => {
     let { name, year, genre, price, description, albumart, albumbanner, backgroundcolor } = album;
-    if (!albumart) {
-        albumart = "https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
-    }
-    if (!albumbanner) {
-        albumart = "https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
-    }
-    if (!backgroundcolor) {
-        albumart = "https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"
-    }
     const response = await fetch("/api/albums/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -109,12 +109,18 @@ export const thunkCreateAlbum = (album) => async (dispatch) => {
         })
         if (resImg.ok) {
             const newImg = await resImg.json();
-            console.log('in new img thunk', newImg)
+            // console.log('in new img thunk', newImg)
             newAl.album_art = [newImg];
 
             return { newAl, newImg };
+        }else {
+            const errorData = await resImg.json();
+            return { errors: errorData.errors };
         }
-
+    }else {
+        const errorData = await response.json();
+        // console.log('error in thunk for img',errorData)
+        return { errors: errorData };
     }
 }
 
@@ -132,13 +138,26 @@ const initialState = {};
 
 function albumReducer(state = initialState, action) {
     switch (action.type) {
-        case ADD_ALBUM:
-            return { ...state, album: action.payload }
+        case ADD_ALBUM:{
+            return {
+                ...state,
+                album: [...state.album, action.payload]
+            };
+        }
+            // return { ...state, album: action.payload }
         case GET_ALBUMS:
             return { ...state, album: action.payload }
+        case UPDATE_ALBUM: {
+            const newState = { ...state };
+            newState.album = state.album.map(alb =>
+                alb.id === action.album.id ? action.album : alb
+            );
+            return newState;
+        }
         case DELETE_ALBUM: {
             let newState = { ...state };
             delete newState[action.id];
+            newState.album = state.album.filter(alb => alb.id !== action.id);
             return newState;
         }
         default:
