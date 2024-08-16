@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import './Pagination.css';
 import SongPlaying from './SongPlaying';
+import { useNavigate } from 'react-router-dom';
 
 const Pagination = ({ albumData }) => {
+    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedImageId, setSelectedImageId] = useState(null);
-    const itemsPerPage = 9;
+    const itemsPerPage = 10;
 
     // Calculate the indices for slicing the data
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -31,7 +33,8 @@ const Pagination = ({ albumData }) => {
                     {currentItems?.map(albumEl => (
                         <div key={albumEl.id} className='container-album-detail-home'>
                             <img 
-                            onClick={()=> handleImageClick(albumEl.id)}
+                            // onClick={()=> handleImageClick(albumEl.id)}
+                             onClick={() => navigate(`/albums/${albumEl.id}`)}
                                 style={{ height: '120px', width:'120px' }} src={albumEl.album_art[0].album_art} />
                             <div className='album-genre'>
                             <div>{albumEl.name}</div>
@@ -48,6 +51,7 @@ const Pagination = ({ albumData }) => {
                         <button 
                             key={index + 1} 
                             onClick={() => handlePageChange(index + 1)} 
+                            // onClick={() => {() => navigate(`/albums/${el.id}`)}} 
                             className={currentPage === index + 1 ? 'active' : ''}
                         >
                             {index + 1}
@@ -55,7 +59,7 @@ const Pagination = ({ albumData }) => {
                     ))}
                 </div>
             </div>
-            <SongPlaying selectedImageId={selectedImageId} albumData={albumData}/>
+            {/* <SongPlaying selectedImageId={selectedImageId} albumData={albumData}/> */}
 
         </div>
     );
