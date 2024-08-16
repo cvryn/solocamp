@@ -53,7 +53,7 @@ const ReviewForm = ({ albumId, songs = [], onReviewSubmitted, canLeaveReview }) 
                 required
                 style={{ width: '100%', marginTop: '10px' }}
               >
-                <option value="" disabled >Select a song</option>
+                <option value="" disabled>Select a song</option>
                 {songs.map((song) => (
                   <option key={song.id} value={song.id}>
                     {song.title}

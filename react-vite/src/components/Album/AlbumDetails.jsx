@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 import { PiCopyright } from "react-icons/pi";
-import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
+// import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { CgPlayButtonR } from "react-icons/cg";
 import { IoIosRewind, IoIosFastforward } from "react-icons/io";
 import { getSupportedBysByAlbum } from "../../router/supportedbys";
@@ -12,7 +12,7 @@ import {
   getShoppingCart,
   deleteFromShoppingCart,
 } from "../../router/shoppingcart";
-import { postToWishlist} from "../../router/wishlist"
+// import { postToWishlist} from "../../router/wishlist"
 import SupportedByList from "../SupportedBy/SupportedByList";
 import SongList from "./Song/SongList";
 import AlbumItem from "./AlbumItem";
@@ -30,9 +30,9 @@ const AlbumDetails = () => {
   const songs = album?.songs || [];
   const [supportedBys, setSupportedBys] = useState([]);
   const [userHasReviewed, setUserHasReviewed] = useState(false);
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  // const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [isInWishlist, setIsInWishlist] = useState(false);
+  // const [isInWishlist, setIsInWishlist] = useState(false);
   const currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const AlbumDetails = () => {
 
     fetchSupportedBys();
     fetchCartItems();
-  }, [albumId, currentUser?.id]);
+  }, [albumId, currentUser]);
 
   const userAlbums =
     allAlbums?.filter((a) => a.user_username === album?.user_username) || [];
@@ -86,7 +86,7 @@ const AlbumDetails = () => {
       };
 
       setCartItems((prevCartItems) => [...prevCartItems, newItem]);
-      setIsAddedToCart(true);
+      // setIsAddedToCart(true);
     }
   };
 
@@ -109,32 +109,32 @@ const AlbumDetails = () => {
     alert("Feature coming soon...");
   };
 
-  const handleWishlistToggle = async () => {
-    if (!currentUser) {
-      alert("You need to be logged in to add to the wishlist.");
-      return;
-    }
+  // const handleWishlistToggle = async () => {
+  //   if (!currentUser) {
+  //     alert("You need to be logged in to add to the wishlist.");
+  //     return;
+  //   }
 
-    if (isInWishlist) {
-      const result = await deleteFromWishlist(currentUser.id, albumId);
+  //   if (isInWishlist) {
+  //     const result = await deleteFromWishlist(currentUser.id, albumId);
 
-      if (result.error) {
-        alert(result.error);
-        return;
-      }
+  //     if (result.error) {
+  //       alert(result.error);
+  //       return;
+  //     }
 
-      setIsInWishlist(false);
-    } else {
-      const result = await postToWishlist(albumId);
+  //     setIsInWishlist(false);
+  //   } else {
+  //     const result = await postToWishlist(albumId);
 
-      if (result.error) {
-        alert(result.error);
-        return;
-      }
+  //     if (result.error) {
+  //       alert(result.error);
+  //       return;
+  //     }
 
-      setIsInWishlist(true);
-    }
-  };
+  //     setIsInWishlist(true);
+  //   }
+  // };
 
   if (!album) {
     return <div>Loading...</div>;
@@ -257,7 +257,7 @@ const AlbumDetails = () => {
                   alt="album art image"
                 />
               </div>
-              <div className="wishlist-button-album-details">
+              {/* <div className="wishlist-button-album-details">
                 <button
                   className="add-to-wishlist-button"
                   onClick={handleWishlistToggle}
@@ -274,21 +274,26 @@ const AlbumDetails = () => {
                     </>
                   )}
                 </button>
-              </div>
+              </div> */}
+              < br/>
               <div id="supported-by-container">
                 <span>supported by</span>
                 <div className="supported-by-users-comments">
                   <SupportedByList album={album} supportedBys={supportedBys} />
                 </div>
-                <ReviewForm
-                  albumId={albumId}
-                  songs={songs}
-                  onReviewSubmitted={handleReviewSubmitted}
-                  canLeaveReview={
-                    !userHasReviewed &&
-                    currentUser?.username !== album.user_username
-                  }
-                />
+                {currentUser ? (
+                  <ReviewForm
+                    albumId={albumId}
+                    songs={songs}
+                    onReviewSubmitted={handleReviewSubmitted}
+                    canLeaveReview={
+                      !userHasReviewed &&
+                      currentUser?.username !== album.user_username
+                    }
+                  />
+                ) : (
+                  <div>Please log in to leave a review.</div>
+                )}
               </div>
             </section>
 
