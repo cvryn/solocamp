@@ -156,7 +156,7 @@ def seed_users():
         profile_image="https://solocamp-ac.s3.us-east-2.amazonaws.com/Hardwell/hardwell.jpg",
         first_name="Robbert",
         last_name="Corput",
-        email="hardwell.solocamp.io",
+        email="hardwell@solocamp.io",
         password="password",
     )
 
