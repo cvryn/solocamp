@@ -1,28 +1,44 @@
-import { useEffect } from "react"
-import { Link } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
-import { thunkWishlistAlbumCount } from "../../redux/wishlist"
-import "./UserProfile.css"
-
+import { useEffect, useMemo } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { thunkWishlistAlbums, thunkWishlistAdlbumRemove } from "../../redux/wishlist";
+import { FaHeart } from "react-icons/fa";
+import "./UserProfile.css";
 
 
 function WishList() {
-  const currentUser = useSelector(state => state.session.user)
-  const albumsInWishlist = useSelector(state => state.session.user.album_in_wishlist);
-  const albumCountObj = useSelector(state => state.wishlist);
-  const albumCountArr = Object.values(albumCountObj);
+  const currentUser = useSelector(state => state.session.user);
+  const albumsInWishlistObj = useSelector(state => state.wishlist);
+  const albumsInWishlist = Object.values(albumsInWishlistObj);
+  const albums = useLoaderData()
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(thunkWishlistAlbumCount())
+    dispatch(thunkWishlistAlbums())
   }, [dispatch]);
 
-  if (!currentUser) return null
+  const albumArtMapping = useMemo(() => {
+    return albums.reduce((acc, album) => {
+      acc[album.id] = album.album_art[0]?.album_art;
+      return acc;
+    }, {});
+  }, [albums]);
 
-  return albumsInWishlist ? (
+  const handleHeartClick = (event, albumId) => {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(thunkWishlistAdlbumRemove(albumId));
+  };
+
+  if (!currentUser) return null;
+
+  return albumsInWishlist.length > 0 ? (
     <div id="container-album-listing-wishlist">
-      {albumsInWishlist?.map(album => {
-        const albumCount = albumCountArr.find(countAlbum => countAlbum.id === album.id)?.count || 0;
+      {albumsInWishlist?.map((album) => {
+        if (!album || !album.id) return null; // fixes ghost album issue
+        const albumCount = albumsInWishlist.find(countAlbum => countAlbum.id === album.id)?.count || 0;
+        const albumArtUrl = albumArtMapping[album.id];
 
         return (
           <Link
@@ -31,22 +47,29 @@ function WishList() {
             id="container-album-wishlist"
           >
             <img
-              src={album.album_art[0]?.album_art}
+              src={albumArtUrl}
               style={{ width: "220px", aspectRatio: "1/1" }}
               alt="album-cover-image"
             />
             <span style={{ paddingTop: "10px" }}>{album.name}</span>
             <span style={{ fontSize: "0.75rem" }}>by {album.user_username}</span>
-            {albumCount === 1
-              ? <span style={{ marginTop: "auto", fontSize: "0.75rem" }}>appears in {albumCount} wishlists</span>
-              : <span style={{ marginTop: "auto", fontSize: "0.75rem" }}>appears in {albumCount} wishlists</span>
-            }
+            <div id="container-count-heart-button-wishlist">
+              {albumCount === 1
+                ? <span style={{ fontSize: "0.75rem" }}>appears in {albumCount} wishlist</span>
+                : <span style={{ fontSize: "0.75rem" }}>appears in {albumCount} wishlists</span>
+              }
+              <FaHeart onClick={(e) => handleHeartClick(e, album.id)} />
+            </div>
           </Link>
-        )
+        );
       })}
     </div>
-  ) : (<div style={{ minHeight: "800px" }}></div >);
+
+  ) : (
+
+    <div style={{ minHeight: "800px" }}></div>
+  );
 }
 
 
-export default WishList
+export default WishList;

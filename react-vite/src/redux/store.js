@@ -2,7 +2,7 @@ import {
   legacy_createStore as createStore,
   applyMiddleware,
   compose,
-  combineReducers,
+  combineReducers
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";

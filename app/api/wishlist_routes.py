@@ -7,14 +7,13 @@ from sqlalchemy import func
 wishlist_routes = Blueprint("wishlists", __name__)
 
 
-# get count of albums appearing in all wishlists
-@wishlist_routes.route("/counts", methods=["GET"])
-def get_album_counts_in_wishlists():
+# get albums in current logged in user's wishlist
+@wishlist_routes.route("/all", methods=["GET"])
+def get_albums_of_current_user():
     album_counts = (
         db.session.query(
             Album.id,
             Album.name,
-            Album.album_art,
             func.count(func.distinct(wishlist.columns.user_id)).label("count"),
         )
         .join(wishlist, Album.id == wishlist.columns.album_id)
@@ -26,18 +25,17 @@ def get_album_counts_in_wishlists():
         {
             "id": album_id,
             "name": album_name,
-            "album_art": album_art,
             "count": count,
         }
-        for album_id, album_name, album_art, count in album_counts
+        for album_id, album_name, count in album_counts
     ]
 
     return albums
 
 
-# get wishlist belong to current user
+# get wishlist by user_id
 @wishlist_routes.route("/<int:user_id>", methods=["GET"])
-def get_collection(user_id):
+def get_albums_by_user_id(user_id):
     user_exists = User.query.filter_by(id=user_id).first()
     if not user_exists:
         return {"error": "User not found"}, 404
@@ -55,16 +53,9 @@ def get_collection(user_id):
 
 # delete album from wishlist belonging to current user
 @wishlist_routes.route("<int:album_id>", methods=["DELETE"])
-def remove_from_wishlist(album_id):
+def remove_album_from_wishlist(album_id):
     if not current_user.is_authenticated:
         return {"error": "User not authenticated"}, 401
-
-    # if current_user.id != user_id:
-    # return {"error": "Forbidden"}, 403
-
-    # user_exists = User.query.filter_by(id=user_id).first()
-    # if not user_exists:
-    # return {"error": "User not found"}, 404
 
     album_exists = Album.query.filter_by(id=album_id).first()
     if not album_exists:

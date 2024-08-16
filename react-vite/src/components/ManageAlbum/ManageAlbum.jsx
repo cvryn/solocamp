@@ -50,7 +50,7 @@ export default function ManageAlbum() {
                 }
             </div>
             <CreateAlbumButton/>
-           
+
         </div>
     )
 }

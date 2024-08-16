@@ -63,3 +63,10 @@
 #container-album-wishlist:hover {
   border: 1px solid lightgray;
 }
+
+#container-count-heart-button-wishlist{
+  display: flex;
+  margin-top: auto;
+  align-items: center;
+  justify-content: space-between;
+}

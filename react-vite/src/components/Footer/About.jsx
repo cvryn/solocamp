@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithubSquare } from "react-icons/fa";
-import { IoLogoDiscord } from "react-icons/io5";
 
 
 function About() {

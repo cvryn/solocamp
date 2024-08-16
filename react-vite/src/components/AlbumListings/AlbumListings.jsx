@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import LoginFormModal from "../LoginFormModal";
 import { thunkWishlistAlbumAdd, thunkWishlistAdlbumRemove, thunkWishlistAlbums } from "../../redux/wishlist";
 import { FiSearch } from "react-icons/fi";
 import { IoIosPlay } from "react-icons/io";
@@ -11,18 +13,33 @@ import "./AlbumListings.css"
 
 function AlbumListings() {
   const currentUser = useSelector(state => state.session.user);
-  const albumsInWishlist = useSelector(state => state.session.user.album_in_wishlist);
+  const albumsInWishlistObj = useSelector(state => state.wishlist);
+  const albumsInWishlist = Object.values(albumsInWishlistObj);
   const dispatch = useDispatch();
   const albums = useLoaderData();
   const navigate = useNavigate();
   const location = useLocation();
+  const ulRef = useRef();
 
+  const [showMenu, setShowMenu] = useState(false);
+  const [genres, setGenres] = useState(["all genres"])
+  const [search, setSearch] = useState("")
   const [selectedAlbum, setSelectedAlbum] = useState(() => {
     const randomIndex = Math.floor(Math.random() * albums.length);
     return albums[randomIndex];
   })
-  const [genres, setGenres] = useState(["all genres"])
-  const [search, setSearch] = useState("")
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = (e) => {
+      if (ulRef.current && !ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+    document.addEventListener("click", closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -71,19 +88,24 @@ function AlbumListings() {
   };
 
   const addToWishlist = (albumId) => {
-    const albumData = {
-      user_id: currentUser.id,
-      album_id: albumId
-    };
-    dispatch(thunkWishlistAlbumAdd(albumData))
-      .then(() => dispatch(thunkWishlistAlbums(currentUser.id)))
+    if (!currentUser) {
+      setShowMenu(true);
+    } else {
+      const albumData = {
+        user_id: currentUser.id,
+        album_id: albumId
+      };
+      dispatch(thunkWishlistAlbumAdd(albumData))
+        .then(() => dispatch(thunkWishlistAlbums()))
+    }
   };
 
   const removeFromWishlist = (albumId) => {
     dispatch(thunkWishlistAdlbumRemove(albumId))
-      .then(() => dispatch(thunkWishlistAlbums(currentUser.id)))
+      .then(() => dispatch(thunkWishlistAlbums()))
   };
 
+  const closeMenu = () => setShowMenu(false);
 
   const filteredAlbums = genres.length && !genres.includes("all genres")
     ? albums.filter(album => genres.includes(album.genre.toLowerCase()))
@@ -91,6 +113,14 @@ function AlbumListings() {
 
   return (
     <>
+      {showMenu && (
+        <OpenModalMenuItem
+          itemText="Log In"
+          onItemClick={closeMenu}
+          modalComponent={<LoginFormModal />}
+        />
+      )}
+
       <div id="container-filter-outer">
         <div id="container-filter-inner">
           <div id="container-search-genre-tags">
@@ -193,28 +223,45 @@ function AlbumListings() {
                 }}>
                   <button
                     type="button"
-                    id="button-go-to-album-album-listings"
+                    className="button-wishlist-album-listings"
                     onClick={() => navigate(`/albums/${selectedAlbum.id}`)}
                   >
                     Go to album
                   </button>
 
-                  {
-                    albumsInWishlist?.some(album => album.id === selectedAlbum.id)
-                      ? <button
-                        type="submit"
-                        id="button-add-to-wishlist-album-listings"
+                  {currentUser && selectedAlbum.user_id === currentUser.id
+                    ? (
+                      <button
+                        type="button"
+                        className="button-wishlist-album-listings"
+                        style={{ cursor: "not-allowed" }}
+                        onClick={() => removeFromWishlist(selectedAlbum.id)}
+                        disabled
+                      >
+                        <FaHeart style={{ fontSize: "1.6rem" }} /> Wishlist
+                      </button>
+
+                    ) : (currentUser && albumsInWishlist?.find(album => album.id === selectedAlbum.id)
+                      ? (<button
+                        type="button"
+                        className="button-wishlist-album-listings"
                         onClick={() => removeFromWishlist(selectedAlbum.id)}
                       >
                         <FaHeart style={{ fontSize: "1.6rem" }} /> Wishlist
                       </button>
-                      : <button
-                        type="submit"
-                        id="button-add-to-wishlist-album-listings"
+                      ) : (<button
+                        type="button"
+                        className="button-wishlist-album-listings"
+                        style={{
+                          color: "white",
+                          backgroundColor: "rgb(34, 34, 34)",
+                          border: "2px solid white"
+                        }}
                         onClick={() => addToWishlist(selectedAlbum.id)}
                       >
                         <FaRegHeart style={{ fontSize: "1.6rem" }} /> Wishlist
-                      </button>
+                      </button>)
+                    )
                   }
                 </div>
 
