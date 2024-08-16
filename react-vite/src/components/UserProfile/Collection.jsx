@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { thunkCollectionAlbumCount } from "../../redux/collection"
+import { thunkCollectionAlbums } from "../../redux/collection"
 import "./UserProfile.css"
 import { useEffect } from "react"
 
 
 function Collection() {
-  const currentUser = useSelector(state => state.session.user)
+  const currentUser = useSelector(state => state.session.user);
   const album_in_collection = currentUser.album_in_collection;
   const albumCountObj = useSelector(state => state.collection);
   const albumCountArr = Object.values(albumCountObj);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(thunkCollectionAlbumCount())
+    dispatch(thunkCollectionAlbums())
   }, [dispatch]);
 
   if (!currentUser) return null

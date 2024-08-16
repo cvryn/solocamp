@@ -9,25 +9,33 @@ wishlist_routes = Blueprint("wishlists", __name__)
 
 # get albums in current logged in user's wishlist
 @wishlist_routes.route("/all", methods=["GET"])
-def get_albums_of_current_user():
+def get_albums_of_current_user_in_wishlist():
     album_counts = (
         db.session.query(
-            Album.id,
-            Album.name,
-            func.count(func.distinct(wishlist.columns.user_id)).label("count"),
+            wishlist.columns.album_id,  # Get album_id from wishlist table
+            Album.name,  # Get album name from Album model
+            func.count(func.distinct(wishlist.columns.user_id)).label(
+                "count"
+            ),  # Count distinct user_ids
+            wishlist.columns.user_id,  # Get user_id from wishlist table
         )
-        .join(wishlist, Album.id == wishlist.columns.album_id)
-        .group_by(Album.id)
+        .join(
+            Album, Album.id == wishlist.columns.album_id
+        )  # Join Album table to get album name
+        .group_by(
+            wishlist.columns.album_id, wishlist.columns.user_id, Album.name
+        )  # Group by wishlist.album_id and wishlist.user_id
         .all()
     )
 
     albums = [
         {
-            "id": album_id,
-            "name": album_name,
-            "count": count,
+            "id": album_id,  # album_id from wishlist table
+            "name": album_name,  # album name from Album model
+            "count": count,  # count of distinct user_ids
+            "user_id": user_id,  # user_id from wishlist table
         }
-        for album_id, album_name, count in album_counts
+        for album_id, album_name, count, user_id in album_counts
     ]
 
     return albums

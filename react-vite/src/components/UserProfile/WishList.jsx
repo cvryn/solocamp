@@ -8,16 +8,18 @@ import "./UserProfile.css";
 
 function WishList() {
   const currentUser = useSelector(state => state.session.user);
-  const albumsInWishlistObj = useSelector(state => state.wishlist);
-  const albumsInWishlist = Object.values(albumsInWishlistObj);
-  console.log("🚀 ~ WishList ~ albumsInWishlist:", albumsInWishlist)
-  const albums = useLoaderData();
+  const albumInOwnWishlistObj = useSelector(state => state.wishlist);
+  const albumInWishlist = Object.values(albumInOwnWishlistObj);
 
+  const albumInOwnWishlist = albumInWishlist?.filter(wishlist => wishlist.user_id === currentUser.id);
+
+  const albums = useLoaderData();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(thunkWishlistAlbums())
   }, [dispatch]);
+
 
   const albumArtMapping = useMemo(() => {
     return albums.reduce((acc, album) => {
@@ -34,11 +36,11 @@ function WishList() {
 
   if (!currentUser) return null;
 
-  return albumsInWishlist.length > 0 ? (
+  return albumInOwnWishlist.length > 0 ? (
     <div id="container-album-listing-wishlist">
-      {albumsInWishlist?.map((album) => {
+      {albumInOwnWishlist?.map((album) => {
         if (!album || !album.id) return null; // fixes ghost album issue
-        const albumCount = albumsInWishlist.find(countAlbum => countAlbum.id === album.id)?.count || 0;
+        const albumCount = albumInOwnWishlist.find(countAlbum => countAlbum.id === album.id)?.count || 0;
         const albumArtUrl = albumArtMapping[album.id];
 
         return (

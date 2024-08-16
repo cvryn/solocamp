@@ -59,7 +59,10 @@ function UserProfile() {
               setWishlist(false);
             }}
           >
-            collection&nbsp;&nbsp;&nbsp;&nbsp;100
+            collection&nbsp;&nbsp;&nbsp;&nbsp;
+            {Array.isArray(currentUser?.album_in_collection) && (
+              currentUser.album_in_collection.length || 0
+            )}
           </NavLink>
           <NavLink
             className={() => wishlist ? "tab-wishlist active" : "tab-wishlist"}
@@ -69,8 +72,9 @@ function UserProfile() {
             }}
           >
             wishlist&nbsp;&nbsp;&nbsp;&nbsp;
-            {Array.isArray(currentUser?.album_in_wishlist)
-              && `${currentUser.album_in_wishlist.length}`}
+            {Array.isArray(currentUser?.album_in_wishlist) && (
+              currentUser.album_in_wishlist.length || 0
+            )}
           </NavLink>
         </div>
         <hr style={{ border: "0.5px solid lightgray", margin: "10px 0 20px 0" }} />
