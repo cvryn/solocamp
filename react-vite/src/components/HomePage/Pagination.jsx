@@ -3,7 +3,6 @@ import './Pagination.css';
 import { useNavigate } from 'react-router-dom';
 
 const Pagination = ({ albumData }) => {
-    console.log('hello')
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     // const [selectedImageId, setSelectedImageId] = useState(null);
