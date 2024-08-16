@@ -96,12 +96,21 @@ function UpdateAlbumFormModal({ el }) {
 
                 <label>
                     Genre
-                    <input
-                        type="text"
+                    <select
                         value={genre}
                         onChange={(e) => setGenre(e.target.value)}
                         required
-                    />
+                    >
+                        <option value="">Select Genre</option>
+                        <option value="pop">pop</option>
+                        <option value="pop">rap</option>
+                        <option value="rock">rock</option>
+                        <option value="alternative">jazz</option>
+                        <option value="r&b">classical</option>
+                        <option value="country">country</option>
+                        <option value="country">electrinic</option>
+                        <option value="rap">experimental</option>
+                    </select>
                 </label>
                 {errors.genre && <p>{errors.genre}</p>}
 
