@@ -73,6 +73,10 @@
     /* border: 2px rebeccapurple solid; */
 }
 
+.container-album-detail-home>img {
+    cursor: pointer;
+}
+
 .container-album-detail-home>div {
     margin-top: 5px;
 }
@@ -297,10 +301,14 @@
     margin-bottom: 50px;
 }
 
+.rolling-home>img {
+    cursor: pointer;
+}
+
 .container-album-home {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    gap: 16px; 
+    gap: 16px;
 }
 
 .container-album-detail-home {
@@ -309,4 +317,3 @@
     align-items: center;
     text-align: center;
 }
-

@@ -27,6 +27,15 @@ export const thunkWishlistAlbums = () => async (dispatch) => {
   }
 };
 
+export const thunkWishlistAlbumsByUser = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/wishlist/${userId}`);
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(getAlbumsInWishlist(data));
+  }
+};
+
+
 export const thunkWishlistAlbumAdd = (albumData) => async (dispatch) => {
   const res = await fetch(`/api/albums/${albumData.album_id}/wishlist`, {
     method: "POST",

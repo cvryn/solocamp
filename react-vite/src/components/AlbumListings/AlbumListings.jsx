@@ -186,7 +186,7 @@ function AlbumListings() {
             ))}
           </div>
 
-          {selectedAlbum && (
+          {selectedAlbum && Array.isArray(selectedAlbum.songs) && selectedAlbum.songs.length > 0 ? (
             <div id="container-current-album-outer">
               <div id="container-current-album-inner">
                 <img src={selectedAlbum.album_art[0].album_art}
@@ -231,16 +231,15 @@ function AlbumListings() {
                   </button>
 
                   {currentUser && selectedAlbum.user_id === currentUser.id
-                    ? (
-                      <button
-                        type="button"
-                        className="button-wishlist-album-listings"
-                        style={{ cursor: "not-allowed" }}
-                        onClick={() => removeFromWishlist(selectedAlbum.id)}
-                        disabled
-                      >
-                        <FaHeart style={{ fontSize: "1.6rem" }} /> Wishlist
-                      </button>
+                    ? (<button
+                      type="button"
+                      className="button-wishlist-album-listings"
+                      style={{ cursor: "not-allowed" }}
+                      onClick={() => removeFromWishlist(selectedAlbum.id)}
+                      disabled
+                    >
+                      <FaHeart style={{ fontSize: "1.6rem" }} /> Wishlist
+                    </button>
 
                     ) : (currentUser && albumsInWishlist?.find(album => album.id === selectedAlbum.id)
                       ? (<button
@@ -279,6 +278,8 @@ function AlbumListings() {
                 <p>{selectedAlbum.description}</p>
               </div>
             </div>
+          ) : (
+            <h2 style={{ alignSelf: "center", fontSize: "2rem", }}>This album has no songs</h2>
           )}
         </div>
       </div >

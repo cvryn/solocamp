@@ -11,13 +11,13 @@ import Pagination from './Pagination';
 
 
 const HorizontalScrollImages = () => {
-  
+
     const navigate = useNavigate();
     let albumData = useLoaderData();
     // if (!Array.isArray(albumData)) {
     //     return <p>No albums available.</p>;  // Handle cases where data isn't an array
     // }
-    
+
     const [displayedImages, setDisplayedImages] = useState(albumData.slice(0, 8));
     const containerRef = useRef(null);
     const imageIndex = useRef(8);
@@ -71,7 +71,7 @@ function HomePage() {
     //     func()
     // },[dispatch])
     // let albumData = useSelector(state=> state.albums.album)
-   
+
     // console.log('flag!!!!!!',albumData[0])
     let imageUrls = albumData? albumData.map(album => album.album_art[0].album_art): "https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg";
 
@@ -164,7 +164,7 @@ function HomePage() {
                             {/* <input placeholder='your email address'></input> */}
                             {/* <button onClick={()=> handleAlbumCreate()}style={{ backgroundColor: 'black', color: 'white' }}>CREATE ALBUM</button> */}
                       {/* <CreateAlbumButton/> */}
-                      <button onClick={()=> navigate('/manage-albums')}>Manage Album</button>
+                      <button onClick={()=> navigate('/manage-albums')}>Manage Albums</button>
                         </div>
                     </div>
                     <div className="container-discover-home">

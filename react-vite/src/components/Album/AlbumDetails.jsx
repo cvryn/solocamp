@@ -140,12 +140,15 @@ const AlbumDetails = () => {
     return <div>Loading...</div>;
   }
 
+  const albumArt = album.album_art?.[0];
+  const firstSong = songs[0];
+
   return (
     <div style={{ background: gradientBackground }}>
       <div id="banner-image-album-details">
         <img
           className="banner-art-album-details"
-          src={album.album_art?.[0]?.album_banner}
+          src={albumArt?.album_banner}
           alt="album banner art"
         />
       </div>
@@ -177,7 +180,9 @@ const AlbumDetails = () => {
                 >
                   <IoIosRewind />
                 </button>
-                <div style={{ fontSize: "16px" }}>{album.songs[0]?.title}</div>
+                <div style={{ fontSize: "16px" }}>
+                  {firstSong ? firstSong.title : "No songs available"}
+                </div>
                 <button
                   className="forward-button-album-details"
                   style={{ border: "none", backgroundColor: "transparent" }}
@@ -253,7 +258,7 @@ const AlbumDetails = () => {
               <div className="album-art-album-details">
                 <img
                   className="album-art-image-album-details"
-                  src={album.album_art?.[0]?.album_art}
+                  src={albumArt?.album_art}
                   alt="album art image"
                 />
               </div>
