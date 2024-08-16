@@ -160,8 +160,8 @@ def seed_albums():
         description="From uplifting anthems to heartfelt ballads, It is a celebration of the highs and lows of life, designed to make you move, sing along, and feel every beat.",
     )
 
-    weiyuan_stroy = Album(
-        name="Weiyuan Stroy",
+    weiyuan_story = Album(
+        name="Weiyuan Story",
         user_id=8,
         year=2021,
         genre="rap",
@@ -312,7 +312,7 @@ def seed_albums():
             ninja,
             fantasy,
             icekingdom,
-            weiyuan_stroy,
+            weiyuan_story,
             jasmine,
         ]
     )
