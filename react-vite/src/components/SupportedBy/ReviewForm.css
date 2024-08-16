@@ -1,0 +1,25 @@
+.leave-review-button-album-details {
+    /* border: 2px solid red; */
+    background-color: transparent;
+    border: none;
+    background-color: rgb(108, 135, 243);
+    color: white;
+    border-radius: 5px;
+    padding: 0 20px;
+}
+
+.leave-review-button-album-details:hover{
+    background-color: rgb(86, 119, 252);
+}
+.leave-review-submit-button{
+    background-color: transparent;
+    border: none;
+    background-color: rgb(108, 135, 243);
+    color: white;
+    border-radius: 5px;
+    padding: 0 20px;
+}
+
+.leave-review-submit-button:hover{
+    background-color: rgb(86, 119, 252);
+}

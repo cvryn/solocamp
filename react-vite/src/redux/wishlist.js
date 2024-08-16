@@ -39,7 +39,7 @@ export const thunkWishlistAlbumAdd = (albumData) => async (dispatch) => {
   }
 };
 
-export const thunkWishlistAdlbumRemove = (albumId) => async (dispatch) => {
+export const thunkWishlistAlbumRemove = (albumId) => async (dispatch) => {
   const res = await fetch(`/api/wishlist/${albumId}`, {
     method: "DELETE"
   });

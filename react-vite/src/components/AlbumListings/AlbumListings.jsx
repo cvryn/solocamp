@@ -3,7 +3,7 @@ import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
-import { thunkWishlistAlbumAdd, thunkWishlistAdlbumRemove, thunkWishlistAlbums } from "../../redux/wishlist";
+import { thunkWishlistAlbumAdd, thunkWishlistAlbumRemove, thunkWishlistAlbums } from "../../redux/wishlist";
 import { FiSearch } from "react-icons/fi";
 import { IoIosPlay } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
@@ -96,7 +96,7 @@ function AlbumListings() {
   };
 
   const removeFromWishlist = (albumId) => {
-    dispatch(thunkWishlistAdlbumRemove(albumId))
+    dispatch(thunkWishlistAlbumRemove(albumId))
       .then(() => dispatch(thunkWishlistAlbums()))
   };
 

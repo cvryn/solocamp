@@ -18,10 +18,10 @@
     width: 100%;
 }
 
-#main-container-album-details,
-#music-spacer{
-    border: 2px solid grey;
+#main-container-album-details{
+    border: 2px solid rgb(197, 197, 197);
     padding: 5px 25px;
+    background-color: white;
 
 }
 
@@ -32,14 +32,72 @@
     gap: 20px;
 }
 
+.album-name-and-artist-name{
+    font-weight: bold;
+}
+
 #left-column-container-album-details {
     /* border: 2px solid green; */
     flex: 1.5;
 }
 
+
 #music-player-table-container {
-    border: 2px solid grey;
-    padding: 15px 0;
+    /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-top: 10px;
+    line-height: 55px;
+
+}
+
+.play-button-placeholder svg{
+    /* border: 2px solid red; */
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+}
+
+.rewind-button-album-details svg {
+
+
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.forward-button-album-details svg {
+
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.buy-album-button{
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.buy-album-button:hover {
+    text-decoration: underline;
+}
+
+.send-as-gift-button-album-details{
+    font-weight: bold;
+
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.send-as-gift-button-album-details:hover {
+    text-decoration: underline;
 }
 
 

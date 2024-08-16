@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { thunkWishlistAlbums, thunkWishlistAdlbumRemove } from "../../redux/wishlist";
+import { thunkWishlistAlbums, thunkWishlistAlbumRemove } from "../../redux/wishlist";
 import { FaHeart } from "react-icons/fa";
 import "./UserProfile.css";
 
@@ -28,7 +28,7 @@ function WishList() {
   const handleHeartClick = (event, albumId) => {
     event.stopPropagation();
     event.preventDefault();
-    dispatch(thunkWishlistAdlbumRemove(albumId));
+    dispatch(thunkWishlistAlbumRemove(albumId));
   };
 
   if (!currentUser) return null;
