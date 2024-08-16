@@ -103,14 +103,14 @@ function UpdateAlbumFormModal({ el }) {
                     >
                         <option value="">Select Genre</option>
                         <option value="pop">pop</option>
+                        <option value="alternative">alternative</option>
                         <option value="rap">rap</option>
-                        <option value="rock">rock</option>
-                        <option value="jazz">jazz</option>
                         <option value="r&b">r&b</option>
-                        <option value="classical">classical</option>
-                        <option value="country">country</option>
-                        <option value="eletronic">eletronic</option>
+                        <option value="electronic">electronic</option>
+                        <option value="rock">rock</option>
                         <option value="experimental">experimental</option>
+                        <option value="jazz">jazz</option>
+                        <option value="country">country</option>
                     </select>
                 </label>
                 {errors.genre && <p>{errors.genre}</p>}
