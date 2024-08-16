@@ -1,24 +1,19 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 import { PiCopyright } from "react-icons/pi";
-// import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { CgPlayButtonR } from "react-icons/cg";
 import { IoIosRewind, IoIosFastforward } from "react-icons/io";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { getSupportedBysByAlbum } from "../../router/supportedbys";
-import {
-  postToShoppingCart,
-  getShoppingCart,
-  deleteFromShoppingCart,
-} from "../../router/shoppingcart";
-// import { postToWishlist} from "../../router/wishlist"
+import { postToShoppingCart, getShoppingCart, deleteFromShoppingCart } from "../../router/shoppingcart";
 import SupportedByList from "../SupportedBy/SupportedByList";
 import SongList from "./Song/SongList";
 import AlbumItem from "./AlbumItem";
 import ReviewForm from "../SupportedBy/ReviewForm";
 import ShoppingCart from "./ShoppingCart";
-
+import { thunkWishlistAlbumAdd, thunkWishlistAlbumRemove } from "../../redux/wishlist";
 import "./AlbumDetails.css";
 
 const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
@@ -30,10 +25,11 @@ const AlbumDetails = () => {
   const songs = album?.songs || [];
   const [supportedBys, setSupportedBys] = useState([]);
   const [userHasReviewed, setUserHasReviewed] = useState(false);
-  // const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  // const [isInWishlist, setIsInWishlist] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
   const currentUser = useSelector((state) => state.session.user);
+  const wishlist = useSelector(state => state.wishlist);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchSupportedBys = async () => {
@@ -57,13 +53,11 @@ const AlbumDetails = () => {
     fetchCartItems();
   }, [albumId, currentUser]);
 
-  const userAlbums =
-    allAlbums?.filter((a) => a.user_username === album?.user_username) || [];
-  const sameGenres = allAlbums?.filter((a) => a.genre === album?.genre) || [];
-  const shuffledGenres = shuffleArray([...sameGenres]);
-
-  const backgroundColor = album?.album_art?.[0]?.background_color || "#FFFFFF";
-  const gradientBackground = `linear-gradient(to left, ${backgroundColor}, #FFFFFF)`;
+  useEffect(() => {
+    if (currentUser && album) {
+      setIsInWishlist(!!wishlist[album.id]);
+    }
+  }, [currentUser, album, wishlist]);
 
   const handleReviewSubmitted = (newReview) => {
     setSupportedBys((prev) => [...prev, newReview]);
@@ -86,7 +80,6 @@ const AlbumDetails = () => {
       };
 
       setCartItems((prevCartItems) => [...prevCartItems, newItem]);
-      // setIsAddedToCart(true);
     }
   };
 
@@ -109,32 +102,20 @@ const AlbumDetails = () => {
     alert("Feature coming soon...");
   };
 
-  // const handleWishlistToggle = async () => {
-  //   if (!currentUser) {
-  //     alert("You need to be logged in to add to the wishlist.");
-  //     return;
-  //   }
+  const handleWishlistToggle = async () => {
+    if (!currentUser) {
+      alert("You need to be logged in to add to the wishlist.");
+      return;
+    }
 
-  //   if (isInWishlist) {
-  //     const result = await deleteFromWishlist(currentUser.id, albumId);
-
-  //     if (result.error) {
-  //       alert(result.error);
-  //       return;
-  //     }
-
-  //     setIsInWishlist(false);
-  //   } else {
-  //     const result = await postToWishlist(albumId);
-
-  //     if (result.error) {
-  //       alert(result.error);
-  //       return;
-  //     }
-
-  //     setIsInWishlist(true);
-  //   }
-  // };
+    if (isInWishlist) {
+      await dispatch(thunkWishlistAlbumRemove(album.id));
+      setIsInWishlist(false);
+    } else {
+      await dispatch(thunkWishlistAlbumAdd({ album_id: album.id }));
+      setIsInWishlist(true);
+    }
+  };
 
   if (!album) {
     return <div>Loading...</div>;
@@ -142,6 +123,11 @@ const AlbumDetails = () => {
 
   const albumArt = album.album_art?.[0];
   const firstSong = songs[0];
+  const userAlbums = allAlbums?.filter((a) => a.user_username === album?.user_username) || [];
+  const sameGenres = allAlbums?.filter((a) => a.genre === album?.genre) || [];
+  const shuffledGenres = shuffleArray([...sameGenres]);
+  const backgroundColor = album?.album_art?.[0]?.background_color || "#FFFFFF";
+  const gradientBackground = `linear-gradient(to left, ${backgroundColor}, #FFFFFF)`;
 
   return (
     <div style={{ background: gradientBackground }}>
@@ -262,25 +248,27 @@ const AlbumDetails = () => {
                   alt="album art image"
                 />
               </div>
-              {/* <div className="wishlist-button-album-details">
-                <button
-                  className="add-to-wishlist-button"
-                  onClick={handleWishlistToggle}
-                >
-                  {isInWishlist ? (
-                    <>
-                      <IoMdHeart style={{ fontSize: "15px" }} />
-                      Wishlist - added
-                    </>
-                  ) : (
-                    <>
-                      <IoMdHeartEmpty style={{ fontSize: "15px" }} />
-                      Wishlist
-                    </>
-                  )}
-                </button>
-              </div> */}
-              < br/>
+              {album.user_username !== currentUser?.username && (
+                <div className="wishlist-button-album-details">
+                  <button
+                    className="add-to-wishlist-button"
+                    onClick={handleWishlistToggle}
+                  >
+                    {isInWishlist ? (
+                      <>
+                        <IoMdHeart style={{ fontSize: "15px" }} />
+                        Wishlist - added
+                      </>
+                    ) : (
+                      <>
+                        <IoMdHeartEmpty style={{ fontSize: "15px" }} />
+                        Wishlist
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+              <br />
               <div id="supported-by-container">
                 <span>supported by</span>
                 <div className="supported-by-users-comments">
