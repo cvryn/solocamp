@@ -44,7 +44,7 @@ function SignupFormModal() {
       closeModal();
     }
   };
-// console.log('error while signing up', errors)
+console.log('error while signing up', errors)
   return (
     <div id="container-signup-form-modal">
       <h1>Sign Up</h1>
@@ -63,8 +63,8 @@ function SignupFormModal() {
             required
           />
         </label>
-        <div style={{color:'red'}}>
-        {errors.email && <p>{errors.email}</p>}
+        <div style={{color:'red', width:'50px'}}>
+        {errors.email && <p className='container-error-signup'>{errors.email}</p>}
         </div>
 
         <label>

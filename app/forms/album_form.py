@@ -13,7 +13,7 @@ class AlbumForm(FlaskForm):
     year = IntegerField(
         "year",
         validators=[
-            NumberRange(min=1900, max=2100, message="Year must be between 1900 and 2100."),
+            NumberRange(min=1900, max=2100, message="Must be between 1900 and 2100."),
             # DataRequired()
         ]
     )
