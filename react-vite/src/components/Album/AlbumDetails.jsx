@@ -248,7 +248,7 @@ const AlbumDetails = () => {
                   alt="album art image"
                 />
               </div>
-              {album.user_username !== currentUser?.username && (
+              {album.user_username !== currentUser?.username && currentUser && (
                 <div className="wishlist-button-album-details">
                   <button
                     className="add-to-wishlist-button"
