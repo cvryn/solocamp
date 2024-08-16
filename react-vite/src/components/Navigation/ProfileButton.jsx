@@ -31,9 +31,7 @@ function ProfileButton() {
         setShowMenu(false);
       }
     };
-
     document.addEventListener("click", closeMenu);
-
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
@@ -50,9 +48,13 @@ function ProfileButton() {
     <nav id="container-user-navigation" style={{ position: "relative" }}>
       {user ? (
         <>
-          <NavLink to="/checkout"><PiShoppingCartSimple style={{ fontSize: "2rem" }} /></NavLink>
+          <NavLink to="/checkout">
+            <PiShoppingCartSimple style={{ fontSize: "2rem" }} />
+          </NavLink>
 
-          <NavLink to="/user"><SlHeart style={{ fontSize: "1.7rem" }} /></NavLink>
+          <NavLink to="/user">
+            <SlHeart style={{ fontSize: "1.7rem", marginTop: "2px" }} />
+          </NavLink>
 
           <div id="circle-div"
             onClick={toggleMenu}

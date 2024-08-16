@@ -1,8 +1,14 @@
 """initial migration
 
+<<<<<<<< HEAD:migrations/versions/20240815_095953_initial_migration.py
 Revision ID: c3870e91b074
-Revises:
+Revises: 
 Create Date: 2024-08-15 09:59:53.759132
+========
+Revision ID: 5a4301cc3730
+Revises: 
+Create Date: 2024-08-15 19:42:56.214948
+>>>>>>>> wishlist-collection:migrations/versions/20240815_194256_initial_migration.py
 
 """
 from alembic import op
@@ -10,7 +16,11 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
+<<<<<<<< HEAD:migrations/versions/20240815_095953_initial_migration.py
 revision = 'c3870e91b074'
+========
+revision = '5a4301cc3730'
+>>>>>>>> wishlist-collection:migrations/versions/20240815_194256_initial_migration.py
 down_revision = None
 branch_labels = None
 depends_on = None

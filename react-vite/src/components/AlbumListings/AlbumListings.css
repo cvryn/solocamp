@@ -1,3 +1,13 @@
+#button-login-modal-album-listings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: white;
+  background: linear-gradient(to right, rgb(106, 13, 173), rgb(247, 140, 64));
+  cursor: pointer;
+}
+
 #container-filter-outer {
   background-color: gray;
 }
@@ -47,8 +57,9 @@
 }
 
 #container-album-listings-outer {
-  background-color: rgb(34, 34, 34);
   min-height: 400px;
+  margin: auto;
+  background-color: rgb(34, 34, 34);
 }
 
 #container-album-listings-grid {
@@ -56,7 +67,7 @@
   grid-template-columns: 2fr 1fr;
   grid-template-rows: minmax(100px, max-content) repeat(auto-fill, 200px) 20%;
   grid-template-areas: "left right";
-  gap: 30px;
+  gap: 80px;
   color: white;
   width: 1500px;
   margin: auto;
@@ -65,11 +76,12 @@
 #container-album-listings {
   grid-area: left;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   padding: 20px 0 20px 40px;
   row-gap: 30px;
   column-gap: 20px;
+  width: 920px;
 }
 
 #container-album {

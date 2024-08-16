@@ -37,7 +37,7 @@ def get_album_counts_in_collection():
 
 # get collection belong to any user
 @collection_routes.route("/<int:user_id>", methods=["GET"])
-def get_wishlist(user_id):
+def get_collection(user_id):
     user_exists = User.query.filter_by(id=user_id).first()
     if not user_exists:
         return {"error": "User not found"}, 404
