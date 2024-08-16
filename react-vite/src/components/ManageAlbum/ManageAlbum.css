@@ -7,3 +7,9 @@
     border: 2px gray solid;
     width: 20%;
 }
+.create-album-button-home {
+    background-color: lightgray;
+    width: fit-content;
+    border: 1px black solid;
+    border-radius: 2px;
+}

@@ -5,6 +5,7 @@
   max-width: 1400px;
   margin: auto;
   width: 95%;
+  z-index: 5;
 }
 
 .container-primary-navigation {
@@ -13,6 +14,7 @@
   align-items: center;
   margin-top: 5px;
   height: 50px;
+  z-index: 6;
 }
 
 #container-logo-search-navigation {
@@ -94,5 +96,5 @@
   box-shadow: 0 0 0 2px #EFEFEF;
   background-color: white;
   user-select: none;
-  z-index: 1;
+  z-index: 7;
 }

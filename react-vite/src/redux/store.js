@@ -2,20 +2,22 @@ import {
   legacy_createStore as createStore,
   applyMiddleware,
   compose,
-  combineReducers,
+  combineReducers
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 // import supportedBysReducer from "./supportedByReducer";
 import albumReducer from './albumReducer';
 import wishlistReducer from "./wishlist";
+import collectionReducer from "./collection";
 
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   // supportedBys: supportedBysReducer,
   albums: albumReducer,
-  wishlist: wishlistReducer
+  wishlist: wishlistReducer,
+  collection: collectionReducer
 });
 
 let enhancer;

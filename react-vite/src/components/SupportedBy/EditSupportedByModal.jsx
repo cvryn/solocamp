@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { supportedByLoader } from "../../router/supportedbys";
 import { useModal } from "../../context/Modal";
+import './EditSupportedByModal.css'
 
 const EditSupportedByModal = ({ supportedBy, onEditComplete }) => {
   const { closeModal } = useModal();
   const [description, setDescription] = useState(supportedBy.description);
   const [selectedSongId, setSelectedSongId] = useState(supportedBy.song_id);
   const [songs, setSongs] = useState([]);
-
-  console.log("~~~~~~~~~~~~~", supportedBy);
 
   useEffect(() => {
     const fetchSongs = async () => {
@@ -54,11 +53,11 @@ const EditSupportedByModal = ({ supportedBy, onEditComplete }) => {
       <h1>Edit Review</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Description:</label>
-          <input
+          <label>Review:</label>
+          <textarea
             type="text"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)} style={{ width: '100%', resize: 'none', marginTop: '10px', padding: '10px' }}
             required
           />
         </div>

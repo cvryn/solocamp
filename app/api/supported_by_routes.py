@@ -17,57 +17,8 @@ def all_supported_bys():
 @supported_by_routes.route("/album/<int:album_id>", methods=["GET"])
 def get_supported_bys_by_album(album_id):
     supported_bys = SupportedBy.query.filter_by(album_id=album_id).all()
-    if not supported_bys:
-        return {"error": "Supported_by not found"}, 404
     return [supported_by.to_dict() for supported_by in supported_bys], 200
 
-
-# # POST post a new supported by
-# @supported_by_routes.route("/<int:album_id>", methods=["POST"])
-# def post_supported_bys(album_id):
-#     if not current_user.is_authenticated:
-#         return {"error": "User not authenticated"}, 401
-
-#     album = Album.query.get(album_id)
-
-#     if album is None:
-#         return {"error": "Album not found"}, 404
-
-#     if album.user_id == current_user.id:
-#         return {"error": "Cannot leave a supported by on your own album"}, 403
-
-#     data = request.get_json()
-#     description = data.get("description")
-#     song_id = data.get("song_id", None)
-
-#     # If a song_id is provided, check its validity
-#     if song_id:
-#         song_exists = Song.query.filter_by(id=song_id).first()
-#         if song_exists is None:
-#             return {"error": "Song not found"}, 404
-
-#         # Check if the song belongs to the album
-#         song_in_album = Song.query.filter_by(id=song_id, album_id=album_id).first()
-#         if song_in_album is None:
-#             return {"error": "Song not found in album"}, 404
-
-#     # Check if user has already left a review for this album
-#     existing_review = SupportedBy.query.filter_by(user_id=current_user.id, album_id=album_id).first()
-#     if existing_review:
-#         return {"error": "You cannot leave more than one review on an album!"}, 409
-
-#     # Create a new review
-#     new_supported_by = SupportedBy(
-#         description=description,
-#         album_id=album_id,
-#         song_id=song_id,
-#         user_id=current_user.id,
-#     )
-
-#     db.session.add(new_supported_by)
-#     db.session.commit()
-
-#     return new_supported_by.to_dict(), 201
 
 # POST new supported by
 @supported_by_routes.route("/<int:album_id>", methods=["POST"])
@@ -90,7 +41,7 @@ def post_supported_bys(album_id):
     if song_id:
         song_exists = Song.query.filter_by(id=song_id).first()
         if song_exists is None:
-            return {"error": "Song not found"}, 404 
+            return {"error": "Song not found"}, 404
         # Ensure the song belongs to the specified album
         song_in_album = Song.query.filter_by(id=song_id, album_id=album_id).first()
         if song_in_album is None:

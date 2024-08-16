@@ -1,26 +1,26 @@
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { thunkWishlistAlbumCount } from "../../redux/wishlist"
+import { thunkCollectionAlbumCount } from "../../redux/collection"
 import "./UserProfile.css"
 import { useEffect } from "react"
 
 
 function Collection() {
   const currentUser = useSelector(state => state.session.user)
-  const album_in_wishlist = currentUser.album_in_wishlist;
-  const albumCountObj = useSelector(state => state.wishlist);
+  const album_in_collection = currentUser.album_in_collection;
+  const albumCountObj = useSelector(state => state.collection);
   const albumCountArr = Object.values(albumCountObj);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(thunkWishlistAlbumCount())
+    dispatch(thunkCollectionAlbumCount())
   }, [dispatch]);
 
   if (!currentUser) return null
 
-  return album_in_wishlist ? (
+  return album_in_collection ? (
     <div id="container-album-listing-wishlist">
-      {album_in_wishlist?.map(album => {
+      {album_in_collection?.map(album => {
         const albumCount = albumCountArr.find(countAlbum => countAlbum.id === album.id)?.count || 0;
 
         return (

@@ -1,0 +1,18 @@
+.wishlist-button-album-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.add-to-wishlist-button {
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.add-to-wishlist-button:hover {
+    text-decoration: underline;
+}

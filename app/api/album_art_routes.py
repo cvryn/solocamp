@@ -34,7 +34,7 @@ def create_album_art(album_id):
 
         db.session.add(new_album_art)
         db.session.commit()
-        return new_album_art.to_dict(), 201  
+        return new_album_art.to_dict(), 201
 
     return {"errors": form.errors}, 400
 

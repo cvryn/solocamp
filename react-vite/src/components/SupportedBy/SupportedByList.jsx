@@ -21,8 +21,9 @@ const SupportedByList = ({ album, supportedBys }) => {
                   <span>{supportedBy.user_username}:&nbsp;</span>
 
                 <span style={{fontStyle: 'italic'}}>{supportedBy.description}</span>
+                <br/>
                 {supportedBy.song_title && (
-                  <span style={{fontStyle: 'italic'}}>&nbsp;Favorite Track: {supportedBy.song_title}.</span>
+                  <span style={{fontStyle: 'italic'}}>Favorite Track: {supportedBy.song_title}.</span>
                 )}
                  </div>
                 </div>

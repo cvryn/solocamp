@@ -4,6 +4,8 @@ from sqlalchemy.sql import text
 
 def seed_shoppingcarts():
     shopping_cart_items = [
+        {"user_id": 2, "album_id": 22},
+        {"user_id": 2, "album_id": 11},
         {"user_id": 2, "album_id": 31},
         {"user_id": 3, "album_id": 30},
         {"user_id": 12, "album_id": 1},

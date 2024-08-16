@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function CreateAlbumFormModal() {
     const userId = useSelector(state => state.session.user.id)
-   
+
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
@@ -37,35 +37,23 @@ function CreateAlbumFormModal() {
                 backgroundcolor
             })
         );
-        // let newAlbum = {
-        //     user_id: userId,
-        //         name,
-        //         year,
-        //         genre,
-        //         price,
-        //         description,
-        //         albumart,
-        //         albumbanner,
-        //         backgroundcolor
-        // }
 
-        if (serverResponse) {
-            setErrors(serverResponse);
-        } else {
+        // console.log('can i get error from backend', serverResponse)
+        if (!serverResponse.errors) {
             closeModal();
             navigate('/manage-albums')
+        } else {
+            setErrors(serverResponse);
         }
     };
-
+    // console.log('any thing in errors?', errors.errors)
     return (
         <div id="container-signup-form-modal">
             <h1>Create Album</h1>
-            {errors.server && <p>{errors.server}</p>}
 
             <form id="container-signup-form"
                 onSubmit={handleSubmit}
             >
-
                 <label>
                     Name
                     <input
@@ -75,8 +63,7 @@ function CreateAlbumFormModal() {
                         required
                     />
                 </label>
-                {errors.name && <p>{errors.name}</p>}
-
+                {errors?.errors?.name && <p style={{color:'red'}}>{errors.errors.name}</p>}
                 <label>
                     Year
                     <input
@@ -86,18 +73,27 @@ function CreateAlbumFormModal() {
                         required
                     />
                 </label>
-                {errors.year && <p>{errors.year}</p>}
+                {errors?.errors?.year && <p style={{color:'red'}}>{errors.errors.year}</p>}
 
                 <label>
                     Genre
-                    <input
-                        type="text"
+                    <select
                         value={genre}
                         onChange={(e) => setGenre(e.target.value)}
                         required
-                    />
+                    >
+                        <option value="">Select Genre</option>
+                        <option value="pop">pop</option>
+                        <option value="pop">rap</option>
+                        <option value="rock">rock</option>
+                        <option value="alternative">jazz</option>
+                        <option value="r&b">classical</option>
+                        <option value="country">country</option>
+                        <option value="country">electrinic</option>
+                        <option value="rap">experimental</option>
+                    </select>
                 </label>
-                {errors.genre && <p>{errors.genre}</p>}
+                {errors?.errors?.genre && <p style={{color:'red'}}>{errors.errors.genre}</p>}
 
                 <label>
                     Price
@@ -108,7 +104,7 @@ function CreateAlbumFormModal() {
                         required
                     />
                 </label>
-                {errors.price && <p>{errors.price}</p>}
+                {errors?.errors?.price && <p style={{color:'red'}}>{errors.errors.price}</p>}
 
                 <label>
                     Description
@@ -119,7 +115,7 @@ function CreateAlbumFormModal() {
                         required
                     />
                 </label>
-                {errors.description && <p>{errors.description}</p>}
+                {errors?.errors?.description && <p style={{color:'red'}}>{errors?.errors.description}</p>}
                 <label>
                     Album art
                     <input
@@ -129,27 +125,42 @@ function CreateAlbumFormModal() {
                         required
                     />
                 </label>
-                {errors.albumart && <p>{errors.albumart}</p>}
+                {errors?.errors?.album_art && <p style={{color:'red'}}>{errors?.errors.album_art}</p>}
                 <label>
                     Album banner
                     <input
                         type="text"
                         value={albumbanner}
                         onChange={(e) => setAlbumbanner(e.target.value)}
+                        required
                     />
                 </label>
-                {errors.albumbanner && <p>{errors.albumbanner}</p>}
+                {errors?.errors?.album_banner && <p style={{color:'red'}}>{errors?.errors.album_banner}</p>}
                 <label>
                     Background color
                     <input
                         type="text"
                         value={backgroundcolor}
+                        placeholder="rgb(0,0,0)"
                         onChange={(e) => setBackgroundcolor(e.target.value)}
+                        required
                     />
                 </label>
-                {errors.backgroundcolor && <p>{errors.backgroundcolor}</p>}
+                {errors?.errors?.background_color && <p style={{color:'red'}}>{errors?.errors.background_color}</p>}
                 <button type="submit">Create</button>
-
+                <button
+                // type="submit"
+                onClick={()=>{
+                    setName('new album')
+                    setYear(2024)
+                    setGenre('rap')
+                    setPrice(10)
+                    setDescription('this is a new album')
+                    setAlbumart("https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp")
+                    setAlbumbanner("https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp")
+                    setBackgroundcolor('rgb(0,0,0)')
+                }}
+                >Demo Album</button>
             </form>
         </div>
     );

@@ -1,0 +1,21 @@
+
+.shopping-cart-album-details{
+    border: 2px solid lightgrey;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+
+
+.checkout-button-album-details {
+    border: none;
+    background-color: rgb(121, 184, 80);
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.checkout-button-album-details:hover{
+    background-color: rgb(101, 162, 60);
+
+}

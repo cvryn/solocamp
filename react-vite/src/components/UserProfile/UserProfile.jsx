@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
-import { NavLink, useLoaderData } from "react-router-dom"
+import { NavLink, useLoaderData, useNavigate } from "react-router-dom"
 import Collection from "./Collection"
 import WishList from "./WishList"
 import "./UserProfile.css"
@@ -8,6 +8,13 @@ import "./UserProfile.css"
 function UserProfile() {
   const currentUser = useSelector(state => state.session.user)
   const albums = useLoaderData()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/")
+    }
+  }, [currentUser, navigate])
 
   const [collection, setCollection] = useState(false)
   const [wishlist, setWishlist] = useState(true)
@@ -16,7 +23,8 @@ function UserProfile() {
   const latestReleaseYear = Math.max(...ownAlbums.map(album => album.year));
   const latestAlbum = albums?.find(album => album.year === latestReleaseYear)
 
-  if (!currentUser) return null
+
+  if (!currentUser) return null;
 
   return (
     <div>
@@ -42,8 +50,6 @@ function UserProfile() {
             )}
           </div>
         </div>
-
-        <div style={{ height: "260px" }}></div>
 
         <div id="container-collection-wishlist">
           <NavLink
