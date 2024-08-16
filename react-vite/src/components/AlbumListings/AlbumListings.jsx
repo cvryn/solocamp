@@ -8,6 +8,7 @@ import { FiSearch } from "react-icons/fi";
 import { IoIosPlay } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { MdOutlineClose } from "react-icons/md";
 import "./AlbumListings.css"
 
 
@@ -19,7 +20,7 @@ function AlbumListings() {
   const albums = useLoaderData();
   const navigate = useNavigate();
   const location = useLocation();
-  const ulRef = useRef();
+  const loginModalRef = useRef();
 
   const [showMenu, setShowMenu] = useState(false);
   const [genres, setGenres] = useState(["all genres"])
@@ -28,18 +29,6 @@ function AlbumListings() {
     const randomIndex = Math.floor(Math.random() * albums.length);
     return albums[randomIndex];
   })
-
-  useEffect(() => {
-    if (!showMenu) return;
-
-    const closeMenu = (e) => {
-      if (ulRef.current && !ulRef.current.contains(e.target)) {
-        setShowMenu(false);
-      }
-    };
-    document.addEventListener("click", closeMenu);
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -87,6 +76,12 @@ function AlbumListings() {
     }
   };
 
+  useEffect(() => {
+    if (showMenu && loginModalRef.current) {
+      loginModalRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showMenu]);
+
   const addToWishlist = (albumId) => {
     if (!currentUser) {
       setShowMenu(true);
@@ -96,7 +91,7 @@ function AlbumListings() {
         album_id: albumId
       };
       dispatch(thunkWishlistAlbumAdd(albumData))
-        .then(() => dispatch(thunkWishlistAlbums()))
+        .then(() => dispatch(thunkWishlistAlbums()));
     }
   };
 
@@ -114,11 +109,17 @@ function AlbumListings() {
   return (
     <>
       {showMenu && (
-        <OpenModalMenuItem
-          itemText="Log In"
-          onItemClick={closeMenu}
-          modalComponent={<LoginFormModal />}
-        />
+        <div id="button-login-modal-album-listings" ref={loginModalRef}>
+          <OpenModalMenuItem
+            itemText="Log in to add album to wishlist"
+            onItemClick={closeMenu}
+            modalComponent={<LoginFormModal />}
+          />
+          <MdOutlineClose
+            onClick={closeMenu}
+            style={{ fontSize: "1.5rem", position: "absolute", right: "20px" }}
+          />
+        </div>
       )}
 
       <div id="container-filter-outer">

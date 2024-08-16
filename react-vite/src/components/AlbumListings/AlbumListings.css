@@ -1,3 +1,13 @@
+#button-login-modal-album-listings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: white;
+  background: linear-gradient(to right, rgb(106, 13, 173), rgb(247, 140, 64));
+  cursor: pointer;
+}
+
 #container-filter-outer {
   background-color: gray;
 }

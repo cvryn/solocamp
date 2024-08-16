@@ -10,7 +10,7 @@ function WishList() {
   const currentUser = useSelector(state => state.session.user);
   const albumsInWishlistObj = useSelector(state => state.wishlist);
   const albumsInWishlist = Object.values(albumsInWishlistObj);
-  const albums = useLoaderData()
+  const albums = useLoaderData();
 
   const dispatch = useDispatch();
 
