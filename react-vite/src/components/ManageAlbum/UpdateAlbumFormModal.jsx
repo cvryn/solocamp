@@ -109,7 +109,7 @@ function UpdateAlbumFormModal({ el }) {
                         <option value="r&b">r&b</option>
                         <option value="classical">classical</option>
                         <option value="country">country</option>
-                        <option value="electrinic">electrinic</option>
+                        <option value="eletronic">eletronic</option>
                         <option value="experimental">experimental</option>
                     </select>
                 </label>
