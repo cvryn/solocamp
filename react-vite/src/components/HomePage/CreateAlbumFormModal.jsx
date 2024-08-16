@@ -38,7 +38,7 @@ function CreateAlbumFormModal() {
             })
         );
 
-        // console.log('can i get error from backend', serverResponse)
+        console.log('can i get error from backend', serverResponse)
         if (!serverResponse.errors) {
             closeModal();
             navigate('/manage-albums')
@@ -46,7 +46,7 @@ function CreateAlbumFormModal() {
             setErrors(serverResponse);
         }
     };
-    console.log('any thing in errors?', errors.errors)
+    // console.log('any thing in errors?', errors.errors)
     return (
         <div id="container-signup-form-modal">
             <h1>Create Album</h1>
@@ -54,7 +54,6 @@ function CreateAlbumFormModal() {
             <form id="container-signup-form"
                 onSubmit={handleSubmit}
             >
-
                 <label>
                     Name
                     <input
@@ -157,8 +156,8 @@ function CreateAlbumFormModal() {
                     setGenre('rap')
                     setPrice(10)
                     setDescription('this is a new album')
-                    setAlbumart("https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg")
-                    setAlbumbanner("https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg")
+                    setAlbumart("https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp")
+                    setAlbumbanner("https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp")
                     setBackgroundcolor('rgb(0,0,0)')
                 }}
                 >Demo Album</button>

@@ -159,7 +159,7 @@ function HomePage() {
                         </div>
                     </div>
                     <div className="container-signup-home">
-                        <div style={{ textAlign: 'center', marginTop: '70px', fontSize: '17px' }}>Create your own album on Solocamp</div>
+                        <div style={{ textAlign: 'center', marginTop: '70px', fontSize: '17px' }}>Your Albums on Solocamp</div>
                         <div className='sigup-input-button-home' style={{ textAlign: 'center', marginTop: '20px' }}>
                             {/* <input placeholder='your email address'></input> */}
                             {/* <button onClick={()=> handleAlbumCreate()}style={{ backgroundColor: 'black', color: 'white' }}>CREATE ALBUM</button> */}
