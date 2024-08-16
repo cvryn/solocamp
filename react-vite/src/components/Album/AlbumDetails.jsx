@@ -30,8 +30,7 @@ const AlbumDetails = () => {
   const [userHasReviewed, setUserHasReviewed] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [isInWishlist, setIsInWishlist] = useState(false); // New state for wishlist
-
+  const [isInWishlist, setIsInWishlist] = useState(false);
   const currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
@@ -60,6 +59,8 @@ const AlbumDetails = () => {
   const sameGenres = allAlbums.filter((a) => a.genre === album.genre);
   const shuffledGenres = shuffleArray([...sameGenres]);
 
+
+  
   const backgroundColor = album?.album_art[0]?.background_color || "#FFFFFF";
   const gradientBackground = `linear-gradient(to left, ${backgroundColor}, #FFFFFF)`;
 

@@ -9,8 +9,13 @@
 
 .checkout-button-album-details {
     border: none;
-    background-color: rgb(102, 159, 64);
+    background-color: rgb(121, 184, 80);
     color: white;
     width: 100%;
     border-radius: 5px;
+}
+
+.checkout-button-album-details:hover{
+    background-color: rgb(101, 162, 60);
+
 }

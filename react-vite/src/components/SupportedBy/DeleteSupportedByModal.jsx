@@ -1,4 +1,5 @@
 import { useModal } from "../../context/Modal";
+import './DeleteSupportedByModal.css'
 
 function DeleteReviewModal({ onDelete }) {
   const { closeModal } = useModal();
@@ -13,8 +14,8 @@ function DeleteReviewModal({ onDelete }) {
       <h1>Confirm Deletion</h1>
       <p>Are you sure you want to delete?</p>
       <div className="modal-buttons">
-        <button onClick={handleDelete}>Yes, Delete</button>
-        <button onClick={closeModal}>Cancel</button>
+        <button className='delete-button-confirm' onClick={handleDelete}>Yes, Delete</button>
+        <button className='delete-button-no'onClick={closeModal}>No, Cancel</button>
       </div>
     </div>
   );

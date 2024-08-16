@@ -8,7 +8,7 @@ export const getShoppingCart = async () => {
   return response.json();
 };
 
-
+// POST add albums to the shopping cart
 export const postToShoppingCart = async (albumId) => {
   const response = await fetch(`/api/albums/${albumId}/shopping-cart`, {
     method: 'POST',
