@@ -38,7 +38,7 @@ function CreateAlbumFormModal() {
             })
         );
 
-        console.log('can i get error from backend', serverResponse)
+        // console.log('can i get error from backend', serverResponse)
         if (!serverResponse.errors) {
             closeModal();
             navigate('/manage-albums')

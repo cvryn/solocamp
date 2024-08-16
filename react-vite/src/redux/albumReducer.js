@@ -119,7 +119,7 @@ export const thunkCreateAlbum = (album) => async (dispatch) => {
         }
     }else {
         const errorData = await response.json();
-        console.log('error in thunk for img',errorData)
+        // console.log('error in thunk for img',errorData)
         return { errors: errorData };
     }
 }

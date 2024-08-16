@@ -44,7 +44,7 @@ function SignupFormModal() {
       closeModal();
     }
   };
-
+// console.log('error while signing up', errors)
   return (
     <div id="container-signup-form-modal">
       <h1>Sign Up</h1>
@@ -63,7 +63,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <div style={{color:'red'}}>
         {errors.email && <p>{errors.email}</p>}
+        </div>
 
         <label>
           Username
@@ -74,7 +76,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <div style={{color:'red'}}>
         {errors.username && <p>{errors.username}</p>}
+        </div>
 
         <label>
           First name
@@ -85,7 +89,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <div style={{color:'red'}}>
         {errors.first_name && <p>{errors.first_name}</p>}
+        </div>
 
         <label>
           Last name
@@ -96,7 +102,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <div style={{color:'red'}}>
         {errors.last_name && <p>{errors.last_name}</p>}
+        </div>
 
         <label>
           Profile image
@@ -106,7 +114,9 @@ function SignupFormModal() {
             onChange={(e) => setProfileImage(e.target.value)}
           />
         </label>
+        <div style={{color:'red'}}>
         {errors.profile_image && <p>{errors.profile_image}</p>}
+        </div>
 
         <label>
           Password
@@ -117,7 +127,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <div style={{color:'red'}}>
         {errors.password && <p>{errors.password}</p>}
+        </div>
 
         <label>
           Confirm password
@@ -128,7 +140,9 @@ function SignupFormModal() {
             required
           />
         </label>
+        <div style={{color:'red'}}>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        </div>
 
         <button type="submit">Sign up</button>
 

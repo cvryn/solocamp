@@ -20,7 +20,7 @@ export default function ManageAlbum() {
         func()
     }, [dispatch]);
 
-    if (!userId) return (<h2>Please log in or sign up</h2>)
+    if (!userId) return (<h1 style={{textAlign:'center'}}>Please log in or sign up</h1>)
     if (!Array.isArray(albumArr)) {
         return <p>No albums available.</p>;
     }
@@ -41,7 +41,7 @@ export default function ManageAlbum() {
                             return (
                                 <div className="manage-als" key={el.id}>
                                     {/* {el.album_art ? <img style={{ width: '300px' }} src={el.album_art[0].album_art}></img> : <img style={{ width: '300px' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"></img>} */}
-                                    <img style={{width:'300px'}}src={el.album_art[0].album_art}></img> 
+                                    <img style={{ width: '300px' }} src={el.album_art[0].album_art}></img>
                                     <div>{el.name}</div>
                                     <div>{el.year}</div>
                                     <div>{el.genre}</div>
@@ -61,7 +61,11 @@ export default function ManageAlbum() {
 
             </div>
         )
-    }else {
-        return (<><h2>Post your first album on Solocamp</h2> <CreateAlbumButton/></>);
+    } else {
+        return (
+            <>
+                <h2>Post your first album on Solocamp</h2>
+                <CreateAlbumButton />
+            </>);
     }
 }

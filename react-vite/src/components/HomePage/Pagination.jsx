@@ -11,7 +11,7 @@ const Pagination = ({ albumData }) => {
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = albumData?.slice(indexOfFirstItem, indexOfLastItem);
-    console.log(albumData)
+    // console.log(albumData)
 
     // Calculate the total number of pages
     const totalPages = Math.ceil(albumData?.length / itemsPerPage);
