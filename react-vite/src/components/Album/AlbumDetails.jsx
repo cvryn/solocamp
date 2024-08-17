@@ -233,7 +233,7 @@ const AlbumDetails = () => {
                   >
                     Buy Digital Album
                   </button>
-                 < br/>
+                  < br />
                   <span style={{ fontSize: "30px", fontWeight: "bold" }}>
                     ${album.price}&nbsp;
                   </span>

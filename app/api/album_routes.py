@@ -1,4 +1,4 @@
-from flask import Blueprint, request,jsonify
+from flask import Blueprint, request, jsonify
 from flask_login import current_user
 from app.models import Album, AlbumArt, Song, SupportedBy, db
 from app.forms import AlbumForm, AlbumArtForm, SongForm, SupportedByForm
@@ -65,7 +65,7 @@ def album_detail(album_id):
             return {"error": "Forbidden"}, 403
 
         data = request.json
-        print('DATA!!!!',data)
+        print("DATA!!!!", data)
         print(data.get("name", album.name))
         print(data.get("year", album.year))
         print(data.get("name", album.name))

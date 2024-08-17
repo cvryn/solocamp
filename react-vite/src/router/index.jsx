@@ -52,13 +52,13 @@ export const router = createBrowserRouter([
         }
       },
       {
-        path: "/checkout",
-        element: <Checkout />
-      },
-      {
         path: "/user/reviews",
         element: <ManageSupportedBys />,
         loader: getSupportedBys
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />
       },
       {
         path: "/about",

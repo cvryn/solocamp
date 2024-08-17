@@ -1,5 +1,5 @@
 const GET_ALBUMS = "getAlbumsInWishlist/GET_ALBUMS";
-const ADD_ALBUM = "addAlbumToWishList/ADD_TO_WISHLIST";
+const ADD_ALBUM = "addAlbumToWishList/ADD_ALBUM";
 const REMOVE_ALBUM = "removeAlbumFromWishlist/REMOVE_ALBUM";
 
 
@@ -14,7 +14,7 @@ const addToWishlist = (albumData) => ({
 });
 
 
-const removeAlbumFromWishlist = (wishlistId) => ({
+const removeFromWishlist = (wishlistId) => ({
   type: REMOVE_ALBUM,
   payload: wishlistId
 })
@@ -53,7 +53,7 @@ export const thunkWishlistAlbumRemove = (albumId) => async (dispatch) => {
     method: "DELETE"
   });
   if (res.ok) {
-    dispatch(removeAlbumFromWishlist({ id: albumId }));
+    dispatch(removeFromWishlist({ id: albumId }));
   }
 };
 

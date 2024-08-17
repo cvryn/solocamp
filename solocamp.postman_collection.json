@@ -400,12 +400,12 @@
 			"response": []
 		},
 		{
-			"name": "get all albums in all wishlists",
+			"name": "get all albums of current user",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/wishlist/counts",
+					"raw": "http://localhost:8000/api/wishlist/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -414,7 +414,7 @@
 					"path": [
 						"api",
 						"wishlist",
-						"counts"
+						"all"
 					]
 				}
 			},
@@ -436,6 +436,27 @@
 						"api",
 						"wishlist",
 						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all wishlists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/wishlist/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"wishlist",
+						"all"
 					]
 				}
 			},
@@ -478,7 +499,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/wishlist/12/1",
+					"raw": "http://localhost:8000/api/wishlist/15",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -487,8 +508,7 @@
 					"path": [
 						"api",
 						"wishlist",
-						"12",
-						"1"
+						"15"
 					]
 				}
 			},
@@ -500,7 +520,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/collection/counts",
+					"raw": "http://localhost:8000/api/collection/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -509,7 +529,7 @@
 					"path": [
 						"api",
 						"collection",
-						"counts"
+						"all"
 					]
 				}
 			},

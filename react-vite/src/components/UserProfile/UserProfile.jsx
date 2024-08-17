@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
-import { NavLink, useLoaderData, useNavigate } from "react-router-dom"
+import { NavLink, useLoaderData, useNavigate, useSearchParams } from "react-router-dom"
 import Collection from "./Collection"
 import WishList from "./WishList"
 import "./UserProfile.css"
@@ -10,6 +10,10 @@ function UserProfile() {
   const currentUser = useSelector(state => state.session.user)
   const albums = useLoaderData()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+
+  const [collection, setCollection] = useState(searchParams.get("tab") === "collection");
+  const [wishlist, setWishlist] = useState(searchParams.get("tab") !== "collection");
 
   useEffect(() => {
     if (!currentUser) {
@@ -17,24 +21,9 @@ function UserProfile() {
     }
   }, [currentUser, navigate])
 
-  const [collection, setCollection] = useState(false)
-  const [wishlist, setWishlist] = useState(true)
-
   const ownAlbums = albums?.filter(album => album?.user_id === currentUser?.id)
   const latestReleaseYear = Math.max(...ownAlbums.map(album => album.year));
   const latestAlbum = albums?.find(album => album.year === latestReleaseYear)
-
-  // const isValidImageUrl = (url) => {
-  //   if (typeof url !== 'string' || url.trim() === '' || !url.startsWith('http')) {
-  //     return false;
-  //   }
-  //   const validImages = [".jpg", ".jpeg", ".png"];
-  //   return validImages.some((ext) => url.endsWith(ext));
-  // };
-
-  // const getProfilePic = (url) => {
-  //   return isValidImageUrl(url) ? url : defaultUserPic;
-  // };
 
 
 
@@ -74,9 +63,8 @@ function UserProfile() {
             }}
           >
             collection&nbsp;&nbsp;&nbsp;&nbsp;
-            {Array.isArray(currentUser?.album_in_collection) && (
-              currentUser.album_in_collection.length || 0
-            )}
+            {Array.isArray(currentUser?.album_in_collection) ?
+              currentUser.album_in_collection.length : 0}
           </NavLink>
           <NavLink
             className={() => wishlist ? "tab-wishlist active" : "tab-wishlist"}
@@ -86,9 +74,7 @@ function UserProfile() {
             }}
           >
             wishlist&nbsp;&nbsp;&nbsp;&nbsp;
-            {Array.isArray(currentUser?.album_in_wishlist) && (
-              currentUser.album_in_wishlist.length || 0
-            )}
+            {Array.isArray(currentUser?.album_in_wishlist) ? currentUser.album_in_wishlist.length : 0}
           </NavLink>
         </div>
         <hr style={{ border: "0.5px solid lightgray", margin: "10px 0 20px 0" }} />

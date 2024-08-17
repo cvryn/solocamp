@@ -17,7 +17,7 @@ def seed_albums():
         user_id=2,
         year=2018,
         genre="r&b",
-        price=19.99,
+        price=10.99,
         description="Joji's debut album, Ballads 1, is a collection of introspective tracks exploring themes of love, loss, and the complexities of modern relationships. With its blend of soulful vocals, atmospheric production, and honest lyrics, the album resonated with listeners worldwide, solidifying Joji's status as a rising star in the music industry.",
     )
 
@@ -26,7 +26,7 @@ def seed_albums():
         user_id=2,
         year=2020,
         genre="r&b",
-        price=19.99,
+        price=19.00,
         description="Joji's sophomore album, Nectar, expands on his signature blend of R&B and alternative sounds, delving deeper into themes of love, desire, and the complexities of modern relationships. Featuring collaborations with high-profile artists and innovative production, Nectar showcases Joji's artistic growth and solidifies his position as a leading voice in contemporary music.",
     )
 
@@ -35,7 +35,7 @@ def seed_albums():
         user_id=2,
         year=2022,
         genre="r&b",
-        price=19.99,
+        price=18.99,
         description="Joji's third studio album, Smithereens, showcases a mature and introspective side of the artist. Blending elements of R&B and pop, the album explores themes of love, loss, and personal growth. With hits like 'Glimpse of Us,' Smithereens solidified Joji's status as a global superstar.",
     )
 
@@ -45,7 +45,7 @@ def seed_albums():
         user_id=3,
         year=2022,
         genre="pop",
-        price=19.99,
+        price=17.69,
         description="JVKE's debut album is a conceptual journey through the stages of a relationship, from falling in love to heartbreak and moving on. The album's innovative structure and introspective lyrics have garnered critical acclaim and a dedicated fanbase.",
     )
 
@@ -55,7 +55,7 @@ def seed_albums():
         user_id=4,
         year=2013,
         genre="pop",
-        price=19.99,
+        price=12.55,
         description="Sam Smith's debut EP, Nirvana, showcases their powerful vocals and introspective songwriting. With tracks like 'Safe with Me' and the acoustic cover of 'Latch,' the EP established Smith as a rising star in the soul and R&B scene.",
     )
 
@@ -64,7 +64,7 @@ def seed_albums():
         user_id=4,
         year=2014,
         genre="r&b",
-        price=19.99,
+        price=9.99,
         description="Sam Smith's critically acclaimed debut album, 'In the Lonely Hour,' showcases their powerful vocals and deeply personal songwriting. With hits like 'Stay with Me' and 'I'm Not the Only One,' the album explores themes of heartbreak and longing with raw emotion.",
     )
 
@@ -73,7 +73,7 @@ def seed_albums():
         user_id=4,
         year=2017,
         genre="pop",
-        price=19.99,
+        price=21.99,
         description="Sam Smith's sophomore album, 'The Thrill of It All,' explores themes of self-discovery and emotional growth. With a blend of soulful vocals and contemporary pop production, the album showcases Smith's artistic evolution while maintaining their signature vulnerability.",
     )
 
@@ -83,7 +83,7 @@ def seed_albums():
         user_id=5,
         year=2020,
         genre="pop",
-        price=19.99,
+        price=11.98,
         description="Fujii Kaze's debut album, HELP EVER HURT NEVER, showcases his unique blend of R&B, hip-hop, and pop influences. With its catchy melodies, heartfelt lyrics, and innovative production, the album quickly gained popularity in Japan and beyond. The album's title, inspired by a phrase from Fujii's father, reflects the artist's positive outlook and message of hope.",
     )
 
@@ -92,7 +92,7 @@ def seed_albums():
         user_id=5,
         year=2022,
         genre="pop",
-        price=19.99,
+        price=19.96,
         description="Fujii Kaze's sophomore album, Love All Serve All, expands on his unique blend of genres and showcases his growth as an artist. With its infectious energy and socially conscious lyrics, the album solidified his position as a leading voice in Japanese music.",
     )
 
@@ -102,7 +102,7 @@ def seed_albums():
         user_id=6,
         year=2022,
         genre="pop",
-        price=19.99,
+        price=22.98,
         description="dhruv's debut EP, 'rapunzel', is a collection of introspective and dreamy indie pop tracks. With honest lyrics and ethereal melodies, the EP explores themes of youth, love, and self-discovery. Tracks like 'double take' and 'moonlight' showcase dhruv's talent for crafting atmospheric and emotionally resonant music.",
     )
 
@@ -111,7 +111,7 @@ def seed_albums():
         user_id=7,
         year=2010,
         genre="r&b",
-        price=100.10,
+        price=100.25,
         description="Jay's album was met with positive reviews from music critics upon its release. In Taiwan, it peaked at number one on the G-Music album chart for multiple weeks and was best-selling album of the year, with sales of over 280,000 copies.",
     )
 
@@ -264,7 +264,7 @@ def seed_albums():
         user_id=15,
         year=2002,
         genre="alternative",
-        price=16.70,
+        price=16.75,
         description='Red Hot Chili Peppers\' By the Way represents a sonic evolution for the band. While still retaining their signature funk-rock energy, the album showcases a more melodic and introspective side. With a greater emphasis on songwriting and harmonies, By the Way offers a fresh perspective on the band\'s sound. The album is characterized by its catchy hooks, intricate guitar work, and Anthony Kiedis\' more refined vocal delivery. Tracks like "The Zephyr Song," "Can\'t Stop," and "By the Way" became instant classics, demonstrating the band\'s ability to create both radio-friendly hits and deeper, more complex songs. By the Way marked a commercial peak for the Red Hot Chili Peppers, solidifying their status as one of the biggest rock bands in the world.',
     )
 
