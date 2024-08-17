@@ -15,10 +15,11 @@ const addToShoppingCart = (albumData) => ({
 const removeFromShoppingCart = (shoppingCartId) => ({
   type: REMOVE_ALBUM,
   payload: shoppingCartId
-})
+});
 
+// this thunk doesn't work, always returns a 401 authorization error
 export const thunkShoppingCartAlbums = () => async (dispatch) => {
-  const res = await fetch("/api/shopping-cart");
+  const res = await fetch("/api/shopping-cart/all");
   if (res.ok) {
     const data = await res.json();
     dispatch(getAlbumsInShoppingCart(data));

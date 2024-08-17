@@ -9,7 +9,7 @@ wishlist_routes = Blueprint("wishlists", __name__)
 
 # get albums in current logged in user's wishlist
 @wishlist_routes.route("/all", methods=["GET"])
-def get_albums_of_current_user_in_wishlist():
+def get_albums_in_wishlist_of_current_user():
     album_counts = (
         db.session.query(
             wishlist.columns.album_id,
@@ -35,9 +35,9 @@ def get_albums_of_current_user_in_wishlist():
     return albums
 
 
-# get wishlist by user_id
+# get albums in wishlist by user_id
 @wishlist_routes.route("/<int:user_id>", methods=["GET"])
-def get_albums_by_user_id(user_id):
+def get_albums_in_wishlist_by_user_id(user_id):
     user_exists = User.query.filter_by(id=user_id).first()
     if not user_exists:
         return {"error": "User not found"}, 404
