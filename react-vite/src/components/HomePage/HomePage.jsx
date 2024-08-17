@@ -6,6 +6,10 @@ import { IoTimeOutline } from "react-icons/io5";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react';
 import Pagination from './Pagination';
+import { BsCalendar2Date } from "react-icons/bs";
+import { GrGroup } from "react-icons/gr";
+import { FaMicrophoneLines } from "react-icons/fa6";
+
 // import CreateAlbumButton from './CreateAlbumButton';
 
 
@@ -60,7 +64,6 @@ const HorizontalScrollImages = () => {
 };
 
 function HomePage() {
-    const navigate = useNavigate();
     let albumData = useLoaderData();
     if (!albumData) return;
     // const dispatch = useDispatch();
@@ -119,54 +122,69 @@ function HomePage() {
                     <div className='container-event-home'>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%', height: '60%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723825996/solocamp/i_3_njeoqt.webp" />
-                            <div>Chuck Johnson</div>
-                            <div>Sun Glories Listening Party</div>
-                            <br></br>
-                            <div><IoMusicalNotesOutline />Listening Party </div>
-                            <div>August 15, 2024 </div>
+                            <div>
+                                <br></br>
+                                <div><FaMicrophoneLines />{' '}Chuck Johnson</div>
+                                <div><GrGroup />{' '}Sun Glories Listening Party</div>
+                                <br></br>
+                                <div><IoMusicalNotesOutline />{' '}Listening Party </div>
+                                <div><BsCalendar2Date /> {' '}August 15, 2024 </div>
+                            </div>
                         </div>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%', height: '60%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723825996/solocamp/i_ii1lxc.webp" />
-                            <div>Scuba</div>
-                            <div>D:U:2</div>
-                            <br></br>
-                            <div><IoMusicalNotesOutline />Listening Party </div>
-                            <div>August 15, 2024  </div>
+                            <div>
+                                <br></br>
+                                <div><FaMicrophoneLines />{' '}Scuba</div>
+                                <div><GrGroup />{' '}D:U:2</div>
+                                <br></br>
+                                <div><IoMusicalNotesOutline />{' '}Listening Party </div>
+                                <div><BsCalendar2Date />{' '}August 15, 2024  </div>
+                            </div>
                         </div>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%', height: '60%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723825996/solocamp/i_1_ewvkqd.webp" />
-                            <div>Thotcrime</div>
-                            <div>Connection Party</div>
-                            <br></br>
-                            <div><IoMusicalNotesOutline />Listening Party </div>
-                            <div>August 15, 2024  </div>
+                            <div>
+                                <br></br>
+                                <div><FaMicrophoneLines />{' '}Thotcrime</div>
+                                <div><GrGroup />{' '}Connection Party</div>
+                                <br></br>
+                                <div><IoMusicalNotesOutline />{' '}Listening Party </div>
+                                <div><BsCalendar2Date />{' '}August 15, 2024  </div>
+                            </div>
                         </div>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%', height: '60%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723825996/solocamp/i_2_tfrgid.webp" />
-                            <div>Charly Blis</div>
-                            <div>FOREVER</div>
-                            <br></br>
-                            <div><IoMusicalNotesOutline />Listening Party </div>
-                            <div>August 15, 2024  </div>
+                            <div>
+                                <br></br>
+                                <div><FaMicrophoneLines />{' '}Charly Blis</div>
+                                <div><GrGroup />{' '}FOREVER</div>
+                                <br></br>
+                                <div><IoMusicalNotesOutline />{' '}Listening Party </div>
+                                <div><BsCalendar2Date />{' '}August 15, 2024  </div>
+                            </div>
                         </div>
                         <div className='container-event-detail-home'>
                             <img style={{ width: '100%', height: '60%' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826193/solocamp/i_4_unvwmk.webp" />
-                            <div>Galiano</div>
-                            <div>Halfway Somewhere</div>
-                            <br></br>
-                            <div><IoMusicalNotesOutline />Listening Party </div>
-                            <div>August 15, 2024  </div>
+                            <div>
+                                <br></br>
+                                <div><FaMicrophoneLines />{' '}Galiano</div>
+                                <div><GrGroup />{' '}Halfway Somewhere</div>
+                                <br></br>
+                                <div><IoMusicalNotesOutline />{' '}Listening Party </div>
+                                <div><BsCalendar2Date />{' '}August 15, 2024  </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="container-signup-home">
-                        <div style={{ textAlign: 'center', marginTop: '70px', fontSize: '17px' }}>Your Albums on Solocamp</div>
-                        <div className='sigup-input-button-home' style={{ textAlign: 'center', marginTop: '20px' }}>
+                    {/* <div className="container-signup-home"> */}
+                        {/* <div style={{ textAlign: 'center', marginTop: '70px', fontSize: '17px' }}>Your Albums on Solocamp</div> */}
+                        {/* <div className='sigup-input-button-home' style={{ textAlign: 'center', marginTop: '20px' }}> */}
                             {/* <input placeholder='your email address'></input> */}
                             {/* <button onClick={()=> handleAlbumCreate()}style={{ backgroundColor: 'black', color: 'white' }}>CREATE ALBUM</button> */}
                             {/* <CreateAlbumButton/> */}
-                            <button onClick={() => navigate('/manage-albums')}>Manage Albums</button>
-                        </div>
-                    </div>
+                            {/* <button onClick={() => navigate('/manage-albums')}>Manage Albums</button> */}
+                        {/* </div> */}
+                    {/* </div> */}
                     <div className="container-discover-home">
                         <div style={{ fontSize: '18px', fontWeight: 'bold' }}>Discover</div>
                         <p style={{ color: 'grey' }}>filter by:</p>

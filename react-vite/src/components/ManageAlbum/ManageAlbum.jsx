@@ -22,7 +22,7 @@ export default function ManageAlbum() {
 
     if (!userId) return (<h1 style={{textAlign:'center'}}>Please log in or sign up</h1>)
     if (!Array.isArray(albumArr)) {
-        return <p>No albums available.</p>;
+        return <p>Loading...</p>;
     }
     // console.log('where am i ?',data)
     // const albumArr = data?.filter(el => el.user_id == userId);
@@ -41,21 +41,31 @@ export default function ManageAlbum() {
                             return (
                                 <div className="manage-als" key={el.id}>
                                     {/* {el.album_art ? <img style={{ width: '300px' }} src={el.album_art[0].album_art}></img> : <img style={{ width: '300px' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"></img>} */}
-                                    <img style={{ width: '300px' }} src={el.album_art[0].album_art}></img>
+                                    <img style={{ width: '100%',height:"30%",marginBottom:'10px' }} src={el.album_art[0].album_art}></img>
+                            
                                     <div>{el.name}</div>
+                                    <br></br>
                                     <div>{el.year}</div>
+                                
                                     <div>{el.genre}</div>
-                                    <div>{el.price}</div>
+                
+                                    <div>${el.price}</div>
+                                    <br></br>
                                     <div>{el.description}</div>
-                                    <button onClick={() => handleDelete(el.id)}>Delete Album</button>
-                                    <UpdateAlbumButton el={el} />
+                                    <div className="update-button-manage-albums">
+                                        <UpdateAlbumButton el={el} />
+                                    </div>
+                                    <button style={{backgroundColor:'lightgray',border:"1px solid black", marginTop:'10px'}}onClick={() => handleDelete(el.id)}>Delete Album</button>
                                 </div>
                             )
                         })
                     }
                 </div>
+                <div className="create-album-button-container">
                 <div className="create-album-button-home">
                     <CreateAlbumButton />
+
+                </div>
 
                 </div>
 
@@ -63,9 +73,12 @@ export default function ManageAlbum() {
         )
     } else {
         return (
-            <>
-                <h2>Post your first album on Solocamp</h2>
+            <div className="create-first-album">
+                <h2 style={{textAlign:'center', fontSize:"30px"}}>Post your first album on Solocamp</h2>
+                <div className="create-album-button">
                 <CreateAlbumButton />
-            </>);
+
+                </div>
+            </div>);
     }
 }

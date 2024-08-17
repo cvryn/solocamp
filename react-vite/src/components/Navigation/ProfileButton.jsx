@@ -65,6 +65,7 @@ function ProfileButton() {
             <ul id="container-profile-dropdown" ref={ulRef}>
               <li>{user.username}</li>
               <li>{user.email}</li>
+              <li><Link to="/manage-albums">my albums</Link></li>
               <li><Link to="/user/reviews">my reviews</Link></li>
               <li>
                 <button

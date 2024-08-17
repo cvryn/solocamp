@@ -36,7 +36,7 @@ const Pagination = ({ albumData }) => {
                                 // onClick={()=> handleImageClick(albumEl.id)}
                                 onClick={() => navigate(`/albums/${albumEl.id}`)}
                                 style={{ height: '120px', width: '120px' }} src={albumEl.album_art[0].album_art} />
-                            <div className='album-genre'>
+                            <div className='album-genre-home'>
                                 <div>{albumEl.name}</div>
                                 <div>{albumEl.user_username}</div>
                                 <div>{albumEl.genre}</div>

@@ -64,8 +64,13 @@ def album_detail(album_id):
         if album.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
+        data = request.json
+        print('DATA!!!!',data)
+        print(data.get("name", album.name))
+        print(data.get("year", album.year))
+        print(data.get("name", album.name))
+        print(data.get("name", album.name))
         if form.validate_on_submit():
-            data = request.json
             album.name = data.get("name", album.name)
             album.year = data.get("year", album.year)
             album.genre = data.get("genre", album.genre)
