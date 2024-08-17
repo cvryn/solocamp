@@ -111,7 +111,7 @@ export const thunkCreateAlbum = (album) => async (dispatch) => {
             const newImg = await resImg.json();
             // console.log('in new img thunk', newImg)
             newAl.album_art = [newImg];
-
+            dispatch(updateAlbum(newAl))
             return { newAl, newImg };
         }else {
             const errorData = await resImg.json();
