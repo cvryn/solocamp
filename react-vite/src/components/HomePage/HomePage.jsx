@@ -51,11 +51,11 @@ const HorizontalScrollImages = () => {
                 {displayedImages.map((el, index) => (
                     <div className='rolling-home' key={index}>
                         {/* {el.album_art? <img style={{width:'300px'}}src={el.album_art[0].album_art}></img> : <img style={{width:'300px'}}src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg"></img>} */}
-                        {el.album_art ? <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src={el.album_art[0].album_art} alt={`Image ${index}`} style={{ height: '200px', width: 'auto', marginRight: '10px' }} /> : <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg" style={{ height: '200px', width: 'auto', marginRight: '10px' }} />}
+                        {el?.album_art ? <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src={el?.album_art[0].album_art} alt={`Image ${index}`} style={{ height: '200px', width: 'auto', marginRight: '10px' }} /> : <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg" style={{ height: '200px', width: 'auto', marginRight: '10px' }} />}
                         <br></br>
-                        <div style={{ fontWeight: 'bold' }}>{el.name}</div>
-                        <div>By {el.user_username}</div>
-                        <div>Sold for ${el.price}</div>
+                        <div style={{ fontWeight: 'bold' }}>{el?.name}</div>
+                        <div>By {el?.user_username}</div>
+                        <div>Sold for ${el?.price}</div>
                     </div>
                 ))}
             </div>
