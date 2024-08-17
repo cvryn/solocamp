@@ -1,8 +1,10 @@
+
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { NavLink, useLoaderData, useNavigate } from "react-router-dom"
 import Collection from "./Collection"
 import WishList from "./WishList"
+import defaultUserPic from "../../../public/defaultuserpic.jpg";
 import "./UserProfile.css"
 
 function UserProfile() {
@@ -23,6 +25,19 @@ function UserProfile() {
   const latestReleaseYear = Math.max(...ownAlbums.map(album => album.year));
   const latestAlbum = albums?.find(album => album.year === latestReleaseYear)
 
+  const isValidImageUrl = (url) => {
+    if (typeof url !== 'string' || url.trim() === '') {
+      return false;
+    }
+    const validImages = [".jpg", ".jpeg", ".png"];
+    return validImages.some((ext) => url.endsWith(ext));
+  };
+
+  const getProfilePic = (url) => {
+    return isValidImageUrl(url) ? url : defaultUserPic;
+  };
+
+
 
   if (!currentUser) return null;
 
@@ -32,7 +47,7 @@ function UserProfile() {
 
       <div id="container-user-profile">
         <div id="container-details-user-profile">
-          <img src={currentUser.profile_image}
+          <img src={getProfilePic(currentUser.profile_image)}
             style={{ width: "220px", aspectRatio: "1/1" }}
             alt="user-profile-image" />
 
