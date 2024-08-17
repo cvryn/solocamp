@@ -31,7 +31,7 @@ const ManageSupportedBys = () => {
   return (
     <div>
       <br />
-      <h1 style={{padding: '10px'}}>Manage My Reviews</h1>
+      <h1 style={{ padding: "10px" }}>Manage My Reviews</h1>
       <br />
       <div id="album-container-collection">
         {userSupportedBys.length > 0 ? (
@@ -41,7 +41,9 @@ const ManageSupportedBys = () => {
             onEdit={handleEditSupportedBy}
           />
         ) : (
-          <p>No supported by entries found.</p>
+          <div className="no-supported-by-container">
+            <div>No review entries found.</div>
+          </div>
         )}
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { NavLink, useLoaderData, useNavigate } from "react-router-dom"
@@ -22,6 +23,19 @@ function UserProfile() {
   const ownAlbums = albums?.filter(album => album?.user_id === currentUser?.id)
   const latestReleaseYear = Math.max(...ownAlbums.map(album => album.year));
   const latestAlbum = albums?.find(album => album.year === latestReleaseYear)
+
+  // const isValidImageUrl = (url) => {
+  //   if (typeof url !== 'string' || url.trim() === '' || !url.startsWith('http')) {
+  //     return false;
+  //   }
+  //   const validImages = [".jpg", ".jpeg", ".png"];
+  //   return validImages.some((ext) => url.endsWith(ext));
+  // };
+
+  // const getProfilePic = (url) => {
+  //   return isValidImageUrl(url) ? url : defaultUserPic;
+  // };
+
 
 
   if (!currentUser) return null;

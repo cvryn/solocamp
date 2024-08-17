@@ -6,7 +6,7 @@ import './EditSupportedByModal.css'
 const EditSupportedByModal = ({ supportedBy, onEditComplete }) => {
   const { closeModal } = useModal();
   const [description, setDescription] = useState(supportedBy.description);
-  const [selectedSongId, setSelectedSongId] = useState(supportedBy.song_id);
+  const [selectedSongId, setSelectedSongId] = useState(supportedBy.song_id || "");
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const EditSupportedByModal = ({ supportedBy, onEditComplete }) => {
     e.preventDefault();
     const updatedData = {
       description,
-      song_id: selectedSongId || null,
+      song_id: selectedSongId || null, // Use `null` if no song is selected
     };
 
     try {
@@ -55,18 +55,19 @@ const EditSupportedByModal = ({ supportedBy, onEditComplete }) => {
         <div>
           <label>Review:</label>
           <textarea
-            type="text"
             value={description}
-            onChange={(e) => setDescription(e.target.value)} style={{ width: '100%', resize: 'none', marginTop: '10px', padding: '10px' }}
+            onChange={(e) => setDescription(e.target.value)}
+            style={{ width: '100%', resize: 'none', marginTop: '10px', padding: '10px' }}
             required
           />
         </div>
         <div>
-          <label>Favorite Track:</label>
+          <label>Favorite Track (optional):</label>
           <select
             value={selectedSongId || ""}
-            onChange={(e) => setSelectedSongId(e.target.value || null)}
+            onChange={(e) => setSelectedSongId(e.target.value || "")}
           >
+            <option value="">None</option>
             {songs.map((song) => (
               <option key={song.id} value={song.id}>
                 {song.title}

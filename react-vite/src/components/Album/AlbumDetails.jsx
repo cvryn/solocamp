@@ -18,6 +18,8 @@ import SongList from "./Song/SongList";
 import AlbumItem from "./AlbumItem";
 import ReviewForm from "../SupportedBy/ReviewForm";
 import ShoppingCart from "./ShoppingCart";
+// import defaultUserPic from "../../../public/defaultuserpic.jpg";
+
 
 import "./AlbumDetails.css";
 
@@ -136,12 +138,25 @@ const AlbumDetails = () => {
   //   }
   // };
 
+  // const isValidImageUrl = (url) => {
+  //   if (typeof url !== 'string' || url.trim() === '' || !url.startsWith('https')) {
+  //     return false;
+  //   }
+  //   const validImages = [".jpg", ".jpeg", ".png"];
+  //   return validImages.some((ext) => url.endsWith(ext));
+  // };
+
+  // const getProfilePic = (url) => {
+  //   return isValidImageUrl(url) ? url : defaultUserPic;
+  // };
+
+
   if (!album) {
     return <div>Loading...</div>;
   }
 
   const albumArt = album.album_art?.[0];
-  const firstSong = songs[0];
+  // const firstSong = songs[0];
 
   return (
     <div style={{ background: gradientBackground }}>
@@ -159,7 +174,7 @@ const AlbumDetails = () => {
               {album.name}
             </h1>
             <div className="album-name-and-artist-name">
-              from {album.name} by {album.user_username}
+              by {album.user_username}
             </div>
           </div>
           <br />
@@ -181,8 +196,9 @@ const AlbumDetails = () => {
                   <IoIosRewind />
                 </button>
                 <div style={{ fontSize: "16px" }}>
-                  {firstSong ? firstSong.title : "No songs available"}
+                  {songs.length > 0 ? album.name : "No songs available"}
                 </div>
+
                 <button
                   className="forward-button-album-details"
                   style={{ border: "none", backgroundColor: "transparent" }}
@@ -217,8 +233,8 @@ const AlbumDetails = () => {
                   >
                     Buy Digital Album
                   </button>
-                  &nbsp;
-                  <span style={{ fontSize: "17px", fontWeight: "bold" }}>
+                 < br/>
+                  <span style={{ fontSize: "30px", fontWeight: "bold" }}>
                     ${album.price}&nbsp;
                   </span>
                   <span>USD or more</span>
@@ -280,7 +296,7 @@ const AlbumDetails = () => {
                   )}
                 </button>
               </div> */}
-              < br/>
+              <br />
               <div id="supported-by-container">
                 <span>supported by</span>
                 <div className="supported-by-users-comments">

@@ -7,10 +7,20 @@ export const supportedByLoader = async (method, endpoint, data = null) => {
     ...(data && { body: JSON.stringify(data) }),
   };
 
-  const response = await fetch(endpoint, options);
+  try {
+    const response = await fetch(endpoint, options);
 
-  const responseData = await response.json();
-  return responseData;
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Server Error: ${response.status} - ${errorText}`);
+    }
+
+    const responseData = await response.json();
+    return responseData;
+  } catch (error) {
+    console.error("Failed to load data:", error);
+    throw error;
+  }
 };
 
 

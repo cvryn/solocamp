@@ -2,13 +2,28 @@
     /* border: 2px solid red; */
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     max-width: 100%;
     margin: 0 auto;
     padding: 10px;
 }
 
-
+.no-supported-by-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 230px;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
 
 
 .album-art-collection{
