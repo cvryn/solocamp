@@ -31,28 +31,25 @@ const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 const AlbumDetails = () => {
   const currentUser = useSelector((state) => state.session.user);
   const albumsInCollection = useSelector((state) => state.session.user?.album_in_collection);
+  const dispatch = useDispatch();
+  const shoppingCartObj = useSelector(state => state.shoppingCart)
   const loginModalRef = useRef();
   const { albumId } = useParams();
   const { album, allAlbums } = useLoaderData();
   const navigate = useNavigate();
   const songs = album?.songs || [];
+
   const [supportedBys, setSupportedBys] = useState([]);
   const [userHasReviewed, setUserHasReviewed] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  // const [isAddedToCart, setIsAddedToCart] = useState(false);
-  // const [isInWishlist, setIsInWishlist] = useState(false);
   const [validations, setValidations] = useState({});
   const [showMenu, setShowMenu] = useState(false);
-
-
-  const dispatch = useDispatch();
-  const shoppingCartObj = useSelector(state => state.shoppingCart)
-
+  // const [isAddedToCart, setIsAddedToCart] = useState(false);
+  // const [isInWishlist, setIsInWishlist] = useState(false);
 
   useEffect(() => {
     dispatch(thunkShoppingCartAlbums())
   }, [dispatch])
-
 
   useEffect(() => {
     const purchaseErrors = {};
