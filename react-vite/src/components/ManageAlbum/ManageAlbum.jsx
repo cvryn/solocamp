@@ -5,7 +5,7 @@ import { thunkDeleteAlbum, thunkGetAlbums } from "../../redux/albumReducer"
 import './ManageAlbum.css'
 import CreateAlbumButton from "../HomePage/CreateAlbumButton";
 import UpdateAlbumButton from "./UpdateAlbumButton";
-import { useNavigate } from "react-router-dom";
+
 // import { useParams } from "react-router-dom";
 // import { useLoaderData } from "react-router-dom";
 

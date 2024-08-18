@@ -58,7 +58,7 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
     })
     if (res.ok) {
         const newAl = await res.json()
-        dispatch(updateAlbum(newAl))
+        
         const resImg = await fetch(`/api/album-art/${album_art_id}`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json" },
@@ -72,7 +72,7 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
         if (resImg.ok) {
             const newImg = await resImg.json();
             newAl.album_art = [newImg];
-            dispatch(updateAlbum(newAl));
+            dispatch(updateAlbum(newAl))
             return { newAl, newImg };
         }else {
             const errorData = await resImg.json();

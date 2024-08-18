@@ -14,9 +14,9 @@ class AlbumArtForm(FlaskForm):
         "background color",
         validators=[
             DataRequired(),
-            # Regexp(
-            #     r"^rgb\((25[0-5]|2[0-4]\d|1\d{2}|\d{1,2}),\s*(25[0-5]|2[0-4]\d|1\d{2}|\d{1,2}),\s*(25[0-5]|2[0-4]\d|1\d{2}|\d{1,2})\)$",
-            #     message="Must be in the format 'rgb(0-255, 0-255, 0-255)!!!'"
-            # )
+            Regexp(
+                r"^rgb\((25[0-5]|2[0-4]\d|1\d{2}|\d{1,2}),\s*(25[0-5]|2[0-4]\d|1\d{2}|\d{1,2}),\s*(25[0-5]|2[0-4]\d|1\d{2}|\d{1,2})\)$",
+                message="Must be in the format 'rgb(0-255, 0-255, 0-255)!!!'"
+            )
         ],
     )
