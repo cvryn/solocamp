@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 import { PiCopyright } from "react-icons/pi";
-// import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { CgPlayButtonR } from "react-icons/cg";
 import { IoIosRewind, IoIosFastforward } from "react-icons/io";
 import { getSupportedBysByAlbum } from "../../router/supportedbys";
@@ -15,14 +14,13 @@ import {
   getShoppingCart,
   deleteFromShoppingCart,
 } from "../../router/shoppingcart";
-import { thunkShoppingCartAlbums } from "../../redux/shoppingCart";
-// import { postToWishlist} from "../../router/wishlist"
+import { thunkWishlistAlbumAdd, thunkWishlistAlbumRemove, thunkWishlistAlbums } from "../../redux/wishlist";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import SupportedByList from "../SupportedBy/SupportedByList";
 import SongList from "./Song/SongList";
 import AlbumItem from "./AlbumItem";
 import ReviewForm from "../SupportedBy/ReviewForm";
 import ShoppingCart from "./ShoppingCart";
-// import defaultUserPic from "../../../public/defaultuserpic.jpg";
 import "./AlbumDetails.css";
 
 
@@ -30,6 +28,8 @@ const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
 const AlbumDetails = () => {
   const currentUser = useSelector((state) => state.session.user);
+  const albumsInWishlistObj = useSelector(state => state.wishlist);
+  const albumsInWishlist = Object.values(albumsInWishlistObj);
   const albumsInCollection = useSelector((state) => state.session.user?.album_in_collection);
   const dispatch = useDispatch();
   const shoppingCartObj = useSelector(state => state.shoppingCart)
@@ -44,12 +44,16 @@ const AlbumDetails = () => {
   const [cartItems, setCartItems] = useState([]);
   const [validations, setValidations] = useState({});
   const [showMenu, setShowMenu] = useState(false);
-  // const [isAddedToCart, setIsAddedToCart] = useState(false);
-  // const [isInWishlist, setIsInWishlist] = useState(false);
+
+  // useEffect(() => {
+  //   dispatch(thunkShoppingCartAlbums())
+  // }, [dispatch]);
 
   useEffect(() => {
-    dispatch(thunkShoppingCartAlbums())
-  }, [dispatch])
+    if (showMenu && loginModalRef.current) {
+      loginModalRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showMenu]);
 
   useEffect(() => {
     const purchaseErrors = {};
@@ -123,6 +127,26 @@ const AlbumDetails = () => {
     setUserHasReviewed(true);
   };
 
+  const addToWishlist = (albumId) => {
+    if (!currentUser) {
+      setShowMenu(true);
+      return;
+
+    } else {
+      const albumData = {
+        user_id: currentUser.id,
+        album_id: albumId
+      };
+      dispatch(thunkWishlistAlbumAdd(albumData))
+        .then(() => dispatch(thunkWishlistAlbums()));
+    }
+  };
+
+  const removeFromWishlist = (albumId) => {
+    dispatch(thunkWishlistAlbumRemove(albumId))
+      .then(() => dispatch(thunkWishlistAlbums()))
+  };
+
   const handleAddToCart = async () => {
     if (!currentUser) {
       setShowMenu(true);
@@ -132,19 +156,11 @@ const AlbumDetails = () => {
     if (albumId && album.user_id !== undefined && album.user_id !== currentUser?.id) {
       await postToShoppingCart(albumId);
 
-      // if (result.error) {
-      //   alert(result.error);
-      //   return;
-      // }
-
       const newItem = {
         id: albumId,
         name: album.name,
         price: album.price,
       };
-
-      // setCartItems((prevCartItems) => [...prevCartItems, newItem]);
-      // setIsAddedToCart(true);
 
       setCartItems((prevCartItems) => {
         if (Array.isArray(prevCartItems)) {
@@ -173,45 +189,6 @@ const AlbumDetails = () => {
   const handleFollowClick = () => {
     alert("Feature coming soon...");
   };
-
-  // const handleWishlistToggle = async () => {
-  //   if (!currentUser) {
-  //     alert("You need to be logged in to add to the wishlist.");
-  //     return;
-  //   }
-
-  //   if (isInWishlist) {
-  //     const result = await deleteFromWishlist(currentUser.id, albumId);
-
-  //     if (result.error) {
-  //       alert(result.error);
-  //       return;
-  //     }
-
-  //     setIsInWishlist(false);
-  //   } else {
-  //     const result = await postToWishlist(albumId);
-
-  //     if (result.error) {
-  //       alert(result.error);
-  //       return;
-  //     }
-
-  //     setIsInWishlist(true);
-  //   }
-  // };
-
-  // const isValidImageUrl = (url) => {
-  //   if (typeof url !== 'string' || url.trim() === '' || !url.startsWith('https')) {
-  //     return false;
-  //   }
-  //   const validImages = [".jpg", ".jpeg", ".png"];
-  //   return validImages.some((ext) => url.endsWith(ext));
-  // };
-
-  // const getProfilePic = (url) => {
-  //   return isValidImageUrl(url) ? url : defaultUserPic;
-  // };
 
   const closeMenu = () => setShowMenu(false);
 
@@ -257,32 +234,21 @@ const AlbumDetails = () => {
             <br />
             <div id="album-detail-container">
               <section id="left-column-container-album-details">
-                <div id="music-player-table-container">
-                  <button
-                    className="play-button-placeholder"
-                    style={{ border: "none", backgroundColor: "transparent" }}
-                    onClick={handleFollowClick}
-                  >
-                    <CgPlayButtonR />
-                  </button>
-                  <button
-                    className="rewind-button-album-details"
-                    style={{ border: "none", backgroundColor: "transparent" }}
-                    onClick={handleFollowClick}
-                  >
-                    <IoIosRewind />
-                  </button>
-                  <div style={{ fontSize: "16px" }}>
+                <div id="music-player-table-container"
+                  onClick={handleFollowClick}
+                  style={{ cursor: "pointer" }}>
+                  <CgPlayButtonR style={{ fontSize: "3rem" }} />
+                  <IoIosRewind style={{ fontSize: "3rem" }} />
+                  <div style={{
+                    fontSize: "16px",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    maxWidth: "200px", // Set your desired fixed width here
+                  }}>
                     {songs.length > 0 ? album.name : "No songs available"}
                   </div>
-
-                  <button
-                    className="forward-button-album-details"
-                    style={{ border: "none", backgroundColor: "transparent" }}
-                    onClick={handleFollowClick}
-                  >
-                    <IoIosFastforward />
-                  </button>
+                  <IoIosFastforward style={{ fontSize: "3rem" }} />
                 </div>
 
                 <div
@@ -356,31 +322,57 @@ const AlbumDetails = () => {
               </section>
 
               <section id="middle-column-container-album-details">
-                <div className="album-art-album-details">
+                <div
+                  className="album-art-album-details"
+                  style={{ display: "flex", flexDirection: "column" }}
+                >
                   <img
                     className="album-art-image-album-details"
                     src={albumArt?.album_art}
                     alt="album art image"
                   />
+                  {currentUser && album.user_id === currentUser.id
+                    ? (
+                      <button
+                        type="button"
+                        className="button-wishlist-album-details"
+                        style={{ cursor: "not-allowed", border: "none", background: "transparent" }}
+                        onClick={() => removeFromWishlist(albumId)}
+                        disabled
+                      >
+                        <FaHeart style={{ fontSize: "1.1rem" }} /> wishlist
+                      </button>
+
+                    ) : (
+                      currentUser && albumsInWishlist?.find(a => a.id === album.id)
+                        ? (
+                          <button
+                            type="button"
+                            className="button-wishlist-album-details"
+                            onClick={() => removeFromWishlist(albumId)}
+                            style={{ background: "transparent", border: "none" }}
+                          >
+                            <FaHeart style={{ fontSize: "1.1rem" }} /> wishlist
+                          </button>
+
+                        ) : (
+                          <button
+                            type="button"
+                            className="button-wishlist-album-details"
+                            style={{
+                              color: "black",
+                              backgroundColor: "transparent",
+                              border: "none"
+                            }}
+                            onClick={() => addToWishlist(albumId)}
+                          >
+                            <FaRegHeart style={{ fontSize: "1.1rem" }} /> wishlist
+                          </button>
+                        )
+                    )
+                  }
                 </div>
-                {/* <div className="wishlist-button-album-details">
-                <button
-                  className="add-to-wishlist-button"
-                  onClick={handleWishlistToggle}
-                >
-                  {isInWishlist ? (
-                    <>
-                      <IoMdHeart style={{ fontSize: "15px" }} />
-                      Wishlist - added
-                    </>
-                  ) : (
-                    <>
-                      <IoMdHeartEmpty style={{ fontSize: "15px" }} />
-                      Wishlist
-                    </>
-                  )}
-                </button>
-              </div> */}
+
                 <br />
                 <div id="supported-by-container">
                   <span>supported by</span>

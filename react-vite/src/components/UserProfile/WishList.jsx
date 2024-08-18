@@ -42,7 +42,7 @@ function WishList() {
   if (!currentUser) return null;
 
   return albumInOwnWishlist.length > 0 ? (
-    <div id="container-album-listing-wishlist">
+    <div className="container-album-listing-wishlist">
       {albumInOwnWishlist?.map((album) => {
         if (!album || !album.id) return null; // fixes ghost album issue
         const albumCount = albumInOwnWishlist.find(countAlbum => countAlbum.id === album.id)?.count || 0;
@@ -53,7 +53,7 @@ function WishList() {
           <Link
             to={`/albums/${album.id}`}
             key={album.id}
-            id="container-album-wishlist"
+            className="container-album-outline"
           >
             <img
               src={albumArtUrl}

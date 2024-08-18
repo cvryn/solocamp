@@ -6,8 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import { thunkWishlistAlbumAdd, thunkWishlistAlbumRemove, thunkWishlistAlbums } from "../../redux/wishlist";
 import { FiSearch } from "react-icons/fi";
 import { IoIosPlay } from "react-icons/io";
-import { FaRegHeart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
 import "./AlbumListings.css"
 
@@ -51,6 +50,12 @@ function AlbumListings() {
     }
   }, [location.search, navigate, location.pathname]);
 
+  useEffect(() => {
+    if (showMenu && loginModalRef.current) {
+      loginModalRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showMenu]);
+
   const handleSetGenres = (genre) => {
     if (genre === "all genres") {
       setGenres(["all genres"]);
@@ -76,15 +81,10 @@ function AlbumListings() {
     }
   };
 
-  useEffect(() => {
-    if (showMenu && loginModalRef.current) {
-      loginModalRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [showMenu]);
-
   const addToWishlist = (albumId) => {
     if (!currentUser) {
-      setShowMenu(true)
+      setShowMenu(true);
+      return;
 
     } else {
       const albumData = {
@@ -243,25 +243,29 @@ function AlbumListings() {
                     </button>
 
                     ) : (currentUser && albumsInWishlist?.find(album => album.id === selectedAlbum.id)
-                      ? (<button
-                        type="button"
-                        className="button-wishlist-album-listings"
-                        onClick={() => removeFromWishlist(selectedAlbum.id)}
-                      >
-                        <FaHeart style={{ fontSize: "1.6rem" }} /> Wishlist
-                      </button>
-                      ) : (<button
-                        type="button"
-                        className="button-wishlist-album-listings"
-                        style={{
-                          color: "white",
-                          backgroundColor: "rgb(34, 34, 34)",
-                          border: "2px solid white"
-                        }}
-                        onClick={() => addToWishlist(selectedAlbum.id)}
-                      >
-                        <FaRegHeart style={{ fontSize: "1.6rem" }} /> Wishlist
-                      </button>)
+                      ? (
+                        <button
+                          type="button"
+                          className="button-wishlist-album-listings"
+                          onClick={() => removeFromWishlist(selectedAlbum.id)}
+                        >
+                          <FaHeart style={{ fontSize: "1.6rem" }} /> Wishlist
+                        </button>
+
+                      ) : (
+                        <button
+                          type="button"
+                          className="button-wishlist-album-listings"
+                          style={{
+                            color: "white",
+                            backgroundColor: "rgb(34, 34, 34)",
+                            border: "2px solid white"
+                          }}
+                          onClick={() => addToWishlist(selectedAlbum.id)}
+                        >
+                          <FaRegHeart style={{ fontSize: "1.6rem" }} /> Wishlist
+                        </button>
+                      )
                     )
                   }
                 </div>

@@ -36,8 +36,8 @@ function Collection() {
 
   if (!currentUser) return null
 
-  return albumsInOwnCollection ? (
-    <div id="container-album-listing-wishlist">
+  return albumsInOwnCollection.length > 0 ? (
+    <div className="container-album-listing-wishlist">
       {albumsInOwnCollection?.map(album => {
         if (!album || !album.id) return null; // fixes ghost album issue
         const albumCount = albumCountArr.find(countAlbum => countAlbum.id === album.id)?.count || 0;
@@ -48,7 +48,7 @@ function Collection() {
           <Link
             to={`/albums/${album.id}`}
             key={album.id}
-            id="container-album-wishlist"
+            className="container-album-outline"
           >
             <img
               src={albumArtUrl}

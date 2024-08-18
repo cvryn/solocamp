@@ -14,10 +14,10 @@ function UserProfile() {
   const albumInOwnWishlistObj = useSelector((state) => state.wishlist);
   const albumsInCollectionObj = useSelector((state) => state.collection);
   const dispatch = useDispatch();
-
   const [searchParams] = useSearchParams();
+
   const [collection, setCollection] = useState(searchParams.get("tab") === "collection");
-  const [wishlist, setWishlist] = useState(searchParams.get("tab") !== "collection");
+  const [wishlist, setWishlist] = useState(searchParams.get("tab") !== "wishlist");
 
   useEffect(() => {
     if (!currentUser) {
@@ -72,7 +72,7 @@ function UserProfile() {
 
         <div id="container-collection-wishlist">
           <NavLink
-            className={collection ? "tab-wishlist active" : "tab-wishlist"}
+            className={collection && "is-active"}
             onClick={() => {
               setCollection(true);
               setWishlist(false);
@@ -81,7 +81,7 @@ function UserProfile() {
             collection&nbsp;&nbsp;&nbsp;&nbsp;{albumsInOwnCollection.length}
           </NavLink>
           <NavLink
-            className={wishlist ? "tab-wishlist active" : "tab-wishlist"}
+            className={wishlist && "is-active" }
             onClick={() => {
               setWishlist(true);
               setCollection(false);
