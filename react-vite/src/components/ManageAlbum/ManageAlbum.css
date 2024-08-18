@@ -11,40 +11,54 @@
     height: fit-content;
     padding: 10px;
 }
-.create-album-button-home {
-    background-color: lightgray;
+.manage-als > img {
+    cursor: pointer;
+}
+.update-button-manage-albums {
+  
     width: fit-content;
-    border: 1px black solid;
-    border-radius: 2px;
-    text-align: center;
+    background-color: lightgray;
     margin-top: 30px;
+    border-radius: 10px;
+    padding: 0px 5px 0px 5px;
+}
+
+.delete-button-manage-al {
+    background-color: lightgrey;
+    border: none;
+    margin-top: 10px;
+    padding: 0px 5px 0px 5px;
+    border-radius: 10px;
+}
+.create-album-button-home {
+    width: fit-content;
+    background-color: lightgray;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 0px 5px 0px 5px;
     margin-bottom: 30px;
-    margin-left: 5px;
     padding: 10px;
 }
 .create-album-button-container{
     display: flex;
     justify-content: center;
 }
-
-.update-button-manage-albums {
-    border: 1px solid black;
-    width: fit-content;
-    background-color: lightgray;
-    margin-top: 30px;
+.update-button-manage-albums:hover,
+.delete-button-manage-al:hover {
+    background-color: rgb(180, 179, 179);
+    border-radius: 10px;
+    padding: 0px 3px 0px 3px;
+}
+.create-album-button-home:hover {
+    background-color: rgb(180, 179, 179);
+    border-radius: 10px;
+    /* padding:10px; */
 }
 .create-first-album {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap:20px;
-}
-.create-album-button {
-    background-color: lightgray;
-    border: 1px solid black;
-    padding: 8px;
-    border-radius: 7px;
-    margin-bottom: 20px;
 }
 .create-first-album >h2 {
     margin-top: 20px;
