@@ -1,8 +1,7 @@
 import "./SupportedByList.css";
 
 const SupportedByList = ({ album, supportedBys, isAuthenticated }) => {
-  console.log("Album data:", album);
-  console.log("Supported Bys:", supportedBys);
+
 
   return (
     <div id="supported-by-container-supported-by-list">

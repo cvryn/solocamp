@@ -39,7 +39,7 @@ const EditSupportedByModal = ({ supportedBy, onEditComplete }) => {
         `/api/supported-by/${supportedBy.id}`,
         updatedData
       );
-      console.log("Updated supported by:", updatedSupportedBy);
+      // console.log("Updated supported by:", updatedSupportedBy);
 
       onEditComplete(updatedSupportedBy);
       closeModal();

@@ -16,7 +16,7 @@ const ReviewForm = ({ albumId, songs = [], onReviewSubmitted, canLeaveReview }) 
 
     try {
       const newReview = await createSupportedBy(albumId, reviewData);
-      console.log("New review submitted:", newReview);
+      // console.log("New review submitted:", newReview);
       onReviewSubmitted(newReview);
       setReviewText("");
       setSelectedSongId("");
