@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 import { PiCopyright } from "react-icons/pi";
 // import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
@@ -15,6 +15,7 @@ import {
   getShoppingCart,
   deleteFromShoppingCart,
 } from "../../router/shoppingcart";
+import { thunkShoppingCartAlbums } from "../../redux/shoppingCart";
 // import { postToWishlist} from "../../router/wishlist"
 import SupportedByList from "../SupportedBy/SupportedByList";
 import SongList from "./Song/SongList";
@@ -43,6 +44,16 @@ const AlbumDetails = () => {
   const [validations, setValidations] = useState({});
   const [showMenu, setShowMenu] = useState(false);
 
+
+  const dispatch = useDispatch();
+  const shoppingCartObj = useSelector(state => state.shoppingCart)
+
+
+  useEffect(() => {
+    dispatch(thunkShoppingCartAlbums())
+  }, [dispatch])
+
+
   useEffect(() => {
     const purchaseErrors = {};
 
@@ -54,6 +65,12 @@ const AlbumDetails = () => {
       const isInCart = cartItems.some((item) => item.id === albumId);
       if (isInCart) {
         purchaseErrors.alreadyInCart = "Album added to shopping cart";
+      }
+
+      for (const value in shoppingCartObj) {
+        if (value === albumId) {
+          purchaseErrors.alreadyInCart = "Album added to shopping cart";
+        }
       }
 
       const isInCollection = albumsInCollection?.find(album => album.id === Number(albumId));
