@@ -44,7 +44,7 @@ function SignupFormModal() {
       closeModal();
     }
   };
-console.log('error while signing up', errors)
+// console.log('error while signing up', errors)
   return (
     <div id="container-signup-form-modal">
       <h1>Sign Up</h1>

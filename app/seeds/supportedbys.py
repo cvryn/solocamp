@@ -94,9 +94,9 @@ def seed_supportedbys():
         user_id=6,
     )
 
-    jay_ninja = SupportedBy(
-        description="Absolutely loved this album! In fact, I'm going to get all his albums.",
-        album_id=17,
+    jay_nineteen = SupportedBy(
+        description="Absolutely loved this album! In fact, I'm going to get all her albums.",
+        album_id=22,
         user_id=7,
     )
 
@@ -128,7 +128,7 @@ def seed_supportedbys():
             fujii_nirvana,
             dhruv_smithereens,
             dhruv_a_star,
-            jay_ninja,
+            jay_nineteen,
             jolin_nineteen,
             fujii_smithereens
         ]

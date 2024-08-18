@@ -6,18 +6,18 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
-// import supportedBysReducer from "./supportedByReducer";
 import albumReducer from './albumReducer';
 import wishlistReducer from "./wishlist";
 import collectionReducer from "./collection";
+import shoppingCartReducer from "./shoppingCart";
 
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  // supportedBys: supportedBysReducer,
   albums: albumReducer,
   wishlist: wishlistReducer,
-  collection: collectionReducer
+  collection: collectionReducer,
+  shoppingCart: shoppingCartReducer
 });
 
 let enhancer;
@@ -33,5 +33,6 @@ if (import.meta.env.MODE === "production") {
 const configureStore = (preloadedState) => {
   return createStore(rootReducer, preloadedState, enhancer);
 };
+
 
 export default configureStore;

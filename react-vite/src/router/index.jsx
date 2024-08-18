@@ -9,6 +9,7 @@ import About from '../components/Footer/About';
 import { albumLoader } from './album';
 import ManageSupportedBys from '../components/SupportedBy/ManageSupportedBys';
 import { getSupportedBys } from './supportedbys';
+import { getShoppingCart } from './shoppingcart';
 import ManageAlbum from '../components/ManageAlbum/ManageAlbum';
 
 
@@ -42,7 +43,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/manage-albums",
-        element: <ManageAlbum />
+        element: <ManageAlbum />,
+        loader: async () => {
+          const response = await fetch("/api/albums");
+          if (response.ok) {
+            return await response.json();
+          } else {
+            throw new Error("Failed to fetch albums");
+          }
+        }
       },
       {
         path: "/user",
@@ -52,13 +61,14 @@ export const router = createBrowserRouter([
         }
       },
       {
-        path: "/checkout",
-        element: <Checkout />
-      },
-      {
         path: "/user/reviews",
         element: <ManageSupportedBys />,
         loader: getSupportedBys
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
+        loader: getShoppingCart
       },
       {
         path: "/about",

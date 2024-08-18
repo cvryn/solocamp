@@ -42,7 +42,7 @@ def post_supported_bys(album_id):
         song_exists = Song.query.filter_by(id=song_id).first()
         if song_exists is None:
             return {"error": "Song not found"}, 404
-        # Ensure the song belongs to the specified album
+        # Check that the song belongs to the specified album
         song_in_album = Song.query.filter_by(id=song_id, album_id=album_id).first()
         if song_in_album is None:
             return {"error": "Song not found in album"}, 404
@@ -67,38 +67,28 @@ def post_supported_bys(album_id):
 
 # Edit Supported_By by supported_by_id
 @supported_by_routes.route("/<int:supported_by_id>", methods=["PUT"])
-# @login_required
 def edit_supported_by(supported_by_id):
     if not current_user.is_authenticated:
         return {"error": "User not authenticated"}, 401
 
     supported_by = SupportedBy.query.get(supported_by_id)
 
-    form = SupportedByForm()
-    form.csrf_token.data = request.cookies.get("csrf_token")
-
-    # Check if supported by exists
     if supported_by is None:
         return {"error": "Supported by not found"}, 404
 
-    # Check if current user owns this supported_by
     if supported_by.user_id != current_user.id:
         return {"error": "Forbidden"}, 403
 
-    if form.validate_on_submit():
+    data = request.get_json()
+    description = data.get("description")
+    song_id = data.get("song_id")
 
-        supported_by.description = form.data["description"]
-        song_id = form.data.get("song_id")
-        if song_id == "":
+    # Update supported_by attributes
+    supported_by.description = description
+    supported_by.song_id = int(song_id) if song_id else None
 
-            supported_by.song_id = None
-        else:
-            supported_by.song_id = song_id
-
-        db.session.commit()
-        return supported_by.to_dict(), 200
-
-    return {"errors": form.errors}, 400
+    db.session.commit()
+    return supported_by.to_dict(), 200
 
 
 # Delete supported_By by supported_by supported_by_id

@@ -16,7 +16,7 @@ function CreateAlbumButton() {
   const ulRef = useRef();
 
   // const toggleMenu = (e) => {
-  //   e.stopPropagation(); 
+  //   e.stopPropagation();
   //   setShowMenu(!showMenu);
   // };
 
@@ -37,7 +37,7 @@ function CreateAlbumButton() {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    
+
     <nav id="container-user-navigation" style={{ position: "relative" }}>
       {user ? (
         <>

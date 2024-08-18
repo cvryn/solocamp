@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask_login import current_user
+from flask_login import current_user, login_required
 from app.models import User, Album, wishlist, db
 from sqlalchemy import func
 
@@ -9,22 +9,27 @@ wishlist_routes = Blueprint("wishlists", __name__)
 
 # get albums in current logged in user's wishlist
 @wishlist_routes.route("/all", methods=["GET"])
-def get_albums_of_current_user_in_wishlist():
+@login_required
+def get_albums_in_wishlist_of_current_user():
+    subquery = (
+        db.session.query(
+            wishlist.columns.album_id,
+            func.count(func.distinct(wishlist.columns.user_id)).label("count"),
+        )
+        .group_by(wishlist.columns.album_id)
+        .subquery()
+    )
+
     album_counts = (
         db.session.query(
-            wishlist.columns.album_id,  # Get album_id from wishlist table
-            Album.name,  # Get album name from Album model
-            func.count(func.distinct(wishlist.columns.user_id)).label(
-                "count"
-            ),  # Count distinct user_ids
-            wishlist.columns.user_id,  # Get user_id from wishlist table
+            wishlist.columns.album_id,
+            Album.name,
+            subquery.c.count,
+            wishlist.columns.user_id,
         )
-        .join(
-            Album, Album.id == wishlist.columns.album_id
-        )  # Join Album table to get album name
-        .group_by(
-            wishlist.columns.album_id, wishlist.columns.user_id, Album.name
-        )  # Group by wishlist.album_id and wishlist.user_id
+        .join(Album, Album.id == wishlist.columns.album_id)
+        .join(subquery, subquery.c.album_id == wishlist.columns.album_id)
+        .filter(wishlist.columns.user_id == current_user.id)
         .all()
     )
 
@@ -32,8 +37,8 @@ def get_albums_of_current_user_in_wishlist():
         {
             "id": album_id,  # album_id from wishlist table
             "name": album_name,  # album name from Album model
-            "count": count,  # count of distinct user_ids
-            "user_id": user_id,  # user_id from wishlist table
+            "count": count,  # count of distinct user_ids who have added the album
+            "user_id": user_id,  # user_id from wishlist table (should match current_user.id)
         }
         for album_id, album_name, count, user_id in album_counts
     ]
@@ -41,26 +46,9 @@ def get_albums_of_current_user_in_wishlist():
     return albums
 
 
-# get wishlist by user_id
-@wishlist_routes.route("/<int:user_id>", methods=["GET"])
-def get_albums_by_user_id(user_id):
-    user_exists = User.query.filter_by(id=user_id).first()
-    if not user_exists:
-        return {"error": "User not found"}, 404
-
-    albums_in_wishlist = (
-        db.session.query(Album)
-        .join(wishlist, Album.id == wishlist.columns.album_id)
-        .filter(wishlist.columns.user_id == user_id)
-        .all()
-    )
-
-    albums = [album.to_dict() for album in albums_in_wishlist]
-    return albums
-
-
 # delete album from wishlist belonging to current user
 @wishlist_routes.route("<int:album_id>", methods=["DELETE"])
+@login_required
 def remove_album_from_wishlist(album_id):
     if not current_user.is_authenticated:
         return {"error": "User not authenticated"}, 401

@@ -10,9 +10,7 @@ function WishList() {
   const currentUser = useSelector(state => state.session.user);
   const albumInOwnWishlistObj = useSelector(state => state.wishlist);
   const albumInWishlist = Object.values(albumInOwnWishlistObj);
-
   const albumInOwnWishlist = albumInWishlist?.filter(wishlist => wishlist.user_id === currentUser.id);
-
   const albums = useLoaderData();
   const dispatch = useDispatch();
 
@@ -28,6 +26,13 @@ function WishList() {
     }, {});
   }, [albums]);
 
+  const userUsernameMapping = useMemo(() => {
+    return albums.reduce((acc, album) => {
+      acc[album.id] = album.user_username;
+      return acc;
+    }, {});
+  }, [albums]);
+
   const handleHeartClick = (event, albumId) => {
     event.stopPropagation();
     event.preventDefault();
@@ -37,17 +42,18 @@ function WishList() {
   if (!currentUser) return null;
 
   return albumInOwnWishlist.length > 0 ? (
-    <div id="container-album-listing-wishlist">
+    <div className="container-album-listing-wishlist">
       {albumInOwnWishlist?.map((album) => {
         if (!album || !album.id) return null; // fixes ghost album issue
         const albumCount = albumInOwnWishlist.find(countAlbum => countAlbum.id === album.id)?.count || 0;
         const albumArtUrl = albumArtMapping[album.id];
+        const userName = userUsernameMapping[album.id];
 
         return (
           <Link
             to={`/albums/${album.id}`}
             key={album.id}
-            id="container-album-wishlist"
+            className="container-album-outline"
           >
             <img
               src={albumArtUrl}
@@ -55,7 +61,7 @@ function WishList() {
               alt="album-cover-image"
             />
             <span style={{ paddingTop: "10px" }}>{album.name}</span>
-            <span style={{ fontSize: "0.75rem" }}>by {album.user_username}</span>
+            <span style={{ fontSize: "0.75rem" }}>by {userName}</span>
             <div id="container-count-heart-button-wishlist">
               {albumCount === 1
                 ? <span style={{ fontSize: "0.75rem" }}>appears in {albumCount} wishlist</span>

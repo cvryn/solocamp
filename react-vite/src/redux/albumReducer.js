@@ -58,7 +58,7 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
     })
     if (res.ok) {
         const newAl = await res.json()
-        dispatch(updateAlbum(newAl))
+        
         const resImg = await fetch(`/api/album-art/${album_art_id}`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json" },
@@ -72,7 +72,7 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
         if (resImg.ok) {
             const newImg = await resImg.json();
             newAl.album_art = [newImg];
-            dispatch(updateAlbum(newAl));
+            dispatch(updateAlbum(newAl))
             return { newAl, newImg };
         }else {
             const errorData = await resImg.json();
@@ -96,7 +96,6 @@ export const thunkCreateAlbum = (album) => async (dispatch) => {
 
     if (response.ok) {
         const newAl = await response.json();
-        dispatch(addAlbum(newAl));
         const resImg = await fetch(`api/album-art/${newAl.id}`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -111,9 +110,14 @@ export const thunkCreateAlbum = (album) => async (dispatch) => {
             const newImg = await resImg.json();
             // console.log('in new img thunk', newImg)
             newAl.album_art = [newImg];
-
+            dispatch(addAlbum(newAl));
+            // dispatch(updateAlbum(newAl))
             return { newAl, newImg };
         }else {
+            await fetch(`/api/albums/${newAl.id}`, {
+                method: 'DELETE'
+            });
+            // dispatch(deleteAlbum(newAl.id));
             const errorData = await resImg.json();
             return { errors: errorData.errors };
         }

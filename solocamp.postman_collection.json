@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"adele@solocamp.io\",\n    \"password\": \"password\"\n}",
+					"raw": "{\n    \"email\": \"cole_dammett@solocamp.io\",\n    \"password\": \"password\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -400,12 +400,12 @@
 			"response": []
 		},
 		{
-			"name": "get all albums in all wishlists",
+			"name": "get albums in wishlist of current user",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/wishlist/counts",
+					"raw": "http://localhost:8000/api/wishlist/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -414,28 +414,7 @@
 					"path": [
 						"api",
 						"wishlist",
-						"counts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get wishlist by user id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/api/wishlist/12",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"wishlist",
-						"12"
+						"all"
 					]
 				}
 			},
@@ -478,7 +457,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/wishlist/12/1",
+					"raw": "http://localhost:8000/api/wishlist/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -487,20 +466,83 @@
 					"path": [
 						"api",
 						"wishlist",
-						"12",
-						"1"
+						"6"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get all albums in all collections",
+			"name": "get albums in shopping cart of current user",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/collection/counts",
+					"raw": "http://localhost:8000/api/shopping-cart/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shopping-cart",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add album to shopping cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/albums/1/shopping-cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"albums",
+						"1",
+						"shopping-cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get albums in shopping cart of current user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/shopping-cart/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shopping-cart",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get albums in collection of current user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/collection/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -509,28 +551,7 @@
 					"path": [
 						"api",
 						"collection",
-						"counts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get collection by user id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/api/collection/12",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"collection",
-						"12"
+						"all"
 					]
 				}
 			},
@@ -862,6 +883,27 @@
 						"api",
 						"supported-by",
 						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all albums in shopping cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/shopping-cart/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shopping-cart",
+						""
 					]
 				}
 			},

@@ -1,4 +1,4 @@
-from flask import Blueprint, request,jsonify
+from flask import Blueprint, request, jsonify
 from flask_login import current_user
 from app.models import Album, AlbumArt, Song, SupportedBy, db
 from app.forms import AlbumForm, AlbumArtForm, SongForm, SupportedByForm
@@ -64,8 +64,13 @@ def album_detail(album_id):
         if album.user_id != current_user.id:
             return {"error": "Forbidden"}, 403
 
+        data = request.json
+        print("DATA!!!!", data)
+        print(data.get("name", album.name))
+        print(data.get("year", album.year))
+        print(data.get("name", album.name))
+        print(data.get("name", album.name))
         if form.validate_on_submit():
-            data = request.json
             album.name = data.get("name", album.name)
             album.year = data.get("year", album.year)
             album.genre = data.get("genre", album.genre)
@@ -259,28 +264,6 @@ def add_to_wishlist(album_id):
     return {"message": "Album added to wishlist"}, 201
 
 
-# add album to collection belonging to current user
-@album_routes.route("/<int:album_id>/collection", methods=["POST"])
-def add_to_collection(album_id):
-    album = Album.query.get(album_id)
-
-    if not current_user.is_authenticated:
-        return {"error": "User not authenticated"}, 401
-
-    if album is None:
-        return {"error": "Album not found"}, 404
-
-    if album.user_id == current_user.id:
-        return {"error": "Forbidden"}, 403
-
-    if album in current_user.album_in_collection:
-        return {"error": "Album already in wishlist"}, 409
-
-    current_user.album_in_collection.append(album)
-    db.session.commit()
-    return {"message": "Album added to collection"}, 201
-
-
 # POST - add album to current user's shopping cart from the album id
 @album_routes.route("/<int:album_id>/shopping-cart", methods=["POST"])
 def add_to_shopping_cart(album_id):
@@ -303,3 +286,25 @@ def add_to_shopping_cart(album_id):
     current_user.album_in_shopping_cart.append(album)
     db.session.commit()
     return {"message": "Album added to shopping cart"}, 201
+
+
+# add album to collection belonging to current user
+@album_routes.route("/<int:album_id>/collection", methods=["POST"])
+def add_to_collection(album_id):
+    album = Album.query.get(album_id)
+
+    if not current_user.is_authenticated:
+        return {"error": "User not authenticated"}, 401
+
+    if album is None:
+        return {"error": "Album not found"}, 404
+
+    if album.user_id == current_user.id:
+        return {"error": "Forbidden"}, 403
+
+    if album in current_user.album_in_collection:
+        return {"error": "Album already in collection"}, 409
+
+    current_user.album_in_collection.append(album)
+    db.session.commit()
+    return {"message": "Album added to collection"}, 201

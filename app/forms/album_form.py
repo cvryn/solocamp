@@ -48,7 +48,7 @@ class AlbumForm(FlaskForm):
             # DataRequired(),
             Length(
                 min=3,
-                max=500,
+                max=9500,
                 message="Description must be between 10 and 500 characters.",
             ),
         ],
