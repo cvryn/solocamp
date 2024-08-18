@@ -43,7 +43,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/manage-albums",
-        element: <ManageAlbum />
+        element: <ManageAlbum />,
+        loader: async () => {
+          const response = await fetch("/api/albums");
+          if (response.ok) {
+            return await response.json();
+          } else {
+            throw new Error("Failed to fetch albums");
+          }
+        }
       },
       {
         path: "/user",
