@@ -1,12 +1,12 @@
 // GET albums in the wishlist
 export const getWishlist = async () => {
-    const response = await fetch('/api/wishlists/');
+  const response = await fetch('/api/wishlist/all');
 
-    if (!response.ok) {
-      return { error: 'Failed to fetch wishlist.' };
-    }
-    return response.json();
-  };
+  if (!response.ok) {
+    return { error: 'Failed to fetch wishlist.' };
+  }
+  return response.json();
+};
 
 // POST new album into wishlist
 export const postToWishlist = async (albumId) => {

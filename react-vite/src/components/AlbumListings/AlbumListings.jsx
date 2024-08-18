@@ -84,7 +84,7 @@ function AlbumListings() {
 
   const addToWishlist = (albumId) => {
     if (!currentUser) {
-      setShowMenu(true);
+      setShowMenu(true)
     } else {
       const albumData = {
         user_id: currentUser.id,
@@ -109,7 +109,7 @@ function AlbumListings() {
   return (
     <>
       {showMenu && (
-        <div id="button-login-modal-album-listings" ref={loginModalRef}>
+        <div className="button-login-modal-album-listings" ref={loginModalRef}>
           <OpenModalMenuItem
             itemText="Log in to add album to wishlist"
             onItemClick={closeMenu}

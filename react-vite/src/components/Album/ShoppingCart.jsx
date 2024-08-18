@@ -1,5 +1,6 @@
 import './ShoppingCart.css';
 
+
 const ShoppingCart = ({ cartItems = [], onRemoveItem, onCheckout }) => {
   const total = Array.isArray(cartItems)
     ? cartItems.reduce((acc, item) => acc + (parseFloat(item.price) || 0), 0)
@@ -45,5 +46,6 @@ const ShoppingCart = ({ cartItems = [], onRemoveItem, onCheckout }) => {
     </div>
   );
 };
+
 
 export default ShoppingCart;

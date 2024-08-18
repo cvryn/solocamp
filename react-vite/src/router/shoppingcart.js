@@ -1,6 +1,6 @@
 // GET albums in the shopping cart
 export const getShoppingCart = async () => {
-  const response = await fetch('/api/shopping-cart/');
+  const response = await fetch('/api/shopping-cart/all');
 
   if (!response.ok) {
       return { error: 'Failed to fetch shopping cart.' };
@@ -16,7 +16,7 @@ export const postToShoppingCart = async (albumId) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include', 
+      credentials: 'include',
     });
 
     if (!response.ok) {

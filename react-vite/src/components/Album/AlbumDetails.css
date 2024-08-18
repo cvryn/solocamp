@@ -84,12 +84,10 @@
   color: white;
   cursor: pointer;
   border: none;
-  background: linear-gradient(
-    135deg,
-    rgb(93, 81, 242),
-    rgb(79, 147, 215) 50%,
-    rgb(65, 203, 190) 100%
-  );
+  background: linear-gradient(135deg,
+      rgb(93, 81, 242),
+      rgb(79, 147, 215) 50%,
+      rgb(65, 203, 190) 100%);
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -100,13 +98,19 @@
 }
 
 .buy-album-button:hover {
-  /* text-decoration: underline; */
-  background: linear-gradient(
-    135deg,
-    rgb(86, 76, 231),
-    rgb(60, 115, 170) 50%,
-    rgb(65, 203, 190) 100%
-  );
+  background: linear-gradient(135deg,
+      rgb(86, 76, 231),
+      rgb(60, 115, 170) 50%,
+      rgb(65, 203, 190) 100%);
+}
+
+.disabled {
+  cursor: not-allowed;
+  background: gray;
+}
+
+.disabled:hover {
+  background: gray;
 }
 
 .send-as-gift-button-album-details {
@@ -211,9 +215,4 @@
   flex-direction: column;
 }
 
-#albums-container-album-items {
-  /* border: 2px solid purple; */
-}
-
-@media screen and (min-width: 1000px) {
-}
+@media screen and (min-width: 1000px) {}

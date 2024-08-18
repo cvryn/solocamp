@@ -6,7 +6,7 @@ shopping_cart_routes = Blueprint("shopping_carts", __name__)
 
 
 # get all albums in current logged in user's shopping cart
-# this route doesn't work, always returns a 401 authorization error
+# the thunk for this route doesn't work, always returns a 401 authorization error
 @shopping_cart_routes.route("/all", methods=["GET"])
 def get_albums_in_shopping_cart_of_current_user():
     if not current_user.is_authenticated:
