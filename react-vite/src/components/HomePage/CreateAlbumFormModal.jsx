@@ -15,7 +15,7 @@ function CreateAlbumFormModal() {
     const [description, setDescription] = useState("");
     const [albumart, setAlbumart] = useState("");
     const [albumbanner, setAlbumbanner] = useState("");
-    const [backgroundcolor, setBackgroundcolor] = useState("");
+    const [backgroundcolor, setBackgroundcolor] = useState("rgb(0,0,0)");
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
 

@@ -16,9 +16,9 @@ function UpdateAlbumFormModal({ el }) {
     const [genre, setGenre] = useState(el.genre);
     const [price, setPrice] = useState(el.price);
     const [description, setDescription] = useState(el.description);
-    const [albumart, setAlbumart] = useState(el.album_art[0].album_art);
-    const [albumbanner, setAlbumbanner] = useState(el.album_art[0].album_banner);
-    const [backgroundcolor, setBackgroundcolor] = useState(el.album_art[0].background_color);
+    const [albumart, setAlbumart] = useState(el.album_art? el.album_art[0].album_art:'');
+    const [albumbanner, setAlbumbanner] = useState(el.album_art? el.album_art[0].album_banner:'');
+    const [backgroundcolor, setBackgroundcolor] = useState(el.album_art? el.album_art[0].background_color:"");
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
 
@@ -33,7 +33,7 @@ function UpdateAlbumFormModal({ el }) {
             thunkUpdateAlbum({
                 user_id: userId,
                 album_id: el.id,
-                album_art_id: el.album_art[0].id,
+                album_art_id: el.album_art? el.album_art[0].id:'',
                 name,
                 year,
                 genre,

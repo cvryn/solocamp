@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkDeleteAlbum, thunkGetAlbums } from "../../redux/albumReducer"
 // import { useParams } from "react-router-dom";
 import './ManageAlbum.css'
 import CreateAlbumButton from "../HomePage/CreateAlbumButton";
 import UpdateAlbumButton from "./UpdateAlbumButton";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 
 
 
@@ -13,7 +13,12 @@ export default function ManageAlbum() {
     const [isLoaded, setIsLoaded] = useState(true);
     const dispatch = useDispatch()
     const userId = useSelector(state => state.session.user?.id)
-    const albumArr = useSelector(state => state.albums.album?.filter(el => el.user_id == userId))
+    // const albumArr = useSelector(state => state.albums.album?.filter(el => el.user_id == userId))
+    const albumAll = useSelector(state => state.albums.album);
+    const albumArr = useMemo(() => {
+        return albumAll?.filter(el => el.user_id == userId);
+    }, [albumAll, userId]);
+    
     // let routerTest = useLoaderData();
     // let albumArr = routerTest.filter(el => el.user_id == userId)
     // console.log('testing router data', routerTest)
@@ -23,7 +28,7 @@ export default function ManageAlbum() {
             setIsLoaded(false)
         }
         func()
-    }, [dispatch,isLoaded]);
+    }, [dispatch]);
 
     if (!userId) return (<h1 style={{textAlign:'center'}}>Please log in or sign up</h1>)
 
@@ -42,7 +47,7 @@ export default function ManageAlbum() {
 //     return null;
 // }
 // console.log('ablum array', albumArr)
-    if (albumArr ) {
+    if (albumArr && albumArr.map(el => el.album_art) ) {
         return ( isLoaded ?
             <div>Is loading...</div> :
             <div>
@@ -53,7 +58,7 @@ export default function ManageAlbum() {
                                 <div className="manage-als" key={el.id}>
                                     {/* {el.album_art ? <img style={{ width: '300px' }} src={el.album_art[0].album_art}></img> : <img style={{ width: '300px' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"></img>} */}
                                     {el?.album_art?.map(art => {
-                                       return <img style={{ width: '100%',height:"30%",marginBottom:'10px' }} src={art.album_art}></img>
+                                       return <img key={el.id} style={{ width: '100%',height:"30%",marginBottom:'10px' }} src={art.album_art}></img>
                                     })}
 
                                     <div>{el.name}</div>
@@ -86,14 +91,14 @@ export default function ManageAlbum() {
         )
     } else {
         return (
-            // null
-            <div className="create-first-album">
-                <h2 style={{textAlign:'center', fontSize:"30px"}}>Post your first album on Solocamp</h2>
-                <div className="create-album-button">
-                <CreateAlbumButton />
+            null
+            // <div className="create-first-album">
+            //     <h2 style={{textAlign:'center', fontSize:"15px"}}>Post your first album on Solocamp</h2>
+            //     <div className="create-album-button">
+            //     <CreateAlbumButton />
 
-                </div>
-            </div>
+            //     </div>
+            // </div>
             );
     }
 }
