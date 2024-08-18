@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom"
+import { useMemo } from "react"
+import { Link, useLoaderData } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { thunkCollectionAlbums } from "../../redux/collection"
 import "./UserProfile.css"
@@ -7,21 +8,33 @@ import { useEffect } from "react"
 
 function Collection() {
   const currentUser = useSelector(state => state.session.user);
-  const album_in_collection = currentUser.album_in_collection;
   const albumCountObj = useSelector(state => state.collection);
   const albumCountArr = Object.values(albumCountObj);
+  const albumsInCollectionObj = useSelector(state => state.collection);
+  const albumsInCollection = Object.values(albumsInCollectionObj);
+  const albumsInOwnCollection = albumsInCollection.filter(collection => collection.user_id === currentUser.id);
+  const albums = useLoaderData();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(thunkCollectionAlbums())
   }, [dispatch]);
 
+  const albumArtMapping = useMemo(() => {
+    return albums.reduce((acc, album) => {
+      acc[album.id] = album.album_art[0]?.album_art;
+      return acc;
+    }, {});
+  }, [albums]);
+
   if (!currentUser) return null
 
-  return album_in_collection ? (
+  return albumsInOwnCollection ? (
     <div id="container-album-listing-wishlist">
-      {album_in_collection?.map(album => {
+      {albumsInOwnCollection?.map(album => {
+        if (!album || !album.id) return null; // fixes ghost album issue
         const albumCount = albumCountArr.find(countAlbum => countAlbum.id === album.id)?.count || 0;
+        const albumArtUrl = albumArtMapping[album.id];
 
         return (
           <Link
@@ -30,7 +43,7 @@ function Collection() {
             id="container-album-wishlist"
           >
             <img
-              src={album.album_art[0]?.album_art}
+              src={albumArtUrl}
               style={{ width: "220px", aspectRatio: "1/1" }}
               alt="album-cover-image"
             />
@@ -44,7 +57,11 @@ function Collection() {
         )
       })}
     </div>
-  ) : (<div style={{ minHeight: "800px" }}></div >);
+
+  ) : (
+
+    <div style={{ minHeight: "800px" }}></div >
+  );
 }
 
 

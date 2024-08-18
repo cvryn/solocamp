@@ -24,7 +24,7 @@ export default function ManageAlbum() {
         func()
     }, [dispatch]);
 
-    if (!userId) return (<h1 style={{textAlign:'center'}}>Please log in or sign up</h1>)
+    if (!userId) return (<h1 style={{ textAlign: 'center' }}>Please log in or sign up</h1>)
 
     // if (!isLoaded ) {
     //     return <p>Loading...</p>
@@ -41,21 +41,21 @@ export default function ManageAlbum() {
     }
     // console.log(albumArr)
 
-// if (albumArr.length === 0) {
-//     return null;
-// }
+    // if (albumArr.length === 0) {
+    //     return null;
+    // }
 
     if (albumArr) {
-        return ( isLoaded ?
+        return (isLoaded ?
             <div>Is loading...</div> :
-            <div>
+            <div style={{ minHeight: "1000px" }}>
                 <div className="container-manage-als" >
                     {
                         albumArr?.map(el => {
                             return (
                                 <div className="manage-als" key={el.id}>
                                     {/* {el.album_art ? <img style={{ width: '300px' }} src={el.album_art[0].album_art}></img> : <img style={{ width: '300px' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"></img>} */}
-                                    <img style={{ width: '100%',height:"30%",marginBottom:'10px' }} src={el.album_art[0].album_art}></img>
+                                    <img style={{ width: '100%', marginBottom: '10px', aspectRatio: "1/1" }} src={el.album_art[0].album_art}></img>
 
                                     <div>{el.name}</div>
                                     <br></br>
@@ -65,21 +65,21 @@ export default function ManageAlbum() {
 
                                     <div>${el.price}</div>
                                     <br></br>
-                                    <div>{el.description}</div>
+                                    <div style={{ maxHeight: "195px", overflow: "hidden" }}>{el.description}</div>
                                     <div className="update-button-manage-albums">
                                         <UpdateAlbumButton el={el} />
                                     </div>
-                                    <button style={{backgroundColor:'lightgray',border:"1px solid black", marginTop:'10px'}}onClick={() => handleDelete(el.id)}>Delete Album</button>
+                                    <button style={{ backgroundColor: 'lightgray', border: "1px solid black", marginTop: '10px' }} onClick={() => handleDelete(el.id)}>Delete Album</button>
                                 </div>
                             )
                         })
                     }
                 </div>
                 <div className="create-album-button-container">
-                <div className="create-album-button-home">
-                    <CreateAlbumButton />
+                    <div className="create-album-button-home">
+                        <CreateAlbumButton />
 
-                </div>
+                    </div>
 
                 </div>
 
@@ -95,6 +95,6 @@ export default function ManageAlbum() {
 
             //     </div>
             // </div>
-            );
+        );
     }
 }

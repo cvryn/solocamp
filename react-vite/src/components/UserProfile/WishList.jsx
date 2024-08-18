@@ -8,13 +8,11 @@ import "./UserProfile.css";
 
 function WishList() {
   const currentUser = useSelector(state => state.session.user);
-  const albumInOwnWishlistObj = useSelector(state => state.wishlist);
-  const albumInWishlist = Object.values(albumInOwnWishlistObj);
-
-  const albumInOwnWishlist = albumInWishlist?.filter(wishlist => wishlist.user_id === currentUser.id);
-
   const albums = useLoaderData();
   const dispatch = useDispatch();
+  const albumInOwnWishlistObj = useSelector(state => state.wishlist);
+  const albumInWishlist = Object.values(albumInOwnWishlistObj);
+  const albumInOwnWishlist = albumInWishlist?.filter(wishlist => wishlist.user_id === currentUser.id);
 
   useEffect(() => {
     dispatch(thunkWishlistAlbums())

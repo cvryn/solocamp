@@ -886,6 +886,27 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get all albums in shopping cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/shopping-cart/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"shopping-cart",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -9,6 +9,7 @@ import About from '../components/Footer/About';
 import { albumLoader } from './album';
 import ManageSupportedBys from '../components/SupportedBy/ManageSupportedBys';
 import { getSupportedBys } from './supportedbys';
+import { getShoppingCart } from './shoppingcart';
 import ManageAlbum from '../components/ManageAlbum/ManageAlbum';
 
 
@@ -58,7 +59,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />
+        element: <Checkout />,
+        loader: getShoppingCart
       },
       {
         path: "/about",

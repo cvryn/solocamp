@@ -15,12 +15,13 @@ function Confirmation({ albumsInShoppingCart }) {
         {
           albumsInShoppingCart.length > 1
             ? <p>
-              Congratulations, you have successfully "purchased" the following albums, and you didn't even have to pay an actual dime!
+              Congratulations, you have successfully &quot;purchased&quot; the following albums, and you didn&apos;t even have to pay an actual dime!
             </p>
             : <p>
-              Congratulations, you have successfully "purchased" the following album, and you didn't even have to pay an actual dime!
+              Congratulations, you have successfully &quot;purchased&quot; the following album, and you didn&apos;t even have to pay an actual dime!
             </p>
         }
+
 
         <div
           className="container-cart-items-checkout"

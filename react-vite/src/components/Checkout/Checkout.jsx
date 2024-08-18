@@ -1,25 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { thunkShoppingCartAlbumsByUser, thunkShoppingCartAlbumRemove } from "../../redux/shoppingCart";
+import { thunkShoppingCartAlbumRemove } from "../../redux/shoppingCart";
 import { thunkCollectionAlbumAdd } from "../../redux/collection";
 import Confirmation from "./Confirmation";
 import EmptyShoppingCart from "./EmptyShoppingCart";
 import { FaUnlockKeyhole } from "react-icons/fa6";
 import "./Checkout.css"
-
+import { useLoaderData } from "react-router-dom";
 
 
 function Checkout() {
   const currentUser = useSelector(state => state.session.user);
-  // const userId = currentUser.id
-  const albumInShopingCart = useSelector(state => state.session.user.album_in_shopping_cart)
   const dispatch = useDispatch()
+  const albumInShopingCart = useLoaderData()
 
-  const [confirmation, setConfirmation] = useState()
-
-  // useEffect(() => {
-  // dispatch(thunkShoppingCartAlbumsByUser(userId))
-  // }, [dispatch])
+  const [confirmation, setConfirmation] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +52,7 @@ function Checkout() {
 
   return !confirmation ? (
 
-    albumInShopingCart ? (
+    albumInShopingCart.length > 0 ? (
 
       <div className="container-checkout-process-page">
         <div className="container-title-checkout-confirmation">

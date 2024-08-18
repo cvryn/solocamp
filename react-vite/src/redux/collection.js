@@ -1,7 +1,7 @@
 const GET_ALBUMS = "getAlbumsInCollection/GET_ALBUMS";
 const ADD_ALBUMS = "addAlbumsToCollection/ADD_ALBUMS"
 
-const getAllAlbums = (albums) => ({
+const getAllAlbumsInCollection = (albums) => ({
   type: GET_ALBUMS,
   payload: albums
 });
@@ -11,13 +11,11 @@ const addToCollections = (albumData) => ({
   payload: albumData
 });
 
-
-
 export const thunkCollectionAlbums = () => async (dispatch) => {
   const res = await fetch("/api/collection/all");
   if (res.ok) {
     const data = await res.json();
-    dispatch(getAllAlbums(data));
+    dispatch(getAllAlbumsInCollection(data));
   }
 };
 

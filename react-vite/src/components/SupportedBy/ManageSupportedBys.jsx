@@ -29,7 +29,7 @@ const ManageSupportedBys = () => {
   };
 
   return (
-    <div>
+    <div style={{minHeight: "1000px"}}>
       <br />
       <h1 style={{ padding: "10px" }}>Manage My Reviews</h1>
       <br />

@@ -10,15 +10,24 @@ wishlist_routes = Blueprint("wishlists", __name__)
 # get albums in current logged in user's wishlist
 @wishlist_routes.route("/all", methods=["GET"])
 def get_albums_in_wishlist_of_current_user():
+    subquery = (
+        db.session.query(
+            wishlist.columns.album_id,
+            func.count(func.distinct(wishlist.columns.user_id)).label("count"),
+        )
+        .group_by(wishlist.columns.album_id)
+        .subquery()
+    )
+
     album_counts = (
         db.session.query(
             wishlist.columns.album_id,
             Album.name,
-            func.count(func.distinct(wishlist.columns.user_id)).label("count"),
+            subquery.c.count,
             wishlist.columns.user_id,
         )
         .join(Album, Album.id == wishlist.columns.album_id)
-        .group_by(wishlist.columns.album_id, wishlist.columns.user_id, Album.name)
+        .join(subquery, subquery.c.album_id == wishlist.columns.album_id)
         .all()
     )
 

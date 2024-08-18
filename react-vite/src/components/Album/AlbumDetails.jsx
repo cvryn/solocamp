@@ -115,7 +115,7 @@ const AlbumDetails = () => {
     }
 
     if (albumId && album.user_id !== undefined && album.user_id !== currentUser?.id) {
-      const result = await postToShoppingCart(albumId);
+      await postToShoppingCart(albumId);
 
       // if (result.error) {
       //   alert(result.error);

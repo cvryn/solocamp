@@ -10,24 +10,35 @@ collection_routes = Blueprint("collections", __name__)
 # get albums in current logged in user's wishlist
 @collection_routes.route("/all", methods=["GET"])
 def get_albums_of_current_user_in_collection():
-    album_counts = (
+    subquery = (
         db.session.query(
-            Album.id,
-            Album.name,
+            collection.columns.album_id,
             func.count(func.distinct(collection.columns.user_id)).label("count"),
         )
-        .join(collection, Album.id == collection.columns.album_id)
-        .group_by(Album.id)
+        .group_by(collection.columns.album_id)
+        .subquery()
+    )
+
+    album_counts = (
+        db.session.query(
+            collection.columns.album_id,
+            Album.name,
+            subquery.c.count,
+            collection.columns.user_id,
+        )
+        .join(Album, Album.id == collection.columns.album_id)
+        .join(subquery, subquery.c.album_id == collection.columns.album_id)
         .all()
     )
 
     albums = [
         {
-            "id": album_id,
-            "name": album_name,
-            "count": count,
+            "id": album_id,  # album_id from collection table
+            "name": album_name,  # album name from Album model
+            "count": count,  # count of distinct user_ids
+            "user_id": user_id,  # user_id from collection table
         }
-        for album_id, album_name, count in album_counts
+        for album_id, album_name, count, user_id in album_counts
     ]
 
     return albums
