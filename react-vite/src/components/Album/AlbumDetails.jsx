@@ -89,6 +89,7 @@ const AlbumDetails = () => {
     fetchCartItems();
   }, [albumId, currentUser]);
 
+
   useEffect(() => {
     if (showMenu && loginModalRef.current) {
       loginModalRef.current.scrollIntoView({ behavior: 'smooth' });

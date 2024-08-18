@@ -60,9 +60,7 @@ export default function ManageAlbum() {
                                     <div>{el.name}</div>
                                     <br></br>
                                     <div>{el.year}</div>
-
                                     <div>{el.genre}</div>
-
                                     <div>${el.price}</div>
                                     <br></br>
                                     <div style={{ maxHeight: "195px", overflow: "hidden" }}>{el.description}</div>

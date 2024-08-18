@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useLoaderData, useNavigate, useSearchParams } from "react-router-dom"
-import { thunkCollectionAlbums } from "../../redux/collection"
+import { thunkCollectionAlbums } from "../../redux/collection";
+import { thunkWishlistAlbums } from "../../redux/wishlist";
 import Collection from "./Collection"
 import WishList from "./WishList"
 import "./UserProfile.css"
@@ -31,6 +32,10 @@ function UserProfile() {
 
   useEffect(() => {
     dispatch(thunkCollectionAlbums());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(thunkWishlistAlbums());
   }, [dispatch]);
 
   const ownAlbums = albums?.filter(album => album?.user_id === currentUser?.id)
