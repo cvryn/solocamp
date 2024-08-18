@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 import { PiCopyright } from "react-icons/pi";
-// import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { CgPlayButtonR } from "react-icons/cg";
 import { IoIosRewind, IoIosFastforward } from "react-icons/io";
 import { getSupportedBysByAlbum } from "../../router/supportedbys";
@@ -16,15 +15,12 @@ import {
   deleteFromShoppingCart,
 } from "../../router/shoppingcart";
 import { thunkShoppingCartAlbums } from "../../redux/shoppingCart";
-// import { postToWishlist} from "../../router/wishlist"
 import SupportedByList from "../SupportedBy/SupportedByList";
 import SongList from "./Song/SongList";
 import AlbumItem from "./AlbumItem";
 import ReviewForm from "../SupportedBy/ReviewForm";
 import ShoppingCart from "./ShoppingCart";
-// import defaultUserPic from "../../../public/defaultuserpic.jpg";
 import "./AlbumDetails.css";
-
 
 const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
@@ -44,8 +40,6 @@ const AlbumDetails = () => {
   const [cartItems, setCartItems] = useState([]);
   const [validations, setValidations] = useState({});
   const [showMenu, setShowMenu] = useState(false);
-  // const [isAddedToCart, setIsAddedToCart] = useState(false);
-  // const [isInWishlist, setIsInWishlist] = useState(false);
 
   useEffect(() => {
     dispatch(thunkShoppingCartAlbums())
@@ -132,19 +126,11 @@ const AlbumDetails = () => {
     if (albumId && album.user_id !== undefined && album.user_id !== currentUser?.id) {
       await postToShoppingCart(albumId);
 
-      // if (result.error) {
-      //   alert(result.error);
-      //   return;
-      // }
-
       const newItem = {
         id: albumId,
         name: album.name,
         price: album.price,
       };
-
-      // setCartItems((prevCartItems) => [...prevCartItems, newItem]);
-      // setIsAddedToCart(true);
 
       setCartItems((prevCartItems) => {
         if (Array.isArray(prevCartItems)) {
@@ -174,49 +160,9 @@ const AlbumDetails = () => {
     alert("Feature coming soon...");
   };
 
-  // const handleWishlistToggle = async () => {
-  //   if (!currentUser) {
-  //     alert("You need to be logged in to add to the wishlist.");
-  //     return;
-  //   }
-
-  //   if (isInWishlist) {
-  //     const result = await deleteFromWishlist(currentUser.id, albumId);
-
-  //     if (result.error) {
-  //       alert(result.error);
-  //       return;
-  //     }
-
-  //     setIsInWishlist(false);
-  //   } else {
-  //     const result = await postToWishlist(albumId);
-
-  //     if (result.error) {
-  //       alert(result.error);
-  //       return;
-  //     }
-
-  //     setIsInWishlist(true);
-  //   }
-  // };
-
-  // const isValidImageUrl = (url) => {
-  //   if (typeof url !== 'string' || url.trim() === '' || !url.startsWith('https')) {
-  //     return false;
-  //   }
-  //   const validImages = [".jpg", ".jpeg", ".png"];
-  //   return validImages.some((ext) => url.endsWith(ext));
-  // };
-
-  // const getProfilePic = (url) => {
-  //   return isValidImageUrl(url) ? url : defaultUserPic;
-  // };
-
   const closeMenu = () => setShowMenu(false);
 
   const albumArt = album.album_art?.[0];
-  // const firstSong = songs[0];
 
   if (!album) return <div>Loading...</div>;
 
@@ -324,12 +270,6 @@ const AlbumDetails = () => {
                     </span>
                     <span>USD or more</span>
                     <br />
-                    {/* <button
-                    className="send-as-gift-button-album-details"
-                    onClick={handleFollowClick}
-                  >
-                    Send as Gift
-                  </button> */}
                   </div>
                 </div>
                 <br />
@@ -363,31 +303,18 @@ const AlbumDetails = () => {
                     alt="album art image"
                   />
                 </div>
-                {/* <div className="wishlist-button-album-details">
-                <button
-                  className="add-to-wishlist-button"
-                  onClick={handleWishlistToggle}
-                >
-                  {isInWishlist ? (
-                    <>
-                      <IoMdHeart style={{ fontSize: "15px" }} />
-                      Wishlist - added
-                    </>
-                  ) : (
-                    <>
-                      <IoMdHeartEmpty style={{ fontSize: "15px" }} />
-                      Wishlist
-                    </>
-                  )}
-                </button>
-              </div> */}
                 <br />
                 <div id="supported-by-container">
                   <span>supported by</span>
+                  <br />
                   <div className="supported-by-users-comments">
-                    <SupportedByList album={album} supportedBys={supportedBys} />
+                    <SupportedByList
+                      album={album}
+                      supportedBys={supportedBys}
+                      isAuthenticated={!!currentUser}
+                    />
                   </div>
-                  {currentUser ? (
+                  {currentUser &&
                     <ReviewForm
                       albumId={albumId}
                       songs={songs}
@@ -397,9 +324,7 @@ const AlbumDetails = () => {
                         currentUser?.username !== album.user_username
                       }
                     />
-                  ) : (
-                    <div>Please log in to leave a review.</div>
-                  )}
+                  }
                 </div>
               </section>
 
@@ -424,12 +349,6 @@ const AlbumDetails = () => {
                   <span>{album.user_username}</span>
                 </div>
                 <br />
-                {/* <button
-                className="follow-artist-button-album-details"
-                onClick={handleFollowClick}
-              >
-                Follow
-              </button> */}
                 <br />
                 <div className="discography-container-album-details">
                   full discography
@@ -473,6 +392,5 @@ const AlbumDetails = () => {
     </>
   );
 };
-
 
 export default AlbumDetails;

@@ -1,21 +1,8 @@
-
 import "./SupportedByList.css";
 
-const SupportedByList = ({ album, supportedBys }) => {
+const SupportedByList = ({ album, supportedBys, isAuthenticated }) => {
   console.log("Album data:", album);
   console.log("Supported Bys:", supportedBys);
-
-  // const isValidImageUrl = (url) => {
-  //   if (typeof url !== 'string' || url.trim() === '' || !url.startsWith('https')) {
-  //     return false;
-  //   }
-  //   const validImages = [".jpg", ".jpeg", ".png"];
-  //   return validImages.some((ext) => url.endsWith(ext));
-  // };
-
-  // const getProfilePic = (url) => {
-  //   return isValidImageUrl(url) ? url : defaultUserPic;
-  // };
 
   return (
     <div id="supported-by-container-supported-by-list">
@@ -51,7 +38,13 @@ const SupportedByList = ({ album, supportedBys }) => {
             ))}
           </ul>
         ) : (
-          <span>No users have supported this album yet. Be the first!</span>
+          <span>No users have reviewed this album yet. Be the first!</span>
+        )}
+
+        {!isAuthenticated && (
+          <div style={{ marginTop: "20px" }}>
+            <span>Please log in to leave a review.</span>
+          </div>
         )}
       </div>
     </div>
