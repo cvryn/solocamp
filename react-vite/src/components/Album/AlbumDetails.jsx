@@ -23,7 +23,6 @@ import ReviewForm from "../SupportedBy/ReviewForm";
 import ShoppingCart from "./ShoppingCart";
 import "./AlbumDetails.css";
 
-
 const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
 const AlbumDetails = () => {
@@ -193,7 +192,6 @@ const AlbumDetails = () => {
   const closeMenu = () => setShowMenu(false);
 
   const albumArt = album.album_art?.[0];
-  // const firstSong = songs[0];
 
   if (!album) return <div>Loading...</div>;
 
@@ -290,12 +288,6 @@ const AlbumDetails = () => {
                     </span>
                     <span>USD or more</span>
                     <br />
-                    {/* <button
-                    className="send-as-gift-button-album-details"
-                    onClick={handleFollowClick}
-                  >
-                    Send as Gift
-                  </button> */}
                   </div>
                 </div>
                 <br />
@@ -376,10 +368,15 @@ const AlbumDetails = () => {
                 <br />
                 <div id="supported-by-container">
                   <span>supported by</span>
+                  <br />
                   <div className="supported-by-users-comments">
-                    <SupportedByList album={album} supportedBys={supportedBys} />
+                    <SupportedByList
+                      album={album}
+                      supportedBys={supportedBys}
+                      isAuthenticated={!!currentUser}
+                    />
                   </div>
-                  {currentUser ? (
+                  {currentUser &&
                     <ReviewForm
                       albumId={albumId}
                       songs={songs}
@@ -389,9 +386,7 @@ const AlbumDetails = () => {
                         currentUser?.username !== album.user_username
                       }
                     />
-                  ) : (
-                    <div>Please log in to leave a review.</div>
-                  )}
+                  }
                 </div>
               </section>
 
@@ -416,12 +411,6 @@ const AlbumDetails = () => {
                   <span>{album.user_username}</span>
                 </div>
                 <br />
-                {/* <button
-                className="follow-artist-button-album-details"
-                onClick={handleFollowClick}
-              >
-                Follow
-              </button> */}
                 <br />
                 <div className="discography-container-album-details">
                   full discography
@@ -465,6 +454,5 @@ const AlbumDetails = () => {
     </>
   );
 };
-
 
 export default AlbumDetails;
