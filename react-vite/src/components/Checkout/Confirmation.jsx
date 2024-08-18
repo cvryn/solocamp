@@ -66,12 +66,28 @@ function Confirmation({ albumsInShoppingCart }) {
           <h2>Enjoy!</h2>
         </div>
 
-        <button
-          type="button"
-          style={{ marginTop: "auto" }}
+        <Link
+          style={{
+            marginTop: "auto",
+            height: "30px",
+            border: "1px solid black",
+            padding: "0 12px",
+            backgroundColor: "#f0f0f0", // Default button background
+            color: "black", // Default text color
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "14px",
+            fontFamily: "Arial, sans-serif", // Default button font
+            boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            textDecoration: "none", // Remove underline
+          }}
+          to="/user?tab=collection"
         >
-          <Link to="/user?tab=collection">Go to collections</Link>
-        </button>
+          Go to collections
+        </Link>
       </div>
 
     </div>

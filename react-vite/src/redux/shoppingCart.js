@@ -26,14 +26,6 @@ export const thunkShoppingCartAlbums = () => async (dispatch) => {
   }
 };
 
-export const thunkShoppingCartAlbumsByUser = (userId) => async (dispatch) => {
-  const res = await fetch(`/api/shopping-cart/${userId}`);
-  if (res.ok) {
-    const data = await res.json();
-    dispatch(getAlbumsInShoppingCart(data));
-  }
-};
-
 export const thunkShoppingCartAlbumAdd = (albumData) => async (dispatch) => {
   const res = await fetch(`/api/albums/${albumData.album_id}/shopping-cart`, {
     method: "POST",

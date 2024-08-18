@@ -9,7 +9,8 @@ def seed_wishlists():
         {"user_id": 2, "album_id": 22},
         {"user_id": 2, "album_id": 23},
         {"user_id": 2, "album_id": 25},
-        {"user_id": 3, "album_id": 31},
+        {"user_id": 2, "album_id": 30},
+        {"user_id": 3, "album_id": 29},
         {"user_id": 4, "album_id": 31},
         {"user_id": 5, "album_id": 31},
         {"user_id": 10, "album_id": 30},
@@ -22,9 +23,12 @@ def seed_wishlists():
         {"user_id": 12, "album_id": 5},
         {"user_id": 12, "album_id": 30},
         {"user_id": 12, "album_id": 31},
+        {"user_id": 15, "album_id": 12},
+        {"user_id": 17, "album_id": 1},
         {"user_id": 17, "album_id": 10},
         {"user_id": 17, "album_id": 11},
         {"user_id": 17, "album_id": 12},
+        {"user_id": 17, "album_id": 31},
     ]
 
     for entry in wishlist_entries:

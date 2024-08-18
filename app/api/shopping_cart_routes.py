@@ -6,7 +6,6 @@ shopping_cart_routes = Blueprint("shopping_carts", __name__)
 
 
 # get all albums in current logged in user's shopping cart
-# the thunk for this route doesn't work, always returns a 401 authorization error
 @shopping_cart_routes.route("/all", methods=["GET"])
 def get_albums_in_shopping_cart_of_current_user():
     if not current_user.is_authenticated:
@@ -25,24 +24,6 @@ def get_albums_in_shopping_cart_of_current_user():
 
     albums = [album.to_dict() for album in albums_in_shopping_cart]
     return albums, 200
-
-
-# get all albums in shopping cart by user_id
-@shopping_cart_routes.route("/<int:user_id>", methods=["GET"])
-def get_albums_in_shopping_cart_by_user_id(user_id):
-    user_exists = User.query.filter_by(id=user_id).first()
-    if not user_exists:
-        return {"error": "User not found"}, 404
-
-    albums_in_shopping_cart = (
-        db.session.query(Album)
-        .join(shopping_cart, Album.id == shopping_cart.columns.album_id)
-        .filter(shopping_cart.columns.user_id == user_id)
-        .all()
-    )
-
-    albums = [album.to_dict() for album in albums_in_shopping_cart]
-    return albums
 
 
 # DELETE - remove album from current users shopping cart

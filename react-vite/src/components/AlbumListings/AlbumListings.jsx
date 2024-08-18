@@ -85,6 +85,7 @@ function AlbumListings() {
   const addToWishlist = (albumId) => {
     if (!currentUser) {
       setShowMenu(true)
+
     } else {
       const albumData = {
         user_id: currentUser.id,

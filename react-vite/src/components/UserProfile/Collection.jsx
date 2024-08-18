@@ -27,6 +27,13 @@ function Collection() {
     }, {});
   }, [albums]);
 
+  const userUsernameMapping = useMemo(() => {
+    return albums.reduce((acc, album) => {
+      acc[album.id] = album.user_username;
+      return acc;
+    }, {});
+  }, [albums]);
+
   if (!currentUser) return null
 
   return albumsInOwnCollection ? (
@@ -35,6 +42,7 @@ function Collection() {
         if (!album || !album.id) return null; // fixes ghost album issue
         const albumCount = albumCountArr.find(countAlbum => countAlbum.id === album.id)?.count || 0;
         const albumArtUrl = albumArtMapping[album.id];
+        const userName = userUsernameMapping[album.id];
 
         return (
           <Link
@@ -48,7 +56,7 @@ function Collection() {
               alt="album-cover-image"
             />
             <span style={{ paddingTop: "10px" }}>{album.name}</span>
-            <span style={{ fontSize: "0.75rem" }}>by {album.user_username}</span>
+            <span style={{ fontSize: "0.75rem" }}>by {userName}</span>
             {albumCount === 1
               ? <span style={{ marginTop: "auto", fontSize: "0.75rem" }}>appears in {albumCount} collection</span>
               : <span style={{ marginTop: "auto", fontSize: "0.75rem" }}>appears in {albumCount} collections</span>
