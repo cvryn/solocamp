@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import SupportedByItems from "./SupportedByItems";
 import { deleteSupportedBy, getSupportedBys } from "../../router/supportedbys";
 import { useState } from "react";
@@ -7,6 +8,7 @@ import "./ManageSupportedBys.css";
 
 const ManageSupportedBys = () => {
   const initialSupportedBys = useLoaderData();
+  const navigate = useNavigate();
   const [supportedBys, setSupportedBys] = useState(initialSupportedBys);
 
   const currentUser = useSelector((state) => state.session.user);
@@ -15,6 +17,12 @@ const ManageSupportedBys = () => {
   const userSupportedBys = supportedBys.filter(
     (supportedBy) => supportedBy.user_username === currentUsername
   );
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/");
+    }
+  }, [currentUser, navigate]);
 
   const handleDeleteSupportedBy = async (supportedById) => {
     await deleteSupportedBy({ params: { supportedById } });
@@ -28,8 +36,10 @@ const ManageSupportedBys = () => {
     setSupportedBys(updatedSupportedBys);
   };
 
+
+
   return (
-    <div style={{minHeight: "1000px"}}>
+    <div style={{ minHeight: "1000px" }}>
       <br />
       <h1 style={{ padding: "10px" }}>Manage My Reviews</h1>
       <br />

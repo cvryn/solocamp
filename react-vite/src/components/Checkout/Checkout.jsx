@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkShoppingCartAlbumRemove } from "../../redux/shoppingCart";
 import { thunkCollectionAlbumAdd } from "../../redux/collection";
@@ -12,9 +13,16 @@ import { useLoaderData } from "react-router-dom";
 function Checkout() {
   const currentUser = useSelector(state => state.session.user);
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const albumInShopingCart = useLoaderData()
 
   const [confirmation, setConfirmation] = useState(false);
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/");
+    }
+  }, [currentUser, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,8 +40,9 @@ function Checkout() {
   };
 
   const calculateSubtotal = () => {
-    return albumInShopingCart?.reduce((total, album) => total + album.price, 0);
+    return Array.isArray(albumInShopingCart) ? albumInShopingCart?.reduce((total, album) => total + album.price, 0) : 0;
   };
+
   const taxRate = 0.0863;
   const subTotal = calculateSubtotal();
   const salesTax = subTotal * taxRate;

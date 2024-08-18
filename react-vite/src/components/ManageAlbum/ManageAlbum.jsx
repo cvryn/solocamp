@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { thunkDeleteAlbum, thunkGetAlbums } from "../../redux/albumReducer"
 // import { useParams } from "react-router-dom";
 import './ManageAlbum.css'
@@ -9,11 +10,18 @@ import UpdateAlbumButton from "./UpdateAlbumButton";
 
 
 export default function ManageAlbum() {
-
+    const currentUser = useSelector(state => state.session.user)
     const [isLoaded, setIsLoaded] = useState(true);
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const userId = useSelector(state => state.session.user?.id)
     const albumArr = useSelector(state => state.albums.album?.filter(el => el.user_id == userId))
+
+    useEffect(() => {
+        if (!currentUser) {
+            navigate("/");
+        }
+    }, [currentUser, navigate]);
 
     // console.log(userId)
     useEffect(() => {
