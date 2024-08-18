@@ -77,7 +77,7 @@ const AlbumDetails = () => {
     }
 
     setValidations(purchaseErrors);
-  }, [albumId, album.user_id, currentUser, cartItems, albumsInCollection]);
+  }, [albumId, album.user_id, currentUser, cartItems, albumsInCollection, shoppingCartObj]);
 
   useEffect(() => {
     const fetchSupportedBys = async () => {
