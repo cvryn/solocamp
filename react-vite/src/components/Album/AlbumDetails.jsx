@@ -14,6 +14,8 @@ import {
   getShoppingCart,
   deleteFromShoppingCart,
 } from "../../router/shoppingcart";
+import { thunkShoppingCartAlbums } from "../../redux/shoppingCart";
+import { thunkCollectionAlbums } from "../../redux/collection";
 import { thunkWishlistAlbumAdd, thunkWishlistAlbumRemove, thunkWishlistAlbums } from "../../redux/wishlist";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import SupportedByList from "../SupportedBy/SupportedByList";
@@ -30,6 +32,7 @@ const AlbumDetails = () => {
   const albumsInWishlistObj = useSelector(state => state.wishlist);
   const albumsInWishlist = Object.values(albumsInWishlistObj);
   const albumsInCollection = useSelector((state) => state.session.user?.album_in_collection);
+  const albumsInCollectionObj = useSelector(state => state.collection);
   const dispatch = useDispatch();
   const shoppingCartObj = useSelector(state => state.shoppingCart)
   const loginModalRef = useRef();
@@ -44,9 +47,13 @@ const AlbumDetails = () => {
   const [validations, setValidations] = useState({});
   const [showMenu, setShowMenu] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(thunkShoppingCartAlbums())
-  // }, [dispatch]);
+  useEffect(() => {
+    if (currentUser) dispatch(thunkShoppingCartAlbums());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (currentUser) dispatch(thunkCollectionAlbums());
+  }, [dispatch]);
 
   useEffect(() => {
     if (showMenu && loginModalRef.current) {
@@ -76,6 +83,12 @@ const AlbumDetails = () => {
       const isInCollection = albumsInCollection?.find(album => album.id === Number(albumId));
       if (isInCollection) {
         purchaseErrors.alreadyInCollection = "You already purchased this album";
+      }
+
+      for (const value in albumsInCollectionObj) {
+        if (value === albumId) {
+          purchaseErrors.alreadyInCollection = "You already purchased this album";
+        }
       }
     }
 
@@ -267,7 +280,9 @@ const AlbumDetails = () => {
                   </span>
                   <br />
                   <br />
+
                   <div className="buy-album-container">
+
                     <button
                       className={
                         `buy-album-button
@@ -289,6 +304,7 @@ const AlbumDetails = () => {
                     <span>USD or more</span>
                     <br />
                   </div>
+
                 </div>
                 <br />
                 <div id="track-names-album-details">

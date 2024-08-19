@@ -18,7 +18,7 @@ function SearchBar() {
             backgroundColor: "#EFEFEF",
             border: "none",
           }}
-          placeholder="Search for artist, album, or track"
+          placeholder="No search, but try the drop-down menu!"
         />
         <FiSearch />
       </div>

@@ -26,8 +26,11 @@ function UserProfile() {
   }, [currentUser, navigate]);
 
   useEffect(() => {
-    dispatch(thunkCollectionAlbums());
-    dispatch(thunkWishlistAlbums());
+    if (currentUser) {
+      dispatch(thunkCollectionAlbums());
+      dispatch(thunkWishlistAlbums());
+    }
+
   }, [dispatch]);
 
   const albumInWishlist = Object.values(albumInOwnWishlistObj);

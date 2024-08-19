@@ -22,7 +22,6 @@ function Confirmation({ albumsInShoppingCart }) {
             </p>
         }
 
-
         <div
           className="container-cart-items-checkout"
           style={{ margin: "40px 0" }}

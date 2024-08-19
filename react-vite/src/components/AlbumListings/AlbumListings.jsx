@@ -75,7 +75,7 @@ function AlbumListings() {
   const handleSearch = () => {
     const searchGenre = search.trim().toLowerCase();
     if (searchGenre) {
-      if (["pop", "alternative", "rap", "r&b", "electronic", "rock", "experimental", "jazz", "country"].includes(searchGenre)) {
+      if (["all genres", "pop", "alternative", "rap", "r&b", "electronic", "rock", "experimental", "jazz", "country"].includes(searchGenre)) {
         handleSetGenres(searchGenre);
       }
     }
@@ -135,7 +135,7 @@ function AlbumListings() {
                 backgroundColor: "rgb(60, 60, 60)",
                 border: "none"
               }}
-                placeholder="Add a genre, location, or tag"
+                placeholder="Type the genre and press enter"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 onKeyDown={e => {
