@@ -49,11 +49,11 @@ const AlbumDetails = () => {
 
   useEffect(() => {
     if (currentUser) dispatch(thunkShoppingCartAlbums());
-  }, [dispatch]);
+  }, [dispatch, currentUser]);
 
   useEffect(() => {
     if (currentUser) dispatch(thunkCollectionAlbums());
-  }, [dispatch]);
+  }, [dispatch, currentUser]);
 
   useEffect(() => {
     if (showMenu && loginModalRef.current) {
@@ -93,7 +93,7 @@ const AlbumDetails = () => {
     }
 
     setValidations(purchaseErrors);
-  }, [albumId, album.user_id, currentUser, cartItems, albumsInCollection, shoppingCartObj]);
+  }, [albumId, album.user_id, currentUser, cartItems, albumsInCollection, shoppingCartObj, albumsInCollectionObj]);
 
   useEffect(() => {
     const fetchSupportedBys = async () => {
