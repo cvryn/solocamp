@@ -22,9 +22,6 @@ export default function ManageAlbum() {
         return albumAll?.filter(el => el.user_id == userId);
     }, [albumAll, userId]);
 
-    // let routerTest = useLoaderData();
-    // let albumArr = routerTest.filter(el => el.user_id == userId)
-    // console.log('testing router data', routerTest)
 
     useEffect(() => {
         if (!currentUser) {

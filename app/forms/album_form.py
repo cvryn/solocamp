@@ -38,7 +38,7 @@ class AlbumForm(FlaskForm):
     price = DecimalField(
         "price",
         validators=[
-            NumberRange(min=0.01, message="Price must be a positive number."),
+            NumberRange(min=0.01, max=9999.99, message="Price must be between 0.01 and 9999.99."),
             # DataRequired()
         ],
     )
@@ -48,8 +48,8 @@ class AlbumForm(FlaskForm):
             # DataRequired(),
             Length(
                 min=3,
-                max=9500,
-                message="Description must be between 10 and 500 characters.",
+                max=9000,
+                message="Description must be between 10 and 9000 characters.",
             ),
         ],
     )
