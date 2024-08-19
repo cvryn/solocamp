@@ -10,8 +10,8 @@ import UpdateAlbumButton from "./UpdateAlbumButton";
 // import { useLoaderData } from "react-router-dom";
 
 
-
 export default function ManageAlbum() {
+    const currentUser = useSelector(state => state.session.user)
     const navigate = useNavigate()
     const [isLoaded, setIsLoaded] = useState(true);
     const dispatch = useDispatch()
@@ -21,10 +21,14 @@ export default function ManageAlbum() {
     const albumArr = useMemo(() => {
         return albumAll?.filter(el => el.user_id == userId);
     }, [albumAll, userId]);
-    
-    // let routerTest = useLoaderData();
-    // let albumArr = routerTest.filter(el => el.user_id == userId)
-    // console.log('testing router data', routerTest)
+
+
+    useEffect(() => {
+        if (!currentUser) {
+            navigate("/");
+        }
+    }, [currentUser, navigate]);
+
     useEffect(() => {
         const func = async () => {
             await dispatch(thunkGetAlbums())
@@ -33,15 +37,15 @@ export default function ManageAlbum() {
         func()
     }, [dispatch]);
 
-    if (!userId) return (<h1 style={{textAlign:'center'}}>Please log in or sign up</h1>)
+    if (!userId) return (<h1 style={{ textAlign: 'center' }}>Please log in or sign up</h1>)
 
     const handleDelete = async (id) => {
         await dispatch(thunkDeleteAlbum(id));
-        setIsLoaded(false); 
+        setIsLoaded(false);
     }
 
-    if (albumArr && albumArr.map(el => el.album_art) ) {
-        return ( isLoaded ?
+    if (albumArr && albumArr.map(el => el.album_art)) {
+        return (isLoaded ?
             <div>Is loading...</div> :
             <div style={{ minHeight: "1000px" }}>
                 <div className="container-manage-als" >
@@ -51,10 +55,10 @@ export default function ManageAlbum() {
                                 <div className="manage-als" key={el.id}>
                                     {/* {el.album_art ? <img style={{ width: '300px' }} src={el.album_art[0].album_art}></img> : <img style={{ width: '300px' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"></img>} */}
                                     {el?.album_art?.map(art => {
-                                       return <img key={el.id} onClick={()=> navigate(`/albums/${el.id}`)} style={{ width: '100%',height:"220px",marginBottom:'10px' }} src={art.album_art}></img>
+                                        return <img key={el.id} onClick={() => navigate(`/albums/${el.id}`)} style={{ width: '100%', height: "220px", marginBottom: '10px' }} src={art.album_art}></img>
                                     })}
 
-                                    <div style={{fontWeight:'bold',fontSize:'20px'}}>{el.name}</div>
+                                    <div style={{ fontWeight: 'bold', fontSize: '20px' }}>{el.name}</div>
                                     <br></br>
                                     <div>{el.year}</div>
                                     <div>{el.genre}</div>

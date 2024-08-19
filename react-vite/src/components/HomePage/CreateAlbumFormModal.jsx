@@ -107,7 +107,10 @@ function CreateAlbumFormModal() {
                         required
                     />
                 </label>
-                {errors?.errors?.price && <p style={{ color: 'red' }}>{errors.errors.price}</p>}
+                {/* {errors?.errors?.price && errors.errors.price?.map(el => (<div key={el.id} style={{color:'red'}}>{el}</div>))} */}
+                {errors?.errors?.price && errors.errors.price.map((el, index) => (
+                    <div key={el.id || index} style={{ color: 'red' }}>{el}</div>
+                ))}
 
                 <label>
                     Description

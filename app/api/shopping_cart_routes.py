@@ -9,7 +9,7 @@ shopping_cart_routes = Blueprint("shopping_carts", __name__)
 @shopping_cart_routes.route("/all", methods=["GET"])
 def get_albums_in_shopping_cart_of_current_user():
     if not current_user.is_authenticated:
-        return {"error": "User not authenticated"}, 401
+        return {"error": "User not logged in"}, 200
 
     user_exists = User.query.filter_by(id=current_user.id).first()
     if not user_exists:

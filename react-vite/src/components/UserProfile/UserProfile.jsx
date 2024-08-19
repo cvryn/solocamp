@@ -26,9 +26,12 @@ function UserProfile() {
   }, [currentUser, navigate]);
 
   useEffect(() => {
-    dispatch(thunkCollectionAlbums());
-    dispatch(thunkWishlistAlbums());
-  }, [dispatch]);
+    if (currentUser) {
+      dispatch(thunkCollectionAlbums());
+      dispatch(thunkWishlistAlbums());
+    }
+
+  }, [dispatch, currentUser]);
 
   const albumInWishlist = Object.values(albumInOwnWishlistObj);
   const albumInOwnWishlist = currentUser ? albumInWishlist?.filter((wishlist) => wishlist.user_id === currentUser.id) : [];
