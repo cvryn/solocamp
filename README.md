@@ -1081,10 +1081,7 @@ Create and return the shopping cart of the Current User by User Id.
 
     ```json
     {
-      "message": "Bad Request",
-      "errors": {
-        "message": "Forbidden, user cannot add their own album to their shopping cart"
-      }
+      "message": "Forbidden, user cannot add their own album to their shopping cart"
     }
     ```
 
@@ -1232,10 +1229,7 @@ Create and return the wishlist of the Current User by User Id.
 
     ```json
     {
-      "message": "Bad Request",
-      "errors": {
-        "message": "Forbidden, user cannot add their own album to their wishlist"
-      }
+      "message": "Forbidden, user cannot add their own album to their wishlist"
     }
     ```
 
