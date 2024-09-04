@@ -70,4 +70,10 @@ class User(db.Model, UserMixin):
                 if self.album_in_shopping_cart
                 else None
             ),
+            "album": (
+                [album.to_dict() for album in self.album]
+                if self.album
+                else None
+            ),
+            
         }

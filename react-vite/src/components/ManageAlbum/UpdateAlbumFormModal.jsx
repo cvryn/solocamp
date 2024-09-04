@@ -52,6 +52,12 @@ function UpdateAlbumFormModal({ el }) {
             setErrors(serverResponse);
         }
     };
+const albumId = el.id;
+console.log('album id', albumId)
+    const handleUpdateSong = () => {
+        navigate('/song', {state:{albumId}})
+        closeModal()
+    }
 
     return (
         <div id="container-signup-form-modal">
@@ -156,6 +162,7 @@ function UpdateAlbumFormModal({ el }) {
                 </label>
                 {errors?.errors?.background_color && <p style={{ color: 'red' }}>{errors.errors.background_color}</p>}
                 <button type="submit">Update</button>
+                <button type="button" onClick={handleUpdateSong}>Update Songs</button>
 
             </form>
         </div>
