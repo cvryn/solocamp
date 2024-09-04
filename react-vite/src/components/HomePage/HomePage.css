@@ -259,6 +259,7 @@
     gap: 10px;
     width: 1460px;
     overflow: hidden;
+    scroll-behavior: smooth;
 }
 
 @media screen and (max-width: 1600px) {
