@@ -140,7 +140,7 @@ def album_art_post(album_id):
 
 # get all songs by album
 # add song to album beloning to current user
-@album_routes.route("/<int:album_id>/song", methods=["GET", "POST"])
+@album_routes.route("/<int:album_id>/song", methods=["GET", "POST",'DELETE'])
 def songs(album_id):
     album = Album.query.get(album_id)
 
@@ -169,6 +169,20 @@ def songs(album_id):
             db.session.add(new_song)
             db.session.commit()
             return new_song.to_dict(), 201
+        
+    elif request.method == "DELETE":
+        song_id = request.json.get("song_id")
+        song = Song.query.get(song_id)
+
+        if song is None or song.album_id != album_id:
+            return {"error": "Song not found in this album"}, 404
+
+        if song.user_id != current_user.id:
+            return {"error": "Forbidden"}, 403
+
+        db.session.delete(song)
+        db.session.commit()
+        return {"message": "Song deleted successfully"}, 200
 
     else:
         songs = Song.query.filter_by(album_id=album_id).all()

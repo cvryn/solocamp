@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkCreateAlbum } from "../../redux/albumReducer";
 import { useNavigate } from "react-router-dom";
+import ConfirmationModal from "./ConfirmationCreateModal";
+
+
 
 function CreateAlbumFormModal() {
     const userId = useSelector(state => state.session.user.id)
@@ -17,9 +20,19 @@ function CreateAlbumFormModal() {
     const [albumbanner, setAlbumbanner] = useState("");
     const [backgroundcolor, setBackgroundcolor] = useState("rgb(0,0,0)");
     const [errors, setErrors] = useState({});
-    const { closeModal } = useModal();
 
-    const navigate = useNavigate()
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    const [modalData, setModalData] = useState('')
+
+    const { closeModal } = useModal();
+    const navigate = useNavigate();
+
+    const handleConfirm = () => {
+        // Perform the action you want on confirmation (e.g., creating the album)
+        navigate('/song', { state: { modalData } })
+        setShowConfirmationModal(false)
+        closeModal()
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,19 +51,34 @@ function CreateAlbumFormModal() {
             })
         );
 
-        // console.log('can i get error from backend', serverResponse)
         if (!serverResponse.errors) {
-            closeModal();
-            navigate('/manage-albums')
+            // console.log('server response:', serverResponse.newAl.id);
+            setModalData(serverResponse.newAl.id)
+            setShowConfirmationModal(true);
+            // closeModal();
         } else {
             setErrors(serverResponse);
         }
     };
+// console.log('modal data in create albun form modal', modalData)
     // console.log('any thing in errors?', errors.errors)
     return (
         <div id="container-signup-form-modal">
+            {showConfirmationModal && (
+                <ConfirmationModal
+                    modalData={modalData}
+                    show={showConfirmationModal}
+                    message={'Time to add songs!'}
+                    onConfirm={handleConfirm}
+                    redirectPath="/song"
+                    onClose={() => {
+                        setShowConfirmationModal(false);
+                        closeModal()
+                    }}
+                >
+                </ConfirmationModal>
+            )}
             <h1>Create Album</h1>
-
             <form id="container-signup-form"
                 onSubmit={handleSubmit}
             >
@@ -155,7 +183,7 @@ function CreateAlbumFormModal() {
                 {errors?.errors?.background_color && <p style={{ color: 'red' }}>{errors?.errors.background_color}</p>}
                 <button type="submit">Create</button>
                 <button
-                    // type="submit"
+                    type="submit"
                     onClick={() => {
                         setName('new album')
                         setYear(2024)

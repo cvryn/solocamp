@@ -11,6 +11,7 @@ import ManageSupportedBys from '../components/SupportedBy/ManageSupportedBys';
 import { getSupportedBys } from './supportedbys';
 import { getShoppingCart } from './shoppingcart';
 import ManageAlbum from '../components/ManageAlbum/ManageAlbum';
+import AddSongModal from '../components/HomePage/AddSongModal';
 
 
 export const router = createBrowserRouter([
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />
+      },
+      {
+        path: "/song",
+        element: <AddSongModal />
       }
     ]
   },
