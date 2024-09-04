@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './AddSongModal.css'
 
+
 function AddSongModal() {
+  const navigate = useNavigate();
+  const currentUser = useSelector(state => state.session.user)
   const location = useLocation();
   const { modalData, albumId } = location.state || {};
   const [title, setTitle] = useState("");
@@ -13,13 +16,13 @@ function AddSongModal() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const targetAlbumId = modalData ? modalData : albumId;
-  const allAlbums = useSelector(state => state.session.user.album);
-  const albums = allAlbums.filter(album => album.id === targetAlbumId);
+  const allAlbums = useSelector(state => state.session.user?.album);
+  const albums = allAlbums?.filter(album => album?.id === targetAlbumId);
 
   const validateForm = () => {
     const newErrors = {};
-    const existingTrackNumbers = albums.flatMap(album => album?.songs?.map(song => song?.track_number));
-    
+    const existingTrackNumbers = albums?.flatMap(album => album?.songs?.map(song => song?.track_number));
+
     if (title?.length < 2) {
       newErrors.title = "Song title must be more than 2 characters.";
     }
@@ -69,7 +72,7 @@ function AddSongModal() {
     });
 
     if (res.ok) {
-      setIsLoaded(true);  
+      setIsLoaded(true);
     }
   };
 
@@ -79,11 +82,15 @@ function AddSongModal() {
     }
   }, [isLoaded]);
 
+  useEffect(() => {
+    if (!currentUser) navigate("/");
+  }, [currentUser, navigate])
+
   return (
     <div className="modal-container-song">
       <h2>Songs in this album</h2>
       <br />
-      {albums.flatMap(album => album?.songs || []).map((song, index) => (
+      {albums?.flatMap(album => album?.songs || [])?.map((song, index) => (
         <div key={song?.id || index} className="song-button-container">
           <div className="song-title">{song?.title}</div>
           {song?.id && <button onClick={() => handleDelete(song?.id)}>Delete</button>}
@@ -128,5 +135,6 @@ function AddSongModal() {
     </div>
   );
 }
+
 
 export default AddSongModal;

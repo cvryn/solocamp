@@ -3,8 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 import { PiCopyright } from "react-icons/pi";
-import { CgPlayButtonR } from "react-icons/cg";
-import { IoIosRewind, IoIosFastforward } from "react-icons/io";
 import { getSupportedBysByAlbum } from "../../router/supportedbys";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
@@ -23,6 +21,7 @@ import SongList from "./Song/SongList";
 import AlbumItem from "./AlbumItem";
 import ReviewForm from "../SupportedBy/ReviewForm";
 import ShoppingCart from "./ShoppingCart";
+import MusicPlayer from "./Song/MusicPlayer";
 import "./AlbumDetails.css";
 
 const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
@@ -198,9 +197,9 @@ const AlbumDetails = () => {
     navigate("/checkout");
   };
 
-  const handleFollowClick = () => {
-    alert("Feature coming soon...");
-  };
+  // const handleComingSoon = () => {
+  //   alert("Feature coming soon...");
+  // };
 
   const closeMenu = () => setShowMenu(false);
 
@@ -245,21 +244,8 @@ const AlbumDetails = () => {
             <br />
             <div id="album-detail-container">
               <section id="left-column-container-album-details">
-                <div id="music-player-table-container"
-                  onClick={handleFollowClick}
-                  style={{ cursor: "pointer" }}>
-                  <CgPlayButtonR style={{ fontSize: "3rem" }} />
-                  <IoIosRewind style={{ fontSize: "3rem" }} />
-                  <div style={{
-                    fontSize: "16px",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    maxWidth: "200px", // Set your desired fixed width here
-                  }}>
-                    {songs.length > 0 ? album.name : "No songs available"}
-                  </div>
-                  <IoIosFastforward style={{ fontSize: "3rem" }} />
+                <div id="music-player-container">
+                  <MusicPlayer songs={songs}/>
                 </div>
 
                 <div

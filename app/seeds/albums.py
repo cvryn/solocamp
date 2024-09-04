@@ -286,6 +286,80 @@ def seed_albums():
         description='The album is a sonic journey characterized by powerful synths, driving beats, and euphoric melodies. Tracks like "Follow Me" featuring Jason Derulo and "United We Are" exemplify the album\'s anthemic and uplifting spirit. Hardwell masterfully blends elements of progressive house, electro house, and trance, creating a cohesive and energetic listening experience. Beyond the infectious energy, United We Are also showcases Hardwell\'s ability to craft melodic and emotional moments. Tracks like "Let Me Be Your Home" and "Echo" demonstrate a softer side to his production, adding depth and diversity to the album. Overall, United We Are is a testament to Hardwell\'s talent as a producer and his ability to create music that resonates with millions of fans worldwide. It remains a quintessential example of the big room house genre and continues to be a beloved album in the EDM community.',
     )
 
+    # Blake
+    red_river_blue = Album(
+        name="Red River Blue",
+        user_id=18,
+        year=2011,
+        genre="country",
+        price=9.19,
+        description="Blake Shelton’s Red River Blue is his sixth studio album, released on July 12, 2011. The album features a mix of traditional and contemporary country sounds, reflecting Shelton's signature style. It includes hit singles like \"Honey Bee,\" which became one of his most successful songs, and \"God Gave Me You,\" a heartfelt ballad dedicated to his wife. The album's title, Red River Blue, references the Red River that runs through Oklahoma and Texas, tying into Shelton's roots and personal connections. Overall, the album showcases Shelton's ability to blend classic country elements with modern sensibilities, making it a notable entry in his discography.",
+    )
+
+    pure_bs = Album(
+        name="Pure BS",
+        user_id=18,
+        year=2007,
+        genre="country",
+        price=8.99,
+        description='Blake Shelton’s *Pure BS* is his fourth studio album, released on October 23, 2007. The album showcases Shelton’s traditional country roots while incorporating a modern edge. It includes popular tracks like "She Wouldn’t Be Gone" and "Don’t Make Me," which highlight Shelton’s ability to convey emotion and connect with listeners. *Pure BS* also features a blend of upbeat tunes and heartfelt ballads, demonstrating Shelton’s versatility as an artist. The album continues to be a significant part of Shelton’s discography, reflecting his growth and solidifying his presence in the country music scene.',
+    )
+
+    body_language = Album(
+        name="Body Language",
+        user_id=18,
+        year=2021,
+        genre="country",
+        price=11.99,
+        description='Blake Shelton’s *Body Language* is his twelfth studio album, released on May 21, 2021. The album features a blend of contemporary country sounds with influences from pop and rock. It includes hit singles like "Minimum Wage" and "Happy Anywhere," showcasing Shelton’s ability to mix upbeat tracks with heartfelt ballads. *Body Language* explores themes of love, resilience, and celebration, reflecting Shelton’s growth as an artist and his continued relevance in the country music genre. The album presents a polished, modern take on Shelton’s traditional country style.',
+    )
+
+    based_on_a_true_story = Album(
+        name="Based on a True Story",
+        user_id=18,
+        year=2013,
+        genre="country",
+        price=9.49,
+        description='Blake Shelton’s *Based on a True Story* is his eighth studio album, released on March 26, 2013. This album features a mix of traditional and contemporary country music, highlighting Shelton’s signature style. It includes hit singles like "Sure Be Cool If You Did" and "Mine Would Be You," both of which showcase Shelton’s ability to blend catchy melodies with relatable lyrics. *Based on a True Story* is known for its engaging and heartfelt content, reflecting Shelton’s personal experiences and solidifying his status as a leading figure in country music.',
+    )
+
+    startin_fires = Album(
+        name="Startin' Fires",
+        user_id=18,
+        year=2008,
+        genre="country",
+        price=8.99,
+        description='Blake Shelton’s *Starting Fires* is his fifth studio album, released on November 18, 2008. This album showcases Shelton’s versatility with a blend of traditional and modern country sounds. It features popular tracks like "She Wouldn’t Be Gone" and "Starting Fires," which highlight Shelton’s ability to deliver both emotionally resonant ballads and upbeat, energetic tunes. *Starting Fires* continues to cement Shelton’s reputation as a dynamic and influential artist in the country music genre.',
+    )
+
+    # Kenny G
+    rhythm_and_romance = Album(
+        name="Rhythm & Romance",
+        user_id=17,
+        year=2008,
+        genre="jazz",
+        price=12.99,
+        description="Rhythm & Romance is the fifteenth studio album by Kenny G. The first of two bossa nova albums by the artist, the album peaked at number 15 on the R&B/Hip-Hop Albums chart, and number 14 on the Billboard 200. There was a tour supporting the album, called An Evening of Rhythm & Romance.",
+    )
+
+    heart_and_soul = Album(
+        name="Heart and Soul",
+        user_id=17,
+        year=2010,
+        genre="jazz",
+        price=12.99,
+        description="Kenny G’s Heart and Soul, released on June 29, 2010, is an album that showcases his signature smooth jazz style with a focus on romance and emotional depth. The album features a blend of original compositions and jazz standards, with Kenny G’s saxophone delivering emotive and soothing melodies. Heart and Soul highlights Kenny G’s ability to create music that resonates deeply with listeners and solidifies his status in contemporary jazz.",
+    )
+
+    paradise = Album(
+        name="Paradise",
+        user_id=17,
+        year=2002,
+        genre="jazz",
+        price=13.49,
+        description="Kenny G’s Paradise, released on September 10, 2002, is an album that exemplifies his smooth jazz style with a relaxed and uplifting tone. The album includes a mix of original compositions and covers, featuring Kenny G’s expressive saxophone performance. Notable tracks include the lively \"Paraside\" and the serene \"TSeaside Jam.\" Paradise reflects Kenny G’s ability to craft a calming and enjoyable listening experience, continuing his tradition of blending romantic melodies with contemporary jazz.",
+    )
+
     db.session.add_all(
         [
             in_tongues,
@@ -330,6 +404,14 @@ def seed_albums():
             revealed_vol_1,
             united_we_are,
         ]
+    )
+
+
+    db.session.add_all(
+        [red_river_blue, pure_bs, body_language, based_on_a_true_story, startin_fires]
+    )
+    db.session.add_all(
+        [rhythm_and_romance, heart_and_soul, paradise]
     )
 
     db.session.commit()

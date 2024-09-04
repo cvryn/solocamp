@@ -1,8 +1,8 @@
 import './HomePage.css';
 import { IoMusicalNotesOutline } from "react-icons/io5";
-import { FaLocationDot } from "react-icons/fa6";
-import { LuCassetteTape } from "react-icons/lu";
-import { IoTimeOutline } from "react-icons/io5";
+// import { FaLocationDot } from "react-icons/fa6";
+// import { LuCassetteTape } from "react-icons/lu";
+// import { IoTimeOutline } from "react-icons/io5";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react';
 import Pagination from './Pagination';
@@ -220,22 +220,22 @@ function HomePage() {
                         <p><LuCassetteTape />&nbsp;format</p>
                         <p><IoTimeOutline />&nbsp;time</p>
                     </div> */}
-                    <div style={{ marginTop: "60px" }} className='container-all-home'>
-                        <p style={{ backgroundColor: 'black' }}>all</p>
-                        <p>pop</p>
+                    <div style={{ marginTop: "60px", height: "50px" }} className='container-all-home'>
+                        {/* <p style={{ backgroundColor: 'black' }}>all</p> */}
+                        {/* <p>pop</p>
                         <p>rock</p>
                         <p>electronic</p>
-                        <p>R&B</p>
+                        <p>R&B</p> */}
                     </div>
-                    <div className='container-all-home bestselling'>
-                        <p>best-selling</p>
+                    <div style={{ height: "50px" }} className='container-all-home bestselling'>
+                        {/* <p>best-selling</p>
                         <p>new arrivals</p>
-                        <p>artist-recommended</p>
+                        <p>artist-recommended</p> */}
                     </div>
-                    <div className='container-all-home artist'>
-                        <p>artists from anywhere</p>
+                    <div style={{ height: "50px" }} className='container-all-home artist'>
+                        {/* <p>artists from anywhere</p>
                         <p>amsterdam</p>
-                        <p>atlanta</p>
+                        <p>atlanta</p> */}
                     </div>
                     <div className='container-img-list-home'>
                         <div className='container-two-list-left-home'>

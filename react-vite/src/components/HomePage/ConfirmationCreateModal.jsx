@@ -1,16 +1,16 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 function ConfirmationModal({ show, onClose, onConfirm, message, redirectPath, modalData }) {
-    // console.log('modal data in confirm modal', modalData)
+  // console.log('modal data in confirm modal', modalData)
   const navigate = useNavigate();
 
   const handleConfirm = () => {
     if (onConfirm) {
-      onConfirm(); 
+      onConfirm();
     }
     if (redirectPath) {
-      navigate(redirectPath, {state:{modalData}}); 
+      navigate(redirectPath, { state: { modalData } });
     }
   };
 
@@ -31,5 +31,6 @@ function ConfirmationModal({ show, onClose, onConfirm, message, redirectPath, mo
     </div>
   );
 }
+
 
 export default ConfirmationModal;
