@@ -217,6 +217,68 @@ def seed_albumarts():
         album_id=21,
     )
 
+
+
+    # Blake Albums
+
+    red_river_blue = AlbumArt(
+        album_art="https://solocamp-files.s3.amazonaws.com/blake/red_river_blue/blakeRedRiverBlue_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/blake/red_river_blue/blake_redriverblue_banner.png",
+        background_color="rgb(9, 46, 62)",
+        album_id=32,
+    )
+
+    pure_bs = AlbumArt(
+        album_art="https://solocamp-files.s3.amazonaws.com/blake/pure_bs/blake_pure_bs_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/blake/pure_bs/blake_pure_bs_banner.png",
+        background_color="rgb(80, 100, 99)",
+        album_id=33,
+    )
+
+    body_language = AlbumArt(
+        album_art="https://solocamp-files.s3.amazonaws.com/blake/body_language/Blake_Shelton_Body_Language_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/blake/body_language/blake_body_language_banner.png",
+        background_color="rgb(12, 3, 1)",
+        album_id=34,
+    )
+
+    based_on_a_true_story = AlbumArt(
+        album_art="https://solocamp-files.s3.amazonaws.com/blake/based_on_a_true_story/Blake-Based-On_a-True_story-album-cover.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/blake/based_on_a_true_story/blake-based-on-a-true-story-album-banner.png",
+        background_color="rgb(220, 197, 147)",
+        album_id=35,
+    )
+
+    startin_fires = AlbumArt(
+        album_art="https://solocamp-files.s3.amazonaws.com/blake/startin_fires/blake_startin_fires_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/blake/startin_fires/blake_startin_fires_banner.png",
+        background_color="rgb(103, 88, 83)",
+        album_id=36,
+    )
+
+    # Kenny G Albums
+
+    rhythm_and_romance = AlbumArt(
+        album_art="https://solocamp-files.s3.amazonaws.com/kennyg/rhythm_and_romance/kennyg_rhythm_and_romance_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/kennyg/rhythm_and_romance/kennyg_rhythm_and_romance_banner.png",
+        background_color="rgb(2, 15, 60)",
+        album_id=37,
+    )
+
+    heart_and_soul = AlbumArt(
+        album_art="https://solocamp-files.s3.amazonaws.com/kennyg/heart_and_soul/kennyg_heart_and_soul_album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/kennyg/heart_and_soul/kennyg_heart_and_soul_banner.png",
+        background_color="rgb(12, 32, 58)",
+        album_id=38,
+    )
+
+    paradise = AlbumArt(
+        album_art="https://solocamp-files.s3.amazonaws.com/kennyg/paradise/kenny_paradise-album_art.jpg",
+        album_banner="https://solocamp-files.s3.amazonaws.com/kennyg/paradise/kennyg_paradise_banner.png",
+        background_color="rgb(12, 11, 17)",
+        album_id=39,
+    )
+
     db.session.add_all(
         [
             in_tongues_art,
@@ -262,6 +324,21 @@ def seed_albumarts():
             united_we_are_art,
         ]
     )
+
+    db.session.add_all(
+        [rhythm_and_romance, heart_and_soul, paradise]
+    )
+    db.session.add_all(
+        [
+            red_river_blue,
+            pure_bs,
+            body_language,
+            based_on_a_true_story,
+            startin_fires
+        ]
+    )
+
+
 
     db.session.commit()
 
