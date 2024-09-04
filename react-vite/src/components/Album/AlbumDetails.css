@@ -9,12 +9,11 @@
   max-width: 975px;
   margin: 0 auto;
   width: 100%;
-  box-sizing: border-box;
 }
 
 #banner-image-album-details {
-  width: 975px;
-  height: 180px;
+  max-width: 975px;
+  height: 100%;
   overflow: hidden;
   position: relative;
   margin: 0 auto;
@@ -44,12 +43,10 @@
 }
 
 #left-column-container-album-details {
-  /* border: 2px solid green; */
   flex: 1.5;
 }
 
 #music-player-table-container {
-  /* border: 2px solid blue; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -60,7 +57,6 @@
 }
 
 .play-button-placeholder svg {
-  /* border: 2px solid red; */
   width: 55px;
   height: 55px;
   cursor: pointer;
@@ -126,7 +122,6 @@
 }
 
 #middle-column-container-album-details {
-  /* border: 2px solid purple; */
   flex: 1;
 }
 
@@ -156,7 +151,6 @@
 }
 
 #right-column-container-album-details {
-  /* border: 2px solid pink; */
   display: flex;
   flex-direction: column;
   flex: 0 0 120px;
@@ -179,7 +173,6 @@
 }
 
 .discography-list-album-details {
-  /* border: 2px solid orange; */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -190,12 +183,7 @@
   width: 120px;
 }
 
-#bottom-container-album-details {
-  /* border: 2px solid green; */
-}
-
 .album-art-may-also-like-album-details {
-  /* border: 2px solid red; */
   display: flex;
   justify-content: space-between;
 }
@@ -205,4 +193,21 @@
   flex-direction: column;
 }
 
-@media screen and (min-width: 1000px) {}
+.album-art-may-also-like-album-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2px;
+}
+
+@media screen and (max-width: 800px) {
+  .discography-container-album-details {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #album-detail-container {
+    display: grid;
+  }
+}

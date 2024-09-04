@@ -37,7 +37,11 @@ const Pagination = ({ albumData }) => {
                                 onClick={() => navigate(`/albums/${albumEl.id}`)}
                                 style={{ height: '120px', width: '120px' }} src={albumEl.album_art[0].album_art} />
                             <div className='album-genre-home'>
-                                <div>{albumEl.name}</div>
+                                <div style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    height: "17px"
+                                }}>{albumEl.name}</div>
                                 <div>{albumEl.user_username}</div>
                                 <div>{albumEl.genre}</div>
                             </div>

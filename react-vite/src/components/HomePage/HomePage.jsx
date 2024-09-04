@@ -10,9 +10,6 @@ import { BsCalendar2Date } from "react-icons/bs";
 import { GrGroup } from "react-icons/gr";
 import { FaMicrophoneLines } from "react-icons/fa6";
 
-// import CreateAlbumButton from './CreateAlbumButton';
-
-
 
 const HorizontalScrollImages = () => {
 
@@ -43,15 +40,28 @@ const HorizontalScrollImages = () => {
     }, [displayedImages, albumData]);
 
     return (
-        <div
-            ref={containerRef}
-            style={{ width: '100%', overflowX: 'hidden', whiteSpace: 'nowrap' }}
-        >
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div ref={containerRef}>
+            <div id="rolling-home-outer">
                 {displayedImages.map((el, index) => (
                     <div className='rolling-home' key={index}>
-                        {/* {el.album_art? <img style={{width:'300px'}}src={el.album_art[0].album_art}></img> : <img style={{width:'300px'}}src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg"></img>} */}
-                        {el?.album_art ? <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src={el?.album_art[0].album_art} alt={`Image ${index}`} style={{ height: '200px', width: 'auto', marginRight: '10px' }} /> : <img onClick={() => navigate(`/albums/${el.id}`)} key={index} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg" style={{ height: '200px', width: 'auto', marginRight: '10px' }} />}
+                        {el?.album_art
+                            && <div style={{ width: "200px" }}>
+                                <img
+                                    onClick={() => navigate(`/albums/${el.id}`)}
+                                    key={index}
+                                    src={el?.album_art[0].album_art} alt={`Image ${index}`}
+                                    style={{ width: "100%", aspectRatio: "1/1" }}
+                                />
+                            </div>
+                            // : <div style={{ width: "200px" }}>
+                            //     <img
+                            //         onClick={() => navigate(`/albums/${el.id}`)}
+                            //         key={index}
+                            //         src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg"
+                            //         style={{ width: "100%", aspectRatio: "1/1" }}
+                            //     />
+                            // </div>
+                        }
                         <br></br>
                         <div style={{ fontWeight: 'bold' }}>{el?.name}</div>
                         <div>By {el?.user_username}</div>
@@ -59,7 +69,7 @@ const HorizontalScrollImages = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     );
 };
 
@@ -85,14 +95,17 @@ function HomePage() {
 
     return (
         <div className='main-home'>
-            <div className="container-stroy-home">
-                <div className="left-img-home">
-                    <img src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826693/solocamp/i_7_fejxuv.webp" />
-                </div>
-                <div className="container-right-img-home">
-                    <img src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826695/solocamp/i_10_suur8v.webp" />
-                    <img src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826694/solocamp/i_6_k6byvw.webp" />
-                    <img src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826694/solocamp/i_5_ypqyof.webp" />
+            <div id="container-banner-images-outer">
+                <div id="container-banner-images-inner">
+                    <img
+                        id="homepage-banner-image-left"
+                        src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826693/solocamp/i_7_fejxuv.webp"
+                    />
+                    <div className="container-right-img-home">
+                        <img src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826695/solocamp/i_10_suur8v.webp" />
+                        <img src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826694/solocamp/i_6_k6byvw.webp" />
+                        <img src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723826694/solocamp/i_5_ypqyof.webp" />
+                    </div>
                 </div>
             </div>
             <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '18px' }}>Fans have paid artists <span style={{ fontWeight: 'bold', fontSize: '20px' }}>$1.35 billion</span> using Solocamp, and <span style={{ fontWeight: 'bold', fontSize: '20px' }}>$190 million</span> in the last year.</div>
@@ -177,13 +190,13 @@ function HomePage() {
                         </div>
                     </div>
                     {/* <div className="container-signup-home"> */}
-                        {/* <div style={{ textAlign: 'center', marginTop: '70px', fontSize: '17px' }}>Your Albums on Solocamp</div> */}
-                        {/* <div className='sigup-input-button-home' style={{ textAlign: 'center', marginTop: '20px' }}> */}
-                            {/* <input placeholder='your email address'></input> */}
-                            {/* <button onClick={()=> handleAlbumCreate()}style={{ backgroundColor: 'black', color: 'white' }}>CREATE ALBUM</button> */}
-                            {/* <CreateAlbumButton/> */}
-                            {/* <button onClick={() => navigate('/manage-albums')}>Manage Albums</button> */}
-                        {/* </div> */}
+                    {/* <div style={{ textAlign: 'center', marginTop: '70px', fontSize: '17px' }}>Your Albums on Solocamp</div> */}
+                    {/* <div className='sigup-input-button-home' style={{ textAlign: 'center', marginTop: '20px' }}> */}
+                    {/* <input placeholder='your email address'></input> */}
+                    {/* <button onClick={()=> handleAlbumCreate()}style={{ backgroundColor: 'black', color: 'white' }}>CREATE ALBUM</button> */}
+                    {/* <CreateAlbumButton/> */}
+                    {/* <button onClick={() => navigate('/manage-albums')}>Manage Albums</button> */}
+                    {/* </div> */}
                     {/* </div> */}
                     <div className="container-discover-home">
                         <div style={{ fontSize: '18px', fontWeight: 'bold' }}>Discover</div>

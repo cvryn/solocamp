@@ -124,7 +124,6 @@ function AlbumListings() {
       )}
 
       <div id="container-filter-outer">
-        <div id="container-filter-inner">
           <div id="container-search-genre-tags">
             <div id="container-search-bar-album-listings">
               <FiSearch style={{ color: "white" }} />
@@ -160,7 +159,6 @@ function AlbumListings() {
               ))}
             </div>
           </div>
-        </div>
       </div>
 
       <div id="container-album-listings-outer">
@@ -172,7 +170,7 @@ function AlbumListings() {
                 <img
                   src={album.album_art[0].album_art}
                   alt="album-cover"
-                  style={{ width: "215px", aspectRatio: "1/1", cursor: "pointer" }}
+                  style={{ width: "100%", aspectRatio: "1/1", cursor: "pointer" }}
                   onClick={() => setSelectedAlbum(album)}
                 />
 
@@ -192,7 +190,7 @@ function AlbumListings() {
               <div id="container-current-album-inner">
                 <img src={selectedAlbum.album_art[0].album_art}
                   alt="alum-cover"
-                  style={{ width: "500px", aspectRatio: "1/1" }}
+                  style={{ width: "100%", aspectRatio: "1/1" }}
                 />
 
                 <div style={{ display: "flex", gap: "10px" }}>

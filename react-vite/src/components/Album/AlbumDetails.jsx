@@ -230,6 +230,7 @@ const AlbumDetails = () => {
             className="banner-art-album-details"
             src={albumArt?.album_banner}
             alt="album banner art"
+            style={{ width: "100%" }}
           />
         </div>
         <div id="middle-container-album-details">
@@ -338,6 +339,7 @@ const AlbumDetails = () => {
                     className="album-art-image-album-details"
                     src={albumArt?.album_art}
                     alt="album art image"
+                    style={{ width: "100%", aspectRatio: "1 / 1", height: "100%" }}
                   />
                   {currentUser && album.user_id === currentUser.id
                     ? (
