@@ -338,7 +338,7 @@ const AlbumDetails = () => {
                     className="album-art-image-album-details"
                     src={albumArt?.album_art}
                     alt="album art image"
-                    style={{ width: "100%", aspectRatio: "1 / 1" }}
+                    style={{aspectRatio: "1/1", minWidth: "180px", width: "100%"}}
                   />
                   {currentUser && album.user_id === currentUser.id
                     ? (

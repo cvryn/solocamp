@@ -132,8 +132,8 @@
 }
 
 .album-art-image-album-details {
-  height: 350px;
-  width: 350px;
+  max-height: 300px;
+  max-width: 300px;
 }
 
 .button-wishlist-album-details {
@@ -214,5 +214,9 @@
 @media screen and (max-width: 600px) {
   #album-detail-container {
     display: grid;
+  }
+
+  .button-wishlist-album-details{
+    width: 300px;
   }
 }

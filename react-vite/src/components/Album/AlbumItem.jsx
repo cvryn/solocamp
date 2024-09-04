@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-
 import "./AlbumItems.css";
+
 
 const AlbumItem = ({ album }) => {
 
@@ -28,5 +28,6 @@ const AlbumItem = ({ album }) => {
     </Link>
   );
 };
+
 
 export default AlbumItem;
