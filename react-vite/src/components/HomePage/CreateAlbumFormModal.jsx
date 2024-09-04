@@ -52,7 +52,7 @@ function CreateAlbumFormModal() {
         );
 
         if (!serverResponse.errors) {
-            console.log('server response:', serverResponse.newAl.id);
+            // console.log('server response:', serverResponse.newAl.id);
             setModalData(serverResponse.newAl.id)
             setShowConfirmationModal(true);
             // closeModal();
@@ -60,7 +60,7 @@ function CreateAlbumFormModal() {
             setErrors(serverResponse);
         }
     };
-console.log('modal data in create albun form modal', modalData)
+// console.log('modal data in create albun form modal', modalData)
     // console.log('any thing in errors?', errors.errors)
     return (
         <div id="container-signup-form-modal">

@@ -53,7 +53,7 @@ function UpdateAlbumFormModal({ el }) {
         }
     };
 const albumId = el.id;
-console.log('album id', albumId)
+// console.log('album id', albumId)
     const handleUpdateSong = () => {
         navigate('/song', {state:{albumId}})
         closeModal()
