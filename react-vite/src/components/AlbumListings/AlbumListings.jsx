@@ -101,6 +101,15 @@ function AlbumListings() {
       .then(() => dispatch(thunkWishlistAlbums()))
   };
 
+  const handleAlbumClick = (album) => {
+    const isSmallScreen = window.innerWidth <= 600;
+    if (isSmallScreen) {
+      navigate(`/albums/${album.id}`);
+    } else {
+      setSelectedAlbum(album);
+    }
+  };
+
   const closeMenu = () => setShowMenu(false);
 
   const filteredAlbums = genres.length && !genres.includes("all genres")
@@ -124,41 +133,41 @@ function AlbumListings() {
       )}
 
       <div id="container-filter-outer">
-          <div id="container-search-genre-tags">
-            <div id="container-search-bar-album-listings">
-              <FiSearch style={{ color: "white" }} />
-              <input style={{
-                height: "35px",
-                width: "90%",
-                color: "white",
-                backgroundColor: "rgb(60, 60, 60)",
-                border: "none"
+        <div id="container-search-genre-tags">
+          <div id="container-search-bar-album-listings">
+            <FiSearch style={{ color: "white" }} />
+            <input style={{
+              height: "35px",
+              width: "90%",
+              color: "white",
+              backgroundColor: "rgb(60, 60, 60)",
+              border: "none"
+            }}
+              placeholder="Type the genre and press enter"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              onKeyDown={e => {
+                if (e.key === "Enter") {
+                  e.preventDefault()
+                  handleSearch()
+                }
               }}
-                placeholder="Type the genre and press enter"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                onKeyDown={e => {
-                  if (e.key === "Enter") {
-                    e.preventDefault()
-                    handleSearch()
-                  }
-                }}
-              />
-            </div>
-
-            <div id="container-genre-tags">
-              {["all genres", "pop", "alternative", "rap", "r&b", "electronic", "rock", "experimental", "jazz", "country"].map(genre => (
-                <div
-                  key={genre}
-                  className={`genre-tag ${genres.includes(genre) ? "selected" : ""}`}
-                  onClick={() => handleSetGenres(genre.toLowerCase())}
-                  style={{ cursor: "pointer" }}
-                >
-                  {genre}
-                </div>
-              ))}
-            </div>
+            />
           </div>
+
+          <div id="container-genre-tags">
+            {["all genres", "pop", "alternative", "rap", "r&b", "electronic", "rock", "experimental", "jazz", "country"].map(genre => (
+              <div
+                key={genre}
+                className={`genre-tag ${genres.includes(genre) ? "selected" : ""}`}
+                onClick={() => handleSetGenres(genre.toLowerCase())}
+                style={{ cursor: "pointer" }}
+              >
+                {genre}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div id="container-album-listings-outer">
@@ -171,7 +180,7 @@ function AlbumListings() {
                   src={album.album_art[0].album_art}
                   alt="album-cover"
                   style={{ width: "100%", aspectRatio: "1/1", cursor: "pointer" }}
-                  onClick={() => setSelectedAlbum(album)}
+                  onClick={() => handleAlbumClick(album)}
                 />
 
                 <Link to={`/albums/${album.id}`}>

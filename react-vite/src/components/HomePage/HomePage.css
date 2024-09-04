@@ -262,30 +262,6 @@
     scroll-behavior: smooth;
 }
 
-@media screen and (max-width: 1600px) {
-    #rolling-home-outer {
-        width: 1250px;
-    }
-}
-
-@media screen and (max-width: 1400px) {
-    #rolling-home-outer {
-        width: 1050px;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    #rolling-home-outer {
-        width: 830px;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    #rolling-home-outer {
-        width: 420px;
-    }
-}
-
 .container-discover-home>p:nth-last-child(-n+3) {
     background-color: lightgray;
     border-radius: 10px;

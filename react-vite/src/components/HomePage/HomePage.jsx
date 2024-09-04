@@ -12,66 +12,76 @@ import { FaMicrophoneLines } from "react-icons/fa6";
 
 
 const HorizontalScrollImages = () => {
-
     const navigate = useNavigate();
     let albumData = useLoaderData();
-    // if (!Array.isArray(albumData)) {
-    //     return <p>No albums available.</p>;  // Handle cases where data isn't an array
-    // }
 
     const [displayedImages, setDisplayedImages] = useState(albumData.slice(0, 8));
     const containerRef = useRef(null);
     const imageIndex = useRef(8);
+    const scrollAmount = useRef(100);
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        const handleResize = () => {
             if (containerRef.current) {
-                containerRef.current.scrollLeft += 100;
+                const containerWidth = containerRef.current.clientWidth;
+                scrollAmount.current = containerWidth / 5;
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        const scrollImages = () => {
+            if (containerRef.current) {
+                containerRef.current.scrollLeft += scrollAmount.current;
 
                 if (containerRef.current.scrollLeft + containerRef.current.clientWidth >= containerRef.current.scrollWidth) {
                     const newImages = [...displayedImages.slice(1), albumData[imageIndex.current]];
                     setDisplayedImages(newImages);
                     imageIndex.current = (imageIndex.current + 1) % albumData.length;
+                    containerRef.current.scrollLeft = 0;
                 }
             }
-        }, 2000);
+        };
 
-        return () => clearInterval(interval);
+        const intervalId = setInterval(scrollImages, 2000);
+
+        return () => clearInterval(intervalId);
     }, [displayedImages, albumData]);
 
     return (
-        <div ref={containerRef}>
+        <div
+            ref={containerRef}
+            style={{ overflowX: 'scroll', scrollbarWidth: "thin", scrollbarColor: "transparent", whiteSpace: 'nowrap' }}>
             <div id="rolling-home-outer">
                 {displayedImages.map((el, index) => (
-                    <div style={{ cursor: "pointer" }} key={index}>
+                    <div style={{ display: 'inline-block', cursor: "pointer", width: "200px" }} key={index}>
                         {el?.album_art
-                            ? <div style={{ width: "200px" }}>
-                                <img
-                                    onClick={() => navigate(`/albums/${el.id}`)}
-                                    key={index}
-                                    src={el?.album_art[0].album_art} alt={`Image ${index}`}
-                                    style={{ width: "100%", aspectRatio: "1/1" }}
-                                />
-                            </div>
-                            : <div style={{ width: "200px" }}>
-                                <img
-                                    onClick={() => navigate(`/albums/${el.id}`)}
-                                    key={index}
-                                    src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg"
-                                    style={{ width: "100%", aspectRatio: "1/1" }}
-                                />
-                            </div>
+                            ? <img
+                                onClick={() => navigate(`/albums/${el.id}`)}
+                                src={el?.album_art[0].album_art} alt={`Image ${index}`}
+                                style={{ width: "100%", aspectRatio: "1/1" }}
+                            />
+                            : <img
+                                onClick={() => navigate(`/albums/${el.id}`)}
+                                src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg"
+                                style={{ width: "100%", aspectRatio: "1/1" }}
+                            />
                         }
-                        <br></br>
-                        <div style={{ fontWeight: 'bold' }}>{el?.name}</div>
+                        <div style={{ width: "200px", fontWeight: 'bold', overflow: "hidden", textOverflow: "ellipsis" }}>{el?.name}</div>
                         <div>By {el?.user_username}</div>
                         <div>Sold for ${el?.price}</div>
                     </div>
                 ))}
             </div>
-        </div >
+        </div>
     );
 };
+
 
 function HomePage() {
     let albumData = useLoaderData();
