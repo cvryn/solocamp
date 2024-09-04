@@ -1,11 +1,13 @@
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { CgPlayButtonR, CgPlayPauseR } from "react-icons/cg";
 import { IoIosRewind, IoIosFastforward } from "react-icons/io";
+import { useLocation } from "react-router-dom";
 
 const MusicPlayer = ({ songs }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const audioRef = useRef(null);
+  const location = useLocation();
 
   const currentSong = songs[currentSongIndex];
 
@@ -36,6 +38,15 @@ const MusicPlayer = ({ songs }) => {
     }
   };
 
+  useEffect(() => {
+    if (audioRef.current) {
+      // Pauses current song
+      audioRef.current.pause();
+    }
+    // Reset to play button
+    setIsPlaying(false);
+  }, [currentSongIndex]);
+
   const handlePrevious = () => {
     if (currentSongIndex > 0) {
       // Pause current song
@@ -54,6 +65,24 @@ const MusicPlayer = ({ songs }) => {
   const handleSongEnd = () => {
     setIsPlaying(false);
   };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+    setIsPlaying(false);
+  }, [currentSongIndex, location.pathname]);
+
+
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      // Reset play state
+      setIsPlaying(false);
+    };
+  }, []);
 
   return (
     <div id="music-player-table-container" style={{ cursor: "pointer" }}>
