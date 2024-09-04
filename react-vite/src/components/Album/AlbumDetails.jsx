@@ -230,7 +230,6 @@ const AlbumDetails = () => {
             className="banner-art-album-details"
             src={albumArt?.album_banner}
             alt="album banner art"
-            style={{ width: "100%" }}
           />
         </div>
         <div id="middle-container-album-details">
@@ -339,7 +338,7 @@ const AlbumDetails = () => {
                     className="album-art-image-album-details"
                     src={albumArt?.album_art}
                     alt="album art image"
-                    style={{ width: "100%", aspectRatio: "1 / 1", height: "100%" }}
+                    style={{ width: "100%", aspectRatio: "1 / 1" }}
                   />
                   {currentUser && album.user_id === currentUser.id
                     ? (
@@ -433,7 +432,7 @@ const AlbumDetails = () => {
                 <div className="discography-container-album-details">
                   full discography
                   <ul className="discography-list-album-details">
-                    {userAlbums.map((userAlbum) => (
+                    {userAlbums.splice(0, 4).map((userAlbum) => (
                       <li key={userAlbum.id}>
                         <AlbumItem album={userAlbum} />
                       </li>

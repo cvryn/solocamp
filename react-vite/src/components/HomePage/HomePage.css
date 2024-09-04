@@ -108,6 +108,7 @@
     flex-direction: column;
     width: 220px;
     padding: 10px;
+    cursor: not-allowed;
 }
 
 /* .container-text-home {
@@ -117,12 +118,12 @@
     height: 65%;
 } */
 
-.container-discover-home {
+/* .container-discover-home {
     display: flex;
     gap: 30px;
     margin-top: 60px;
     margin-bottom: 20px;
-}
+} */
 
 .container-all-home {
     display: flex;

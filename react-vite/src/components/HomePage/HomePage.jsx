@@ -118,10 +118,10 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '18px' }}>Fans have paid artists
-                <span style={{ fontWeight: 'bold', fontSize: '20px' }}>$1.35 billion</span>
+            <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '18px' }}>Fans have paid artist
+                <span style={{ fontWeight: 'bold', fontSize: '20px' }}> $1.35 billion </span>
                 using Solocamp, and
-                <span style={{ fontWeight: 'bold', fontSize: '20px' }}>$190 million</span>
+                <span style={{ fontWeight: 'bold', fontSize: '20px' }}> $190 million </span>
                 in the last year.
             </div>
             <div className="container-body-home">
@@ -213,14 +213,14 @@ function HomePage() {
                     {/* <button onClick={() => navigate('/manage-albums')}>Manage Albums</button> */}
                     {/* </div> */}
                     {/* </div> */}
-                    <div className="container-discover-home">
+                    {/* <div className="container-discover-home">
                         <div style={{ fontSize: '18px', fontWeight: 'bold' }}>Discover</div>
                         <p style={{ color: 'grey' }}>filter by:</p>
                         <p><FaLocationDot />&nbsp;location</p>
                         <p><LuCassetteTape />&nbsp;format</p>
                         <p><IoTimeOutline />&nbsp;time</p>
-                    </div>
-                    <div className='container-all-home'>
+                    </div> */}
+                    <div style={{ marginTop: "60px" }} className='container-all-home'>
                         <p style={{ backgroundColor: 'black' }}>all</p>
                         <p>pop</p>
                         <p>rock</p>

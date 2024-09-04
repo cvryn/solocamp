@@ -199,7 +199,7 @@ function AlbumListings() {
               <div id="container-current-album-inner">
                 <img src={selectedAlbum.album_art[0].album_art}
                   alt="alum-cover"
-                  style={{ width: "100%", aspectRatio: "1/1" }}
+                  style={{ width: "100%", aspectRatio: "1/1", minWidth: "200px" }}
                 />
 
                 <div style={{ display: "flex", gap: "10px" }}>
