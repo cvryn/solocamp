@@ -12,7 +12,7 @@ function Footer() {
         <Link to="/">
           <img src={logo}
             alt="Logo"
-            style={{ width: "150px", verticalAlign: "text-bottom" }}
+            style={{ width: "150px", verticalAlign: "text-bottom", cursor: "pointer" }}
           />
         </Link>
         <div id="container-quick-links-footer">

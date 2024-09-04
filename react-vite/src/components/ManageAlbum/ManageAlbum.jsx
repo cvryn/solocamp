@@ -7,9 +7,6 @@ import CreateAlbumButton from "../HomePage/CreateAlbumButton";
 import UpdateAlbumButton from "./UpdateAlbumButton";
 import ConfirmationModal from "./ConfirmationModal"
 
-// import { useParams } from "react-router-dom";
-// import { useLoaderData } from "react-router-dom";
-
 
 export default function ManageAlbum() {
     const currentUser = useSelector(state => state.session.user)
@@ -77,20 +74,42 @@ export default function ManageAlbum() {
                                     />
                                     {/* {el.album_art ? <img style={{ width: '300px' }} src={el.album_art[0].album_art}></img> : <img style={{ width: '300px' }} src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723505751/b39ec0_1344b039b28c44d7a55449f3c83d4b41_mv2_vgm2kk.webp"></img>} */}
                                     {el?.album_art?.map(art => {
-                                        return <img key={el.id} onClick={() => navigate(`/albums/${el.id}`)} style={{ width: '100%', height: "220px", marginBottom: '10px' }} src={art.album_art}></img>
+                                        return <img
+                                            key={el.id}
+                                            onClick={() => navigate(`/albums/${el.id}`)}
+                                            style={{ width: '250px', marginBottom: '10px', aspectRatio: "1/1" }}
+                                            src={art.album_art}
+                                        />
                                     })}
 
-                                    <div style={{ fontWeight: 'bold', fontSize: '20px' }}>{el.name}</div>
+                                    <div style={{
+                                        fontWeight: 'bold',
+                                        fontSize: '20px',
+                                        height: "46px",
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis"
+                                    }}>
+                                        {el.name}
+                                    </div>
                                     <br></br>
                                     <div>{el.year}</div>
                                     <div>{el.genre}</div>
                                     <div>${el.price}</div>
                                     <br></br>
-                                    <div>{el.description}</div>
+                                    <div style={{
+                                        height: "33px",
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis"
+                                    }}>{el.description}</div>
                                     <div className="update-button-manage-albums button-hover-effect">
                                         <UpdateAlbumButton el={el} />
                                     </div>
-                                    <button className='delete-button-manage-al button-hover-effect' onClick={() => handleDelete(el.id)}>Delete Album</button>
+                                    <button
+                                        className='delete-button-manage-al button-hover-effect'
+                                        onClick={() => handleDelete(el.id)}
+                                    >
+                                        Delete Album
+                                    </button>
                                 </div>
                             )
                         })
