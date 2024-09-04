@@ -65,7 +65,7 @@ def seed_songs():
     )
 
     ill_see_you_in_40 = Song(
-        title="Test Drive", track_number=7, song_url="song_url", album_id=2, user_id=2
+        title="I'll See You In 40", track_number=7, song_url="song_url", album_id=2, user_id=2
     )
 
     # Nectar
