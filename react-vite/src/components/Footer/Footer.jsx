@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../../public/logo.png"
+import logo from "../../../public/logo-inverted.png"
 import "./Footer.css"
 
 
