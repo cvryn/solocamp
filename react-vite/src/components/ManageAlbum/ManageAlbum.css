@@ -1,24 +1,26 @@
 .container-manage-als {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 5px;
 }
+
 .manage-als {
     border: 2px rgb(164, 162, 162) dotted;
     margin-left: 5px;
     margin-top: 5px;
-    width: 15%;
-    height: fit-content;
+    width: 280px;
     padding: 10px;
 }
-.manage-als > img {
+
+.manage-als>img {
     cursor: pointer;
 }
+
 .update-button-manage-albums {
-  
     width: fit-content;
     background-color: lightgray;
-    margin-top: 30px;
+    margin-top: 15px;
     border-radius: 10px;
     padding: 0px 5px 0px 5px;
 }
@@ -30,36 +32,41 @@
     padding: 0px 5px 0px 5px;
     border-radius: 10px;
 }
+
 .create-album-button-home {
     width: fit-content;
     background-color: lightgray;
     margin-top: 30px;
     border-radius: 10px;
     padding: 0px 5px 0px 5px;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
     padding: 10px;
 }
-.create-album-button-container{
+
+.create-album-button-container {
     display: flex;
     justify-content: center;
 }
+
 .update-button-manage-albums:hover,
 .delete-button-manage-al:hover {
     background-color: rgb(180, 179, 179);
     border-radius: 10px;
     padding: 0px 3px 0px 3px;
 }
+
 .create-album-button-home:hover {
     background-color: rgb(180, 179, 179);
     border-radius: 10px;
-    /* padding:10px; */
 }
+
 .create-first-album {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:20px;
+    gap: 20px;
 }
-.create-first-album >h2 {
+
+.create-first-album>h2 {
     margin-top: 20px;
 }

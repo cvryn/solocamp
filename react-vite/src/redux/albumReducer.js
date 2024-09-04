@@ -86,6 +86,7 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
 
 export const thunkCreateAlbum = (album) => async (dispatch) => {
     let { name, year, genre, price, description, albumart, albumbanner, backgroundcolor } = album;
+    // console.log('title in thunk??', title)
     const response = await fetch("/api/albums/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -1,0 +1,82 @@
+.modal-container-song {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  margin-bottom: 600px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.song-title {
+  /* border: #0056b3 2px solid; */
+  display: flex;
+  align-items: center;
+}
+
+.song-button-container {
+  display: flex;
+  gap: 10px;
+  /* border: 2px saddlebrown solid; */
+  margin-bottom: 10px;
+}
+
+.modal-container-song button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 2px 5px;
+
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.modal-container-song button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+button.delete {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+button.delete:hover {
+  background-color: #c82333;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}

@@ -170,6 +170,16 @@ def seed_users():
         password="password",
     )
 
+    #18
+    blake = User(
+        username="Blake",
+        profile_image="https://solocamp-files.s3.amazonaws.com/blake/Blake-Shelton-profile-pic.jpg",
+        first_name="Blake",
+        last_name="Shelton",
+        email="blake@solocamp.io",
+        password="password",
+    )
+
     db.session.add(demo)
 
     db.session.add_all(
@@ -191,6 +201,8 @@ def seed_users():
         ]
     )
     db.session.add_all([adele, lady_gaga, tiesto, cole_dammett, hardwell, kenny_g])
+
+    db.session.add_all([blake])
 
     db.session.commit()
 

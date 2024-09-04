@@ -12,10 +12,6 @@
   background-color: gray;
 }
 
-#container-filter-inner {
-  max-width: 1500px;
-  margin: auto;
-}
 
 #container-search-bar-album-listings {
   display: flex;
@@ -67,9 +63,9 @@
   grid-template-columns: 2fr 1fr;
   grid-template-rows: minmax(100px, max-content) repeat(auto-fill, 200px) 20%;
   grid-template-areas: "left right";
-  gap: 80px;
+  gap: 40px;
   color: white;
-  width: 1500px;
+  max-width: 1500px;
   margin: auto;
 }
 
@@ -79,15 +75,15 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   padding: 20px 0 20px 40px;
-  row-gap: 30px;
+  row-gap: 100px;
   column-gap: 20px;
-  width: 920px;
 }
 
 #container-album {
   display: flex;
   flex-direction: column;
-  height: fit-content
+  width: 200px;
+  height: 200px;
 }
 
 #container-album-text {
@@ -111,6 +107,7 @@
   flex-direction: column;
   padding: 20px 40px 20px 0;
   gap: 30px;
+  max-width: 500px;
 }
 
 .button-wishlist-album-listings {
@@ -121,4 +118,37 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  #container-album-listings {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  #container-album-listings {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #container-album-listings {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #container-search-bar-album-listings {
+    width: 380px;
+  }
+
+  #container-album-listings {
+    grid-template-columns: 1fr;
+  }
+
+  #container-current-album-outer {
+    display: none;
+  }
 }

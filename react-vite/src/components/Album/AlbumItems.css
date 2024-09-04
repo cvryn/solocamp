@@ -1,14 +1,11 @@
 #albums-container-album-items {
-  /* border: 2px solid orange; */
   height: 200px;
   width: 120px;
 }
 
-
 .album-image-album-items {
-    /* border: 2px solid red; */
-    height: 120px;
-    width: 120px;
+  height: 120px;
+  width: 120px;
 }
 
 .album-image-album-items:hover {
@@ -18,6 +15,9 @@
 .album-list-album-name {
   font-weight: bold;
   font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 35px;
 }
 
 .album-list-album-name:hover {

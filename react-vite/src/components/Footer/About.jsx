@@ -10,7 +10,7 @@ function About() {
         <h3 style={{ fontSize: "1.5rem" }}>Caryn W.</h3>
         <span style={{ color: "gray", fontSize: "0.75rem" }}>Full-Stack Developer</span>
         <Link
-          to="https://www.linkedin.com/in/caryn-w-280b6729b/"
+          to="https://www.linkedin.com/in/caryn-w-280b6729b"
           target="_blank"
           style={{ display: "flex", alignItems: "center", gap: "3px" }}
         >
@@ -29,7 +29,7 @@ function About() {
         <h3 style={{ fontSize: "1.5rem" }}>Mengxuan  L.</h3>
         <span style={{ color: "gray", fontSize: "0.75rem" }}>Full-Stack Developer</span>
         <Link
-          to="https://www.linkedin.com/in/mengxuan-liang-a53615119/"
+          to="https://www.linkedin.com/in/mengxuan-liang-a53615119"
           target="_blank"
           style={{ display: "flex", alignItems: "center", gap: "3px" }}
         >
@@ -47,7 +47,7 @@ function About() {
         <h3 style={{ fontSize: "1.5rem" }}>Alan C.</h3>
         <span style={{ color: "gray", fontSize: "0.75rem" }}>Full-Stack Developer</span>
         <Link
-          to="https://www.linkedin.com/in/alan-c-373746251/"
+          to="https://www.linkedin.com/in/alanchang091322"
           target="_blank"
           style={{ display: "flex", alignItems: "center", gap: "3px" }}
         >

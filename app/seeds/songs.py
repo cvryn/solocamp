@@ -4,29 +4,29 @@ from sqlalchemy.sql import text
 
 def seed_songs():
     will_he = Song(
-        title="Will He", track_number=1, song_url="song_url", album_id=1, user_id=2
+        title="Will He", track_number=1, song_url="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/in_tongues_will_he.m4a", album_id=1, user_id=2
     )
 
     pills = Song(
-        title="Pills", track_number=2, song_url="song_url", album_id=1, user_id=2
+        title="Pills", track_number=2, song_url="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/Pills.m4a", album_id=1, user_id=2
     )
 
     demons = Song(
-        title="Demons", track_number=3, song_url="song_url", album_id=1, user_id=2
+        title="Demons", track_number=3, song_url="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/Demons.m4a", album_id=1, user_id=2
     )
 
     window = Song(
-        title="Window", track_number=4, song_url="song_url", album_id=1, user_id=2
+        title="Window", track_number=4, song_url="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/Window.m4a", album_id=1, user_id=2
     )
 
     bitter_fk = Song(
-        title="Bitter Fk", track_number=5, song_url="song_url", album_id=1, user_id=2
+        title="Bitter Fk", track_number=5, song_url="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/Bitter+Fk.m4a", album_id=1, user_id=2
     )
 
     worldstar_money = Song(
         title="Worldstar Money",
         track_number=6,
-        song_url="song_url",
+        song_url="https://solocamp-files.s3.amazonaws.com/joji/in-tongues/Worldstar+Money.m4a",
         album_id=1,
         user_id=2,
     )
@@ -39,7 +39,7 @@ def seed_songs():
     slow_dancing_in_the_dark = Song(
         title="Slow Dancing in the Dark",
         track_number=2,
-        song_url="song_url",
+        song_url="https://solocamp-files.s3.amazonaws.com/joji/ballads-1/Slow+dancing+in+the+dark+kk+slider.m4a",
         album_id=2,
         user_id=2,
     )
@@ -65,7 +65,7 @@ def seed_songs():
     )
 
     ill_see_you_in_40 = Song(
-        title="Test Drive", track_number=7, song_url="song_url", album_id=2, user_id=2
+        title="I'll See You In 40", track_number=7, song_url="song_url", album_id=2, user_id=2
     )
 
     # Nectar
@@ -1416,6 +1416,339 @@ def seed_songs():
         user_id=16,
     )
 
+    # #32 Blake - Red River Blue
+    honey_bee = Song(
+        title="Honey Bee",
+        track_number=1,
+        song_url="song_url",
+        album_id=32,
+        user_id=18,
+    )
+
+    ready_to_roll = Song(
+        title="Ready To Roll",
+        track_number=2,
+        song_url="song_url",
+        album_id=32,
+        user_id=18,
+    )
+
+    god_gave_me_you = Song(
+        title="God Gave Me You",
+        track_number=3,
+        song_url="song_url",
+        album_id=32,
+        user_id=18,
+    )
+
+    get_some = Song(
+        title="Get Some",
+        track_number=4,
+        song_url="song_url",
+        album_id=32,
+        user_id=18,
+    )
+
+    drink_on_it = Song(
+        title="Drink On It",
+        track_number=5,
+        song_url="song_url",
+        album_id=32,
+        user_id=18,
+    )
+
+    # 33 blake - pure bs
+
+    cant_be_good = Song(
+        title="Can't Be Good",
+        track_number=1,
+        song_url="song_url",
+        album_id=33,
+        user_id=18,
+    )
+
+    dont_make_me = Song(
+        title="Don't Make Me",
+        track_number=2,
+        song_url="song_url",
+        album_id=33,
+        user_id=18,
+    )
+
+    the_more_i_drink = Song(
+        title="The More I Drink",
+        track_number=3,
+        song_url="song_url",
+        album_id=33,
+        user_id=18,
+    )
+    i_dont_care = Song(
+        title="I Don't Care",
+        track_number=4,
+        song_url="song_url",
+        album_id=33,
+        user_id=18,
+    )
+    she_dont_love_me = Song(
+        title="She Don't Love Me",
+        track_number=5,
+        song_url="song_url",
+        album_id=33,
+        user_id=18,
+    )
+
+    # 34 body language
+
+    minimum_wage = Song(
+        title="Minimum Wage",
+        track_number=1,
+        song_url="song_url",
+        album_id=34,
+        user_id=18,
+    )
+
+    body_language = Song(
+        title="Body Language",
+        track_number=2,
+        song_url="song_url",
+        album_id=34,
+        user_id=18,
+    )
+
+    happy_anywhere = Song(
+        title="Happy Anywhere",
+        track_number=3,
+        song_url="song_url",
+        album_id=34,
+        user_id=18,
+    )
+
+    now_i_dont = Song(
+        title="Now I Don't",
+        track_number=4,
+        song_url="song_url",
+        album_id=34,
+        user_id=18,
+    )
+
+    monday_mornin_missin_you = Song(
+        title="Monday Mornin' Missin' You",
+        track_number=5,
+        song_url="song_url",
+        album_id=34,
+        user_id=18,
+    )
+
+    # 35 based on a true story
+    boys_round_here = Song(
+        title="Boys 'Round Here",
+        track_number=1,
+        song_url="song_url",
+        album_id=35,
+        user_id=18,
+    )
+
+    sure_be_cool_if_you_did = Song(
+        title="Sure Be Cool If You Did",
+        track_number=2,
+        song_url="song_url",
+        album_id=35,
+        user_id=18,
+    )
+
+    do_you_remember = Song(
+        title="Do You Remember",
+        track_number=3,
+        song_url="song_url",
+        album_id=35,
+        user_id=18,
+    )
+
+    small_town_big_time = Song(
+        title="Small Town Big Time",
+        track_number=4,
+        song_url="song_url",
+        album_id=35,
+        user_id=18,
+    )
+
+    country_on_the_radio = Song(
+        title="Country On The Radio",
+        track_number=5,
+        song_url="song_url",
+        album_id=35,
+        user_id=18,
+    )
+
+    # 36 startin fires
+
+    green = Song(
+        title="Green",
+        track_number=1,
+        song_url="song_url",
+        album_id=36,
+        user_id=18,
+    )
+
+    good_at_startin_fires = Song(
+        title="Good At Startin' Fires",
+        track_number=2,
+        song_url="song_url",
+        album_id=36,
+        user_id=18,
+    )
+
+    she_wouldnt_be_gone = Song(
+        title="She Wouldn't Be Gone",
+        track_number=3,
+        song_url="song_url",
+        album_id=36,
+        user_id=18,
+    )
+
+    ill_just_hold_on = Song(
+        title="I'll Just Hold On",
+        track_number=4,
+        song_url="song_url",
+        album_id=36,
+        user_id=18,
+    )
+
+    miles = Song(
+        title="Miles",
+        track_number=5,
+        song_url="song_url",
+        album_id=36,
+        user_id=18,
+    )
+
+    # 37 rhythm and romance
+    sax_o_loco = Song(
+        title="Sax-O-Loco",
+        track_number=1,
+        song_url="song_url",
+        album_id=37,
+        user_id=17,
+    )
+
+    ritmo_y_romance = Song(
+        title="Ritmo Y Romance",
+        track_number=2,
+        song_url="song_url",
+        album_id=37,
+        user_id=17,
+    )
+
+    sabor_a_mi = Song(
+        title="Sabor A Mi",
+        track_number=3,
+        song_url="song_url",
+        album_id=37,
+        user_id=17,
+    )
+
+    tango = Song(
+        title="Tango",
+        track_number=4,
+        song_url="song_url",
+        album_id=37,
+        user_id=17,
+    )
+
+    mirame_bailar = Song(
+        title="Mirame Bailar",
+        track_number=5,
+        song_url="song_url",
+        album_id=37,
+        user_id=17,
+    )
+
+    # heart and soul
+
+    heart_and_soul = Song(
+        title="Heart and Soul",
+        track_number=1,
+        song_url="song_url",
+        album_id=38,
+        user_id=17,
+    )
+
+    deja_vu = Song(
+        title="Deja Vu",
+        track_number=2,
+        song_url="song_url",
+        album_id=38,
+        user_id=17,
+    )
+
+    fall_again = Song(
+        title="Fall Again",
+        track_number=3,
+        song_url="song_url",
+        album_id=38,
+        user_id=17,
+    )
+
+    letters_from_home = Song(
+        title="Letters From Home",
+        track_number=4,
+        song_url="song_url",
+        album_id=38,
+        user_id=17,
+    )
+
+    the_promise = Song(
+        title="The Promise",
+        track_number=5,
+        song_url="song_url",
+        album_id=38,
+        user_id=17,
+    )
+
+    # paradise
+
+    brazil = Song(
+        title="Brazil",
+        track_number=1,
+        song_url="song_url",
+        album_id=39,
+        user_id=17,
+    )
+
+    paradise = Song(
+        title="Paradise",
+        track_number=2,
+        song_url="song_url",
+        album_id=39,
+        user_id=17,
+    )
+
+    malibu_dreams = Song(
+        title="Malibu Dreams",
+        track_number=3,
+        song_url="song_url",
+        album_id=39,
+        user_id=17,
+    )
+
+    one_more_time = Song(
+        title="One More Time",
+        track_number=4,
+        song_url="song_url",
+        album_id=39,
+        user_id=17,
+    )
+
+    spanish_nights = Song(
+        title="Spanish Nights",
+        track_number=5,
+        song_url="song_url",
+        album_id=39,
+        user_id=17,
+    )
+
+
+
     # in tongues
     db.session.add_all(
         [
@@ -1737,6 +2070,96 @@ def seed_songs():
         ]
     )
 
+    # Blake - red river blue
+    db.session.add_all(
+        [
+            honey_bee,
+            ready_to_roll,
+            god_gave_me_you,
+            get_some,
+            drink_on_it
+        ]
+    )
+
+    # pure bs
+    db.session.add_all(
+        [
+            cant_be_good,
+            dont_make_me,
+            the_more_i_drink,
+            i_dont_care,
+            she_dont_love_me
+        ]
+    )
+
+    # body language
+    db.session.add_all(
+        [
+            minimum_wage,
+            body_language,
+            happy_anywhere,
+            now_i_dont,
+            monday_mornin_missin_you
+
+        ]
+    )
+
+    # based on a true story
+    db.session.add_all(
+        [
+            boys_round_here,
+            sure_be_cool_if_you_did,
+            do_you_remember,
+            small_town_big_time,
+            country_on_the_radio
+
+        ]
+    )
+
+    # startin fires
+    db.session.add_all(
+        [
+            green,
+            good_at_startin_fires,
+            she_wouldnt_be_gone,
+            ill_just_hold_on,
+            miles
+
+        ]
+    )
+
+    # rhythm and romance
+    db.session.add_all(
+        [
+            sax_o_loco,
+            ritmo_y_romance,
+            sabor_a_mi,
+            tango,
+            mirame_bailar
+        ]
+    )
+
+    # heart and soul
+    db.session.add_all(
+        [
+            heart_and_soul,
+            deja_vu,
+            fall_again,
+            letters_from_home,
+            the_promise
+        ]
+    )
+
+    # paradise
+    db.session.add_all(
+        [
+            brazil,
+            paradise,
+            malibu_dreams,
+            one_more_time,
+            spanish_nights
+        ]
+    )
     db.session.commit()
 
 

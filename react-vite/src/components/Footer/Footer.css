@@ -24,8 +24,8 @@ footer>div {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: auto;
-  width: 1500px;
+  margin: 0 auto;
+
   min-height: 1000px;
 }
 
@@ -33,4 +33,18 @@ footer>div {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  #container-developers-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #container-developers-footer {
+    padding-left: 50px;
+  }
 }
