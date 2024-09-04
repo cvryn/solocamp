@@ -43,9 +43,9 @@ const HorizontalScrollImages = () => {
         <div ref={containerRef}>
             <div id="rolling-home-outer">
                 {displayedImages.map((el, index) => (
-                    <div className='rolling-home' key={index}>
+                    <div style={{ cursor: "pointer" }} key={index}>
                         {el?.album_art
-                            && <div style={{ width: "200px" }}>
+                            ? <div style={{ width: "200px" }}>
                                 <img
                                     onClick={() => navigate(`/albums/${el.id}`)}
                                     key={index}
@@ -53,14 +53,14 @@ const HorizontalScrollImages = () => {
                                     style={{ width: "100%", aspectRatio: "1/1" }}
                                 />
                             </div>
-                            // : <div style={{ width: "200px" }}>
-                            //     <img
-                            //         onClick={() => navigate(`/albums/${el.id}`)}
-                            //         key={index}
-                            //         src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg"
-                            //         style={{ width: "100%", aspectRatio: "1/1" }}
-                            //     />
-                            // </div>
+                            : <div style={{ width: "200px" }}>
+                                <img
+                                    onClick={() => navigate(`/albums/${el.id}`)}
+                                    key={index}
+                                    src="https://res.cloudinary.com/dhukvbcqm/image/upload/v1723760878/solocamp/ab67616d0000b273596a3cb8d308b743451c12c0_rx5yug.jpg"
+                                    style={{ width: "100%", aspectRatio: "1/1" }}
+                                />
+                            </div>
                         }
                         <br></br>
                         <div style={{ fontWeight: 'bold' }}>{el?.name}</div>
@@ -108,10 +108,15 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '18px' }}>Fans have paid artists <span style={{ fontWeight: 'bold', fontSize: '20px' }}>$1.35 billion</span> using Solocamp, and <span style={{ fontWeight: 'bold', fontSize: '20px' }}>$190 million</span> in the last year.</div>
+            <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '18px' }}>Fans have paid artists
+                <span style={{ fontWeight: 'bold', fontSize: '20px' }}>$1.35 billion</span>
+                using Solocamp, and
+                <span style={{ fontWeight: 'bold', fontSize: '20px' }}>$190 million</span>
+                in the last year.
+            </div>
             <div className="container-body-home">
                 <div className="container-selling-home">
-                    <h4 style={{ marginLeft: '0%', marginBottom: '20px' }}>SELLING RIGHT NOW</h4>
+                    <h4 style={{ marginBottom: '20px' }}>SELLING RIGHT NOW</h4>
                     <div className="container-stroy-home">
                         <HorizontalScrollImages images={imageUrls} />
                     </div>
