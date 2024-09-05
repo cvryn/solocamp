@@ -31,6 +31,7 @@ Solocamp offers a diverse catalog that caters to every musical taste. Our platfo
 - **Dynamic UI powered by React, Redux, and React Router**: Developed a responsive and visually compelling use interface utilizing React, Redux, and React Router.Implemented modern UX/UI principles to create a smooth, intuitive user experience with efficient state management and easy navigation throughout the platform.
 - **Full CRUD Functionality for Albums and Reviews**: Developed comprehensive CRUD operations for album management and reviews, allowing users to create, read, update, and delete their own albums and reviews within the platform.
 - **Genre-Based Filtering**: Includes a dynamic filter feature that allows users to search and browse music by genre, making it easy to discover albums and artists that match their musical preferences.
+- **Music Player**: Built a functional music player that allows users to stream tracks on the platform. The player supports features like play, pause, skip to the next song, and go back to the previous song.
 - **Wishlist Management**: Seamlessly integrated into the user experience, Users can easily add and manage their favorite albums through a personalized wishlist feature. This functionality allows users to save albums they are interested in, providing a convenient way to keep track of their favorites and revisit them later.
 - **"Purchase"** albums with ease by adding it to your shopping cart and going through the checkout process
 
