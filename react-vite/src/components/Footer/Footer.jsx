@@ -15,13 +15,8 @@ function Footer() {
             style={{ width: "150px", verticalAlign: "text-bottom", cursor: "pointer" }}
           />
         </Link>
-        <div id="container-quick-links-footer">
-          <Link to="/about">About</Link>
-          <span style={{ cursor: "not-allowed" }}>Help</span>
-          <span style={{ cursor: "not-allowed" }}>Terms of Use</span>
-          <span style={{ cursor: "not-allowed" }}>Privacy</span>
-          <span>© {currentYear} solocamp, inc.</span>
-        </div>
+        <Link to="/about">Meet the Developers</Link>
+        <span>© {currentYear} solocamp, inc.</span>
       </div>
     </footer>
   );
