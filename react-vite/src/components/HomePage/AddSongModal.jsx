@@ -29,7 +29,7 @@ function AddSongModal() {
 
     if (isNaN(track) || track.trim() === "") {
       newErrors.track = "Track number must be a valid number.";
-    } else if (existingTrackNumbers.includes(Number(track))) {
+    } else if (existingTrackNumbers?.includes(Number(track))) {
       newErrors.track = "Track number already exists.";
     }
 
