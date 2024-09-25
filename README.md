@@ -2,7 +2,6 @@
 
 Welcome to Solocamp, a versatile platform designed for music enthusiasts who appreciate the mainstream, the niche and indie artists. Solocamp offers a seamless experience whether you're a fan of top-charting artists or love discovering, "purchasing", and supporting underground and independent musicians.
 
-
 ### Discover Hidden Gems
 
 Solocamp is the place to explore and find music that resonates with your test. Our platform is tailored to highlight the creative works of artists who may not be in the mainstream spotlight but have immense talent and passion.
@@ -11,7 +10,13 @@ Solocamp is the place to explore and find music that resonates with your test. O
 
 Solocamp offers a diverse catalog that caters to every musical taste. Our platform makes it easy to explore new sounds, whether you're searching for the latest hits or newly emerging artists.
 
-# Live Site Preview
+
+## Live Site URL
+
+https://solocamp.onrender.com/
+
+
+## Live Site Preview
 
 ### Solocamp Homepage
 
@@ -21,9 +26,14 @@ Solocamp offers a diverse catalog that caters to every musical taste. Our platfo
 
 ![Album Details](react-vite/src/assets/solocamp-album-details-page.png)
 
+### Solocamp Album/Genre Listings
+
+![Album Listings](react-vite/src/assets/solocamp-album-listings.png)
+
 ### Solocamp Wishlist
 
 ![Wishlist](react-vite/src/assets/solocamp-demo-wishlist.png)
+
 
 ## Key Features
 
@@ -35,6 +45,7 @@ Solocamp offers a diverse catalog that caters to every musical taste. Our platfo
 - **Wishlist Management**: Seamlessly integrated into the user experience, Users can easily add and manage their favorite albums through a personalized wishlist feature. This functionality allows users to save albums they are interested in, providing a convenient way to keep track of their favorites and revisit them later.
 - **"Purchase"** albums with ease by adding it to your shopping cart and going through the checkout process
 
+
 ## Technologies Used
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -45,6 +56,7 @@ Solocamp offers a diverse catalog that caters to every musical taste. Our platfo
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+
 
 ## Getting started
 
@@ -95,6 +107,7 @@ Solocamp offers a diverse catalog that caters to every musical taste. Our platfo
    command to include the `--watch` flag. This flag will rebuild the **dist**
    folder whenever you change your code, keeping the production version up to
    date.
+
 
 # API Documentation - Backend API Routes
 
@@ -348,6 +361,7 @@ user's information.
       }
     }
     ```
+
 
 ## Album Routes
 
@@ -666,6 +680,7 @@ Deletes an existing Album.
     }
     ```
 
+
 ## REVIEWS (SUPPORTED-BYS)
 
 ### Get all Reviews of the Current User
@@ -959,6 +974,7 @@ Delete an existing review.
     }
     ```
 
+
 ## Shopping Cart Routes
 
 ### Get all of the Current User's Shopping Cart
@@ -1137,6 +1153,7 @@ Delete Album(s) from the Shopping Cart
     }
     ```
 
+
 ## Wishlist Routes
 
 ### Get all of the Current User's Wishlist
@@ -1284,6 +1301,7 @@ Delete Album(s) from the Wishlist
       "message": "Album not in wishlist"
     }
     ```
+
 
 ## Deployment through Render.com
 
