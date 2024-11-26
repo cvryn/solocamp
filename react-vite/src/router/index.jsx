@@ -13,7 +13,6 @@ import { getShoppingCart } from './shoppingcart';
 import ManageAlbum from '../components/ManageAlbum/ManageAlbum';
 import AddSongModal from '../components/HomePage/AddSongModal';
 
-
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -22,11 +21,16 @@ export const router = createBrowserRouter([
         path: '/',
         element: <HomePage />,
         loader: async () => {
-          const response = await fetch("/api/albums");
-          if (response.ok) {
-            return await response.json();
-          } else {
-            throw new Error("Failed to fetch albums");
+          try {
+            const response = await fetch("/api/albums");
+            if (response.ok) {
+              return await response.json();
+            } else {
+              throw new Error("Failed to fetch albums");
+            }
+          } catch (error) {
+            console.error(error);
+            return [];
           }
         }
       },
@@ -34,23 +38,38 @@ export const router = createBrowserRouter([
         path: "/albums",
         element: <AlbumListings />,
         loader: async () => {
-          return await fetch("/api/albums")
+          try {
+            const response = await fetch("/api/albums");
+            if (response.ok) {
+              return await response.json();
+            } else {
+              throw new Error("Failed to fetch albums");
+            }
+          } catch (error) {
+            console.error(error);
+            return [];
+          }
         }
       },
       {
         path: "/albums/:albumId",
         element: <AlbumDetails />,
-        loader: albumLoader
+        loader: albumLoader // Ensure albumLoader handles errors as well
       },
       {
         path: "/manage-albums",
         element: <ManageAlbum />,
         loader: async () => {
-          const response = await fetch("/api/albums");
-          if (response.ok) {
-            return await response.json();
-          } else {
-            throw new Error("Failed to fetch albums");
+          try {
+            const response = await fetch("/api/albums");
+            if (response.ok) {
+              return await response.json();
+            } else {
+              throw new Error("Failed to fetch albums");
+            }
+          } catch (error) {
+            console.error(error);
+            return []; // Return an empty array in case of an error
           }
         }
       },
@@ -58,7 +77,17 @@ export const router = createBrowserRouter([
         path: "/user",
         element: <UserProfile />,
         loader: async () => {
-          return await fetch("/api/albums")
+          try {
+            const response = await fetch("/api/albums");
+            if (response.ok) {
+              return await response.json();
+            } else {
+              throw new Error("Failed to fetch albums");
+            }
+          } catch (error) {
+            console.error(error);
+            return []; // Return an empty array in case of an error
+          }
         }
       },
       {

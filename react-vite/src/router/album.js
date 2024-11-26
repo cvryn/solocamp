@@ -4,22 +4,26 @@ export const albumLoader = async ({ params }) => {
 
     let album = null;
     let allAlbums = [];
+    let error = null;
 
-    // Fetch album by albumId
-    const albumResponse = await fetch(`/api/albums/${albumId}`);
-    if (albumResponse.ok) {
-        album = await albumResponse.json();
-    } else {
-        console.error('Failed to fetch album');
+    try {
+        const albumResponse = await fetch(`/api/albums/${albumId}`);
+        if (albumResponse.ok) {
+            album = await albumResponse.json();
+        } else {
+            throw new Error('Failed to fetch album');
+        }
+
+        const allAlbumsResponse = await fetch('/api/albums');
+        if (allAlbumsResponse.ok) {
+            allAlbums = await allAlbumsResponse.json();
+        } else {
+            throw new Error('Failed to fetch all albums');
+        }
+    } catch (err) {
+        error = err.message;
+        console.error('Error occurred:', err);
     }
 
-    // Fetch all albums
-    const allAlbumsResponse = await fetch('/api/albums');
-    if (allAlbumsResponse.ok) {
-        allAlbums = await allAlbumsResponse.json();
-    } else {
-        console.error('Failed to fetch all albums');
-    }
-
-    return { album, allAlbums };
+    return { album, allAlbums, error };
 };
