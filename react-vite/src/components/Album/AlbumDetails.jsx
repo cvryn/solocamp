@@ -63,7 +63,7 @@ const AlbumDetails = () => {
   useEffect(() => {
     const purchaseErrors = {};
 
-    if (currentUser && album.user_id === currentUser.id) {
+    if (currentUser && album && album.user_id === currentUser.id) {
       purchaseErrors.ownAlbum = "Cannot purchase own album";
     }
 
@@ -92,7 +92,8 @@ const AlbumDetails = () => {
     }
 
     setValidations(purchaseErrors);
-  }, [albumId, album.user_id, currentUser, cartItems, albumsInCollection, shoppingCartObj, albumsInCollectionObj]);
+  }, [albumId, album?.user_id, currentUser, cartItems, albumsInCollection, shoppingCartObj, albumsInCollectionObj]);
+
 
   useEffect(() => {
     const fetchSupportedBys = async () => {
@@ -203,7 +204,7 @@ const AlbumDetails = () => {
 
   const closeMenu = () => setShowMenu(false);
 
-  const albumArt = album.album_art?.[0];
+  const albumArt = album?.album_art?.[0];
 
   if (!album) return <div>Loading...</div>;
 
@@ -245,7 +246,7 @@ const AlbumDetails = () => {
             <div id="album-detail-container">
               <section id="left-column-container-album-details">
                 <div id="music-player-container">
-                  <MusicPlayer songs={songs}/>
+                  <MusicPlayer songs={songs} />
                 </div>
 
                 <div
@@ -324,7 +325,7 @@ const AlbumDetails = () => {
                     className="album-art-image-album-details"
                     src={albumArt?.album_art}
                     alt="album art image"
-                    style={{aspectRatio: "1/1", minWidth: "180px", width: "100%"}}
+                    style={{ aspectRatio: "1/1", minWidth: "180px", width: "100%" }}
                   />
                   {currentUser && album.user_id === currentUser.id
                     ? (

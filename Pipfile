@@ -28,6 +28,7 @@ werkzeug = "==2.2.2"
 wtforms = "==3.0.1"
 email-validator = "==1.2.0"
 zipp = "==3.17.0"
+psycopg2 = "*"
 
 [dev-packages]
 

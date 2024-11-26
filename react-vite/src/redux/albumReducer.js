@@ -24,18 +24,18 @@ const deleteAlbum = (id) => ({
 })
 
 export const thunkGetAlbums = () => async (dispatch) => {
-    const res = await fetch('/api/albums', {
+    const res = await fetch('/api/albums/all', {
         method: 'GET'
     })
     if (res.ok) {
         const data = await res.json()
-        // console.log('get all als?, ', data)
         dispatch(getAlbums(data))
-    }else {
+    } else {
         const errorData = await res.json();
         return { errors: errorData.errors };
     }
 }
+
 export const thunkUpdateAlbum = (album) => async (dispatch) => {
     let {
         album_id,
@@ -58,7 +58,7 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
     })
     if (res.ok) {
         const newAl = await res.json()
-        
+
         const resImg = await fetch(`/api/album-art/${album_art_id}`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json" },
@@ -74,11 +74,11 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
             newAl.album_art = [newImg];
             dispatch(updateAlbum(newAl))
             return { newAl, newImg };
-        }else {
+        } else {
             const errorData = await resImg.json();
             return { errors: errorData.errors };
         }
-    }else {
+    } else {
         const errorData = await res.json();
         return { errors: errorData.errors };
     }
@@ -86,7 +86,6 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
 
 export const thunkCreateAlbum = (album) => async (dispatch) => {
     let { name, year, genre, price, description, albumart, albumbanner, backgroundcolor } = album;
-    // console.log('title in thunk??', title)
     const response = await fetch("/api/albums/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -109,22 +108,18 @@ export const thunkCreateAlbum = (album) => async (dispatch) => {
         })
         if (resImg.ok) {
             const newImg = await resImg.json();
-            // console.log('in new img thunk', newImg)
             newAl.album_art = [newImg];
             dispatch(addAlbum(newAl));
-            // dispatch(updateAlbum(newAl))
             return { newAl, newImg };
-        }else {
+        } else {
             await fetch(`/api/albums/${newAl.id}`, {
                 method: 'DELETE'
             });
-            // dispatch(deleteAlbum(newAl.id));
             const errorData = await resImg.json();
             return { errors: errorData.errors };
         }
-    }else {
+    } else {
         const errorData = await response.json();
-        // console.log('error in thunk for img',errorData)
         return { errors: errorData };
     }
 }
@@ -143,15 +138,17 @@ const initialState = {};
 
 function albumReducer(state = initialState, action) {
     switch (action.type) {
-        case ADD_ALBUM:{
+
+        case ADD_ALBUM: {
             return {
                 ...state,
                 album: [...state.album, action.payload]
             };
         }
-            // return { ...state, album: action.payload }
+
         case GET_ALBUMS:
             return { ...state, album: action.payload }
+
         case UPDATE_ALBUM: {
             const newState = { ...state };
             newState.album = state.album.map(alb =>
@@ -159,12 +156,14 @@ function albumReducer(state = initialState, action) {
             );
             return newState;
         }
+
         case DELETE_ALBUM: {
             let newState = { ...state };
             delete newState[action.id];
             newState.album = state.album.filter(alb => alb.id !== action.id);
             return newState;
         }
+
         default:
             return state;
     }

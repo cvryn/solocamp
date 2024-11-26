@@ -23,9 +23,13 @@
 
 2. in frontend: ```npm install```
 
-3. in frontend: ```npm run dev```
+3. in frontend: ```npm outdated```
 
-4. configure ```vite.config.js``` file
+4. in frontend: ```npm update```
+
+5. in frontend: ```npm run dev```
+
+6. configure ```vite.config.js``` file
 ```js
 export default defineConfig({
   plugins: [react()],
@@ -52,11 +56,12 @@ npm run build
 5. Branch: Main
 6. Instance Type: Free
 7. Go to Render, < make a new web service>
+
 ### Environment Variables :
 ```
 SECRET_KEY = <generate>
 DATABASE_URL = <postgreSQL internal database url>
-SCHEMA = <schema-name>
+SCHEMA = <schema_name>
 FLASK_APP=app
 FLASK_ENV=production
 ```

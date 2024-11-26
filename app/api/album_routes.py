@@ -9,7 +9,7 @@ album_routes = Blueprint("albums", __name__)
 
 # get all albums
 # create album belonging to current user
-@album_routes.route("/", methods=["GET", "POST"])
+@album_routes.route("/all", methods=["GET", "POST"])
 def albums():
     if request.method == "POST":
         form = AlbumForm()
@@ -169,7 +169,7 @@ def songs(album_id):
             db.session.add(new_song)
             db.session.commit()
             return new_song.to_dict(), 201
-        
+
     elif request.method == "DELETE":
         song_id = request.json.get("song_id")
         song = Song.query.get(song_id)

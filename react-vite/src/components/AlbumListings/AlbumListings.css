@@ -12,7 +12,6 @@
   background-color: gray;
 }
 
-
 #container-search-bar-album-listings {
   display: flex;
   align-items: center;
@@ -53,9 +52,9 @@
 }
 
 #container-album-listings-outer {
-  min-height: 400px;
   margin: auto;
   background-color: rgb(34, 34, 34);
+  height: 180vh;
 }
 
 #container-album-listings-grid {
@@ -77,6 +76,7 @@
   padding: 20px 0 20px 40px;
   row-gap: 100px;
   column-gap: 20px;
+  height: 40px;
 }
 
 #container-album {
