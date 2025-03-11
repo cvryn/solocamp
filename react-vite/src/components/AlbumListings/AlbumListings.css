@@ -55,6 +55,7 @@
   margin: auto;
   background-color: rgb(34, 34, 34);
   height: 180vh;
+  height: 3100px;
 }
 
 #container-album-listings-grid {
@@ -125,7 +126,6 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-
 
 @media screen and (max-width: 1000px) {
   #container-album-listings {
